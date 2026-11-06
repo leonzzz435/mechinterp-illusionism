@@ -1,6 +1,6 @@
 # Two-machine runbook
 
-**Current next run:** follow [HF_JOBS.md](HF_JOBS.md) for the existing baseline on one cloud GPU. [HANDOVER_BLACKWELL.md](HANDOVER_BLACKWELL.md) remains optional. The first GPU pilot is complete and failed the functional accuracy gate. The GPU commands below document the original protocol; its intervention sweeps are paused and are not the current work order.
+**Current execution path:** [HF_JOBS.md](HF_JOBS.md). The first cloud baseline is complete; [HF_PILOT.md](HF_PILOT.md) records another failed functional capability gate. [HANDOVER_BLACKWELL.md](HANDOVER_BLACKWELL.md) remains optional. The GPU commands below document the original protocol; its intervention sweeps are paused and are not the current work order.
 
 ## Local verification
 

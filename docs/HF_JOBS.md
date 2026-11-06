@@ -2,6 +2,8 @@
 
 **Aktueller Ausführungsweg: ein Cloud-Job für das bestehende Experiment.** Modell, Checkpoint, vier Beispiele, 768 Entwicklungsvarianten und Auswertung bleiben bei `configs/harness-baseline.json`. DeepSeek, weitere Modelle und große Sweeps gehören nicht zu diesem Schritt.
 
+**Erster Lauf abgeschlossen:** [Ergebnis und Prüfung](HF_PILOT.md). Alle 768 Varianten wurden ausgewertet; alle drei Fähigkeitsprüfungen scheiterten. Der erste freigegebene Job ist damit beendet. Die Startbefehle unten dokumentieren den Ablauf und sind kein Auftrag für einen zweiten Lauf. Login und privater Ergebnisspeicher unter `zett13` funktionieren bereits.
+
 ## Einmalig vom Nutzer benötigt
 
 1. Hugging-Face-Nutzername oder gewünschte Organisation.
@@ -36,7 +38,7 @@ Festgelegt sind:
 - Vor jeder Einreichung aktueller Preis von `https://huggingface.co/api/jobs/hardware`. Bei 0,013333 USD pro Minute beträgt die konservative Compute-Obergrenze inklusive einer Rundungsminute **1,613293 USD**. Der Start wird abgelehnt, wenn die errechnete Compute-Obergrenze mehr als die Hälfte des expliziten Budgets beansprucht. Das ist kein kontoweites Abrechnungslimit; Steuern und gegebenenfalls bestehende Speicher-/Kontogebühren sind davon getrennt.
 - Zugangsdaten gehen ausschließlich über HF Jobs `secrets`, nicht in Konfigurationen, Startbelege oder Git.
 
-Die Cloud-GPU und ihr Treiber sind noch nicht empirisch geprüft. Scheitert die vorhandene CUDA-Umgebung dort, bleibt das ein protokollierter Ausführungsfehler; keine automatische Änderung von Paketen, Modell oder Hardware.
+Die vorhandene CUDA-Umgebung lief im ersten Job erfolgreich auf einer L4. Bei künftigen Ausführungsfehlern erfolgt keine automatische Änderung von Paketen, Modell oder Hardware.
 
 ## Status, Logs und Ergebnisse
 

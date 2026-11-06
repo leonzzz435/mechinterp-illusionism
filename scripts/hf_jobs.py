@@ -266,7 +266,7 @@ def main(argv=None):
                 kwargs = {"job_id": state["job_id"], "namespace": state["namespace"]}
                 if args.command == "logs":
                     for line in api.fetch_job_logs(**kwargs):
-                        print(line, end="", flush=True)
+                        print(line, end="" if line.endswith("\n") else "\n", flush=True)
                     return 0
                 if args.command == "cancel":
                     api.cancel_job(**kwargs)

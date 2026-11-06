@@ -1,6 +1,6 @@
 # When a Language Model Says “I”, What Is Doing the Work?
 
-*Research article in preparation. The first GPU pilot failed its functional capability gate. Revised baseline evaluation and confirmatory results remain pending.*
+*Research article in preparation. Both the original GPU pilot and the revised four-shot development baseline failed their functional capability gates. Confirmatory results remain pending.*
 
 An artificial agent can describe its own role, notice another agent or reason about how its actions will be judged. What kind of representation of itself is the system using?
 
@@ -44,7 +44,7 @@ The first Blackwell baseline scored 48.5% on action ownership, 46.1% on informat
 
 An audit also found a limitation in our answer scoring: it compared bare letter tokens immediately after `Answer:`, while the model usually preferred a newline and could represent space-prefixed letters with different tokens. We preserve those results and introduce a separate, fixed four-shot development protocol using EleutherAI's evaluation harness. This revision changes both prompting and scoring; any improvement cannot be attributed to whitespace alone. The [pilot review](../PILOT_REVIEW.md) records the evidence and unresolved questions.
 
-The revised GPU baseline and confirmatory results are pending. The final article will include baseline failures, all task families, controls, uncertainty and degradation, including negative results.
+The revised baseline subsequently completed on an HF Jobs L4: 43.4%, 50.8% and 41.4% accuracy on the same three families, across eight development scenarios per family. It also failed the capability gate. The [cloud pilot report](../HF_PILOT.md) records the fixed protocol and verified artifacts. This ends the current functional pilot; confirmatory results remain pending. The final article will include baseline failures, all task families, controls, uncertainty and degradation, including negative results.
 
 - **Figure 2:** Full continuations chosen by a fixed selection rule.
 - **Figure 3:** Dose-response curves with scenario-level uncertainty.

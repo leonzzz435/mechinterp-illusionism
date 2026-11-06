@@ -4,9 +4,10 @@ Can a language model's self-referential language and its use of a contextual sel
 
 We distinguish **self-language**, **functional self-models**, and **phenomenal consciousness**. The experiments address the first two; they do not settle the third.
 
-**Status:** the first Blackwell runs passed technical checks but failed the functional-task baseline. Large intervention sweeps are stopped. The next run uses pinned EleutherAI `lm-evaluation-harness` scoring and four fixed demonstrations on development data only. No functional dissociation or consciousness claim is established.
+**Status:** the first Blackwell runs passed technical checks but failed the functional-task baseline. The revised four-shot development baseline also failed its capability gates, using pinned EleutherAI `lm-evaluation-harness` on HF Jobs. Cloud execution and result retrieval work; large intervention sweeps remain stopped. No functional dissociation or consciousness claim is established.
 
-- **[Next action: run the existing baseline on Hugging Face Jobs](docs/HF_JOBS.md)**
+- **[Cloud execution: Hugging Face Jobs](docs/HF_JOBS.md)**
+- **[Completed first cloud pilot: all functional gates failed](docs/HF_PILOT.md)**
 - [Optional Blackwell execution](docs/HANDOVER_BLACKWELL.md)
 - [Review of the first GPU results](docs/PILOT_REVIEW.md)
 
@@ -37,7 +38,7 @@ Smoke outputs are **not scientific results**, cannot unlock confirmation, and ca
 
 ## Cloud: standard-harness baseline
 
-The next execution uses Hugging Face Jobs with one L4 GPU and a fixed timeout. The experiment stays unchanged. The [cloud handover](docs/HF_JOBS.md) covers local login, the approved first-run budget, submission, logs and automatic checkpoint persistence to a private HF repository. The launcher does not install GPU dependencies on this computer.
+The first Hugging Face Jobs execution completed all 768 variants on one L4 GPU. All functional gates still failed; see the [pilot report](docs/HF_PILOT.md). The [cloud handover](docs/HF_JOBS.md) covers local login, bounded submission, logs and automatic checkpoint persistence to a private HF repository. The launcher does not install GPU dependencies on this computer. The commands below document reproduction; the first authorized job is already complete.
 
 ```bash
 uv run --script scripts/hf_jobs.py plan --namespace YOUR_HF_NAME --budget-usd 10
@@ -46,7 +47,7 @@ uv run --script scripts/hf_jobs.py status
 uv run --script scripts/hf_jobs.py fetch
 ```
 
-Cloud execution is pending account setup; CPU tests do not establish cloud GPU compatibility.
+Cloud execution, artifact persistence and local download/re-analysis have now been verified. No further job or intervention sweep is authorized by this report.
 
 ## Optional Blackwell execution
 

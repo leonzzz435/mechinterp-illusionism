@@ -1,11 +1,10 @@
 # Implementation verification
 
-Verified locally on 2026-11-06. This is software evidence, not a Gemma experiment.
+Verified on 2026-11-06. Software tests and real-model evidence are identified separately below.
 
 ## Checks
 
-- Current suite: **45 passed in 146.85 seconds**, including the original real-library CPU integrations and the new native-harness integration described below.
-- HF Jobs revision: **50 passed in 142.41 seconds** in the full suite; after private-source transfer and provider-rejection coverage were added, all **7 cloud tests** passed. This adds two tests to that suite. All network mutations and paid job creation are mocked in these tests.
+- Current suite: **52 passed in 141.34 seconds**, including the original real-library CPU integrations, native-harness integration and seven cloud-adapter tests. All network mutations and paid job creation are mocked in these tests.
 - CPU tests cover deterministic generation and split isolation, counterfactual gold answers, scoring, intervention positions, residual-preserving ablation, hook cleanup, interrupted-run recovery, error retention, protocol freezing, test-access claims, statistics, ratings and export checksums.
 - Optional integration tests use the real TransformerLens and SAELens libraries with tiny randomly initialized CPU weights and an offline tokenizer. They exercise forced-choice scoring and generation as well as hook behavior. No pretrained weights are downloaded.
 - Ruff lint and formatting, lockfile consistency, shell syntax and whitespace checks pass.
@@ -33,7 +32,7 @@ The local, git-ignored bundle is `exports/final-software-check.tar.gz`, SHA-256 
 
 ## Remaining empirical checks
 
-The first Blackwell runs are now available and reviewed in `PILOT_REVIEW.md`: technical checks passed, functional capability gates failed. The revised standard-harness baseline has not run on Blackwell yet. Full validation, held-out confirmation, human ratings and publication remain pending.
+The first Blackwell runs are reviewed in `PILOT_REVIEW.md`: technical checks passed, functional capability gates failed. The revised standard-harness baseline subsequently completed on an HF Jobs L4; `HF_PILOT.md` records full coverage, checked artifacts and another failed functional capability screen. Full validation, held-out confirmation, human ratings and publication remain pending.
 
 ## Standard-harness revision
 
@@ -55,4 +54,4 @@ uv pip install --python .venv-integration/bin/python -e '.[gpu,eval]' pytest --t
 
 The isolated `uv run --script scripts/hf_jobs.py plan` path was run against HF's read-only hardware endpoint. It selects one L4, quotes the two-hour compute bound from integer micro-USD prices and does not submit a job. The OCI image digest was resolved from the registry. Existing model configuration, dependency lock and historical result files are unchanged.
 
-Cloud tests verify budget rejection, private output storage, exact commit checks, secret isolation, duplicate/unknown-submission protection, and pinned artifact downloads with checksum verification. A real local Git-bundle round trip preserves the commit while excluding untracked files and credentials. The harness test checks that each upload callback sees committed scenario blocks and the final paused status. The cloud CUDA environment remains an empirical check, not a CPU-test claim.
+Cloud tests verify budget rejection, private output storage, exact commit checks, secret isolation, duplicate/unknown-submission protection, and pinned artifact downloads with checksum verification. A real local Git-bundle round trip preserves the commit while excluding untracked files and credentials. The harness test checks that each upload callback sees committed scenario blocks and the final paused status. Separately, the actual first cloud job completed on an L4, persisted all 24 blocks, exported three figure formats and passed local source/data/archive checks; see `HF_PILOT.md`.

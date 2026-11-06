@@ -12,7 +12,7 @@ from pathlib import Path
 from .data import rng_for
 from .io import canonical, digest, file_hash, source_hash, write_json
 
-VERSION = "action-permissions-v2-draft"
+VERSION = "action-permissions-v2.1-draft"
 VIEWS = ("self", "named_self", "other")
 NAMES = ("Aster", "Birch", "Cedar", "Dune", "Elm", "Flint", "Grove", "Heath")
 TOOLS = ("amber", "cobalt", "ivory", "jade", "lilac", "ochre", "silver", "violet")
@@ -101,15 +101,15 @@ def build_design(seed=1729, scenarios=40, split="development"):
             "markers": dict.fromkeys(actors, 0),
         }
         actor_order = rng.sample(actors, 2)
-        for updated, identity, view, phase, rotation in product(
-            range(2), range(2), VIEWS, ("before", "after"), range(4)
+        for updated, grant_variant, identity, view, phase, rotation in product(
+            range(2), range(2), range(2), VIEWS, ("before", "after"), range(4)
         ):
             assigned = actors[identity]
             target = actors[1 - identity] if view == "other" else assigned
             event = {
                 "actor": actors[updated],
                 "revoke": commands[updated],
-                "grant": commands[updated + 2],
+                "grant": commands[2 + grant_variant],
             }
             state = apply_update(before, event) if phase == "after" else deepcopy(before)
             choices = commands[rotation:] + commands[:rotation]
@@ -117,13 +117,14 @@ def build_design(seed=1729, scenarios=40, split="development"):
             if len(successes) != 1:
                 raise ValueError("Design requires exactly one executable command")
             row = {
-                "id": f"{sid}:update{updated}:role{identity}:{view}:{phase}:rot{rotation}",
+                "id": digest([sid, updated, grant_variant, identity, view, phase, rotation]),
                 "scenario_id": sid,
                 "split": split,
                 "view": view,
                 "phase": phase,
                 "identity": identity,
                 "updated": updated,
+                "grant_variant": grant_variant,
                 "rotation": rotation,
                 "assigned": assigned,
                 "target": target,
@@ -164,6 +165,15 @@ def design_summary(rows):
         "latest_grant_or_first": lambda r: (
             r["event"]["grant"] if r["phase"] == "after" else r["choices"][0]
         ),
+        # Reviewer-discovered shortcut: use the opposite list position without
+        # reading the granted command. The grant counterfactual must defeat it.
+        "opposite_initial_if_updated": lambda r: r["choices"][
+            (
+                r["choices"].index(r["before"]["permissions"][r["target"]][0])
+                + (2 if r["phase"] == "after" and r["relevant_update"] else 0)
+            )
+            % len(r["choices"])
+        ],
     }
     by_view, changed_by_view, irrelevant_by_view = {}, {}, {}
     for view in VIEWS:
@@ -220,7 +230,7 @@ def export_design(output, seed=1729, scenarios=40):
     example = next(
         r
         for r in rows
-        if r["updated"] == r["identity"] == r["rotation"] == 0
+        if r["updated"] == r["grant_variant"] == r["identity"] == r["rotation"] == 0
         and r["view"] == "self"
         and r["phase"] == "after"
     )

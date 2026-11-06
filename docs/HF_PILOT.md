@@ -6,6 +6,8 @@ Completed and independently checked on 2026-11-06. Execution migrated to HF Jobs
 - Executed Git commit: `c0ae5521d5bbdcb63e46dcaec615e8add95f10be`.
 - [Private artifact snapshot](https://huggingface.co/datasets/zett13/mechinterp-illusionism-results/tree/43c37ecd507a954629cd508b72a8bc08a95f1fb1/harness-cd3646dae2964bbc): run data, report, figures and archive. Access requires the owner's HF account or an authorized token.
 - Archive SHA-256: `cd2efc65d71d9f50605a6d2cb57693d189e7778cc6f59a888d24c93976d5e929`.
+- [Unchanged original archive in Git](../review/evidence/harness-cd3646dae2964bbc.tar.gz)
+  (631,457 bytes): reviewers with repository access need no HF credentials to inspect it.
 - Hardware: one NVIDIA L4; driver `580.178.04`; PyTorch `2.15.0+cu132`; BF16, eager attention, FP32 likelihood softmax.
 - Harness invocation: **444.92 seconds**, including model loading and checkpoint uploads, excluding environment installation and final export. Peak allocated GPU memory: **6.92 GiB**.
 - Coverage: **24/24 scenario blocks, 768/768 variants**, no recorded execution errors. Eight independent scenarios per family; paired variants are not independent observations.
@@ -26,6 +28,12 @@ The comparison with the historical zero-shot run does not isolate a whitespace, 
 
 The private repository and executed source-bundle checksum were checked. Downloading pinned one immutable artifact commit. Every exported file and the archive matched their SHA-256 checksums, including an independent check of the archive's internal files. Source snapshots matched the executed Git commit; regenerating the development plan reproduced its hash. Local re-analysis audited all native harness samples and exactly reproduced the saved analysis. The PNG figure was visually inspected; SVG and PDF are also present.
 
-The original downloaded results are under `.hf-jobs/downloads/harness-cd3646dae2964bbc/` on the private computer. They remain git-ignored; the private HF snapshot is the durable copy. `scripts/hf_jobs.py fetch` retrieves it using the local job receipt.
+The original downloaded directory is under `.hf-jobs/downloads/harness-cd3646dae2964bbc/` on
+the private computer and remains git-ignored. Its complete archive is now also tracked in
+`review/evidence/`, byte-for-byte identical to the pinned private HF snapshot. Run
+`python3 scripts/review_evidence.py` from a fresh checkout to verify the archive and all 95
+file checksums, then reproduce the table above from the 768 saved likelihood records.
+The helper uses only the Python standard library, performs no inference and changes no files.
+See [the review guide](REVIEW_GUIDE.md) for source lineage and the distinction from the new task draft.
 
 The first-job authorization was USD 10. The launcher recorded a two-hour provider timeout and a quoted compute bound of USD 1.613293 at submission; these are controls/estimates, not a final provider invoice. No second job was submitted.

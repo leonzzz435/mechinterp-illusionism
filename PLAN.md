@@ -33,12 +33,20 @@
 - [x] Build a CPU-only executable permission-change task with self, named-self and other controls.
 - [x] Separate the unresolved scoring/root-cause question from the task's construct validity.
 - [x] Export a development design, oracle/shortcut checks and a clearly labeled design figure.
+- [x] Obtain a fresh-context AI review; preserve its findings and make the cloud raw data reviewable from Git.
+- [x] Fix exposed condition IDs and the grant-position shortcut; add paired grant-value controls.
 - [ ] Review the concrete task; freeze model, scoring, counterfactual criteria and a small screening protocol.
 - [ ] Authorize and run a new bounded cloud job only after that protocol is concrete.
 
 See [the action-task design](docs/ACTION_TASK_DESIGN.md). This is a draft development pool,
 not new model evidence. No instruction-tuned/larger model was selected and no new GPU job
 was launched. The old 40/40/100 dataset and completed pilots are preserved.
+
+The [review guide](docs/REVIEW_GUIDE.md) is the handoff for a reviewer without chat context.
+The [first independent AI review](docs/reviews/2026-11-06-independent-review.md) found two
+concrete shortcuts in the unrun draft; those have been addressed, but neither a model-scoring
+protocol nor a strong self-model interpretation is established. External human review remains
+outstanding. The next cloud job is not ready merely because software tests pass.
 
 ### Historical pilots and empirical blockers
 

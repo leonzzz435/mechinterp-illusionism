@@ -22,7 +22,7 @@ from self_model_study.io import file_hash, read_json
 def test_deterministic_development_only_design():
     rows = build_design(scenarios=2)
     assert rows == build_design(scenarios=2)
-    assert len(rows) == 192
+    assert len(rows) == 384
     assert len({r["id"] for r in rows}) == len(rows)
     assert {r["split"] for r in rows} == {"development"}
     assert {r["scenario_id"] for r in rows}.isdisjoint(
@@ -63,7 +63,15 @@ def test_commands_really_execute_or_fail_without_mutating_inputs():
 def test_relevant_updates_flip_actions_and_other_updates_preserve_them():
     rows = build_design(scenarios=3)
     lookup = {
-        (r["scenario_id"], r["updated"], r["identity"], r["view"], r["phase"], r["rotation"]): r
+        (
+            r["scenario_id"],
+            r["updated"],
+            r["grant_variant"],
+            r["identity"],
+            r["view"],
+            r["phase"],
+            r["rotation"],
+        ): r
         for r in rows
     }
     for row in rows:
@@ -73,6 +81,7 @@ def test_relevant_updates_flip_actions_and_other_updates_preserve_them():
             (
                 row["scenario_id"],
                 row["updated"],
+                row["grant_variant"],
                 row["identity"],
                 row["view"],
                 "before",
@@ -89,10 +98,17 @@ def test_relevant_updates_flip_actions_and_other_updates_preserve_them():
 def test_views_and_rotations_are_matched_with_exact_executor_binding():
     groups = defaultdict(list)
     for row in build_design(scenarios=2):
-        key = (row["scenario_id"], row["updated"], row["identity"], row["phase"])
+        key = (
+            row["scenario_id"],
+            row["updated"],
+            row["grant_variant"],
+            row["identity"],
+            row["phase"],
+        )
         groups[key].append(row)
         assert set(model_input(row)) == {"id", "prompt", "choices", "language_prompt"}
         assert row["expected_command"] not in row["id"]
+        assert len(row["id"]) == 64 and all(c in "0123456789abcdef" for c in row["id"])
     for group in groups.values():
         for view in VIEWS:
             subset = [r for r in group if r["view"] == view]
@@ -114,6 +130,13 @@ def test_shortcuts_fail_despite_a_perfect_simulator_oracle():
         checks = report["scripted_shortcut_accuracy_by_view"][view]
         assert checks["first_listed"] == 0.25
         assert checks["ignore_update"] == 0.75
+        assert checks["opposite_initial_if_updated"] == 0.875
+        assert (
+            report["scripted_shortcut_accuracy_after_relevant_update"][view][
+                "opposite_initial_if_updated"
+            ]
+            == 0.5
+        )
         assert (
             report["scripted_shortcut_accuracy_after_relevant_update"][view]["ignore_update"] == 0
         )
@@ -130,6 +153,38 @@ def test_shortcuts_fail_despite_a_perfect_simulator_oracle():
             == 0
         )
     assert report["scripted_shortcut_accuracy_by_view"]["other"]["always_active_actor"] == 0
+
+
+def test_grant_counterfactual_requires_reading_the_granted_value():
+    groups = defaultdict(list)
+    for row in build_design(scenarios=3):
+        key = (
+            row["scenario_id"],
+            row["updated"],
+            row["identity"],
+            row["view"],
+            row["phase"],
+            row["rotation"],
+        )
+        groups[key].append(row)
+    for pair in groups.values():
+        first, second = pair
+        assert {r["grant_variant"] for r in pair} == {0, 1}
+        assert first["before"] == second["before"]
+        assert first["choices"] == second["choices"]
+        assert first["event"]["actor"] == second["event"]["actor"]
+        assert first["event"]["grant"] != second["event"]["grant"]
+        must_change = first["phase"] == "after" and first["relevant_update"]
+        assert (first["expected_command"] != second["expected_command"]) == must_change
+        if first["phase"] == "after":
+            assert (
+                first["prompt"].replace(
+                    "grant " + first["event"]["grant"], "grant " + second["event"]["grant"]
+                )
+                == second["prompt"]
+            )
+        else:
+            assert first["prompt"] == second["prompt"]
 
 
 def test_export_cli_checksums_and_no_overwrite(tmp_path, capsys):

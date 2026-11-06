@@ -1,0 +1,126 @@
+# Independent review: evidence and decisions
+
+**Reviewable research draft; not ready for a new paid experiment or a confirmatory claim.**
+This guide supplies the context without requiring the conversation, local HF job receipts,
+cloud credentials or a GPU. Repository access is still required: the GitHub repository is private.
+
+## What we want reviewed
+
+The main question is whether causal interventions can affect **self-language** and the use
+of a **contextual functional self-model** differently. Consciousness and illusionism motivate
+the article; these experiments cannot decide whether an experience exists. The desired output
+is a technically defensible, accessible English article with reproducible figures, including
+negative results. An attractive dissociation is a hypothesis, not a required conclusion.
+
+The immediate decision is narrower: does the new action task, with its controls, justify
+freezing a small behavioral screen? The author chose task redesign before model selection,
+focused on available actions. No model shopping, prompt tournament or intervention sweep is
+the next authorized step. The USD 10 approval covered the completed first cloud job only.
+
+## Read in this order
+
+1. [Current action design](ACTION_TASK_DESIGN.md): exact task, mathematics, rationale and open choices.
+2. [Fresh-context AI review](reviews/2026-11-06-independent-review.md): findings at `d863776`, fixes,
+   and remaining objections. This is not external human peer review.
+3. [Historical GPU audit](PILOT_REVIEW.md) and [completed cloud pilot](HF_PILOT.md): what actually ran.
+4. [Protocol](PROTOCOL.md), [verification](VERIFICATION.md) and [milestones](../PLAN.md): implemented
+   infrastructure versus empirical checks still missing.
+5. [English article](article/ARTICLE.md) and [sources/claim boundaries](SOURCES_AND_CONTEXT.md):
+   intended argument, alternative interpretations and historical overclaims.
+
+## Evidence inventory and lineage
+
+| Material | Where | Interpretation |
+|---|---|---|
+| Original notebook and essay | `archive/` | Historical exploratory motivation; original strong interpretations are not current findings |
+| Blackwell reference, baseline and feasibility runs | `runs/{reference,baseline,feasibility}/`, matching `exports/*.tar.gz` | Tracked raw outputs, manifests, source snapshots and checksums; reference/development, baseline/validation, feasibility/development respectively |
+| Revised four-shot cloud baseline | `review/evidence/harness-cd3646dae2964bbc.tar.gz` | Original complete export, 24 development blocks / 768 variants; all functional gates failed |
+| New executable-action task | `src/self_model_study/action_task.py`, `tests/test_action_task.py` | CPU-only development design; no model adapter or model result yet |
+| New task illustration | `assets/action_design.{svg,pdf,png}` | Simulator illustration, explicitly not a measured result |
+
+The cloud run executed source commit `c0ae5521d5bbdcb63e46dcaec615e8add95f10be`, protocol
+`context-self-harness-v1`, and `configs/harness-baseline.json`. Its original HF source is
+[immutable artifact revision 43c37ecd](https://huggingface.co/datasets/zett13/mechinterp-illusionism-results/tree/43c37ecd507a954629cd508b72a8bc08a95f1fb1/harness-cd3646dae2964bbc),
+job `6aedf1390e0338d1bb819399`. The Git copy is identical, 631,457 bytes, SHA-256
+`cd2efc65d71d9f50605a6d2cb57693d189e7778cc6f59a888d24c93976d5e929`.
+Its `run/` directory includes the manifest, pinned configuration, environment, source snapshot,
+plan/demonstrations, all native likelihood samples, report, analysis, three figure formats
+and internal checksums. No local job receipt or HF login is needed for this copy.
+
+Do not pool these protocols. Historical scoring used bare letter tokens; the later harness
+used full continuations and four demonstrations. That comparison does not isolate one root
+cause. The historical validation split was already opened. Only the new harness path was
+development-only; the new action design has no validation/test generator yet. Neither newer
+path can unlock the old confirmation gate.
+
+## Reproduce the review offline
+
+From a fresh checkout, Python alone verifies the archived cloud evidence:
+
+```bash
+python3 scripts/review_evidence.py
+```
+
+It checks the pinned archive hash and every internal file hash, verifies coverage and saved
+accuracy against argmax choice likelihoods, and recomputes self/other, combined and paired
+accuracy. It does not load a model, retokenize inputs, rerun inference or independently
+establish that the protocol measured its intended construct. To inspect the original files:
+
+```bash
+mkdir -p exports/review-cloud
+tar -xzf review/evidence/harness-cd3646dae2964bbc.tar.gz -C exports/review-cloud
+```
+
+The usual CPU environment gives the new design and relevant regression checks:
+
+```bash
+uv sync --locked
+uv run pytest -q tests/test_action_task.py tests/test_review_evidence.py
+uv run self-study design --out exports/review-action-design
+```
+
+Use a new output directory for repeated design exports. `model_inputs.jsonl` contains
+prompts/choices with opaque join IDs; `oracle_rows.jsonl` holds gold state and metadata.
+`summary.json` includes scripted shortcuts; `manifest.json` records source/data/file hashes.
+The 7,680 variants share 40 development scenarios and include repeated before prompts:
+they are not 7,680 independent observations. CPU export needs no pretrained weights.
+Optional real-library integration tests and installation commands are in `VERIFICATION.md`.
+
+For code review, start with `action_task.py` (executor, generator, model-input boundary,
+counterfactuals, shortcut audit), `harness.py` (actual old native scoring/retained samples),
+`backend.py` (intervention implementation) and `analysis.py` (original statistical pipeline).
+The old cloud launcher still runs the old harness baseline; it does not run the new task.
+
+## Questions still requiring a decision
+
+- **Construct:** all permissions and events are supplied in text; role resolution and state
+  tracking can solve the task. Execution makes the outcome checkable, but the evaluator binds
+  the actor. There is no learned persistent identity, private-state introspection or feedback
+  learning. Self/named-self/other differences alone do not identify a special self representation.
+- **Next screen:** exact model/revision, tokenizer/chat template, answer boundary, whitespace
+  and termination, sum versus length normalization, ties, screening subset, numerical paired
+  criteria, diagnostic decoding and failure denominators remain unfrozen. The actual adapter
+  needs CPU integration checks of rendered inputs, token IDs, scores and executor binding.
+- **Generalization:** the draft uses one template and a small vocabulary. Independent grant
+  alternatives defeat one known shortcut, not all shortcuts. Held-out templates and split
+  policy must be fixed before model-based selection. Model failure cannot justify unlimited tuning.
+- **Causality/statistics:** delivered edit norms and SAE coefficients need logging; ablation
+  nulls have not been explained. Match intervention sites before claiming selective language
+  versus action effects. Freeze primary contrasts, scenario clustering, multiplicity and the
+  proposed ±5 percentage-point equivalence margin. A power/sample-size justification remains.
+- **Article:** the literature/context file is a starting point, not a completed novelty review.
+  The philosophical argument must distinguish compatible interpretations from empirical support.
+
+## Suggested request to an independent reviewer
+
+> Review this repository without assuming that illusionism or a functional dissociation is
+> correct. Begin with docs/REVIEW_GUIDE.md. Separate software bugs, measurement/construct
+> problems, statistical threats and merely open implementation choices. Try to solve the new
+> task using shortcuts that ignore its intended information. Audit the archived failed baseline
+> against its actual inputs and scores. For each material finding, give priority, file/line
+> evidence, the smallest corrective change and what remains uncertain. Say whether the task is
+> ready to freeze for a small model screen, and what must happen first. Do not change files,
+> open held-out data, submit jobs or spend money. Software tests alone do not establish the claim.
+
+Record the reviewed Git commit and any uncommitted changes. A fresh-context AI check can find
+defects, but external methodological/interpretability review remains a separate next review.

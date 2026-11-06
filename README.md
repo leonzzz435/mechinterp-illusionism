@@ -9,6 +9,7 @@ We distinguish **self-language**, **functional self-models**, and **phenomenal c
 - **[Cloud execution: Hugging Face Jobs](docs/HF_JOBS.md)**
 - **[Completed first cloud pilot: all functional gates failed](docs/HF_PILOT.md)**
 - **[Next step: executable action-task design, before another model run](docs/ACTION_TASK_DESIGN.md)**
+- **[Independent reviewer: start here, including offline raw-data verification](docs/REVIEW_GUIDE.md)**
 - [Optional Blackwell execution](docs/HANDOVER_BLACKWELL.md)
 - [Review of the first GPU results](docs/PILOT_REVIEW.md)
 

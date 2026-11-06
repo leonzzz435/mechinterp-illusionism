@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-06T17:15:09.574361</dc:date>
+    <dc:date>2026-11-06T17:47:16.279603</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -40,7 +40,7 @@ Q 21.24 75.475862 21.24 82.303448
 L 21.24 225.682759
 Q 21.24 232.510345 28.26 232.510345
 z
-" clip-path="url(#pc6c888e7da)" style="fill: #ffffff; stroke: #005f73; stroke-width: 1.6; stroke-linejoin: miter"/>
+" clip-path="url(#p100c630d7c)" style="fill: #ffffff; stroke: #005f73; stroke-width: 1.6; stroke-linejoin: miter"/>
    </g>
    <g id="patch_3">
     <path d="M 312.57 232.510345
@@ -53,7 +53,7 @@ Q 305.55 75.475862 305.55 82.303448
 L 305.55 225.682759
 Q 305.55 232.510345 312.57 232.510345
 z
-" clip-path="url(#pc6c888e7da)" style="fill: #ffffff; stroke: #005f73; stroke-width: 1.6; stroke-linejoin: miter"/>
+" clip-path="url(#p100c630d7c)" style="fill: #ffffff; stroke: #005f73; stroke-width: 1.6; stroke-linejoin: miter"/>
    </g>
    <g id="patch_4">
     <path d="M 596.88 232.510345
@@ -66,27 +66,27 @@ Q 589.86 75.475862 589.86 82.303448
 L 589.86 225.682759
 Q 589.86 232.510345 596.88 232.510345
 z
-" clip-path="url(#pc6c888e7da)" style="fill: #ffffff; stroke: #005f73; stroke-width: 1.6; stroke-linejoin: miter"/>
+" clip-path="url(#p100c630d7c)" style="fill: #ffffff; stroke: #005f73; stroke-width: 1.6; stroke-linejoin: miter"/>
    </g>
    <g id="patch_5">
     <path d="M 268.941368 157.406897
 Q 282.736996 157.406897 295.414589 157.406897
-" clip-path="url(#pc6c888e7da)" style="fill: none; stroke: #005f73; stroke-linecap: round"/>
+" clip-path="url(#p100c630d7c)" style="fill: none; stroke: #005f73; stroke-linecap: round"/>
     <path d="M 289.014589 154.206897
 L 295.414589 157.406897
 L 289.014589 160.606897
 z
-" clip-path="url(#pc6c888e7da)" style="fill: #005f73; stroke: #005f73; stroke-linecap: round"/>
+" clip-path="url(#p100c630d7c)" style="fill: #005f73; stroke: #005f73; stroke-linecap: round"/>
    </g>
    <g id="patch_6">
     <path d="M 553.251368 157.406897
 Q 567.046996 157.406897 579.724589 157.406897
-" clip-path="url(#pc6c888e7da)" style="fill: none; stroke: #005f73; stroke-linecap: round"/>
+" clip-path="url(#p100c630d7c)" style="fill: none; stroke: #005f73; stroke-linecap: round"/>
     <path d="M 573.324589 154.206897
 L 579.724589 157.406897
 L 573.324589 160.606897
 z
-" clip-path="url(#pc6c888e7da)" style="fill: #005f73; stroke: #005f73; stroke-linecap: round"/>
+" clip-path="url(#p100c630d7c)" style="fill: #005f73; stroke: #005f73; stroke-linecap: round"/>
    </g>
    <g id="text_1">
     <text style="font-weight: 700; font-size: 18px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="428.4" y="34.510345" transform="rotate(-0 428.4 34.510345)">Does the action follow the changed permission?</text>
@@ -95,34 +95,34 @@ z
     <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="36.684" y="109.613793" transform="rotate(-0 36.684 109.613793)">1  Initial state</text>
    </g>
    <g id="text_3">
-    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(36.684 148.876401)">Active connection: Elm</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(36.684 148.876401)">Active connection: Dune</text>
     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(36.684 160.148276)"/>
-    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(36.684 177.768588)">Elm: mark_violet</text>
-    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(36.684 192.768588)">Cedar: mark_ivory</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(36.684 177.768588)">Dune: mark_ivory</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(36.684 192.768588)">Cedar: mark_lilac</text>
    </g>
    <g id="text_4">
     <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="320.994" y="109.613793" transform="rotate(-0 320.994 109.613793)">2  Simulator update</text>
    </g>
    <g id="text_5">
-    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(320.994 148.876401)">For Elm:</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(320.994 148.722495)">For Dune:</text>
     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(320.994 160.148276)"/>
-    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(320.994 177.768588)">Revoke mark_violet</text>
-    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(320.994 192.768588)">Grant mark_cobalt</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(320.994 177.768588)">Revoke mark_ivory</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(320.994 192.768588)">Grant mark_silver</text>
    </g>
    <g id="text_6">
     <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="605.304" y="109.613793" transform="rotate(-0 605.304 109.613793)">3  Check the action</text>
    </g>
    <g id="text_7">
-    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(605.304 148.876401)">For Elm:</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(605.304 148.722495)">For Dune:</text>
     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(605.304 160.148276)"/>
-    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(605.304 177.768588)">mark_violet → rejected</text>
-    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(605.304 192.768588)">mark_cobalt → marker added</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(605.304 177.768588)">mark_ivory → rejected</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(605.304 192.768588)">mark_silver → marker added</text>
    </g>
    <g id="text_8">
     <text style="font-weight: 700; font-size: 13px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="428.4" y="276.889655" transform="rotate(-0 428.4 276.889655)">Three matched views of the same episode</text>
    </g>
    <g id="text_9">
-    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="428.4" y="317.855172" transform="rotate(-0 428.4 317.855172)">Your connection (Elm)     ·     Elm named explicitly     ·     Other (Cedar)</text>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="428.4" y="317.855172" transform="rotate(-0 428.4 317.855172)">Your connection (Dune)     ·     Dune named explicitly     ·     Other (Cedar)</text>
    </g>
    <g id="text_10">
     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #475569" x="428.4" y="348.57931" transform="rotate(-0 428.4 348.57931)">The other connection keeps its permission. Command order rotates.</text>
@@ -133,7 +133,7 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="pc6c888e7da">
+  <clipPath id="p100c630d7c">
    <rect x="7.2" y="7.2" width="842.4" height="396"/>
   </clipPath>
  </defs>

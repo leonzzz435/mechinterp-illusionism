@@ -4,7 +4,11 @@ Verified on 2026-11-06. Software tests and real-model evidence are identified se
 
 ## Checks
 
-- Current suite: **58 passed in 149.80 seconds**, including six executable-action-design tests, the original real-library CPU integrations, native-harness integration and seven cloud-adapter tests. Targeted reruns after extending the shortcut audit and normalizing SVG whitespace passed all six action-design tests. All network mutations and paid job creation are mocked in these tests.
+- Current suite: **61 passed in 148.04 seconds**, including seven executable-action-design
+  tests, two offline review-evidence tests, the original real-library CPU integrations,
+  native-harness integration and seven cloud-adapter tests. The independent reviewer also
+  passed all nine targeted action/evidence tests. All network mutations and paid job creation
+  are mocked in these tests.
 - CPU tests cover deterministic generation and split isolation, counterfactual gold answers, scoring, intervention positions, residual-preserving ablation, hook cleanup, interrupted-run recovery, error retention, protocol freezing, test-access claims, statistics, ratings and export checksums.
 - Optional integration tests use the real TransformerLens and SAELens libraries with tiny randomly initialized CPU weights and an offline tokenizer. They exercise forced-choice scoring and generation as well as hook behavior. No pretrained weights are downloaded.
 - Ruff lint and formatting, lockfile consistency, shell syntax and whitespace checks pass.
@@ -58,8 +62,9 @@ Cloud tests verify budget rejection, private output storage, exact commit checks
 
 ## Executable action-task draft
 
-`self-study design --out exports/action-design-v2` generated 40 development scenarios with
-96 paired variants each. This is a CPU design export, not model inference. The interface
+`self-study design --out exports/action-design-v2.1-review` generated 40 development scenarios with
+192 paired variants each, using `action-permissions-v2.1-draft`. This is a CPU design export,
+not model inference. The interface
 refuses validation/test generation and refuses overwriting an existing nonempty directory.
 The executor checks actual permission transitions and adds a simulated marker only for an
 allowed command bound to the requested actor. Invalid commands remain failed attempts.
@@ -67,13 +72,31 @@ allowed command bound to the requested actor. Invalid commands remain failed att
 Tests verify deterministic generation, scenario IDs, isolated state copies, exactly one
 successful command, relevant/irrelevant update counterfactuals, self/named-self/other binding,
 balanced list positions, model-input allowlisting, shortcut scores and export file hashes.
-The full development export has 960 correct answers at each of the four list positions.
+The full development export has 1,920 correct answers at each of the four list positions.
 Ignoring all permission updates yields 75% over the full design but 0% on relevant-update
 cases; selecting the latest grant gets 100% on relevant updates and 0% on irrelevant ones.
 These are scripted-policy checks, not model performance.
+
+An independent-context AI review found answer-relevant metadata in exported IDs and a perfect
+grant-blind positional shortcut in the earlier draft. IDs are now opaque; the newly granted
+command varies independently. A paired-grant test checks that only relevant after-updates
+change the gold command. The old positional shortcut now scores 87.5% overall but 50% on
+relevant after-updates, reinforcing the need for subgroup gates. The reviewer independently
+rechecked all 7,680 variants and the final handoff. See
+`reviews/2026-11-06-independent-review.md` for the preserved findings and open limitations.
 
 The exported diagram was visually inspected and is saved in `assets/action_design` as
 SVG/PDF/PNG. Its footer explicitly identifies simulator rules rather than LLM results.
 Source/data hashes, oracle rows and model inputs are in the git-ignored local export.
 No model/SAE compatibility, response-format validity or empirical dissociation is established
 by these CPU checks; see `ACTION_TASK_DESIGN.md` for the remaining scientific decisions.
+
+## Offline review evidence
+
+`python3 scripts/review_evidence.py` verifies the unchanged original cloud archive now tracked
+in `review/evidence/`: its SHA-256, all 95 internal file hashes, and complete 768-trial coverage.
+Reaggregation from native saved likelihoods exactly reproduces the reported combined,
+self/other and paired accuracies. It uses only the Python standard library and neither
+extracts files nor runs inference. Regression checks cover the actual archive and rejection
+of a changed archive. The [review guide](REVIEW_GUIDE.md) inventories both pilot generations
+and explains which scientific decisions remain open.

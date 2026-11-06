@@ -6,9 +6,10 @@ We distinguish **self-language**, **functional self-models**, and **phenomenal c
 
 **Status:** the first Blackwell runs passed technical checks but failed the functional-task baseline. The revised four-shot development baseline also failed its capability gates, using pinned EleutherAI `lm-evaluation-harness` on HF Jobs. Cloud execution and result retrieval work; large intervention sweeps remain stopped. No functional dissociation or consciousness claim is established.
 
-The next bounded **Qwen reference/action pilot is implemented for CPU verification and cloud
-preparation**. It compares plain/chat self-language and zero-shot permission use. No Qwen
-model results or human ratings exist yet; a new paid job requires its own authorization.
+The bounded **Qwen reference/action pilot has been submitted as one authorized L4 job**.
+It compares plain/chat self-language and zero-shot permission use. The
+[execution record](docs/QWEN_RUN.md) tracks its status and evidence; human ratings remain
+pending. Every additional paid job requires separate authorization.
 
 - **[Qwen pilot: frozen protocol, verification and execution handover](docs/QWEN_PILOT.md)**
 

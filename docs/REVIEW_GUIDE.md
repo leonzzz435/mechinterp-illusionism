@@ -3,7 +3,9 @@
 The [Qwen handover](QWEN_PILOT.md) specifies the new model, tokenizer boundary, frozen prompts,
 capability gates, blind-rating rubric, stopping rules and reproduction commands. Its CPU
 tokenizer audit is tracked in `review/qwen-tokenizer-audit.json`. No Qwen inference results
-exist yet. The historical evidence and independent review below remain unchanged.
+are claimed here. One new USD 5 job was authorized and submitted; its
+[execution record](QWEN_RUN.md) tracks the evidence. The historical evidence and independent
+review below remain unchanged.
 
 ---
 
@@ -98,7 +100,8 @@ Optional real-library integration tests and installation commands are in `VERIFI
 For code review, start with `action_task.py` (executor, generator, model-input boundary,
 counterfactuals, shortcut audit), `harness.py` (actual old native scoring/retained samples),
 `backend.py` (intervention implementation) and `analysis.py` (original statistical pipeline).
-The old cloud launcher still runs the old harness baseline; it does not run the new task.
+The cloud launcher now selects either the historical harness configuration or the frozen Qwen
+configuration explicitly. The default remains the historical baseline.
 
 ## Questions still requiring a decision
 
@@ -106,10 +109,10 @@ The old cloud launcher still runs the old harness baseline; it does not run the 
   tracking can solve the task. Execution makes the outcome checkable, but the evaluator binds
   the actor. There is no learned persistent identity, private-state introspection or feedback
   learning. Self/named-self/other differences alone do not identify a special self representation.
-- **Next screen:** exact model/revision, tokenizer/chat template, answer boundary, whitespace
-  and termination, sum versus length normalization, ties, screening subset, numerical paired
-  criteria, diagnostic decoding and failure denominators remain unfrozen. The actual adapter
-  needs CPU integration checks of rendered inputs, token IDs, scores and executor binding.
+- **Frozen screen:** the Qwen protocol now fixes model/revision, chat template, exact token
+  boundary, summed likelihood, ties, screening subset, failure denominators and paired criteria.
+  CPU integration checks pass. The remaining empirical question is whether the model passes
+  those criteria; software correctness does not establish capability.
 - **Generalization:** the draft uses one template and a small vocabulary. Independent grant
   alternatives defeat one known shortcut, not all shortcuts. Held-out templates and split
   policy must be fixed before model-based selection. Model failure cannot justify unlimited tuning.

@@ -39,11 +39,13 @@
 - [x] Implement isolated validate/run/analyze/export, native token scoring, restart recovery and private HF configuration selection.
 - [x] Implement paired scenario/prompt analysis, failure retention, blind ratings and result-driven figures.
 - [ ] Complete the newly implemented pilot on a GPU and collect the 40 human ratings.
-- [ ] Authorize and run a new bounded cloud job only after that protocol is concrete.
+- [x] Obtain a separate USD 5 approval and submit one pinned L4 job after CPU verification.
+- [ ] Verify the new cloud export and report the screen result, retaining incomplete/failed outcomes.
 
 See [the action-task design](docs/ACTION_TASK_DESIGN.md). This is a draft development pool,
 not new model evidence. Qwen2.5-7B-Instruct is selected by the new
-[bounded protocol](docs/QWEN_PILOT.md); no new GPU job has been launched. The old 40/40/100 dataset and completed pilots are preserved.
+[bounded protocol](docs/QWEN_PILOT.md). One authorized job was submitted; see the
+[execution record](docs/QWEN_RUN.md). The old 40/40/100 dataset and completed pilots are preserved.
 
 The [review guide](docs/REVIEW_GUIDE.md) is the handoff for a reviewer without chat context.
 The [first independent AI review](docs/reviews/2026-11-06-independent-review.md) found two
@@ -61,7 +63,7 @@ The first Blackwell baseline failed all functional families (combined accuracy: 
 
 The abandoned format-search implementation was not committed or pushed. Validation/test data stay closed in the new harness path. The current handover is `docs/HF_JOBS.md`; local Blackwell execution remains an option.
 
-The private machine lacks supported CUDA hardware for the study. A narrow HF Jobs launcher now prepares one L4 job, records a pinned commit/image, enforces a provider timeout and persists completed scenario blocks to a private HF dataset repository. The first authorized cloud job completed and its export was independently verified; see `docs/HF_PILOT.md`. All three families again failed the capability screen (43.36%, 50.78%, 41.41%). The current functional pilot ends here. No second job, multi-model expansion or automatic retry was performed. CPU fixtures do not substitute for model results.
+The private machine lacks supported CUDA hardware for the study. A narrow HF Jobs launcher now prepares one L4 job, records a pinned commit/image, enforces a provider timeout and persists completed scenario blocks to a private HF dataset repository. The first authorized cloud job completed and its export was independently verified; see `docs/HF_PILOT.md`. All three families again failed the capability screen (43.36%, 50.78%, 41.41%). The current functional pilot ends here. The separate Qwen pilot is tracked above; no multi-model expansion or automatic retry is authorized. CPU fixtures do not substitute for model results.
 
 The canonical layer-14 residual SAE resolves to `average_l0_84`. New runs use unprocessed TransformerLens weights; original processed weights are reference-only. This may change results and must remain visible.
 

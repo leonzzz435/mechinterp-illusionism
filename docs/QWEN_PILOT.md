@@ -1,9 +1,10 @@
 # Qwen reference/action pilot — execution handover
 
 **Protocol:** `qwen-reference-action-v1`. Implementation and CPU checks are separate from
-model evidence. No Qwen GPU job or human rating has been completed yet. The next paid job
-requires a new explicit authorization; the old USD 10 authorization covered the completed
-Gemma job only. This document does not authorize spending.
+model evidence. The user subsequently approved one USD 5 L4 job, submitted on 2026-11-06;
+see the [execution record](QWEN_RUN.md) for its status and evidence. Any additional job needs
+a separate explicit authorization. The old USD 10 authorization covered the Gemma job only.
+This protocol document itself does not authorize spending.
 
 ## Question and reference
 
@@ -127,8 +128,8 @@ uv run --script scripts/hf_jobs.py plan --namespace zett13 --budget-usd 5 --conf
 ```
 
 The read-only quote checked on 2026-11-06 was **USD 1.613293** for 121 billable minutes
-at 13,333 micro-USD/minute. A USD 5 proposed budget leaves the required reserve; it is not
-already authorized. The launcher refreshes the price before any submission.
+at 13,333 micro-USD/minute. The later USD 5 approval and single submission are recorded in [QWEN_RUN.md](QWEN_RUN.md).
+That approval is not reusable. The launcher refreshes the price before any submission.
 
 The number in this command is a **proposal**, not evidence of approval. Once the user explicitly
 approves a new job, use that approved amount for submission. The source must be committed and

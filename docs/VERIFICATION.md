@@ -4,7 +4,7 @@ Verified on 2026-11-06. Software tests and real-model evidence are identified se
 
 ## Checks
 
-- Current suite: **74 passed in 167.24 seconds**, including eight Qwen-pilot tests and
+- Pre-submission suite: **74 passed in 167.24 seconds**, including eight Qwen-pilot tests and
   twelve cloud-adapter/worker tests, plus all historical tests. The independent reviewer
   previously passed all nine targeted action/evidence tests; no new independent review is
   implied. All network mutations and paid job creation are mocked in these tests.
@@ -125,7 +125,8 @@ blind-rating rules, continuation procedures and the new cost-approval requiremen
   and changes to original text. Export tests compare byte-identical re-exports and file hashes.
 - HF tests check explicit configuration propagation, private pinned checkpoint restoration,
   rejection of concurrent continuations, separate receipts and nonzero worker exit after a
-  recorded failure. No real new cloud dispatch occurred.
+  recorded failure. Those tests did not dispatch a job. A later explicit USD 5 approval authorized the single
+  submission recorded in [QWEN_RUN.md](QWEN_RUN.md).
 
 A final synthetic fixture containing all **3,232 outputs** was analyzed and exported through
 `self-study analyze` and `self-study export`. The report has matching execution/analysis source
@@ -143,4 +144,20 @@ synthetic result artifacts remain ignored. Human/model findings are pending.
 `uv lock --check --offline` and `uv build --wheel --offline` pass; the wheel's pilot modules
 and frozen prompt resource match the source files. Ruff and whitespace checks pass.
 The read-only HF quote was **USD 1.613293** for the two-hour L4 bound plus one rounding minute;
-USD 5 is a proposed per-job budget, not an authorization. No Qwen weights were downloaded here.
+The later USD 5 approval and single submission are recorded separately in `QWEN_RUN.md`.
+No Qwen weights were downloaded here.
+
+## Independent Qwen archive audit
+
+The standard-library `scripts/review_qwen_evidence.py` reads archives without extracting them.
+It checks the frozen plan, all file/record hashes, source snapshot and planned coverage. It
+independently reconstructs permission updates and execution from initial state, recomputes
+argmax choices from saved scores, and checks every action stratum, counterfactual pair,
+format contrast and gate against the exported analysis. It does not rerun inference or
+independently validate likelihood arithmetic, bootstrap intervals or the task construct.
+
+The full synthetic Qwen archive above passes: 48 file hashes, 3,232 records, 3,072 action
+selections, 50 action strata and 18 counterfactual strata. The synthetic run correctly remains
+ineligible despite perfect oracle scores. Four additional targeted tests pass (0.08 seconds),
+rejecting changed selections, states and target actors and preserving ties/invalid-score failures.
+The frozen package source and the dispatched commit remain unchanged.

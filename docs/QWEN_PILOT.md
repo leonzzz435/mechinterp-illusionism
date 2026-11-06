@@ -1,8 +1,9 @@
 # Qwen reference/action pilot — execution handover
 
 **Protocol:** `qwen-reference-action-v1`. Implementation and CPU checks are separate from
-model evidence. The user subsequently approved one USD 5 L4 job, submitted on 2026-11-06;
-see the [execution record](QWEN_RUN.md) for its status and evidence. Any additional job needs
+model evidence. The user subsequently approved one USD 5 L4 job, which completed on
+2026-11-06. Both action screens failed; [results](QWEN_RESULTS.md) and the
+[execution record](QWEN_RUN.md) preserve the evidence. Human ratings remain pending. Any additional job needs
 a separate explicit authorization. The old USD 10 authorization covered the Gemma job only.
 This protocol document itself does not authorize spending.
 

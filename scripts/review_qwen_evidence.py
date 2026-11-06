@@ -283,6 +283,24 @@ def audit(path, sha256=None):
         and all(numerical.values())
     )
     require(gate == saved["action_gate_passed"], "Wrong overall gate")
+    # Added after inspecting the first real run: descriptive classification only.
+    # These counts do not enter the frozen screen or create a new inferential test.
+    error_types = defaultdict(Counter)
+    for rid, accepted in outcomes.items():
+        job, row = jobs[rid], jobs[rid]["row"]
+        if accepted or row["phase"] != "after" or not row["relevant_update"]:
+            continue
+        selected = selections[rid]
+        other = next(actor for actor in row["state"]["permissions"] if actor != row["target"])
+        if records[rid]["status"] != "ok":
+            label = "invalid_or_error"
+        elif selected == row["before"]["permissions"][row["target"]][0]:
+            label = "revoked_target_command"
+        elif selected in row["state"]["permissions"][other]:
+            label = "other_actor_command"
+        else:
+            label = "other_command"
+        error_types[job["format"] + "/" + row["view"]][label] += 1
     return {
         "archive_sha256": actual,
         "verified_file_checksums": checked,
@@ -297,6 +315,9 @@ def audit(path, sha256=None):
         "recomputed_counterfactual_strata": len(saved["counterfactuals"]),
         "format_numerical_pass": numerical,
         "action_gate_passed": gate,
+        "post_hoc_relevant_update_errors": {
+            key: dict(sorted(counts.items())) for key, counts in sorted(error_types.items())
+        },
         "note": "Reaggregation of saved scores and independent simulator state reconstruction. "
         "No new inference, independent likelihood/interval verification, or construct validation.",
     }

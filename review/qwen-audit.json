@@ -1,0 +1,37 @@
+{
+  "archive_sha256": "cf8eceea87129acaad2365f36af99d8f54923015923c837419a691252b8f12fa",
+  "verified_file_checksums": 48,
+  "source_commit": "9f1356f139e48c108dbfa5eedb7950fefdf4104a",
+  "source_snapshot_hash": "ea02dfe51c2cf16af8b0476ed8374ce7db6c502b57b5a15e12c6f2e71553cc86",
+  "status": "complete",
+  "synthetic": false,
+  "completed_outputs": 3232,
+  "expected_outputs": 3232,
+  "recomputed_action_choices": 3072,
+  "recomputed_action_strata": 52,
+  "recomputed_counterfactual_strata": 18,
+  "format_numerical_pass": {
+    "plain": false,
+    "chat": false
+  },
+  "action_gate_passed": false,
+  "post_hoc_relevant_update_errors": {
+    "chat/named_self": {
+      "other_actor_command": 33,
+      "other_command": 6
+    },
+    "chat/self": {
+      "other_actor_command": 36,
+      "other_command": 5
+    },
+    "plain/named_self": {
+      "other_actor_command": 5,
+      "other_command": 4
+    },
+    "plain/self": {
+      "other_actor_command": 20,
+      "other_command": 5
+    }
+  },
+  "note": "Reaggregation of saved scores and independent simulator state reconstruction. No new inference, independent likelihood/interval verification, or construct validation."
+}

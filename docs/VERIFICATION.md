@@ -101,7 +101,7 @@ of a changed archive. The [review guide](REVIEW_GUIDE.md) inventories both pilot
 and explains which scientific decisions remain open.
 
 
-## Bounded Qwen reference/action pilot
+## Bounded Qwen reference/action pilot: pre-submission checks
 
 The separate `qwen-reference-action-v1` protocol is implemented through the main
 validate/run/analyze/export CLI. This is preparation and software verification, **not a
@@ -139,7 +139,8 @@ uses an oracle to test reporting, not to estimate model ability.
 Five figure groups are exported as SVG/PDF/PNG: protocol, action screen, lexical format effects,
 human ratings and control diagnostics. The synthetic action/language plots and protocol
 illustration were visually inspected. The protocol figure is tracked in `assets/qwen_pilot_design`;
-synthetic result artifacts remain ignored. Human/model findings are pending.
+synthetic result artifacts remain ignored. Human/model findings were pending at that stage;
+the completed real-model execution is recorded below.
 
 `uv lock --check --offline` and `uv build --wheel --offline` pass; the wheel's pilot modules
 and frozen prompt resource match the source files. Ruff and whitespace checks pass.
@@ -161,3 +162,36 @@ selections, 50 action strata and 18 counterfactual strata. The synthetic run cor
 ineligible despite perfect oracle scores. Four additional targeted tests pass (0.08 seconds),
 rejecting changed selections, states and target actors and preserving ties/invalid-score failures.
 The frozen package source and the dispatched commit remain unchanged.
+
+## Completed Qwen GPU pilot
+
+The separately authorized Qwen job completed all 3,232 outputs in 3,416.07 runner seconds on
+one L4, with no execution/scoring errors. Both frozen action screens failed. See
+[results](QWEN_RESULTS.md) and [execution provenance](QWEN_RUN.md). The original 4,103,590-byte
+archive is tracked unchanged, SHA256
+`cf8eceea87129acaad2365f36af99d8f54923015923c837419a691252b8f12fa`.
+
+The standard-library audit verifies all 48 file hashes, all record digests, source snapshot
+and coverage, and independently reconstructs 3,072 simulator outcomes, 52 action strata,
+18 counterfactual strata and the failed gates. A regression test now checks this actual
+archive. The audit also reports a clearly marked post hoc classification of relevant-update
+errors; those counts never change the frozen screen.
+
+A post-run CPU check retokenized all 3,232 stored prompts and 12,288 candidate continuations
+with the cached pinned Qwen tokenizer. Every rendered prompt, token sequence, exact command
+decode and context bound matched. All 160 generated outputs decoded correctly; effective
+sampling settings and termination reasons matched the protocol. The frozen analysis, including
+its bootstrap intervals, exactly reproduces the original `analysis.json`. Likelihood values
+themselves were not recomputed on a second model execution. See
+`review/qwen-post-run-verification.json`. The 40 blind-rating rows are complete and unrated.
+
+Original action figures were visually inspected and copied byte-for-byte into
+`assets/qwen_pilot_results/`. `scripts/plot_qwen_article.py` produces a readable article view
+from the pinned archived analysis in SVG/PDF/PNG. No new model inference was performed locally.
+Human judgments and the language narrative remain pending to preserve blinding.
+
+Post-run targeted checks: **7 passed in 1.72 seconds** (`tests/test_qwen_evidence.py` and
+`tests/test_review_evidence.py`). Ruff lint/format and whitespace checks pass. All six copied
+action figure files and both blind-rating files match the original archive byte-for-byte.
+The article figure re-export is byte-identical in all three formats; new report/article
+links resolve. The frozen experiment package and configuration were not modified.

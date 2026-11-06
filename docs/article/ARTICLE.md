@@ -1,6 +1,6 @@
 # When a Language Model Says “I”, What Is Doing the Work?
 
-*Research article in preparation. Both the original GPU pilot and the revised four-shot development baseline failed their functional capability gates. Confirmatory results remain pending.*
+*Research article in preparation. The Qwen pilot completed: 91–92% overall action accuracy, but failed capability checks on role-sensitive cases. Human language ratings and confirmatory results remain pending. Earlier Gemma failures remain part of the evidence.*
 
 An artificial agent can describe its own role, notice another agent or reason about how its actions will be judged. What kind of representation of itself is the system using?
 
@@ -24,13 +24,13 @@ This modest test gives the model the whole vignette. It tests described informat
 
 ## Moving a representation
 
-We alter an intermediate transformer vector at a specified layer:
+The planned intervention study alters an intermediate transformer vector at a specified layer:
 
 $$r'=r+\alpha m v.$$
 
 The direction v has unit length; m is a measured reference scale; α controls size and sign. This defines what changes mathematically. It does not establish the direction's psychological meaning.
 
-We compare a contrast direction, two candidate SAE directions and random controls. We also remove individual encoded contributions while preserving reconstruction error. The controls test whether apparent effects are specific or merely network disturbance.
+The original Gemma intervention protocol compares a contrast direction, two candidate SAE directions and random controls, and removes individual encoded contributions while preserving reconstruction error. A future Qwen intervention would need its own compatible protocol. The controls test whether apparent effects are specific or merely network disturbance.
 
 ## What the original pilot showed
 
@@ -44,7 +44,7 @@ The first Blackwell baseline scored 48.5% on action ownership, 46.1% on informat
 
 An audit also found a limitation in our answer scoring: it compared bare letter tokens immediately after `Answer:`, while the model usually preferred a newline and could represent space-prefixed letters with different tokens. We preserve those results and introduce a separate, fixed four-shot development protocol using EleutherAI's evaluation harness. This revision changes both prompting and scoring; any improvement cannot be attributed to whitespace alone. The [pilot review](../PILOT_REVIEW.md) records the evidence and unresolved questions.
 
-The revised baseline subsequently completed on an HF Jobs L4: 43.4%, 50.8% and 41.4% accuracy on the same three families, across eight development scenarios per family. It also failed the capability gate. The [cloud pilot report](../HF_PILOT.md) records the fixed protocol and verified artifacts. This ends the current functional pilot; confirmatory results remain pending. The final article will include baseline failures, all task families, controls, uncertainty and degradation, including negative results.
+The revised baseline subsequently completed on an HF Jobs L4: 43.4%, 50.8% and 41.4% accuracy on the same three families, across eight development scenarios per family. It also failed the capability gate. The [cloud pilot report](../HF_PILOT.md) records the fixed protocol and verified artifacts. That ended the Gemma functional pilot; confirmatory results remain pending. The final article will include baseline failures, all task families, controls, uncertainty and degradation, including negative results.
 
 The scorer limitation and the remaining low performance should not be conflated: replacing
 the scorer did not establish a unique cause of the failure. Separately, role-conditioned
@@ -52,19 +52,22 @@ questions may chiefly measure reading comprehension. Our [next task design](../A
 therefore binds commands to connections in a small executable simulator. A permission change
 determines which command can actually add a marker. Self, named-self and other-directed
 conditions distinguish action selection from reference wording. This is a development
-design, not a new result; even success would concern supplied contextual roles, not private
-introspection.
+design now evaluated in the Qwen pilot below. Its results concern supplied contextual roles,
+not private introspection.
 
-- **Figure 2:** Full continuations chosen by a fixed selection rule.
+The following intervention figures remain planned; they require a passing baseline and a
+separately frozen intervention protocol.
+
+- **Figure 2:** Full recorded continuations chosen by a fixed selection rule.
 - **Figure 3:** Dose-response curves with scenario-level uncertainty.
 - **Figure 4:** Self-language change alongside contextual-task accuracy change. Separation is a hypothesis, not a promised result.
 - **Figure 5:** Random controls, feature ablations and self/other contrasts.
 
 No diagram will be labeled a measured mechanism before circuit-level investigation.
 
-## The next bounded test: words and executable choices
+## A bounded test: words and executable choices
 
-Our next pilot connects a conceptual partial replication of the
+Our Qwen pilot connects a conceptual partial replication of the
 [format comparison in *As a Language Model…*](https://arxiv.org/html/2609.25021v1)
 with one narrow extension. The same pinned Qwen2.5-7B-Instruct model receives plain text
 or its official chat format. Forty frozen prompts yield 160 responses; a human separately
@@ -99,15 +102,52 @@ For language, the independent unit is the prompt; repeated sampling seeds remain
 
 ![Next pilot protocol](../../assets/qwen_pilot_design.png)
 
-**Protocol diagram, not a result:** this pilot establishes measurement sensitivity and task
-competence before internal interventions. Full model results and human ratings are pending.
-The [execution protocol](../QWEN_PILOT.md) fixes the thresholds and examples in advance.
+**Protocol diagram:** this pilot tests measurement sensitivity and task competence before
+internal interventions. The GPU run is complete; human language ratings remain pending.
+The [execution protocol](../QWEN_PILOT.md) fixed thresholds and examples before execution.
+
+## When 92% is not a passing result
+
+Qwen completed all 3,072 action selections without execution or scoring errors. Its overall
+accuracy was 91.47% in plain text and 91.86% in chat format. Those averages initially look
+reassuring. The situations that matter to our question tell a different story.
+
+When the active connection’s permission changed, chat-format accuracy fell to 67.97% for
+“your active connection” and 69.53% for the same actor named explicitly. For updates to the
+other connection, accuracy was 100% in this small sample. Plain text also failed required
+checks: for example, both members of a self-directed grant-change pair were correct only
+68.75% of the time. The screen required at least 80% for every specified check.
+
+![Overall accuracy and performance after permission changes](../../assets/qwen_pilot_results/article_action.png)
+
+**Figure:** Overall performance and all three perspectives after relevant updates, selected
+from the prespecified action strata. The full report includes every other stratum and paired
+control. Bars show nominal 95% intervals obtained by resampling eight scenarios, not thousands
+of variants. A 100% observed score does not guarantee success beyond these scenarios.
+
+The paired overall format difference was only +0.39 percentage points, with a nominal interval
+from −2.08 to +2.99. That average conceals changes within conditions; it is not evidence that
+format leaves the functional behavior unchanged. Both formats failed the complete screen.
+The [verified report](../QWEN_RESULTS.md) preserves every check, the original export and
+commands for offline reaggregation.
+
+An additional inspection after seeing these failures found that most errors in the two
+problematic chat conditions selected the other actor’s currently allowed command. They did
+not select the target’s revoked command. This describes the error pattern; it does not locate
+a neural mechanism or establish a privileged representation of self. Reference resolution,
+role binding and other effects of the supplied context remain possible explanations.
+
+For a nontechnical reader, the point is concrete: knowing how to choose many correct commands
+is not the same as reliably choosing the command available to the actor being addressed.
+The controls made that distinction visible. We therefore retain the failed screen and pause
+the proposed internal intervention. The language comparison will be integrated after the
+40 blind human ratings are returned; no human judgments are inferred from word counts.
 
 ## What would count as separation?
 
 A persuasive result changes one measured property selectively while keeping another within a predefined tolerance, without broadly damaging performance. One significant and one nonsignificant comparison are insufficient.
 
-The current generation and choice assays edit different sets of token positions. This limits a strong dissociation claim and motivates site-matched follow-ups. Independent replication is required before broad claims about language models.
+The planned generation and choice interventions target different sets of token positions. A strong dissociation claim would require site-matched controls and independent replication. The completed Qwen pilot changed input format, not internal activations.
 
 ## Returning to consciousness
 

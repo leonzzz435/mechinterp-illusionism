@@ -1,0 +1,14 @@
+{
+  "kind": "post_run_cpu_verification",
+  "archive_sha256": "cf8eceea87129acaad2365f36af99d8f54923015923c837419a691252b8f12fa",
+  "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+  "prompts": 3232,
+  "candidates": 12288,
+  "generations": 160,
+  "generation_length_stops": 104,
+  "max_tokens_including_generation_reserve": 305,
+  "analysis_matches_original": true,
+  "blind_unrated_outputs": 40,
+  "new_model_inference": false,
+  "note": "All stored prompts and command boundaries retokenized with cached pinned tokenizer; outputs decoded and generation settings checked. Analysis including bootstrap intervals exactly reproduces saved analysis using frozen analysis code. Likelihood values themselves were not recomputed."
+}

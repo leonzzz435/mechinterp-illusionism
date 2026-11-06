@@ -1,8 +1,9 @@
 # Qwen pilot execution record
 
 This records execution of the frozen [Qwen protocol](QWEN_PILOT.md), separately from its
-design and from the historical Gemma results. Human ratings and real-model results remain
-pending until explicitly recorded below.
+design and from the historical Gemma results. **The GPU run completed, all artifacts are
+verified, and both action-format screens failed.** See [results](QWEN_RESULTS.md). Human
+ratings remain pending.
 
 ## Authorized job
 
@@ -12,7 +13,8 @@ continuation, automatic retry or model switch.
 
 - Job: [`6aee264e0e0338d1bb820450`](https://huggingface.co/jobs/zett13/6aee264e0e0338d1bb820450),
   created 2026-11-06 19:11:10 UTC.
-- Run: `qwen-78ee6db8adfc4f3e`; configuration: `configs/qwen-pilot.json`.
+- Artifact/run folder: `qwen-78ee6db8adfc4f3e`; internal manifest run ID: `qwen-677922e82a154b35`.
+  Configuration: `configs/qwen-pilot.json`.
 - Executed source is pinned to `9f1356f139e48c108dbfa5eedb7950fefdf4104a`.
 - Source bundle SHA256: `62d25f10d904b474e9eac96a3ea03e82d3ecacadee61e4935e16319c5ad63537`.
 - Private source artifact revision: `e37a38cebd9d53938dcfa811f2a83130b2d7aae7`.
@@ -28,9 +30,25 @@ dispatch and prevents duplicate submission. The private artifact repository is
 
 ## Observed status
 
-At 2026-11-06 19:19:52 UTC, HF reported `SCHEDULING` with the message
-“Waiting for requested hardware to become available.” No worker logs or Qwen outputs
-were available at that check. Submission is not completion.
+The local observer first saw `RUNNING` at 19:25:01 UTC and `COMPLETED` at 20:22:31 UTC
+on 2026-11-06. These are polling observations, not exact provider start/stop timestamps.
+The runner itself recorded a start at 19:25:11 UTC and 3,416.07 seconds of elapsed time,
+including model loading and in-run checkpoints but excluding dependency setup and final export.
+It completed all 3,232 outputs with zero execution/scoring errors; peak allocated GPU memory
+was 15,572,367,872 bytes (14.50 GiB). No continuation was needed or submitted.
+
+The final export was retrieved at immutable private artifact revision
+`634e96e2663b5ecc29bb0592d679ea397cbf551c` and copied unchanged into Git:
+`review/evidence/qwen-78ee6db8adfc4f3e.tar.gz`, 4,103,590 bytes, SHA256
+`cf8eceea87129acaad2365f36af99d8f54923015923c837419a691252b8f12fa`.
+All 48 internal file hashes, the executed source snapshot and all 3,232 record digests pass.
+The independent audit reaggregates 3,072 action selections, 52 strata and 18 paired strata.
+
+The job ended within both time limits. The invoice was not inspected; the quoted upper
+compute estimate above must not be presented as an actual charge.
+
+[Full action report](QWEN_RESULTS.md) · [independent audit](../review/qwen-audit.json) ·
+[post-run CPU verification](../review/qwen-post-run-verification.json).
 
 ## Evidence workflow
 

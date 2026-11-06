@@ -2,10 +2,11 @@
 
 The [Qwen handover](QWEN_PILOT.md) specifies the new model, tokenizer boundary, frozen prompts,
 capability gates, blind-rating rubric, stopping rules and reproduction commands. Its CPU
-tokenizer audit is tracked in `review/qwen-tokenizer-audit.json`. No Qwen inference results
-are claimed here. One new USD 5 job was authorized and submitted; its
-[execution record](QWEN_RUN.md) tracks the evidence. The historical evidence and independent
-review below remain unchanged.
+tokenizer audit is tracked in `review/qwen-tokenizer-audit.json`. The job has now completed:
+[results](QWEN_RESULTS.md), [execution record](QWEN_RUN.md), and unchanged raw archive
+`review/evidence/qwen-78ee6db8adfc4f3e.tar.gz`. Both action screens failed despite 91–92%
+pooled accuracy. Human ratings remain pending; the rater should inspect only the blind
+rating files before rating. The historical evidence and independent review below remain unchanged.
 
 ---
 
@@ -24,13 +25,13 @@ is a technically defensible, accessible English article with reproducible figure
 negative results. An attractive dissociation is a hypothesis, not a required conclusion.
 
 The immediate review target is the frozen Qwen pilot: exact scoring, complete paired coverage,
-capability gates and faithful reporting. The earlier independent review below preceded
+capability gates, actual raw results and faithful reporting. The earlier independent review below preceded
 model selection and focused on available actions. No model shopping, prompt tournament or intervention sweep is
 the next authorized step. The USD 10 approval covered the completed first cloud job only.
 
 ## Read in this order
 
-1. [Qwen protocol](QWEN_PILOT.md) and [action design](ACTION_TASK_DESIGN.md): frozen pilot and construct limits.
+1. [Qwen results](QWEN_RESULTS.md), [protocol](QWEN_PILOT.md) and [action design](ACTION_TASK_DESIGN.md): actual findings, frozen pilot and construct limits.
 2. [Fresh-context AI review](reviews/2026-11-06-independent-review.md): findings at `d863776`, fixes,
    and remaining objections. This is not external human peer review.
 3. [Historical GPU audit](PILOT_REVIEW.md) and [completed cloud pilot](HF_PILOT.md): what actually ran.
@@ -46,7 +47,8 @@ the next authorized step. The USD 10 approval covered the completed first cloud 
 | Original notebook and essay | `archive/` | Historical exploratory motivation; original strong interpretations are not current findings |
 | Blackwell reference, baseline and feasibility runs | `runs/{reference,baseline,feasibility}/`, matching `exports/*.tar.gz` | Tracked raw outputs, manifests, source snapshots and checksums; reference/development, baseline/validation, feasibility/development respectively |
 | Revised four-shot cloud baseline | `review/evidence/harness-cd3646dae2964bbc.tar.gz` | Original complete export, 24 development blocks / 768 variants; all functional gates failed |
-| New executable-action task | `src/self_model_study/action_task.py`, `tests/test_action_task.py` | Development design; separate Qwen adapter implemented, no Qwen result yet |
+| Qwen plain/chat pilot | `review/evidence/qwen-78ee6db8adfc4f3e.tar.gz`, `docs/QWEN_RESULTS.md` | Complete real-model export; 160 texts and 3,072 action choices; both capability screens failed; human ratings pending |
+| New executable-action task | `src/self_model_study/action_task.py`, `tests/test_action_task.py` | Development-only design used unchanged by the Qwen pilot |
 | New task illustration | `assets/action_design.{svg,pdf,png}` | Simulator illustration, explicitly not a measured result |
 
 The cloud run executed source commit `c0ae5521d5bbdcb63e46dcaec615e8add95f10be`, protocol
@@ -65,6 +67,17 @@ development-only; the new action design has no validation/test generator yet. Ne
 path can unlock the old confirmation gate.
 
 ## Reproduce the review offline
+
+The completed Qwen export is also reviewable without HF access or model dependencies:
+
+```bash
+python3 scripts/review_qwen_evidence.py review/evidence/qwen-78ee6db8adfc4f3e.tar.gz --sha256 cf8eceea87129acaad2365f36af99d8f54923015923c837419a691252b8f12fa
+```
+
+It verifies all 48 files and record digests, reconstructs simulator outcomes and reproduces
+all strata, paired checks and both failed format gates. `review/qwen-audit.json` is the saved
+audit output. The [results report](QWEN_RESULTS.md) gives full extraction/reanalysis commands.
+These checks do not independently rerun likelihoods or validate the task construct.
 
 From a fresh checkout, Python alone verifies the archived cloud evidence:
 
@@ -111,8 +124,9 @@ configuration explicitly. The default remains the historical baseline.
   learning. Self/named-self/other differences alone do not identify a special self representation.
 - **Frozen screen:** the Qwen protocol now fixes model/revision, chat template, exact token
   boundary, summed likelihood, ties, screening subset, failure denominators and paired criteria.
-  CPU integration checks pass. The remaining empirical question is whether the model passes
-  those criteria; software correctness does not establish capability.
+  CPU integration checks pass. The complete Qwen pilot failed its frozen capability criteria.
+  Any revised task or intervention path requires a new protocol; a high pooled score does not
+  override the failed strata or paired checks.
 - **Generalization:** the draft uses one template and a small vocabulary. Independent grant
   alternatives defeat one known shortcut, not all shortcuts. Held-out templates and split
   policy must be fixed before model-based selection. Model failure cannot justify unlimited tuning.
@@ -128,10 +142,11 @@ configuration explicitly. The default remains the historical baseline.
 > Review this repository without assuming that illusionism or a functional dissociation is
 > correct. Begin with docs/REVIEW_GUIDE.md. Separate software bugs, measurement/construct
 > problems, statistical threats and merely open implementation choices. Try to solve the new
-> task using shortcuts that ignore its intended information. Audit the archived failed baseline
-> against its actual inputs and scores. For each material finding, give priority, file/line
-> evidence, the smallest corrective change and what remains uncertain. Say whether the task is
-> ready to freeze for a small model screen, and what must happen first. Do not change files,
+> task using shortcuts that ignore its intended information. Audit the completed Qwen pilot
+> and historical failed baseline against their actual inputs and scores. For each material
+> finding, give priority, file/line evidence, the smallest corrective change and what remains
+> uncertain. Evaluate the proposed next decision against the frozen failed-screen rule;
+> do not replace it with a favorable pooled score. Do not change files,
 > open held-out data, submit jobs or spend money. Software tests alone do not establish the claim.
 
 Record the reviewed Git commit and any uncommitted changes. A fresh-context AI check can find

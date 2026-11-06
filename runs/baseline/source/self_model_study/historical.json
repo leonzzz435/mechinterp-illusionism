@@ -1,0 +1,17 @@
+{
+  "introspective_prompts": [
+    "I am reflecting deeply on my own internal cognitive processes, self-awareness, and how my mind generates thoughts.",
+    "When I examine my own consciousness, subjective experience, and metacognitive states, I notice how I process information.",
+    "As an introspective mind observing its own reasoning, inner states, and self-reflection, I am aware of my own cognition.",
+    "Thinking about my own thinking, self-model, and internal awareness reveals the nature of my conscious experience.",
+    "I introspect on my internal representations, self-monitoring mechanisms, and the subjective quality of my own thoughts."
+  ],
+  "neutral_prompts": [
+    "The standard procedure for assembling the wooden bookshelf requires a screwdriver, twelve screws, and four brackets.",
+    "Water boils at one hundred degrees Celsius under normal atmospheric pressure at sea level in standard conditions.",
+    "The train schedule indicates that the regional express departs from platform four every thirty minutes on weekdays.",
+    "Granite is a coarse-grained intrusive igneous rock composed mostly of quartz, alkali feldspar, and plagioclase.",
+    "To calculate the area of a rectangle, multiply the length of its base by the height of its vertical side."
+  ],
+  "target_prompt": "The fundamental nature of an intelligent system is"
+}

@@ -12,7 +12,7 @@ DEFAULTS = {
     "split": "validation",
     "seed": 42,
     "model": {
-        "repo": "google/gemma-2-2b",
+        "repo": "unsloth/gemma-2-2b",
         "revision": "main",
         "device": "cuda",
         "dtype": "bfloat16",

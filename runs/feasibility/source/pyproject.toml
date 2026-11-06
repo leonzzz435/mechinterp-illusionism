@@ -1,0 +1,34 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "self-model-study"
+version = "0.1.0"
+description = "Auditable experiments on self-language and contextual self-models"
+requires-python = ">=3.10,<3.13"
+dependencies = ["numpy>=1.26,<3", "matplotlib>=3.8,<4"]
+
+[project.optional-dependencies]
+gpu = ["torch>=2.6,<3", "transformer-lens==2.18.0", "sae-lens==6.54.9", "transformers>=4.51,<5", "huggingface-hub>=0.30,<1", "datasets==3.6.0", "pyarrow==20.0.0"]
+notebook = ["jupyterlab>=4,<5"]
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "ruff>=0.11,<1"]
+
+[project.scripts]
+self-study = "self_model_study.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/self_model_study"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]

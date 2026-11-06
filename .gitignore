@@ -26,8 +26,6 @@ Thumbs.db
 .idea/
 
 # Generated research artifacts and local verification environments
-runs/
-exports/
 protocols/
 .venv-integration/
 .pytest_cache/

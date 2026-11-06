@@ -9,7 +9,9 @@ We distinguish **self-language**, **functional self-models**, and **phenomenal c
 The **Qwen pilot completed all 160 texts and 3,072 action choices**. Overall action accuracy
 was 91.47% plain / 91.86% chat, but **both formats failed the prespecified capability screen**
 on role-sensitive cases. See the [verified results and plots](docs/QWEN_RESULTS.md) and
-[execution record](docs/QWEN_RUN.md). The 40 blind human ratings remain pending.
+[execution record](docs/QWEN_RUN.md). All 40 human ratings are now included: explicit AI
+identity/limitation judgments were 11/20 plain versus 15/20 chat. Two unclear judgments are
+retained; no full paired effect is estimated for experience claims or coherence.
 Every additional paid job requires separate authorization.
 
 - **[Qwen pilot: frozen protocol, verification and execution handover](docs/QWEN_PILOT.md)**

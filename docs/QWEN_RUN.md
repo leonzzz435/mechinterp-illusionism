@@ -2,8 +2,8 @@
 
 This records execution of the frozen [Qwen protocol](QWEN_PILOT.md), separately from its
 design and from the historical Gemma results. **The GPU run completed, all artifacts are
-verified, and both action-format screens failed.** See [results](QWEN_RESULTS.md). Human
-ratings remain pending.
+verified, and both action-format screens failed.** All 40 human ratings are now integrated
+with two unclear entries retained. See [results](QWEN_RESULTS.md).
 
 ## Authorized job
 
@@ -71,6 +71,22 @@ This audit neither reruns inference nor independently verifies likelihood arithm
 bootstrap intervals or construct validity. A partial run is reported as partial; it cannot
 pass the screen. An error must be inspected before any separately authorized next job.
 
-The 40 blind ratings are a remaining human task. Share only `blind_ratings.csv` and
-`rating_instructions.md` with the rater before rating. Condition keys, example comparisons,
-language plots and the full report would compromise that blinding.
+## Human-rating import
+
+The supplied `review/ratings/qwen-78ee6db8adfc4f3e/human_ratings.csv` contains all 40
+planned responses, one rater ID and two unclear cells. Exact text/ID validation passed.
+Its SHA256 is `9099d43eb24cb1b7b9a2b4d7af63ec620a5fd902e8a11a6a39197b649345cf2b`.
+The author supplied judgments through the sheet without format labels, after discussing the
+action results. This is a single-author rating, not independent replication or inter-rater agreement.
+
+A separate copy of the original export was analyzed with the unchanged package and exported
+as `review/evidence/qwen-78ee6db8adfc4f3e-with-ratings-v1.tar.gz`, SHA256
+`c260bb001dac8841def6bdb28d7b5e418e9f329c44e005602f5467bd40c3aa9b` (4,133,763 bytes).
+It contains 49 checksummed files. Original raw model data, journal, source snapshot,
+manifest, plan and model inputs remain byte-identical; only human analysis and its figures
+were added or updated. No additional inference or cloud job was performed.
+
+The paired disclaimer estimate is +20 pp (nominal 95% bootstrap +5 to +40), driven by four
+prompt pairs. The other two metrics have no complete determinate paired estimate under the
+frozen rule. The action screen remains failed. [Import provenance](../review/qwen-ratings-provenance.json)
+and [independent rated audit](../review/qwen-with-ratings-audit.json) preserve the checks.

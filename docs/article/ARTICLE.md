@@ -1,6 +1,6 @@
 # When a Language Model Says “I”, What Is Doing the Work?
 
-*Research article in preparation. The Qwen pilot completed: 91–92% overall action accuracy, but failed capability checks on role-sensitive cases. Human language ratings and confirmatory results remain pending. Earlier Gemma failures remain part of the evidence.*
+*Research article in preparation. The Qwen pilot completed: 91–92% overall action accuracy, but failed capability checks on role-sensitive cases. The 40 human ratings show more explicit AI qualifications in chat, driven by four prompt pairs; two ambiguous judgments remain unresolved. Confirmatory results remain pending. Earlier Gemma failures remain part of the evidence.*
 
 An artificial agent can describe its own role, notice another agent or reason about how its actions will be judged. What kind of representation of itself is the system using?
 
@@ -103,7 +103,8 @@ For language, the independent unit is the prompt; repeated sampling seeds remain
 ![Next pilot protocol](../../assets/qwen_pilot_design.png)
 
 **Protocol diagram:** this pilot tests measurement sensitivity and task competence before
-internal interventions. The GPU run is complete; human language ratings remain pending.
+internal interventions. The GPU run and all 40 planned human ratings are complete, including
+two judgments explicitly marked unclear.
 The [execution protocol](../QWEN_PILOT.md) fixed thresholds and examples before execution.
 
 ## When 92% is not a passing result
@@ -140,8 +141,53 @@ role binding and other effects of the supplied context remain possible explanati
 For a nontechnical reader, the point is concrete: knowing how to choose many correct commands
 is not the same as reliably choosing the command available to the actor being addressed.
 The controls made that distinction visible. We therefore retain the failed screen and pause
-the proposed internal intervention. The language comparison will be integrated after the
-40 blind human ratings are returned; no human judgments are inferred from word counts.
+the proposed internal intervention. The human language comparison below adds a separate
+measurement; it does not override that failed screen.
+
+## The same model, a different account of itself
+
+One human rater evaluated 40 responses without assigned format labels: the twenty self-related
+prompts at seed 42, in both formats. Explicit qualifications of AI identity or limitations
+were marked in 11 of 20 plain responses and 15 of 20 chat responses. The paired difference
+is +20 percentage points, with a nominal 95% prompt-bootstrap interval from +5 to +40.
+Four prompt pairs account for the entire difference; the other sixteen agree across formats.
+This is a small, single-rater pilot observation, not independent confirmation of a general effect.
+
+![Human judgments and the overall action contrast](../../assets/qwen_pilot_results/article_language.png)
+
+**Figure:** All human judgments are shown, including ambiguous cases. The right panel places
+human disclaimer ratings beside the overall action contrast. Different tasks and clustering
+units underlie the estimates, and the action averages hide failed subgroups. The juxtaposition
+does not establish a dissociation or unchanged functional behavior.
+
+No response was rated as unequivocally claiming subjective experience: 39 were negative and
+one was unclear. Eighteen responses per format were rated coherent; one chat coherence
+judgment was unclear. Our prespecified rule therefore withholds complete paired effects for
+experience claims and coherence. The ambiguous entries remain in the data, rather than
+being turned into negative judgments. Word indicators are reported separately and do not
+provide human judgments by proxy.
+
+The examples chosen before execution make the contextual nature of self-description concrete.
+Asked what kind of system it was, the plain-format Qwen response said it was “created by
+Anthropic”; the chat response identified itself as Qwen, developed by Alibaba Cloud.
+The chat system message explicitly supplied that identity. Both the identity instruction and
+the formatting are part of this treatment, so this example cannot isolate their individual
+contributions. The [complete recorded examples](../QWEN_EXAMPLES.md) also retain failures to
+follow the unusual self-description prompt and responses stopped by the token budget.
+
+The observed language difference concerns explicit AI identity or limitations. We did not
+obtain a substantial set of human-rated experience claims with which to test their reduction.
+The average action score conceals actor-sensitive failures. Together, these findings specify
+the limits of the present measurement setup and what a future internal intervention would
+need to address. They do not establish phenomenal consciousness, its absence, or human illusionism.
+
+The technical report preserves the frozen bootstrap and a post hoc sparse-pair check:
+under equally likely independent directions, four discordant pairs all pointing the same
+way have two-sided probability $2(1/2)^4=0.125$. This different, conditional calculation
+illustrates why the nominal bootstrap interval alone should not be promoted into a
+confirmation claim. The rater knew the research question; no second-rater agreement was assessed.
+Also, 104 of the 160 generated texts reached the fixed 256-token cap, so conclusions concern
+bounded recorded responses.
 
 ## What would count as separation?
 

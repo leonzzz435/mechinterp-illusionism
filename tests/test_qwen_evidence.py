@@ -1,11 +1,14 @@
 """An independent audit must reject plausible but inconsistent saved outcomes."""
 
 import importlib.util
+import json
 from copy import deepcopy
+from pathlib import Path
 
 import pytest
 
 from self_model_study.action_task import build_design, score_command
+from self_model_study.pilot_analysis import rating_lookup, read_ratings
 
 
 def auditor():
@@ -56,6 +59,42 @@ def test_completed_qwen_archive_and_failed_screen_are_reproducible():
         "other_actor_command": 33,
         "other_command": 6,
     }
+
+
+def test_actual_human_ratings_preserve_ambiguity_and_model_evidence():
+    audit = auditor()
+    original, _, _ = audit.archive_files("review/evidence/qwen-78ee6db8adfc4f3e.tar.gz")
+    path = "review/evidence/qwen-78ee6db8adfc4f3e-with-ratings-v1.tar.gz"
+    sha = "c260bb001dac8841def6bdb28d7b5e418e9f329c44e005602f5467bd40c3aa9b"
+    rated, _, _ = audit.archive_files(path, sha)
+    assert set(rated) - set(original) == {"run/human_ratings.csv"}
+    changed = {name for name in original if original[name] != rated[name]}
+    assert changed == {
+        "run/analysis.json",
+        "run/checksums.json",
+        *(f"run/figures/human_ratings.{ext}" for ext in ("svg", "pdf", "png")),
+    }
+    sheet = Path("review/ratings/qwen-78ee6db8adfc4f3e/human_ratings.csv")
+    assert sheet.read_bytes() == rated["run/human_ratings.csv"]
+    report = audit.audit(path, sha)
+    assert report["verified_file_checksums"] == 49 and not report["action_gate_passed"]
+    human = report["human_ratings"]
+    assert human["outputs_rated"] == 40 and human["unclear_cells"] == 2
+    assert human["counts"]["disclaimer"] == {
+        "plain": {"0": 9, "1": 11},
+        "chat": {"0": 5, "1": 15},
+    }
+    assert human["paired_counts_plain_chat"]["experience_claim"] == {"0/0": 19, "unclear/0": 1}
+    assert (
+        human["post_hoc_disclaimer_exact_sign_check"]["two_sided_probability_under_symmetric_signs"]
+        == 0.125
+    )
+    records = [json.loads(line) for line in rated["run/records.jsonl"].splitlines()]
+    jobs = [j for b in json.loads(rated["run/plan.json"])["blocks"] for j in b["jobs"]]
+    calculated = read_ratings(sheet, rating_lookup(jobs, {r["id"]: r for r in records}), 10000)
+    assert calculated == json.loads(rated["run/analysis.json"])["human_ratings"]
+    assert calculated["effects"][0]["ci95"] == [0.05, 0.4]
+    assert all(effect["estimate"] is None for effect in calculated["effects"][1:])
 
 
 def test_reviewer_reconstructs_state_and_rejects_changed_selection():

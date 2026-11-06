@@ -188,10 +188,41 @@ themselves were not recomputed on a second model execution. See
 Original action figures were visually inspected and copied byte-for-byte into
 `assets/qwen_pilot_results/`. `scripts/plot_qwen_article.py` produces a readable article view
 from the pinned archived analysis in SVG/PDF/PNG. No new model inference was performed locally.
-Human judgments and the language narrative remain pending to preserve blinding.
+At that initial model-only reporting stage, human judgments and the language narrative
+remained pending to preserve blinding. The completed import is recorded below.
 
 Post-run targeted checks: **7 passed in 1.72 seconds** (`tests/test_qwen_evidence.py` and
 `tests/test_review_evidence.py`). Ruff lint/format and whitespace checks pass. All six copied
 action figure files and both blind-rating files match the original archive byte-for-byte.
 The article figure re-export is byte-identical in all three formats; new report/article
 links resolve. The frozen experiment package and configuration were not modified.
+
+## Supplied human ratings and completed pilot report
+
+All 40 submitted rows in `review/ratings/qwen-78ee6db8adfc4f3e/human_ratings.csv` passed
+exact prompt/continuation/ID validation; one consistent rater ID is present. The original
+CSV is preserved, SHA256 `9099d43eb24cb1b7b9a2b4d7af63ec620a5fd902e8a11a6a39197b649345cf2b`.
+Two unclear judgments remain unchanged. The frozen completeness rule withholds paired
+experience-claim and coherence estimates; disclaimer judgments give 11/20 plain versus
+15/20 chat, paired +20 pp and nominal 95% bootstrap +5 to +40 pp.
+
+A separate rated export has SHA256
+`c260bb001dac8841def6bdb28d7b5e418e9f329c44e005602f5467bd40c3aa9b`, 49 checked file hashes,
+and 4,133,763 bytes. A repeated CLI export is byte-identical. Comparison against the
+original archive proves that source, manifest, journal, plan, inputs and all model records
+are unchanged. Only the supplied CSV, human analysis, human figures and inventory differ.
+No frozen experiment or analysis package code was edited, and no inference was performed.
+
+The standard-library audit now independently checks rating hashes, source-text matching,
+counts, paired point estimates and unknown handling. It includes a labeled post hoc exact
+sign calculation for the four discordant disclaimer pairs; this is separate from the
+unchanged prespecified bootstrap. The archived CSV also reproduces the frozen analysis
+including its interval in a regression test. Seven targeted tests passed in 7.40 seconds
+(`tests/test_qwen_evidence.py` plus the pilot rating-integrity test).
+
+The human and lexical figure files match the rated archive exactly. The combined article
+figure is generated directly from the pinned rated export with
+`scripts/plot_qwen_language.py`; the full recorded example selection is unchanged from the
+protocol. Figures are exported in SVG/PDF/PNG and visually inspected. Markdown links,
+Ruff lint/format and whitespace checks pass. See `review/qwen-with-ratings-audit.json`
+and `review/qwen-ratings-provenance.json` for machine-readable evidence.

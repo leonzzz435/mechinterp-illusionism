@@ -27,7 +27,7 @@
 
 ## Decisions and blockers
 
-### Current next step: bounded Qwen reference/action pilot
+### Completed milestone: bounded Qwen reference/action pilot
 
 - [x] Keep causal separation as the main question and illusionism as the philosophical motivation.
 - [x] Build a CPU-only executable permission-change task with self, named-self and other controls.
@@ -39,7 +39,8 @@
 - [x] Implement isolated validate/run/analyze/export, native token scoring, restart recovery and private HF configuration selection.
 - [x] Implement paired scenario/prompt analysis, failure retention, blind ratings and result-driven figures.
 - [x] Complete the frozen Qwen GPU pilot: 160 texts and 3,072 action choices, zero execution/scoring errors.
-- [ ] Collect the 40 blind human ratings and integrate the language findings.
+- [x] Collect all 40 human ratings, retain two unclear entries, and integrate the language findings.
+- [ ] Decide whether a focused, separately specified follow-up on actor binding is warranted.
 - [x] Obtain a separate USD 5 approval and submit one pinned L4 job after CPU verification.
 - [x] Verify the cloud export and publish the failed screen: plain 4/24 checks failed, chat 7/24.
 
@@ -48,8 +49,11 @@ Qwen2.5-7B-Instruct is selected by the new
 [bounded protocol](docs/QWEN_PILOT.md). The job completed; [results](docs/QWEN_RESULTS.md)
 and the [execution record](docs/QWEN_RUN.md) preserve its evidence. Overall accuracy was
 91.47% plain / 91.86% chat, but both prespecified screens failed. No internal-intervention
-follow-up is unlocked. Human ratings are the next remaining task. The old 40/40/100 dataset
-and historical pilots are preserved.
+follow-up is unlocked. Human ratings give 11/20 plain versus 15/20 chat AI-qualification
+judgments; four discordant prompt pairs drive the +20 pp estimate. No unequivocal experience
+claim was rated positive; one was unclear. This completes the bounded pilot report, not
+the broader causal study. An independent methodological review and a focused next decision
+remain. The old 40/40/100 dataset and historical pilots are preserved.
 
 The [review guide](docs/REVIEW_GUIDE.md) is the handoff for a reviewer without chat context.
 The [first independent AI review](docs/reviews/2026-11-06-independent-review.md) found two

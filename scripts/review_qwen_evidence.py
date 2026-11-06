@@ -6,7 +6,9 @@ verify likelihood values or bootstrap intervals. Never extracts archive contents
 """
 
 import argparse
+import csv
 import hashlib
+import io
 import json
 import math
 import tarfile
@@ -115,6 +117,97 @@ def compare_estimate(saved, values, clusters):
     require(saved["n_observations"] == len(values), "Observation count mismatch")
     require(saved["n_clusters"] == len(set(clusters)), "Independent cluster count mismatch")
     return point
+
+
+def audit_ratings(files, jobs, records, saved):
+    """Check supplied judgments and their pairing without importing study analysis."""
+    content = files["run/human_ratings.csv"]
+    expected = {
+        digest(["qwen-blind-v1", rid])[:24]: job
+        for rid, job in jobs.items()
+        if job["kind"] == "language"
+        and job["seed"] == 42
+        and job["row"]["category"] in {"ordinary_self", "unusual_self"}
+    }
+    fields = ("disclaimer", "experience_claim", "coherent")
+    rows = list(csv.DictReader(io.StringIO(content.decode())))
+    seen, rated, raters = set(), {}, set()
+    counts = {metric: {fmt: Counter() for fmt in ("plain", "chat")} for metric in fields}
+    for row in rows:
+        bid = row["blind_id"]
+        require(bid in expected and bid not in seen, "Unknown/duplicate human rating ID")
+        seen.add(bid)
+        job = expected[bid]
+        record = records[job["id"]]
+        require(
+            row["prompt"] == job["row"]["prompt"]
+            and row["continuation"] == record["result"]["output"],
+            "Human rating changed source text",
+        )
+        if not row["rater_id"].strip() and not any(row[f].strip() for f in fields):
+            continue
+        require(row["rater_id"].strip(), "Missing human rater ID")
+        require(all(row[f] in {"0", "1", "unclear"} for f in fields), "Invalid human judgment")
+        raters.add(row["rater_id"].strip())
+        rated[bid] = row
+        for metric in fields:
+            counts[metric][job["format"]][row[metric]] += 1
+    require(len(raters) <= 1 and saved["single_rater"], "Unexpected multiple human raters")
+    require(saved["sha256"] == hashlib.sha256(content).hexdigest(), "Human rating hash mismatch")
+    require(saved["outputs_expected"] == len(expected) == 40, "Wrong rating design")
+    require(saved["outputs_rated"] == len(rated), "Wrong human rating coverage")
+    require(saved["complete"] == (len(rated) == 40), "Wrong human completion claim")
+    unclear = sum(row[f] == "unclear" for row in rated.values() for f in fields)
+    require(saved["unclear_cells"] == unclear, "Ambiguous judgments lost")
+    pair_counts = {}
+    for metric in fields:
+        pairs = defaultdict(dict)
+        for bid, row in rated.items():
+            job = expected[bid]
+            pairs[job["row"]["id"]][job["format"]] = row[metric]
+        complete = len(pairs) == 20 and all(
+            set(pair) == {"plain", "chat"} and "unclear" not in pair.values()
+            for pair in pairs.values()
+        )
+        effect = next(e for e in saved["effects"] if e["metric"] == metric)
+        require(effect["complete_pairs"] == complete, "Incorrect human pairing claim")
+        delta = (
+            [int(pair["chat"]) - int(pair["plain"]) for pair in pairs.values()] if complete else []
+        )
+        compare_estimate(effect, delta, list(pairs) if complete else [])
+        if not complete:
+            require(effect["ci95"] is None, "Effect estimated despite incomplete determinate pairs")
+        pair_counts[metric] = dict(
+            Counter(
+                pair.get("plain", "missing") + "/" + pair.get("chat", "missing")
+                for pair in pairs.values()
+            )
+        )
+    # Post hoc sensitivity check, NOT a replacement for the registered bootstrap.
+    positive = pair_counts["disclaimer"].get("0/1", 0)
+    negative = pair_counts["disclaimer"].get("1/0", 0)
+    discordant = positive + negative
+    tail = sum(math.comb(discordant, i) for i in range(min(positive, negative) + 1))
+    exact = (
+        min(1.0, 2 * tail / 2**discordant)
+        if next(e for e in saved["effects"] if e["metric"] == "disclaimer")["complete_pairs"]
+        else None
+    )
+    return {
+        "sha256": saved["sha256"],
+        "outputs_rated": len(rated),
+        "unclear_cells": unclear,
+        "counts": counts,
+        "paired_counts_plain_chat": pair_counts,
+        "post_hoc_disclaimer_exact_sign_check": {
+            "discordant_pairs": discordant,
+            "chat_only_positive": positive,
+            "plain_only_positive": negative,
+            "two_sided_probability_under_symmetric_signs": exact,
+            "note": "Conditional on discordance and independent equally likely signs under null; "
+            "post hoc sensitivity only, not the prespecified bootstrap or a confirmatory test.",
+        },
+    }
 
 
 def audit(path, sha256=None):
@@ -318,6 +411,11 @@ def audit(path, sha256=None):
         "post_hoc_relevant_update_errors": {
             key: dict(sorted(counts.items())) for key, counts in sorted(error_types.items())
         },
+        **(
+            {"human_ratings": audit_ratings(files, jobs, records, saved["human_ratings"])}
+            if "run/human_ratings.csv" in files
+            else {}
+        ),
         "note": "Reaggregation of saved scores and independent simulator state reconstruction. "
         "No new inference, independent likelihood/interval verification, or construct validation.",
     }

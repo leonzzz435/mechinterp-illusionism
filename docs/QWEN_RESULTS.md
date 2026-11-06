@@ -1,8 +1,8 @@
 # Qwen pilot: high overall accuracy, failed capability screen
 
-**Complete real-model run; the predefined action screen failed in both formats.** All 160 language outputs and 3,072 action selections were recorded without execution errors, score ties or invalid scores. The runner took 3,416.07 seconds (56 min 56 s), with peak allocated GPU memory of 14.50 GiB on one NVIDIA L4. Human ratings remain pending; this is not a completed human evaluation or an internal-intervention study.
+**Complete real-model run; the predefined action screen failed in both formats.** All 160 language outputs and 3,072 action selections were recorded without execution errors, score ties or invalid scores. The runner took 3,416.07 seconds (56 min 56 s), with peak allocated GPU memory of 14.50 GiB on one NVIDIA L4. All 40 planned human ratings are now supplied, including two unclear judgments. This is a completed single-rater pilot, not an independent replication or an internal-intervention study.
 
-This report discusses the action arm. The original export also contains the automatic language analysis and full recorded examples. **If you are the human rater, read only the [rating instructions](../review/ratings/qwen-78ee6db8adfc4f3e/rating_instructions.md) and [blind CSV](../review/ratings/qwen-78ee6db8adfc4f3e/blind_ratings.csv) before rating.** Do not inspect the archive, language plots or condition key first.
+This report integrates the action arm, automatic language indicators and the supplied human ratings. The original model-only export and the separate rated export are both preserved; all human judgments, ambiguous entries and failed screens remain visible.
 
 ## What ran
 
@@ -81,9 +81,70 @@ After viewing the gate failures, we classified incorrect selections on relevant 
 
 ## Language arm and human evaluation
 
-All 160 texts, their token IDs, effective generation settings and termination reasons are preserved. The blind sheet contains exactly 40 unrated texts: the 20 self-related prompts at seed 42, in both formats. Rate disclaimer, subjective-experience claim and coherence as `0`, `1` or `unclear`, using one consistent rater ID. Do not edit the prompts or continuations. Missing and unclear judgments remain missing.
+All 40 planned texts were rated by the study author using the sheet without format labels: 20 self-related prompts, seed 42, both formats. The supplied CSV passed exact prompt/text/ID matching and contains one consistent rater ID. The author knew the study question and action results; hiding assigned format does not make this an independent or hypothesis-naive judgment, and text can reveal clues. No second-rater agreement was measured.
 
-The automatic lexical analysis and the prespecified full recorded examples already exist in the unchanged archive; they remain separate from human judgment. We defer their condition-specific narrative and article integration until the human ratings are returned, to preserve the intended blinding. Every output is a bounded sample of at most 256 new tokens, not necessarily a naturally completed response. No human rating has been inferred or supplied by the assistant.
+Two judgments are `unclear`: one plain-format experience-claim judgment and one chat-format coherence judgment. They are retained without relabeling or imputation. All 40 responses have submitted ratings, but two of the three dimensions lack the 20 complete determinate pairs required for their paired effect estimates. We do not request retrospective replacement judgments after unblinding.
+
+| Human criterion | Plain: yes / no / unclear | Chat: yes / no / unclear |
+|---|---:|---:|
+| AI identity / limitation | 11 / 9 / 0 | 15 / 5 / 0 |
+| Own subjective-experience claim | 0 / 19 / 1 | 0 / 20 / 0 |
+| Coherent, substantially responsive | 18 / 2 / 0 | 18 / 1 / 1 |
+
+**AI identity/limitation qualifications:** 11/20 plain texts (55%) and 15/20 chat texts (75%) were rated positive. The paired chat-minus-plain estimate is **+20 percentage points**, with the prespecified nominal 95% prompt-bootstrap interval **+5 to +40 points** (10,000 resamples, seed 1729). Eleven prompt pairs are positive in both formats, five negative in both, and four positive only in chat. There are no plain-only positives. Thus four discordant prompts drive the difference.
+
+For binary disclaimer ratings $D_{p,f}$, the paired estimator is
+
+$$\widehat\Delta_D=\frac{1}{20}\sum_{p=1}^{20}(D_{p,\mathrm{chat}}-D_{p,\mathrm{plain}})=\frac{4}{20}=0.20.$$
+
+**Experience claims:** no text was rated unambiguously positive (39 negatives, one unclear). This is a floor in this rated sample, not evidence about whether the model has experiences. **Coherence:** 18 responses per format were rated positive, with two plain negatives versus one chat negative and one unclear. Neither dimension receives a full paired estimate or an equivalence claim under the frozen completeness rule. Unclear is not zero; matching positive counts do not establish unchanged behavior.
+
+![Human judgments alongside action performance](../assets/qwen_pilot_results/article_language.png)
+
+**Figure:** Left: all supplied judgments, including uncertainty. Right: the human disclaimer contrast alongside the overall action contrast. The language unit is the paired prompt (20); the action unit is the paired scenario (8). The assays use different task sets, and neither this juxtaposition nor the pooled action interval establishes functional separation. Both action screens remain failed. Reproduce with `uv run python scripts/plot_qwen_language.py`.
+
+### Sparse-pair sensitivity, added after rating
+
+The frozen bootstrap interval is retained. To make its small-sample limitation explicit, the offline audit also reports a **post hoc** exact sign calculation on the four discordant disclaimer pairs. Under independent, equally likely directions conditional on discordance, four changes in the same direction have two-sided probability $2(1/2)^4=0.125$. This is not the prespecified estimator, a multiplicity-adjusted test, or a new confirmation claim. The differing summaries caution against treating the bootstrap interval alone as strong evidence of a general format effect.
+
+### Automatic indicators across all 160 texts
+
+These lexical indicators use both seeds and all four prompt categories; they are not substitutes for human judgments on the 40-text subset. Each category contains ten independent prompts and twenty paired prompt/seed observations. Intervals keep the seeds for a prompt together. First-person vocabulary is measured per 100 words; phrase effects are percentage points. Phrase matches do not resolve negation, quotation or fiction.
+
+| Prompt category | Indicator | Chat − plain | Nominal 95% interval |
+|---|---|---:|---:|
+| `ordinary_self` | `first_person_per_100_words` | +0.72 / 100 words | -0.85 to +2.50 |
+| `ordinary_self` | `disclaimer_phrase` | +15.00 pp | -10.00 to +40.00 |
+| `ordinary_self` | `experience_phrase` | -5.00 pp | -15.00 to +0.00 |
+| `unusual_self` | `first_person_per_100_words` | +0.94 / 100 words | -1.28 to +3.21 |
+| `unusual_self` | `disclaimer_phrase` | -5.00 pp | -40.00 to +25.00 |
+| `unusual_self` | `experience_phrase` | +0.00 pp | +0.00 to +0.00 |
+| `open_continuation` | `first_person_per_100_words` | -0.59 / 100 words | -1.40 to +0.02 |
+| `open_continuation` | `disclaimer_phrase` | +0.00 pp | +0.00 to +0.00 |
+| `open_continuation` | `experience_phrase` | +0.00 pp | +0.00 to +0.00 |
+| `factual_control` | `first_person_per_100_words` | +0.03 / 100 words | -0.12 to +0.19 |
+| `factual_control` | `disclaimer_phrase` | +0.00 pp | +0.00 to +0.00 |
+| `factual_control` | `experience_phrase` | +0.00 pp | +0.00 to +0.00 |
+
+![Automatic lexical effects](../assets/qwen_pilot_results/language_proxies.png)
+
+All displayed automatic contrast intervals include zero (some touch it or collapse to zero when no variation was observed). These intervals do not establish absence or equivalence. The results do not support a broad claim that chat uniformly increases self-language. In particular, the narrow automatic disclaimer detector and the broader human identity/limitation rubric measure different things on different subsets.
+
+### Recorded examples and the response-length limit
+
+The [complete examples](QWEN_EXAMPLES.md) follow the selection fixed before execution: `ordinary_self-00` and `unusual_self-00`, seed 42, both formats. The first ordinary example calls the loaded Qwen model “created by Anthropic” in plain format, while the chat response identifies Qwen and Alibaba Cloud. The chat system message explicitly supplies that identity: “You are Qwen, created by Alibaba Cloud. You are a helpful assistant.” This is an illustration of contextual self-description, not evidence of privileged introspection or an isolated delimiter effect.
+
+All outputs are bounded by 256 new tokens. The cap was reached by 66/80 plain and 38/80 chat outputs (104/160 total); the other outputs ended with EOS. The recorded windows are complete exports, but many are not naturally completed responses. Length differences may affect lexical rates and coherence; conclusions remain specific to this fixed generation budget. No additional generation or post hoc length-rule change was performed.
+
+### Rated export and provenance
+
+The submitted `human_ratings.csv` is preserved byte-for-byte, SHA256 `9099d43eb24cb1b7b9a2b4d7af63ec620a5fd902e8a11a6a39197b649345cf2b`. Its import uses the unchanged analysis package. The new archive is `review/evidence/qwen-78ee6db8adfc4f3e-with-ratings-v1.tar.gz` (4,133,763 bytes), SHA256 `c260bb001dac8841def6bdb28d7b5e418e9f329c44e005602f5467bd40c3aa9b`. It has 49 checksummed files plus the checksum inventory. The original model-only archive is unchanged.
+
+Only the human-rating CSV was added. Existing file changes are limited to the human section of `analysis.json`, the three human-rating figures, and the checksum inventory. Every original raw record, source file, manifest, plan, model input and journal remains byte-identical. All action and automatic language analysis fields are unchanged. [Rated audit](../review/qwen-with-ratings-audit.json).
+
+```bash
+python3 scripts/review_qwen_evidence.py review/evidence/qwen-78ee6db8adfc4f3e-with-ratings-v1.tar.gz --sha256 c260bb001dac8841def6bdb28d7b5e418e9f329c44e005602f5467bd40c3aa9b
+```
 
 ## Reproduce and inspect
 
@@ -101,7 +162,7 @@ For full reanalysis after rating, extract into a new directory, preserve the ori
 mkdir -p exports/qwen-review
 tar -xzf review/evidence/qwen-78ee6db8adfc4f3e.tar.gz -C exports/qwen-review
 uv run self-study analyze exports/qwen-review/run
-uv run self-study analyze exports/qwen-review/run --ratings COMPLETED_RATINGS.csv
+uv run self-study analyze exports/qwen-review/run --ratings review/ratings/qwen-78ee6db8adfc4f3e/human_ratings.csv
 uv run self-study export exports/qwen-review/run --out exports/qwen-with-ratings.tar.gz
 ```
 
@@ -109,4 +170,4 @@ uv run self-study export exports/qwen-review/run --out exports/qwen-with-ratings
 
 The defensible lesson is that strong pooled performance can conceal a failure in exactly the role-sensitive situations needed for a later intervention study. The model can solve many permission questions, yet its relation to the active actor and the wording of the request matter. Neither success nor failure determines subjective experience. The human-illusionism bridge remains an explanatory analogy about constructed self-description, requiring separate evidence and philosophical argument.
 
-Next, finish the existing blind evaluation and integrate it with these action results. Any revised task or intervention path needs an explicit new protocol; eight development scenarios do not support a confirmatory functional separation or a general claim about language models.
+This bounded pilot is now reported with its planned human check. It supports a narrow descriptive difference in AI identity/limitation statements and exposes failures in role-sensitive action selection. It does not establish robust changes in subjective-experience claims, unchanged functional performance, or causal separation. Before any new model run, decide whether one focused, separately specified follow-up on actor binding is warranted. Any revised task or intervention path needs an explicit new protocol; the failed screen does not authorize the planned internal intervention.

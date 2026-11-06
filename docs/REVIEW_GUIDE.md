@@ -5,8 +5,9 @@ capability gates, blind-rating rubric, stopping rules and reproduction commands.
 tokenizer audit is tracked in `review/qwen-tokenizer-audit.json`. The job has now completed:
 [results](QWEN_RESULTS.md), [execution record](QWEN_RUN.md), and unchanged raw archive
 `review/evidence/qwen-78ee6db8adfc4f3e.tar.gz`. Both action screens failed despite 91–92%
-pooled accuracy. Human ratings remain pending; the rater should inspect only the blind
-rating files before rating. The historical evidence and independent review below remain unchanged.
+pooled accuracy. All 40 human ratings are now integrated in a separate rated export; two
+unclear cells remain. The +20 pp disclaimer contrast is driven by four prompt pairs.
+The historical evidence and independent review below remain unchanged.
 
 ---
 
@@ -47,7 +48,8 @@ the next authorized step. The USD 10 approval covered the completed first cloud 
 | Original notebook and essay | `archive/` | Historical exploratory motivation; original strong interpretations are not current findings |
 | Blackwell reference, baseline and feasibility runs | `runs/{reference,baseline,feasibility}/`, matching `exports/*.tar.gz` | Tracked raw outputs, manifests, source snapshots and checksums; reference/development, baseline/validation, feasibility/development respectively |
 | Revised four-shot cloud baseline | `review/evidence/harness-cd3646dae2964bbc.tar.gz` | Original complete export, 24 development blocks / 768 variants; all functional gates failed |
-| Qwen plain/chat pilot | `review/evidence/qwen-78ee6db8adfc4f3e.tar.gz`, `docs/QWEN_RESULTS.md` | Complete real-model export; 160 texts and 3,072 action choices; both capability screens failed; human ratings pending |
+| Qwen plain/chat pilot | `review/evidence/qwen-78ee6db8adfc4f3e.tar.gz`, `docs/QWEN_RESULTS.md` | Complete real-model export; 160 texts and 3,072 action choices; both capability screens failed; raw evidence preserved |
+| Rated Qwen export | `review/evidence/qwen-78ee6db8adfc4f3e-with-ratings-v1.tar.gz` | Same model data plus 40 supplied human ratings; two unclear cells; single-rater exploratory estimates |
 | New executable-action task | `src/self_model_study/action_task.py`, `tests/test_action_task.py` | Development-only design used unchanged by the Qwen pilot |
 | New task illustration | `assets/action_design.{svg,pdf,png}` | Simulator illustration, explicitly not a measured result |
 
@@ -115,6 +117,18 @@ counterfactuals, shortcut audit), `harness.py` (actual old native scoring/retain
 `backend.py` (intervention implementation) and `analysis.py` (original statistical pipeline).
 The cloud launcher now selects either the historical harness configuration or the frozen Qwen
 configuration explicitly. The default remains the historical baseline.
+
+The rated export can be audited separately with the same standard-library tool:
+
+```bash
+python3 scripts/review_qwen_evidence.py review/evidence/qwen-78ee6db8adfc4f3e-with-ratings-v1.tar.gz --sha256 c260bb001dac8841def6bdb28d7b5e418e9f329c44e005602f5467bd40c3aa9b
+```
+
+`review/qwen-with-ratings-audit.json` independently matches ratings to unchanged source texts,
+checks paired estimates and preserves ambiguity. The registered bootstrap is unchanged; an
+additional post hoc exact sign calculation qualifies the four-discordant-pair disclaimer finding.
+The author knew the hypotheses and action results; no independent human rater or agreement
+measurement is claimed. Both unknown-containing metrics lack the full paired estimator.
 
 ## Questions still requiring a decision
 

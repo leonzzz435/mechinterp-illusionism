@@ -1,0 +1,18 @@
+{
+  "kind": "human_rating_import_v1",
+  "processed_utc": "2026-11-06T22:42:22.949974+00:00",
+  "original_archive_sha256": "cf8eceea87129acaad2365f36af99d8f54923015923c837419a691252b8f12fa",
+  "rated_archive_sha256": "c260bb001dac8841def6bdb28d7b5e418e9f329c44e005602f5467bd40c3aa9b",
+  "ratings_sha256": "9099d43eb24cb1b7b9a2b4d7af63ec620a5fd902e8a11a6a39197b649345cf2b",
+  "analysis_source_hash": "ea02dfe51c2cf16af8b0476ed8374ce7db6c502b57b5a15e12c6f2e71553cc86",
+  "changed_analysis_fields": [
+    "human_ratings"
+  ],
+  "original_model_records_unchanged": true,
+  "rating_texts_and_ids_verified": true,
+  "outputs_rated": 40,
+  "unclear_cells": 2,
+  "new_model_inference": false,
+  "action_gate_passed": false,
+  "note": "Study-author single-rater sheet without assigned format labels. Received after action summary was discussed; no independent rater or agreement study. Unclear judgments retained. Original experiment/analysis package unchanged."
+}

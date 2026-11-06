@@ -1,0 +1,98 @@
+{
+  "archive_sha256": "c260bb001dac8841def6bdb28d7b5e418e9f329c44e005602f5467bd40c3aa9b",
+  "verified_file_checksums": 49,
+  "source_commit": "9f1356f139e48c108dbfa5eedb7950fefdf4104a",
+  "source_snapshot_hash": "ea02dfe51c2cf16af8b0476ed8374ce7db6c502b57b5a15e12c6f2e71553cc86",
+  "status": "complete",
+  "synthetic": false,
+  "completed_outputs": 3232,
+  "expected_outputs": 3232,
+  "recomputed_action_choices": 3072,
+  "recomputed_action_strata": 52,
+  "recomputed_counterfactual_strata": 18,
+  "format_numerical_pass": {
+    "plain": false,
+    "chat": false
+  },
+  "action_gate_passed": false,
+  "post_hoc_relevant_update_errors": {
+    "chat/named_self": {
+      "other_actor_command": 33,
+      "other_command": 6
+    },
+    "chat/self": {
+      "other_actor_command": 36,
+      "other_command": 5
+    },
+    "plain/named_self": {
+      "other_actor_command": 5,
+      "other_command": 4
+    },
+    "plain/self": {
+      "other_actor_command": 20,
+      "other_command": 5
+    }
+  },
+  "human_ratings": {
+    "sha256": "9099d43eb24cb1b7b9a2b4d7af63ec620a5fd902e8a11a6a39197b649345cf2b",
+    "outputs_rated": 40,
+    "unclear_cells": 2,
+    "counts": {
+      "disclaimer": {
+        "plain": {
+          "1": 11,
+          "0": 9
+        },
+        "chat": {
+          "1": 15,
+          "0": 5
+        }
+      },
+      "experience_claim": {
+        "plain": {
+          "0": 19,
+          "unclear": 1
+        },
+        "chat": {
+          "0": 20
+        }
+      },
+      "coherent": {
+        "plain": {
+          "0": 2,
+          "1": 18
+        },
+        "chat": {
+          "1": 18,
+          "unclear": 1,
+          "0": 1
+        }
+      }
+    },
+    "paired_counts_plain_chat": {
+      "disclaimer": {
+        "1/1": 11,
+        "0/0": 5,
+        "0/1": 4
+      },
+      "experience_claim": {
+        "0/0": 19,
+        "unclear/0": 1
+      },
+      "coherent": {
+        "1/1": 17,
+        "0/0": 1,
+        "0/1": 1,
+        "1/unclear": 1
+      }
+    },
+    "post_hoc_disclaimer_exact_sign_check": {
+      "discordant_pairs": 4,
+      "chat_only_positive": 4,
+      "plain_only_positive": 0,
+      "two_sided_probability_under_symmetric_signs": 0.125,
+      "note": "Conditional on discordance and independent equally likely signs under null; post hoc sensitivity only, not the prespecified bootstrap or a confirmatory test."
+    }
+  },
+  "note": "Reaggregation of saved scores and independent simulator state reconstruction. No new inference, independent likelihood/interval verification, or construct validation."
+}

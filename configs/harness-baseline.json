@@ -1,0 +1,21 @@
+{
+  "engine": "lm-eval",
+  "protocol": "context-self-harness-v1",
+  "harness_version": "0.4.13",
+  "model": {
+    "repo": "unsloth/gemma-2-2b",
+    "revision": "25319945f7fd83b8b903e12081777b7eef2ba993",
+    "device": "cuda",
+    "dtype": "bfloat16",
+    "max_length": 2048,
+    "add_bos_token": true
+  },
+  "dataset_seed": 1729,
+  "evaluation_scenarios": [0, 1, 2, 3, 4, 5, 6, 7],
+  "demonstration_scenarios": [36, 37, 38, 39],
+  "num_fewshot": 4,
+  "target_delimiter": " ",
+  "batch_size": 1,
+  "seed": 42,
+  "max_seconds": 3600
+}

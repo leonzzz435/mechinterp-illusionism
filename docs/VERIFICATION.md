@@ -4,7 +4,7 @@ Verified locally on 2026-11-06. This is software evidence, not a Gemma experimen
 
 ## Checks
 
-- Final full suite: **41 passed in 190.38 seconds**, including four real-library CPU integration tests.
+- Current suite: **45 passed in 146.85 seconds**, including the original real-library CPU integrations and the new native-harness integration described below.
 - CPU tests cover deterministic generation and split isolation, counterfactual gold answers, scoring, intervention positions, residual-preserving ablation, hook cleanup, interrupted-run recovery, error retention, protocol freezing, test-access claims, statistics, ratings and export checksums.
 - Optional integration tests use the real TransformerLens and SAELens libraries with tiny randomly initialized CPU weights and an offline tokenizer. They exercise forced-choice scoring and generation as well as hook behavior. No pretrained weights are downloaded.
 - Ruff lint and formatting, lockfile consistency, shell syntax and whitespace checks pass.
@@ -32,4 +32,20 @@ The local, git-ignored bundle is `exports/final-software-check.tar.gz`, SHA-256 
 
 ## Remaining empirical checks
 
-No new Gemma outputs, GPU memory measurements, empirical effect sizes or human ratings are available. HF/TransformerLens parity, SAE reconstruction quality, actual task accuracy and runtime must pass on Blackwell. The first empirical deliverable is the historical reference export followed by the bounded feasibility and capability checks. Full validation, held-out confirmation and publication remain pending.
+The first Blackwell runs are now available and reviewed in `PILOT_REVIEW.md`: technical checks passed, functional capability gates failed. The revised standard-harness baseline has not run on Blackwell yet. Full validation, held-out confirmation, human ratings and publication remain pending.
+
+## Standard-harness revision
+
+`lm-eval[hf]==0.4.13` is pinned in the `eval` extra and lockfile. A real offline integration test constructs a tiny random Hugging Face model and byte-level tokenizer, then executes the library's `multiple_choice` task path with four fixed demonstrations. Each answer has two tokens, including its leading space. An independent teacher-forced calculation agrees with the library's saved full-continuation log-likelihoods. The test also verifies exact prompts/continuations and rejects silent context truncation.
+
+Additional tests check disjoint demonstration/scoring episodes, all 32 paired variants per scenario, protocol-change rejection, block resume, full coverage, retained failures, archive export and checksum tampering. These fixtures do not establish Gemma's capability.
+
+The archive test independently verifies every packaged file against `checksums.json`, including the SVG/PDF/PNG exports. Missing task families in partial reports are shown as missing rather than as measured zero accuracy.
+
+CPU integration installation (use a separate environment on a machine without CUDA):
+
+```bash
+uv venv .venv-integration
+uv pip install --python .venv-integration/bin/python -e '.[gpu,eval]' pytest --torch-backend cpu
+.venv-integration/bin/python -m pytest -q
+```

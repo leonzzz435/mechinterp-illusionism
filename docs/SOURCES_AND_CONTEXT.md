@@ -34,3 +34,7 @@ Dennett's *Consciousness Explained* (1991) and Frankish's [Illusionism as a Theo
 A dissociation of language and contextual self-model performance could support functional separability under tested conditions. Several non-illusionist theories could also accommodate it. Failure to find a dissociation would not establish consciousness either. Claims about humans require additional bridging evidence.
 
 This is a targeted source review, not an exhaustive novelty review. Original source notes remain in the historical archive.
+
+## Standardized evaluation
+
+The revised baseline uses [EleutherAI's Language Model Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness), pinned to Python package `lm-eval==0.4.13`. The [task guide](https://github.com/EleutherAI/lm-evaluation-harness/blob/main/docs/new_task_guide.md) describes full-continuation likelihood scoring, target delimiters and fixed few-shot examples. The implementation is exercised against the installed pinned package, not assumed compatible from current online documentation alone. Custom tasks remain our responsibility; using a standard evaluator does not validate the self-model construct.

@@ -1,5 +1,7 @@
 # Pilot protocol and technical appendix
 
+**Status update:** the original functional pilot failed its gate. Its outputs remain unchanged. The revised development-only harness baseline is a separate protocol, specified in [the handover](HANDOVER_BLACKWELL.md); passing it does not unlock this protocol's confirmation gate.
+
 ## Constructs
 
 We test whether interventions influence **contextual self-model use** differently from self-language. Correct role-conditioned answering is not private-state introspection. Pronouns do not measure consciousness.

@@ -1,5 +1,7 @@
 # Two-machine runbook
 
+**Current next run:** follow [HANDOVER_BLACKWELL.md](HANDOVER_BLACKWELL.md). The first GPU pilot is complete and failed the functional accuracy gate. The GPU commands below document the original protocol; its intervention sweeps are paused and are not the current work order.
+
 ## Local verification
 
 ```bash

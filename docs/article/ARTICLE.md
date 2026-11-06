@@ -1,6 +1,6 @@
 # When a Language Model Says “I”, What Is Doing the Work?
 
-*Research article in preparation. New experimental results are pending; historical examples are exploratory.*
+*Research article in preparation. The first GPU pilot failed its functional capability gate. Revised baseline evaluation and confirmatory results remain pending.*
 
 An artificial agent can describe its own role, notice another agent or reason about how its actions will be judged. What kind of representation of itself is the system using?
 
@@ -38,9 +38,13 @@ Archived examples show Gemma 2 2B continuations becoming more self-related after
 
 The original experiment did not measure self-monitoring ability, establish independent circuits or prove illusionism. Its plot showed vocabulary projections. The original record is retained rather than retrospectively presented as stronger evidence.
 
-## Results — pending registered runs
+## The first controlled pilot: a measurement hurdle
 
-No new empirical effect sizes belong here yet. The final article will include baseline failures, all task families, controls, uncertainty and degradation, including negative results.
+The first Blackwell baseline scored 48.5% on action ownership, 46.1% on information access and 32.0% on capability changes, averaging self and other judgments. All three missed the predefined 80% threshold. Interpreting small intervention effects as changes to a reliable self-model would therefore be premature.
+
+An audit also found a limitation in our answer scoring: it compared bare letter tokens immediately after `Answer:`, while the model usually preferred a newline and could represent space-prefixed letters with different tokens. We preserve those results and introduce a separate, fixed four-shot development protocol using EleutherAI's evaluation harness. This revision changes both prompting and scoring; any improvement cannot be attributed to whitespace alone. The [pilot review](../PILOT_REVIEW.md) records the evidence and unresolved questions.
+
+The revised GPU baseline and confirmatory results are pending. The final article will include baseline failures, all task families, controls, uncertainty and degradation, including negative results.
 
 - **Figure 2:** Full continuations chosen by a fixed selection rule.
 - **Figure 3:** Dose-response curves with scenario-level uncertainty.

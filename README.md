@@ -4,7 +4,10 @@ Can a language model's self-referential language and its use of a contextual sel
 
 We distinguish **self-language**, **functional self-models**, and **phenomenal consciousness**. The experiments address the first two; they do not settle the third.
 
-**Status:** research pipeline implemented; new Gemma pilot findings await execution on Blackwell. Historical outputs are exploratory examples, not evidence of independent consciousness circuits. CPU smoke outputs are explicitly synthetic.
+**Status:** the first Blackwell runs passed technical checks but failed the functional-task baseline. Large intervention sweeps are stopped. The next run uses pinned EleutherAI `lm-evaluation-harness` scoring and four fixed demonstrations on development data only. No functional dissociation or consciousness claim is established.
+
+- **[Next action: Blackwell handover](docs/HANDOVER_BLACKWELL.md)**
+- [Review of the first GPU results](docs/PILOT_REVIEW.md)
 
 - [Protocol and mathematics](docs/PROTOCOL.md)
 - [Two-machine runbook](docs/RUNBOOK.md)
@@ -31,18 +34,18 @@ uv run ruff format --check src tests scripts
 
 Smoke outputs are **not scientific results**, cannot unlock confirmation, and carry a watermark. Optional torch integration tests skip when torch is absent; see the runbook for CPU installation.
 
-## Blackwell computer: first real run
+## Blackwell computer: standard-harness baseline
 
 ```bash
-uv sync --locked --extra gpu
-uv run --extra gpu self-study validate configs/reference.json
-uv run --extra gpu self-study run configs/reference.json --out runs/reference --max-seconds 3600
-uv run --extra gpu self-study export runs/reference --out exports/reference.tar.gz
+uv sync --locked --extra gpu --extra eval
+uv run --extra gpu --extra eval self-study-harness validate configs/harness-baseline.json
+uv run --extra gpu --extra eval self-study-harness run configs/harness-baseline.json --out runs/harness-baseline-v1
+uv run --extra gpu --extra eval self-study-harness export runs/harness-baseline-v1 --out exports/harness-baseline-v1.tar.gz
 ```
 
-The default model is `google/gemma-2-2b`. Accept its access conditions and authenticate locally if required. Tokens are never recorded in manifests. A mirror must be explicitly configured; there is no automatic fallback or assumption of weight identity.
+The new configuration pins the same `unsloth/gemma-2-2b` commit as the first GPU runs. No automatic model fallback or assumption of weight identity is made. Local authentication, if needed, stays outside configurations and exports.
 
-Next run baseline, development and validation experiments as described in the runbook. Invocations are limited to eight hours and resume at trial boundaries. The limit is cooperative: an in-flight operation may finish after the deadline. Loading and calibration count against it.
+This baseline has 24 resumable scenario blocks and a one-hour cooperative invocation limit. It opens no validation or test data. Follow the handover to return the result archive through Git. Do not start the historical development/validation sweeps after it automatically.
 
 ## Interfaces and artifacts
 
@@ -57,4 +60,4 @@ Strict JSON defaults live in `src/self_model_study/config.py`. Validation report
 
 Runs record configuration, model/SAE commits, source hash, environment, dataset/checksum, saved directions, calibration, transactional trials and invocation history. Exports add JSONL, analysis, blinded rating sheets, a report and SVG/PDF/PNG figures where recorded comparisons support them.
 
-The main notebook now reads saved results; it neither downloads models nor independently implements experiments.
+The main notebook reads the original pipeline's saved results; it neither downloads models nor independently implements experiments. Harness runs have their own `report.md`, `analysis.json`, full library outputs and SVG/PDF/PNG figure exports, accessed through `self-study-harness`. They are not inputs to the old confirmation gate.

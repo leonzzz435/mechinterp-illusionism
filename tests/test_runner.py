@@ -137,6 +137,11 @@ def test_configs_are_loadable():
     from self_model_study.config import load_config
 
     for path in Path("configs").glob("*.json"):
+        if path.name == "harness-baseline.json":
+            from self_model_study.harness import load_spec
+
+            assert load_spec(path)["engine"] == "lm-eval"
+            continue
         assert load_config(path)["schema_version"] == 1
 
 

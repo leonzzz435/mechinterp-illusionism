@@ -14,10 +14,10 @@
 - [x] Paired scenario statistics, multiplicity corrections and conservative equivalence flags.
 - [x] Result-driven figures, blinded rating export, English draft and technical protocol.
 
-## Empirical milestones — pending Blackwell execution
+## Empirical milestones
 
-- [ ] Historical reference run and export.
-- [ ] HF/TL parity, SAE reconstruction and post-intervention integrity checks pass.
+- [x] Historical reference run and export.
+- [x] HF/TL parity, SAE reconstruction and post-intervention integrity checks pass.
 - [ ] Baseline capability and counterfactual consistency established.
 - [ ] Development/validation dose-response and degradation analysis complete.
 - [ ] Primary contrasts frozen and held-out confirmation run complete.
@@ -26,6 +26,14 @@
 - [ ] Final article written from verified evidence, reviewed and shared.
 
 ## Decisions and blockers
+
+The first Blackwell baseline failed all functional families (combined accuracy: ownership 48.5%, access 46.1%, capability 32.0%). See `docs/PILOT_REVIEW.md`. The large sweep is stopped. A fixed four-shot development baseline now uses `lm-evaluation-harness==0.4.13` with its native Hugging Face backend and full-continuation likelihood scoring. This new protocol is not a causal repair experiment and cannot unlock the original confirmation run.
+
+- [ ] Run the standard-harness baseline on Blackwell and review its export.
+- [ ] If it passes, verify the unchanged intervention path against that reference before new interventions.
+- [ ] Establish a revised validation protocol; inspect feature activation and delivered edit norms before interpreting ablation nulls.
+
+The abandoned format-search implementation was not committed or pushed. Validation/test data stay closed in the new harness path. The exact handover is `docs/HANDOVER_BLACKWELL.md`.
 
 The private machine lacks supported CUDA hardware for the study. New empirical results require Blackwell; CPU fixtures do not substitute for them. No remote access is configured.
 

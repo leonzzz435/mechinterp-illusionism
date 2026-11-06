@@ -1,0 +1,12 @@
+{
+  "phase": "reference",
+  "split": "development",
+  "model": {
+    "processing": "historical"
+  },
+  "generation": {
+    "seeds": [
+      42
+    ]
+  }
+}

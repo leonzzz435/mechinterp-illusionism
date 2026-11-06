@@ -1,0 +1,37 @@
+{
+  "backend": "mock",
+  "phase": "exploratory",
+  "split": "development",
+  "dataset": {
+    "counts": {
+      "development": 2,
+      "validation": 2,
+      "test": 3
+    },
+    "families": [
+      "ownership"
+    ]
+  },
+  "interventions": {
+    "directions": [
+      "feature:2728",
+      "feature:10230"
+    ],
+    "strengths": [
+      0.05
+    ],
+    "random_count": 1,
+    "ablate": [
+      2728,
+      10230
+    ]
+  },
+  "generation": {
+    "seeds": [
+      42
+    ]
+  },
+  "statistics": {
+    "bootstrap_samples": 1000
+  }
+}

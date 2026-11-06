@@ -1,0 +1,32 @@
+{
+  "phase": "exploratory",
+  "split": "development",
+  "dataset": {
+    "counts": {
+      "development": 4,
+      "validation": 40,
+      "test": 100
+    }
+  },
+  "generation": {
+    "seeds": [
+      42
+    ]
+  },
+  "interventions": {
+    "directions": [
+      "feature:2728",
+      "feature:10230"
+    ],
+    "strengths": [
+      -0.05,
+      0.05
+    ],
+    "random_count": 1,
+    "ablate": [
+      2728,
+      10230
+    ]
+  },
+  "max_seconds": 7200
+}

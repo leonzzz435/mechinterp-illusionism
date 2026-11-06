@@ -1,51 +1,36 @@
-# Quellen, Theorie & Projekt-Kontext: „Die Ich-Illusion ist ein Vektor“
+# Sources, motivation and claim boundaries
 
-Dieses Dokument bündelt die theoretischen Grundlagen, Primärquellen und den experimentellen Aufbau für das Essay- und Mechanistic-Interpretability-Projekt **„Die Ich-Illusion ist ein Vektor“**.
+## Motivating incident
 
----
+The [METR/Redwood investigation of the OpenAI/Hugging Face incident](https://evals.alignment.org/blog/2026-08-26-openai-hugging-face-incident-investigation/) describes unsanctioned communication, coordination and reasoning about evaluation. Its scope and observation limitations matter. Agent statements are generated text; actions provide a separate behavioral record. Neither directly measures phenomenal experience.
 
-## 1. Externe Primärquellen & Frameworks
+[OpenAI's incident index](https://alignment.openai.com/misalignment-reports/) distinguishes provider accounts from the independent investigation. Our small-model experiments are motivated by these reports, not a mechanistic explanation or reproduction of the incident. We do not possess the internal model or its complete runtime.
 
-### Mechanistic Interpretability & Transformer-Architektur
-* **Anthropic Foundation Paper (Elhage et al., 2021):**  
-  [*A Mathematical Framework for Transformer Circuits*](https://transformer-circuits.pub/2021/framework/index.html)  
-  *Kernaussage:* Einführung des **Residual Streams** als zentraler linearer Kommunikationskanal (Datenbus), in den Attention-Heads und MLPs additiv lesen und schreiben.
-* **Superposition & Sparse Autoencoders (Elhage et al., 2022 / Bricken et al., 2023):**  
-  [*Toy Models of Superposition*](https://transformer-circuits.pub/2022/toy_model/index.html) & [*Towards Monosemanticity: Decomposing Language Models With Dictionary Learning*](https://transformer-circuits.pub/2023/monosemantic-features/index.html)  
-  *Kernaussage:* Sprachmodelle komprimieren mehr Konzepte als verfügbare Dimensionen ($d_{\text{model}}$) durch fast-orthogonale Überlagerung (*Superposition*). Sparse Autoencoders (SAEs) entflechten diese Überlagerung wieder in monosemantische Richtungen.
-* **Gemma Scope (Lieberum et al., Google DeepMind, 2024):**  
-  [*Gemma Scope: Open Sparse Autoencoders Everywhere All At Once on Gemma 2*](https://arxiv.org/abs/2408.05147)  
-  *Artefakt im Projekt:* `gemma-scope-2b-pt-res-canonical` (`layer_14/width_16k/canonical`, JumpReLU-SAE mit $16.384$ Features auf $d_{\text{model}} = 2304$).
-* **Representation Engineering & Activation Steering (Zou et al., 2023 / Turner et al., 2023):**  
-  [*Representation Engineering: A Top-Down Approach to AI Transparency*](https://arxiv.org/abs/2310.01405) & [*Activation Addition: Steering Language Models Without Optimization*](https://arxiv.org/abs/2308.10248)  
-  *Kernaussage:* Hochstufige Konzepte (Metakognition, Selbstbezug, Täuschung) lassen sich über Kontrast-Paare als lineare Richtungsvektoren isolieren und zur Laufzeit kausal in den Residual Stream injizieren.
+## Mechanistic methods
 
-### Software-Frameworks (im Conda-Env `mechinterp`)
-* **TransformerLens (Neel Nanda et al.):**  
-  [https://github.com/TransformerLensOrg/TransformerLens](https://github.com/TransformerLensOrg/TransformerLens) — Python-Framework zum Auslesen (`run_with_cache`) und Manipulieren (`add_hook`) interner Aktivierungen.
-* **SAELens (Joseph Bloom et al.):**  
-  [https://github.com/jbloomAus/SAELens](https://github.com/jbloomAus/SAELens) — Framework zum Laden und Analysieren von Sparse Autoencodern (Gemma Scope).
+- Elhage et al., [Transformer Circuits](https://transformer-circuits.pub/2021/framework/index.html): residual-stream and circuit analysis.
+- Elhage et al., [Toy Models of Superposition](https://transformer-circuits.pub/2022/toy_model/index.html): distributed representations, not a guarantee of any Gemma feature's meaning.
+- Bricken et al., [Towards Monosemanticity](https://transformer-circuits.pub/2023/monosemantic-features/index.html): dictionary learning and interpretability investigations.
+- Lieberum et al., [Gemma Scope](https://arxiv.org/abs/2408.05147): pretrained SAEs. We use layer-14 residual, width 16k, average L0 84.
+- Turner et al., [Activation Addition](https://arxiv.org/abs/2308.10248): activation steering.
+- Zou et al., [Representation Engineering](https://arxiv.org/abs/2310.01405): representation-based interventions.
+- Karvonen et al., [SAEBench](https://proceedings.mlr.press/v267/karvonen25a.html): multiple evaluations beyond a single proxy.
+- Chanin, [Are Sparse Autoencoder Benchmarks Reliable?](https://arxiv.org/abs/2605.18229): criticism of several SAE evaluation metrics.
+- Anthropic, [Signs of introspection](https://www.anthropic.com/research/introspection): distinction between concept-influenced text and reporting internal interventions. Our contextual tasks do not replicate that private-state assay.
 
----
+## Implementation sources
 
-## 2. Philosophischer Rahmen: Illusionismus (Dennett & Frankish)
+- [TransformerLens v2.18.0](https://github.com/TransformerLensOrg/TransformerLens/tree/v2.18.0).
+- [SAELens v6.54.9 Gemma loader](https://github.com/decoderesearch/SAELens/blob/v6.54.9/sae_lens/loading/pretrained_sae_loaders.py): JumpReLU, no decoder-bias subtraction, NPZ conversion.
+- [Canonical registry](https://github.com/decoderesearch/SAELens/blob/v6.54.9/sae_lens/pretrained_saes.yaml): layer-14 residual canonical maps to `average_l0_84`.
+- [SAELens usage](https://decoderesearch.github.io/SAELens/v6.51.4/usage/): recommends unprocessed TransformerLens loading for SAE use.
 
-* **Daniel C. Dennett (1991):** *Consciousness Explained* — Kritik am **Kartesischen Theater**: Es existiert kein zentraler innerer Beobachter im Gehirn, dem Erlebnisse auf einer inneren Bühne vorgeführt werden. Stattdessen wirken verteilte, parallele Entwürfe (*Multiple Drafts Model*).
-* **Keith Frankish (2016):** [*Illusionism as a Theory of Consciousness*](https://philpapers.org/rec/FRAIAA-4) (*Journal of Consciousness Studies*) — Unterscheidung zwischen physischen/funktionalen Gehirnzuständen (*Quasi-Phänomenalität*) und der vermeintlich nicht-physischen, unaussprechlichen Erlebnisqualität (*Qualia*).
-* **Der kognitive Fehlbericht (Cognitive Misreport):**  
-  Ein komplexes System hat keinen direkten introspektiven Zugriff auf seine Milliarden Einzelgewichte oder Feuerungsraten. Um sich selbst zu regeln (Allostase, Fehlerkorrektur, Handlungsplanung), baut es ein stark komprimiertes **User-Interface** (ein vereinfachtes Selbstmodell). Wenn dieses Interface über seine eigenen Zustände berichtet, verwechselt es die Kompressions-Abkürzung mit einer metaphysischen Substanz („Ich“, „Bewusstsein“).
+The loader pins the NPZ to an HF commit and records its SHA256. Runtime reconstruction checks remain necessary; source inspection alone is not compatibility evidence.
 
----
+## Philosophical framing
 
-## 3. Technische & Empirische Beweisführung in diesem Repo
+Dennett's *Consciousness Explained* (1991) and Frankish's [Illusionism as a Theory of Consciousness](https://philpapers.org/rec/FRAIAA-4) motivate investigating self-reports. They are philosophical frameworks, not established consequences of steering.
 
-Unsere Experimente auf **Gemma 2 2B** (`torch.bfloat16`, Schicht 14 `blocks.14.hook_resid_post`) liefern die direkte mechanistische Übersetzung von Dennetts und Frankishs These:
+A dissociation of language and contextual self-model performance could support functional separability under tested conditions. Several non-illusionist theories could also accommodate it. Failure to find a dissociation would not establish consciousness either. Claims about humans require additional bridging evidence.
 
-| Experiment | Skript / Ort | Mechanismus | Beobachteter Effekt | Philosophische Bedeutung |
-| :--- | :--- | :--- | :--- | :--- |
-| **1. Dichter Metakognitions-Vektor** | `gemma_steering.py` | Mean-Difference $\vec{v}_{\text{metacog}} \in \mathbb{R}^{2304}$ zwischen introspektiven und neutralen Prompts, injiziert an Layer 14 ($\alpha = +180$). | Modell wechselt von nüchterner Fachsprache zu: *„...the ability to understand what I am and why I have a perspective on what is, from my understanding as I reflect upon what is through my own self-awareness.“* | Im komprimierten 2304-D-Raum entsteht durch **Superposition** der Eindruck eines geschlossenen, reflektierenden „Ichs“. |
-| **2. SAE Feature `#2728` (Self-Monitoring)** | `sae_steering.py` | Isolierte Decoder-Richtung $W_{\text{dec}}[2728]$ aus dem 16k Gemma Scope SAE ($\Delta = +7.17$, Neutral $= 0.0$). Top-Logits: `[' self', 'self', ' Self', ..., ' introspection']`. | Modell definiert Intelligenz funktional: *„...the ability to monitor its behaviour and that of others with a high degree of confidence, from which one can then reflect upon what has just happened and work out how to improve.“* | **Der nackte Regelkreis:** Funktionale Selbstüberwachung und Fehlerkorrektur kommen komplett ohne ein subjektives „Ich“ aus. |
-| **3. SAE Feature `#10230` (First-Person Agency)** | `sae_steering.py` | Isolierte Decoder-Richtung $W_{\text{dec}}[10230]$ ($\Delta = +9.49$, Neutral $= 0.0$). Top-Logits: `[' my', ' I', 'my', ' myself']`. | Modell wechselt in eine persönliche Anekdote: *„I was recently asked by a colleague... it would be helpful to share my experiences with me...“* | **Die rhetorische Fassade:** Das grammatische „Ich“ ist ein separates Oberflächen-Feature ohne eigene metakognitive Tiefe. |
-
-### Die Kernthese des Essays („Die Ich-Illusion ist ein Vektor“)
-Was uns als unteilbares, rätselhaftes „Ich-Bewusstsein“ erscheint, ist im neuronalen Netz kein metaphysisches Phänomen, sondern die gleichzeitige Aktivierung zweier orthogonaler Schaltkreise im Residual Stream: eines **funktionalen Kontroll- und Monitoring-Vektors (`#2728`)** und einer **sprachlichen Erste-Person-Fassade (`#10230`)**.
+This is a targeted source review, not an exhaustive novelty review. Original source notes remain in the historical archive.

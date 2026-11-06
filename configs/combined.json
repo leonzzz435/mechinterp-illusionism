@@ -1,0 +1,18 @@
+{
+  "phase": "combined",
+  "split": "validation",
+  "evidence_run": "runs/validation",
+  "interventions": {
+    "directions": [
+      "feature:2728",
+      "feature:10230"
+    ],
+    "strengths": [
+      -0.05,
+      0.05
+    ],
+    "random_count": 0,
+    "ablate": [],
+    "combine": true
+  }
+}

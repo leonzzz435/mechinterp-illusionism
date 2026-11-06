@@ -1,0 +1,10 @@
+{
+  "phase": "exploratory",
+  "split": "validation",
+  "interventions": {
+    "ablate": [
+      2728,
+      10230
+    ]
+  }
+}

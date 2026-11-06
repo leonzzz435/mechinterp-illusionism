@@ -1,0 +1,26 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints/
+
+# Environments
+.env
+.venv
+env/
+venv/
+miniconda3/
+
+# Hugging Face / Local Caches
+.cache/
+*.pt
+*.safetensors
+*.bin
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

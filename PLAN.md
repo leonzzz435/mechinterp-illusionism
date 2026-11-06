@@ -27,6 +27,21 @@
 
 ## Decisions and blockers
 
+### Current next step: action-task design before another model run
+
+- [x] Keep causal separation as the main question and illusionism as the philosophical motivation.
+- [x] Build a CPU-only executable permission-change task with self, named-self and other controls.
+- [x] Separate the unresolved scoring/root-cause question from the task's construct validity.
+- [x] Export a development design, oracle/shortcut checks and a clearly labeled design figure.
+- [ ] Review the concrete task; freeze model, scoring, counterfactual criteria and a small screening protocol.
+- [ ] Authorize and run a new bounded cloud job only after that protocol is concrete.
+
+See [the action-task design](docs/ACTION_TASK_DESIGN.md). This is a draft development pool,
+not new model evidence. No instruction-tuned/larger model was selected and no new GPU job
+was launched. The old 40/40/100 dataset and completed pilots are preserved.
+
+### Historical pilots and empirical blockers
+
 The first Blackwell baseline failed all functional families (combined accuracy: ownership 48.5%, access 46.1%, capability 32.0%). See `docs/PILOT_REVIEW.md`. The large sweep is stopped. A fixed four-shot development baseline now uses `lm-evaluation-harness==0.4.13` with its native Hugging Face backend and full-continuation likelihood scoring. This new protocol is not a causal repair experiment and cannot unlock the original confirmation run.
 
 - [x] Run the unchanged standard-harness baseline on Hugging Face Jobs and review its export.

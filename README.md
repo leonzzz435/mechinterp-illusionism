@@ -8,6 +8,7 @@ We distinguish **self-language**, **functional self-models**, and **phenomenal c
 
 - **[Cloud execution: Hugging Face Jobs](docs/HF_JOBS.md)**
 - **[Completed first cloud pilot: all functional gates failed](docs/HF_PILOT.md)**
+- **[Next step: executable action-task design, before another model run](docs/ACTION_TASK_DESIGN.md)**
 - [Optional Blackwell execution](docs/HANDOVER_BLACKWELL.md)
 - [Review of the first GPU results](docs/PILOT_REVIEW.md)
 
@@ -69,9 +70,15 @@ self-study validate CONFIG [--freeze PROTOCOL.json --evidence VALIDATION_RUN]
 self-study run CONFIG --out RUN [--max-jobs N] [--max-seconds N]
 self-study analyze RUN [--ratings CSV]
 self-study export RUN --out ARCHIVE.tar.gz
+self-study design --out DIRECTORY [--seed 1729] [--scenarios 40]
 ```
 
 Strict JSON defaults live in `src/self_model_study/config.py`. Validation reports job counts without loading models. Ordinary validation does not materialize test prompts.
+
+`design` exports a CPU-only draft with permission transitions, self/named-self/other controls,
+simulator checks and an SVG/PDF/PNG illustration. It performs no model inference and cannot
+unlock confirmation. Use a new output directory; model-facing prompts and oracle metadata
+are exported separately. See the [design rationale and open scoring question](docs/ACTION_TASK_DESIGN.md).
 
 Runs record configuration, model/SAE commits, source hash, environment, dataset/checksum, saved directions, calibration, transactional trials and invocation history. Exports add JSONL, analysis, blinded rating sheets, a report and SVG/PDF/PNG figures where recorded comparisons support them.
 

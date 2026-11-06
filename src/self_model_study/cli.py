@@ -38,6 +38,12 @@ def main(argv=None):
     )
     export.add_argument("run", type=Path)
     export.add_argument("--out", required=True, type=Path)
+    design = commands.add_parser(
+        "design", help="Export the CPU-only action-task draft; no model run"
+    )
+    design.add_argument("--out", required=True, type=Path)
+    design.add_argument("--seed", type=int, default=1729)
+    design.add_argument("--scenarios", type=int, default=40)
     args = parser.parse_args(argv)
     try:
         if args.command in {"validate", "run"}:
@@ -87,6 +93,10 @@ def main(argv=None):
             with run_lock(args.run):
                 result = analyze(args.run, args.ratings)
             result = {k: result[k] for k in ("run_id", "status", "complete", "errors", "synthetic")}
+        elif args.command == "design":
+            from .action_task import export_design
+
+            result = export_design(args.out, args.seed, args.scenarios)
         else:
             result = export_run(args.run, args.out)
         print(canonical(result))

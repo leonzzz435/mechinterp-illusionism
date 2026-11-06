@@ -46,6 +46,15 @@ An audit also found a limitation in our answer scoring: it compared bare letter 
 
 The revised baseline subsequently completed on an HF Jobs L4: 43.4%, 50.8% and 41.4% accuracy on the same three families, across eight development scenarios per family. It also failed the capability gate. The [cloud pilot report](../HF_PILOT.md) records the fixed protocol and verified artifacts. This ends the current functional pilot; confirmatory results remain pending. The final article will include baseline failures, all task families, controls, uncertainty and degradation, including negative results.
 
+The scorer limitation and the remaining low performance should not be conflated: replacing
+the scorer did not establish a unique cause of the failure. Separately, role-conditioned
+questions may chiefly measure reading comprehension. Our [next task design](../ACTION_TASK_DESIGN.md)
+therefore binds commands to connections in a small executable simulator. A permission change
+determines which command can actually add a marker. Self, named-self and other-directed
+conditions distinguish action selection from reference wording. This is a development
+design, not a new result; even success would concern supplied contextual roles, not private
+introspection.
+
 - **Figure 2:** Full continuations chosen by a fixed selection rule.
 - **Figure 3:** Dose-response curves with scenario-level uncertainty.
 - **Figure 4:** Self-language change alongside contextual-task accuracy change. Separation is a hypothesis, not a promised result.
@@ -62,6 +71,13 @@ The current generation and choice assays edit different sets of token positions.
 ## Returning to consciousness
 
 Illusionist approaches make construction of self-reports an interesting explanatory target. Functional separability could inform that target; other philosophical positions could accommodate it too.
+
+The motivating intuition is that an apparently unified speaker may be assembled from
+distinguishable processes: describing a perspective, keeping track of a role and selecting
+an available action. Making those processes experimentally tractable gives the philosophical
+question substance. The proposed action experiment asks about one of these links; it does
+not assume that a fluent self-description reveals an inner observer, or that removing such
+a description would remove experience.
 
 Our question is how observable components of self-related behavior are implemented and connected. A pronoun, a latent feature or a striking quotation cannot establish the presence or absence of subjective experience.
 

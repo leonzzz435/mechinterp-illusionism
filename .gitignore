@@ -34,3 +34,4 @@ protocols/
 .ruff_cache/
 dist/
 *.egg-info/
+.hf-jobs/

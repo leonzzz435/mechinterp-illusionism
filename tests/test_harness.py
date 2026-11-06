@@ -85,7 +85,15 @@ def test_resume_partial_export_error_retention_and_checksum(spec, tmp_path):
     # An interruption before manifest creation must allow initialization again.
     (directory / "source/self_model_study").mkdir(parents=True)
     write_json(directory / "plan.json", {"incomplete_setup_fixture": True})
-    assert run(spec, directory, 1, factory, fake_evaluate)["status"] == "paused"
+    saved = []
+
+    def checkpoint(path):
+        # The cloud callback sees durable, auditable blocks, including final status.
+        report = summarize(path)
+        saved.append((report["status"], report["n_trials"]))
+
+    assert run(spec, directory, 1, factory, fake_evaluate, checkpoint)["status"] == "paused"
+    assert saved == [("running", 0), ("running", 32), ("paused", 32)]
     first = (directory / "blocks/ownership-0000.json").read_bytes()
     assert run(spec, directory, 1, factory, fake_evaluate)["status"] == "paused"
     assert (directory / "blocks/ownership-0000.json").read_bytes() == first

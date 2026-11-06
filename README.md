@@ -6,7 +6,8 @@ We distinguish **self-language**, **functional self-models**, and **phenomenal c
 
 **Status:** the first Blackwell runs passed technical checks but failed the functional-task baseline. Large intervention sweeps are stopped. The next run uses pinned EleutherAI `lm-evaluation-harness` scoring and four fixed demonstrations on development data only. No functional dissociation or consciousness claim is established.
 
-- **[Next action: Blackwell handover](docs/HANDOVER_BLACKWELL.md)**
+- **[Next action: run the existing baseline on Hugging Face Jobs](docs/HF_JOBS.md)**
+- [Optional Blackwell execution](docs/HANDOVER_BLACKWELL.md)
 - [Review of the first GPU results](docs/PILOT_REVIEW.md)
 
 - [Protocol and mathematics](docs/PROTOCOL.md)
@@ -34,7 +35,20 @@ uv run ruff format --check src tests scripts
 
 Smoke outputs are **not scientific results**, cannot unlock confirmation, and carry a watermark. Optional torch integration tests skip when torch is absent; see the runbook for CPU installation.
 
-## Blackwell computer: standard-harness baseline
+## Cloud: standard-harness baseline
+
+The next execution uses Hugging Face Jobs with one L4 GPU and a fixed timeout. The experiment stays unchanged. The [cloud handover](docs/HF_JOBS.md) covers local login, the approved first-run budget, submission, logs and automatic checkpoint persistence to a private HF repository. The launcher does not install GPU dependencies on this computer.
+
+```bash
+uv run --script scripts/hf_jobs.py plan --namespace YOUR_HF_NAME --budget-usd 10
+uv run --script scripts/hf_jobs.py submit --namespace YOUR_HF_NAME --budget-usd 10
+uv run --script scripts/hf_jobs.py status
+uv run --script scripts/hf_jobs.py fetch
+```
+
+Cloud execution is pending account setup; CPU tests do not establish cloud GPU compatibility.
+
+## Optional Blackwell execution
 
 ```bash
 uv sync --locked --extra gpu --extra eval

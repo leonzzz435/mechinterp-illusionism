@@ -1,6 +1,6 @@
 # Arbeitsrechner: standardisierte Baseline v1
 
-**Diese Anleitung ist der nächste Arbeitsauftrag. Die alten großen Sweeps bleiben gestoppt.**
+**Der aktuelle Arbeitsauftrag steht in [HF_JOBS.md](HF_JOBS.md).** Diese Anleitung bleibt als optionale lokale Ausführung erhalten. Die alten großen Sweeps bleiben gestoppt; keinen zweiten Lauf parallel zur Cloud starten.
 
 Wir prüfen mit EleutherAIs `lm-evaluation-harness==0.4.13`, ob Gemma die drei Aufgabenfamilien zuverlässig löst. Das Harness übernimmt Prompt-Aufbau, Tokenisierung, vollständige Antwort-Log-Likelihoods und Accuracy. Unser Code liefert Aufgaben, überprüft die gespeicherten Ergebnisse und organisiert fortsetzbare Blöcke.
 

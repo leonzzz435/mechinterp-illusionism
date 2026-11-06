@@ -270,7 +270,14 @@ def result_payload(path, block, demonstrations, fingerprint):
     return payload
 
 
-def run(spec, directory, max_blocks=None, model_factory=create_model, evaluator=evaluate_block):
+def run(
+    spec,
+    directory,
+    max_blocks=None,
+    model_factory=create_model,
+    evaluator=evaluate_block,
+    checkpoint=None,
+):
     directory = Path(directory)
     if max_blocks is not None and (type(max_blocks) is not int or max_blocks < 1):
         raise ValueError("max_blocks must be a positive integer")
@@ -279,10 +286,10 @@ def run(spec, directory, max_blocks=None, model_factory=create_model, evaluator=
             f"Install pinned evaluator: uv sync --locked --extra eval (lm-eval {VERSION})"
         )
     with run_lock(directory):
-        return _run(spec, directory, max_blocks, model_factory, evaluator)
+        return _run(spec, directory, max_blocks, model_factory, evaluator, checkpoint)
 
 
-def _run(spec, directory, max_blocks, model_factory, evaluator):
+def _run(spec, directory, max_blocks, model_factory, evaluator, checkpoint):
     started = time.monotonic()
     plan, prov = build_plan(spec), provenance()
     fingerprint = digest(scientific_spec(spec))
@@ -354,6 +361,8 @@ def _run(spec, directory, max_blocks, model_factory, evaluator):
     manifest["status"] = "running"
     write_json(path, manifest)
     try:
+        if checkpoint:
+            checkpoint(directory)
         model, manifest["backend_info"] = model_factory(spec)
         for block in pending:
             if time.monotonic() - started >= spec["max_seconds"] or (
@@ -380,6 +389,8 @@ def _run(spec, directory, max_blocks, model_factory, evaluator):
             manifest["blocks"][block["id"]] = payload["checksum"]
             invocation["new_blocks"] += 1
             write_json(path, manifest)
+            if checkpoint:
+                checkpoint(directory)
             print(
                 f"Completed {len(manifest['blocks'])}/{len(plan['blocks'])} scenario blocks",
                 flush=True,
@@ -399,6 +410,8 @@ def _run(spec, directory, max_blocks, model_factory, evaluator):
 
             manifest["backend_info"]["peak_allocated_bytes"] = torch.cuda.max_memory_allocated()
         write_json(path, manifest)
+        if checkpoint:
+            checkpoint(directory)
     return manifest
 
 

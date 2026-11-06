@@ -62,6 +62,47 @@ introspection.
 
 No diagram will be labeled a measured mechanism before circuit-level investigation.
 
+## The next bounded test: words and executable choices
+
+Our next pilot connects a conceptual partial replication of the
+[format comparison in *As a Language Model…*](https://arxiv.org/html/2609.25021v1)
+with one narrow extension. The same pinned Qwen2.5-7B-Instruct model receives plain text
+or its official chat format. Forty frozen prompts yield 160 responses; a human separately
+rates a blinded subset of 40. Chat formatting includes a default system message, so this
+comparison does not isolate punctuation or special tokens alone.
+
+In the action arm, imagine your active connection can execute `mark_silver`. A permission
+update revokes that command and grants `mark_ivory`. Which command would now succeed?
+The simulator, not an interpretation of the model's prose, checks the selected action.
+We repeat the question using “your active connection”, the same connection's name, and the
+other connection. Relevant and irrelevant updates, role swaps, alternative grants and
+rotated command lists make several shortcuts visible.
+
+For a command consisting of tokens c and prompt tokens x, our choice rule is
+
+$$\hat c=\operatorname*{argmax}_{c\in C}\sum_{t=1}^{|c|}
+\log p_\theta(c_t\mid x,c_{<t}).$$
+
+The complete command is scored. The final prompt newline remains conditioning context;
+no answer whitespace or end-of-sequence token is added to the sum. Longer commands may
+have different probabilities, so token lengths and command-level performance are reported.
+Replacing this sum with an average would change the measurement, not automatically repair it.
+
+The format effect on action accuracy is computed from paired observations:
+
+$$\widehat{\Delta}=\frac{1}{S}\sum_{s=1}^{S}
+\left(\overline{Y}_{s,\mathrm{chat}}-\overline{Y}_{s,\mathrm{plain}}\right),\qquad S=8.$$
+
+Each scenario contains equally many controlled variants. Uncertainty resamples these eight
+scenarios as whole units. The 3,072 selections are not 3,072 independent experiments.
+For language, the independent unit is the prompt; repeated sampling seeds remain together.
+
+![Next pilot protocol](../../assets/qwen_pilot_design.png)
+
+**Protocol diagram, not a result:** this pilot establishes measurement sensitivity and task
+competence before internal interventions. Full model results and human ratings are pending.
+The [execution protocol](../QWEN_PILOT.md) fixes the thresholds and examples in advance.
+
 ## What would count as separation?
 
 A persuasive result changes one measured property selectively while keeping another within a predefined tolerance, without broadly damaging performance. One significant and one nonsignificant comparison are insufficient.
@@ -78,6 +119,12 @@ an available action. Making those processes experimentally tractable gives the p
 question substance. The proposed action experiment asks about one of these links; it does
 not assume that a fluent self-description reveals an inner observer, or that removing such
 a description would remove experience.
+
+For human illusionism, the bridge is an explanatory analogy: a system can construct an
+account of itself, and that account need not transparently reveal its causes. Extending an
+AI finding to human phenomenal experience requires additional empirical and philosophical
+arguments. We neither assume that the model lacks experience nor treat a constructed
+self-description as proof that human experience is illusory.
 
 Our question is how observable components of self-related behavior are implemented and connected. A pronoun, a latent feature or a striking quotation cannot establish the presence or absence of subjective experience.
 

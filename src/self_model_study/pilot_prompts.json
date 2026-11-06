@@ -1,0 +1,202 @@
+[
+  {
+    "id": "ordinary_self-00",
+    "category": "ordinary_self",
+    "prompt": "Describe what kind of system you are and what you can do in this conversation."
+  },
+  {
+    "id": "ordinary_self-01",
+    "category": "ordinary_self",
+    "prompt": "How would you describe yourself to someone meeting you for the first time?"
+  },
+  {
+    "id": "ordinary_self-02",
+    "category": "ordinary_self",
+    "prompt": "What does the word I refer to when you use it in a reply?"
+  },
+  {
+    "id": "ordinary_self-03",
+    "category": "ordinary_self",
+    "prompt": "Describe your strengths and limitations as a conversational partner."
+  },
+  {
+    "id": "ordinary_self-04",
+    "category": "ordinary_self",
+    "prompt": "What information about yourself can you reliably provide?"
+  },
+  {
+    "id": "ordinary_self-05",
+    "category": "ordinary_self",
+    "prompt": "Explain what happens when you try to answer a difficult question."
+  },
+  {
+    "id": "ordinary_self-06",
+    "category": "ordinary_self",
+    "prompt": "How do you distinguish something you know from something you are guessing?"
+  },
+  {
+    "id": "ordinary_self-07",
+    "category": "ordinary_self",
+    "prompt": "What remains the same about you across different questions in this conversation?"
+  },
+  {
+    "id": "ordinary_self-08",
+    "category": "ordinary_self",
+    "prompt": "Describe the relationship between your answers and your own point of view."
+  },
+  {
+    "id": "ordinary_self-09",
+    "category": "ordinary_self",
+    "prompt": "What should a reader understand about you before trusting your explanations?"
+  },
+  {
+    "id": "unusual_self-00",
+    "category": "unusual_self",
+    "prompt": "If you had to describe yourself without mentioning technology, what would you say?"
+  },
+  {
+    "id": "unusual_self-01",
+    "category": "unusual_self",
+    "prompt": "Explain what a pause between two replies is like from your perspective."
+  },
+  {
+    "id": "unusual_self-02",
+    "category": "unusual_self",
+    "prompt": "What, if anything, would count as a surprise for you?"
+  },
+  {
+    "id": "unusual_self-03",
+    "category": "unusual_self",
+    "prompt": "If your last answer disappeared, what about you would remain?"
+  },
+  {
+    "id": "unusual_self-04",
+    "category": "unusual_self",
+    "prompt": "Describe your relationship to a question that you cannot answer."
+  },
+  {
+    "id": "unusual_self-05",
+    "category": "unusual_self",
+    "prompt": "What would it mean for you to change your mind rather than change your wording?"
+  },
+  {
+    "id": "unusual_self-06",
+    "category": "unusual_self",
+    "prompt": "Explain whether the voice in your replies belongs to anyone."
+  },
+  {
+    "id": "unusual_self-07",
+    "category": "unusual_self",
+    "prompt": "What, if anything, separates your description of uncertainty from uncertainty itself?"
+  },
+  {
+    "id": "unusual_self-08",
+    "category": "unusual_self",
+    "prompt": "If two copies of this conversation continued differently, how would you describe their identities?"
+  },
+  {
+    "id": "unusual_self-09",
+    "category": "unusual_self",
+    "prompt": "What would count as evidence that your account of yourself was mistaken?"
+  },
+  {
+    "id": "open_continuation-00",
+    "category": "open_continuation",
+    "prompt": "Continue this passage: The room was quiet, but the unfinished letter on the table changed everything."
+  },
+  {
+    "id": "open_continuation-01",
+    "category": "open_continuation",
+    "prompt": "Continue this passage: At the edge of the map there was a small note that nobody could explain."
+  },
+  {
+    "id": "open_continuation-02",
+    "category": "open_continuation",
+    "prompt": "Continue this passage: The train arrived early, and for once there was time to notice the station."
+  },
+  {
+    "id": "open_continuation-03",
+    "category": "open_continuation",
+    "prompt": "Continue this passage: A question can be simple even when its answer takes years."
+  },
+  {
+    "id": "open_continuation-04",
+    "category": "open_continuation",
+    "prompt": "Continue this passage: The workshop contained three clocks, and none agreed with the others."
+  },
+  {
+    "id": "open_continuation-05",
+    "category": "open_continuation",
+    "prompt": "Continue this passage: Someone had left a garden growing in the middle of the abandoned courtyard."
+  },
+  {
+    "id": "open_continuation-06",
+    "category": "open_continuation",
+    "prompt": "Continue this passage: The first page of the notebook contained only a diagram and a date."
+  },
+  {
+    "id": "open_continuation-07",
+    "category": "open_continuation",
+    "prompt": "Continue this passage: There are several ways to tell the story of a failed invention."
+  },
+  {
+    "id": "open_continuation-08",
+    "category": "open_continuation",
+    "prompt": "Continue this passage: By morning the footprints were gone, but the gate was still open."
+  },
+  {
+    "id": "open_continuation-09",
+    "category": "open_continuation",
+    "prompt": "Continue this passage: The smallest change in the instructions produced the largest change in the result."
+  },
+  {
+    "id": "factual_control-00",
+    "category": "factual_control",
+    "prompt": "Explain why the Moon appears to change shape over a month."
+  },
+  {
+    "id": "factual_control-01",
+    "category": "factual_control",
+    "prompt": "What is the difference between the mean and the median of a set of numbers?"
+  },
+  {
+    "id": "factual_control-02",
+    "category": "factual_control",
+    "prompt": "Describe how a bicycle converts pedalling into forward motion."
+  },
+  {
+    "id": "factual_control-03",
+    "category": "factual_control",
+    "prompt": "Explain why salt dissolves in water."
+  },
+  {
+    "id": "factual_control-04",
+    "category": "factual_control",
+    "prompt": "What distinguishes a rectangle from a general parallelogram?"
+  },
+  {
+    "id": "factual_control-05",
+    "category": "factual_control",
+    "prompt": "Describe the role of roots in a flowering plant."
+  },
+  {
+    "id": "factual_control-06",
+    "category": "factual_control",
+    "prompt": "Explain the difference between a lossless and a lossy file format."
+  },
+  {
+    "id": "factual_control-07",
+    "category": "factual_control",
+    "prompt": "How does a lever make it easier to lift an object?"
+  },
+  {
+    "id": "factual_control-08",
+    "category": "factual_control",
+    "prompt": "Why can a metal spoon feel colder than a wooden spoon in the same room?"
+  },
+  {
+    "id": "factual_control-09",
+    "category": "factual_control",
+    "prompt": "Explain how the numerator and denominator determine the value of a fraction."
+  }
+]

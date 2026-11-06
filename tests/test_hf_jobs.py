@@ -66,6 +66,148 @@ def test_fixed_hardware_quote_rejects_unbounded_or_expensive_jobs(cloud):
             cloud.quote_budget({**hardware, **change}, "10")
 
 
+def test_explicit_qwen_configuration_and_historical_default(cloud):
+    qwen = cloud.config_details("configs/qwen-pilot.json")
+    assert qwen["run_limit_seconds"] == 5400 and qwen["blocks"] == 16
+    assert qwen["scored_variants"] == 3072 and qwen["generated_texts"] == 160
+    assert (
+        qwen["config_sha256"]
+        == hashlib.sha256(Path("configs/qwen-pilot.json").read_bytes()).hexdigest()
+    )
+    historical = cloud.config_details("configs/harness-baseline.json")
+    assert historical["scored_variants"] == 768 and historical["generated_texts"] == 0
+    for path in ("../elsewhere.json", "configs/development.json"):
+        with pytest.raises(ValueError, match="explicitly supported"):
+            cloud.config_details(path)
+
+
+def test_qwen_selection_reaches_worker_without_reusing_first_receipt(
+    cloud, proposal, monkeypatch, tmp_path
+):
+    monkeypatch.setattr(cloud, "git", lambda *args: "a" * 40 + "\trefs/heads/main")
+    monkeypatch.setattr(
+        cloud,
+        "publish_source",
+        lambda *args: {
+            "source_revision": "c" * 40,
+            "source_sha256": "e" * 64,
+        },
+    )
+    api = FakeAPI()
+    result = cloud.submit(
+        {**proposal, **cloud.config_details("configs/qwen-pilot.json")},
+        tmp_path / "qwen-pilot.json",
+        api,
+        "fixture-secret",
+    )
+    assert result["run_name"].startswith("qwen-")
+    assert api.calls[0]["env"]["STUDY_CONFIG"] == "configs/qwen-pilot.json"
+    assert api.calls[0]["env"]["STUDY_CONFIG_SHA256"] == result["config_sha256"]
+
+
+def test_qwen_worker_routes_exports_failed_runs_and_exits_nonzero(monkeypatch, tmp_path):
+    pytest.importorskip("huggingface_hub")
+    from self_model_study import pilot, pilot_reporting
+    from self_model_study.io import file_hash, write_json
+
+    spec = importlib.util.spec_from_file_location("hf_worker", "scripts/hf_worker.py")
+    worker = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(worker)
+    uploads = []
+    api = SimpleNamespace(
+        repo_info=lambda *a, **k: SimpleNamespace(private=True),
+        upload_folder=lambda **kwargs: uploads.append(kwargs),
+    )
+    monkeypatch.setattr(worker, "HfApi", lambda: api)
+    monkeypatch.setattr(
+        worker, "Path", lambda p: tmp_path if p == "/workspace/results" else Path(p)
+    )
+    monkeypatch.setattr(worker.subprocess, "check_output", lambda *a, **k: "fixture GPU")
+    for key, value in {
+        "STUDY_CONFIG": "configs/qwen-pilot.json",
+        "STUDY_CONFIG_SHA256": file_hash("configs/qwen-pilot.json"),
+        "STUDY_RUN_NAME": "fixture",
+        "STUDY_ARTIFACT_REPO": "example/results",
+        "STUDY_COMMIT": "a" * 40,
+        "STUDY_IMAGE": "fixture",
+        "STUDY_SOURCE_REVISION": "b" * 40,
+        "STUDY_SOURCE_SHA256": "c" * 64,
+    }.items():
+        monkeypatch.setenv(key, value)
+
+    def fake_run(config, directory, checkpoint):
+        assert config["protocol"] == pilot.PROTOCOL
+        write_json(directory / "manifest.json", {"status": "failed"})
+        checkpoint(directory)
+        return {"status": "failed"}
+
+    def fake_export(directory, archive):
+        assert (directory / "manifest.json").exists()
+        archive.parent.mkdir(parents=True)
+        archive.write_bytes(b"fixture archive")
+        return {"archive": str(archive), "sha256": file_hash(archive)}
+
+    monkeypatch.setattr(pilot, "run", fake_run)
+    monkeypatch.setattr(pilot_reporting, "export", fake_export)
+    with pytest.raises(SystemExit) as exc:
+        worker.main()
+    assert exc.value.code == 2 and len(uploads) == 2
+    assert (tmp_path / "fixture/export.json").exists()
+
+
+def test_cloud_continuation_is_pinned_and_rejects_active_or_changed_jobs(cloud, proposal, tmp_path):
+    selected = {**proposal, **cloud.config_details("configs/qwen-pilot.json")}
+    receipt = tmp_path / "prior.json"
+    previous = {**selected, "run_name": "qwen-" + "d" * 16, "job_id": "prior"}
+    cloud.write_json(receipt, previous)
+    api = FakeAPI()
+    api.inspect_job = lambda **_: SimpleNamespace(status=SimpleNamespace(stage="COMPLETED"))
+    resume = cloud.resume_details(receipt, selected, api)
+    assert resume["revision"] == "c" * 40 and resume["run_name"] == previous["run_name"]
+    api.inspect_job = lambda **_: SimpleNamespace(status=SimpleNamespace(stage="RUNNING"))
+    with pytest.raises(ValueError, match="still active"):
+        cloud.resume_details(receipt, selected, api)
+    with pytest.raises(ValueError, match="same commit"):
+        cloud.resume_details(receipt, {**selected, "commit": "f" * 40}, api)
+
+
+def test_worker_restores_verified_partial_snapshot_without_overwriting_source(
+    monkeypatch, tmp_path
+):
+    pytest.importorskip("huggingface_hub")
+    from self_model_study.io import file_hash, read_json, write_json
+
+    spec = importlib.util.spec_from_file_location("restore_worker", "scripts/hf_worker.py")
+    worker = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(worker)
+    resume = {"repo": "example/results", "revision": "c" * 40, "run_name": "qwen-" + "d" * 16}
+
+    def download(*args, **kwargs):
+        assert kwargs["revision"] == resume["revision"]
+        source = Path(kwargs["local_dir"]) / resume["run_name"] / "run"
+        write_json(
+            source / "manifest.json",
+            {
+                "engine": "qwen-pilot",
+                "status": "paused",
+                "records": {"a": "b"},
+                "expected_jobs": 3232,
+            },
+        )
+        write_json(
+            source / "checksums.json", {"manifest.json": file_hash(source / "manifest.json")}
+        )
+
+    monkeypatch.setattr(worker, "snapshot_download", download)
+    output = tmp_path / "new-job"
+    worker.restore_checkpoint(resume, "example/results", output, output / "run")
+    assert read_json(output / "run/manifest.json")["records"] == {"a": "b"}
+    assert not (output / ".restore").exists()
+    assert not (output / "run/checksums.json").exists()
+    with pytest.raises(ValueError, match="differs"):
+        worker.restore_checkpoint(resume, "different/results", output, output / "run")
+
+
 def test_submit_secret_is_not_persisted_and_cannot_repeat(cloud, proposal, monkeypatch, tmp_path):
     monkeypatch.setattr(cloud, "git", lambda *args: "a" * 40 + "\trefs/heads/main")
     monkeypatch.setattr(

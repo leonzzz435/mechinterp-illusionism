@@ -6,9 +6,15 @@ We distinguish **self-language**, **functional self-models**, and **phenomenal c
 
 **Status:** the first Blackwell runs passed technical checks but failed the functional-task baseline. The revised four-shot development baseline also failed its capability gates, using pinned EleutherAI `lm-evaluation-harness` on HF Jobs. Cloud execution and result retrieval work; large intervention sweeps remain stopped. No functional dissociation or consciousness claim is established.
 
+The next bounded **Qwen reference/action pilot is implemented for CPU verification and cloud
+preparation**. It compares plain/chat self-language and zero-shot permission use. No Qwen
+model results or human ratings exist yet; a new paid job requires its own authorization.
+
+- **[Qwen pilot: frozen protocol, verification and execution handover](docs/QWEN_PILOT.md)**
+
 - **[Cloud execution: Hugging Face Jobs](docs/HF_JOBS.md)**
 - **[Completed first cloud pilot: all functional gates failed](docs/HF_PILOT.md)**
-- **[Next step: executable action-task design, before another model run](docs/ACTION_TASK_DESIGN.md)**
+- **[Executable action-task design and construct limits](docs/ACTION_TASK_DESIGN.md)**
 - **[Independent reviewer: start here, including offline raw-data verification](docs/REVIEW_GUIDE.md)**
 - [Optional Blackwell execution](docs/HANDOVER_BLACKWELL.md)
 - [Review of the first GPU results](docs/PILOT_REVIEW.md)
@@ -66,6 +72,11 @@ This baseline has 24 resumable scenario blocks and a one-hour cooperative invoca
 
 ## Interfaces and artifacts
 
+The Qwen pilot uses the main CLI with `configs/qwen-pilot.json`. Its own versioned protocol,
+analysis and export are isolated from the original confirmation workflow. An optional
+`self-study validate configs/qwen-pilot.json --tokenizer-check` audits the actual tokenizer
+on CPU without loading weights. See the Qwen handover before any submission.
+
 ```text
 self-study validate CONFIG [--freeze PROTOCOL.json --evidence VALIDATION_RUN]
 self-study run CONFIG --out RUN [--max-jobs N] [--max-seconds N]
@@ -79,7 +90,7 @@ Strict JSON defaults live in `src/self_model_study/config.py`. Validation report
 `design` exports a CPU-only draft with permission transitions, self/named-self/other controls,
 simulator checks and an SVG/PDF/PNG illustration. It performs no model inference and cannot
 unlock confirmation. Use a new output directory; model-facing prompts and oracle metadata
-are exported separately. See the [design rationale and open scoring question](docs/ACTION_TASK_DESIGN.md).
+are exported separately. See the [design rationale and scoring requirements](docs/ACTION_TASK_DESIGN.md).
 
 Runs record configuration, model/SAE commits, source hash, environment, dataset/checksum, saved directions, calibration, transactional trials and invocation history. Exports add JSONL, analysis, blinded rating sheets, a report and SVG/PDF/PNG figures where recorded comparisons support them.
 

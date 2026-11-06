@@ -6,7 +6,7 @@ from pathlib import Path
 from .analysis import analyze
 from .config import load_config
 from .data import dataset_summary
-from .io import canonical
+from .io import canonical, read_json
 from .reporting import export_run
 from .runner import expected_jobs, freeze_protocol, rows_for, run, verify_protocol
 from .storage import run_lock
@@ -21,6 +21,11 @@ def main(argv=None):
     validate.add_argument("config", type=Path)
     validate.add_argument("--freeze", type=Path)
     validate.add_argument("--evidence", type=Path)
+    validate.add_argument(
+        "--tokenizer-check",
+        action="store_true",
+        help="Qwen only: audit pinned tokenizer on CPU, no model weights",
+    )
     execute = commands.add_parser("run", help="Start/resume a bounded, journaled run")
     execute.add_argument("config", type=Path)
     execute.add_argument("--out", required=True, type=Path)
@@ -46,6 +51,16 @@ def main(argv=None):
     design.add_argument("--scenarios", type=int, default=40)
     args = parser.parse_args(argv)
     try:
+        if args.command in {"validate", "run"}:
+            pilot = read_json(args.config).get("engine") == "qwen-pilot"
+        elif args.command in {"analyze", "export"}:
+            pilot = read_json(args.run / "manifest.json").get("engine") == "qwen-pilot"
+        else:
+            pilot = False
+        if pilot:
+            return pilot_command(args)
+        if args.command == "validate" and args.tokenizer_check:
+            raise ValueError("--tokenizer-check is available only for the Qwen pilot")
         if args.command in {"validate", "run"}:
             config = load_config(args.config)
         if args.command == "validate":
@@ -103,6 +118,34 @@ def main(argv=None):
         return 0
     except (ValueError, RuntimeError, OSError, ImportError) as exc:
         parser.exit(2, f"Error: {exc}\n")
+
+
+def pilot_command(args):
+    from . import pilot
+    from .pilot_analysis import analyze as pilot_analyze
+    from .pilot_reporting import export as pilot_export
+
+    if args.command in {"validate", "run"}:
+        spec = pilot.load_spec(args.config)
+    if args.command == "validate":
+        if args.freeze or args.evidence:
+            raise ValueError("The Qwen development pilot cannot freeze/unlock confirmation")
+        result = pilot.tokenizer_audit(spec) if args.tokenizer_check else pilot.preview(spec)
+    elif args.command == "run":
+        if args.max_seconds is not None:
+            spec["max_seconds"] = args.max_seconds
+        result = pilot.run(spec, args.out, max_jobs=args.max_jobs)
+        result = {k: result[k] for k in ("run_id", "status", "expected_jobs", "synthetic")}
+    elif args.command == "analyze":
+        with run_lock(args.run):
+            result = pilot_analyze(args.run, args.ratings)
+        result = {
+            k: result[k] for k in ("run_id", "status", "completed_jobs", "action_gate_passed")
+        }
+    else:
+        result = pilot_export(args.run, args.out)
+    print(canonical(result))
+    return 2 if result.get("status") in {"failed", "complete_with_errors"} else 0
 
 
 if __name__ == "__main__":

@@ -24,6 +24,17 @@ All families fail the 80% development capability screen. The fixed four-shot, fu
 
 The comparison with the historical zero-shot run does not isolate a whitespace, demonstration or hardware effect. These results make no claim about consciousness or functional dissociation.
 
+### Follow-up review: possible cross-episode interference
+
+The four demonstrations (indices 36–39) reuse the same four actor-name pairs as evaluation
+indices 0–7. This is a plausible interference confound, **not an established root cause**.
+An audit of the saved prompts found zero overlap of complete object identifiers between
+demonstrations and scored episodes in each family: identifiers include episode-specific
+numbers, such as `silver 66247` versus `cobalt 56263`. Color words and actor names do recur.
+No controlled name-renaming ablation or attention-head measurement was performed. The low
+paired scores do not by themselves identify the mechanism. The separately registered Qwen
+action pilot is zero-shot, so it does not introduce this particular demonstration overlap.
+
 ## Verification
 
 The private repository and executed source-bundle checksum were checked. Downloading pinned one immutable artifact commit. Every exported file and the archive matched their SHA-256 checksums, including an independent check of the archive's internal files. Source snapshots matched the executed Git commit; regenerating the development plan reproduced its hash. Local re-analysis audited all native harness samples and exactly reproduced the saved analysis. The PNG figure was visually inspected; SVG and PDF are also present.

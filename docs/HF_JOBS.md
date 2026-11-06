@@ -1,3 +1,12 @@
+# Next job: Qwen pilot
+
+The historical Gemma job below is complete. For the newly implemented, separately budgeted
+Qwen protocol use [the Qwen handover](QWEN_PILOT.md), explicit
+`--config configs/qwen-pilot.json`, and `.hf-jobs/qwen-pilot.json` for its receipt.
+The first-job authorization does not cover a new submission.
+
+---
+
 # Gemma-Baseline auf Hugging Face Jobs
 
 **Aktueller Ausführungsweg: ein Cloud-Job für das bestehende Experiment.** Modell, Checkpoint, vier Beispiele, 768 Entwicklungsvarianten und Auswertung bleiben bei `configs/harness-baseline.json`. DeepSeek, weitere Modelle und große Sweeps gehören nicht zu diesem Schritt.

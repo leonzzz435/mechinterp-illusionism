@@ -2,7 +2,7 @@
 # requires-python = ">=3.10,<3.13"
 # dependencies = ["huggingface-hub[cli]==0.36.2"]
 # ///
-"""One fixed Gemma baseline on HF Jobs; no automatic submissions or retries."""
+"""One explicitly selected, bounded study job; no automatic submissions or retries."""
 
 import argparse
 import hashlib
@@ -88,7 +88,7 @@ def quote_budget(hardware, budget):
     except InvalidOperation:
         raise ValueError("Budget must be a number in US dollars") from None
     if not budget.is_finite() or budget <= 0 or budget > 10:
-        raise ValueError("This first-run launcher accepts an explicit budget of at most USD 10")
+        raise ValueError("This launcher accepts an explicit per-job budget of at most USD 10")
     if hardware["name"] != FLAVOR or hardware["unitLabel"] != "minute":
         raise ValueError("Unexpected hardware/price units; recheck before spending")
     rate = hardware["unitCostMicroUSD"]
@@ -102,13 +102,59 @@ def quote_budget(hardware, budget):
     return {"approved_budget_usd": str(budget), "max_compute_usd": str(maximum)}
 
 
-def plan(namespace, budget):
+def config_details(config):
+    path = (ROOT / config).resolve()
+    allowed = {"configs/harness-baseline.json", "configs/qwen-pilot.json"}
+    if not path.is_relative_to(ROOT) or path.relative_to(ROOT).as_posix() not in allowed:
+        raise ValueError("Choose an explicitly supported study configuration")
+    spec = read_json(path)
+    qwen = spec["engine"] == "qwen-pilot"
+    return {
+        "config": path.relative_to(ROOT).as_posix(),
+        "config_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+        "protocol": spec["protocol"],
+        "run_limit_seconds": spec["max_seconds"],
+        "blocks": 16 if qwen else 24,
+        "scored_variants": 3072 if qwen else 768,
+        "generated_texts": 160 if qwen else 0,
+    }
+
+
+def resume_details(receipt, proposal, api):
+    """A separately budgeted job can restore a stopped job's immutable snapshot."""
+    previous = read_json(receipt)
+    for key in ("artifact_repo", "config", "config_sha256", "commit"):
+        if previous.get(key) != proposal.get(key):
+            raise ValueError(f"Resume requires the same {key}")
+    if proposal["config"] != "configs/qwen-pilot.json" or not re.fullmatch(
+        r"qwen-[0-9a-f]{16}", previous.get("run_name", "")
+    ):
+        raise ValueError("Only a recorded Qwen pilot can be resumed through this launcher")
+    if not previous.get("job_id"):
+        raise ValueError("Resolve an unknown dispatch before preparing a continuation")
+    job = api.inspect_job(job_id=previous["job_id"], namespace=previous["namespace"])
+    if job.status.stage not in {"COMPLETED", "CANCELED", "ERROR", "DELETED"}:
+        raise ValueError("Previous job is still active; no concurrent continuation")
+    repo = api.repo_info(previous["artifact_repo"], repo_type="dataset")
+    if not repo.private:
+        raise ValueError("Resume artifacts must remain private")
+    return {
+        "repo": previous["artifact_repo"],
+        "revision": repo.sha,
+        "run_name": previous["run_name"],
+        "job_id": previous["job_id"],
+    }
+
+
+def plan(namespace, budget, config="configs/harness-baseline.json", resume_receipt=None):
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]{0,95}", namespace):
         raise ValueError("Use an explicit HF username or organization")
     response = get_session().get("https://huggingface.co/api/jobs/hardware", timeout=30)
     response.raise_for_status()
     hardware = next(h for h in response.json() if h["name"] == FLAVOR)
-    return {
+    quote = quote_budget(hardware, budget)
+    quote["proposed_budget_usd"] = quote.pop("approved_budget_usd")
+    proposal = {
         "namespace": namespace,
         "artifact_repo": namespace + "/mechinterp-illusionism-results",
         "commit": git("rev-parse", "HEAD"),
@@ -118,12 +164,13 @@ def plan(namespace, budget):
         "flavor": FLAVOR,
         "hardware": hardware,
         "hard_timeout_seconds": HARD_TIMEOUT,
-        "run_limit_seconds": 3600,
-        "config": "configs/harness-baseline.json",
-        "blocks": 24,
-        "scored_variants": 768,
-        **quote_budget(hardware, budget),
+        **config_details(config),
+        "budget_status": "proposal_only_not_authorization",
+        **quote,
     }
+    if resume_receipt:
+        proposal["resume"] = resume_details(resume_receipt, proposal, HfApi())
+    return proposal
 
 
 def submit(proposal, receipt, api, token):
@@ -144,8 +191,13 @@ def submit(proposal, receipt, api, token):
     state = {
         **proposal,
         **publish_source(api, proposal["artifact_repo"], proposal["commit"]),
-        "run_name": "harness-" + uuid.uuid4().hex[:16],
+        "run_name": ("qwen-" if proposal.get("generated_texts") else "harness-")
+        + uuid.uuid4().hex[:16],
         "state": "submitting",
+        "budget_status": "submitted_with_explicit_cli_budget",
+        "approved_budget_usd": proposal.get(
+            "proposed_budget_usd", proposal.get("approved_budget_usd")
+        ),
     }
     # Exclusive local receipt prevents a repeated invocation from spending again,
     # even if the server accepted the request but its response was lost.
@@ -166,6 +218,9 @@ def submit(proposal, receipt, api, token):
                 "STUDY_IMAGE": proposal["image"],
                 "STUDY_SOURCE_REVISION": state["source_revision"],
                 "STUDY_SOURCE_SHA256": state["source_sha256"],
+                "STUDY_CONFIG": proposal.get("config", "configs/harness-baseline.json"),
+                "STUDY_CONFIG_SHA256": proposal.get("config_sha256", ""),
+                "STUDY_RESUME": json.dumps(proposal.get("resume")),
                 "PYTHONUNBUFFERED": "1",
                 "HF_HUB_DISABLE_TELEMETRY": "1",
             },
@@ -237,8 +292,14 @@ def main(argv=None):
         cmd = commands.add_parser(name)
         cmd.add_argument("--namespace", required=True)
         cmd.add_argument("--budget-usd", required=True)
+        cmd.add_argument("--config", default="configs/harness-baseline.json")
+        cmd.add_argument(
+            "--resume-receipt",
+            type=Path,
+            help="Restore a stopped Qwen job; requires a new budget and receipt",
+        )
         if name == "submit":
-            cmd.add_argument("--receipt", type=Path, default=ROOT / ".hf-jobs/first.json")
+            cmd.add_argument("--receipt", type=Path)
     for name in ("status", "logs", "cancel", "fetch"):
         cmd = commands.add_parser(name)
         cmd.add_argument("--receipt", type=Path, default=ROOT / ".hf-jobs/first.json")
@@ -247,11 +308,21 @@ def main(argv=None):
     args = parser.parse_args(argv)
     try:
         if args.command in {"plan", "submit"}:
-            proposal = plan(args.namespace, args.budget_usd)
+            if args.command == "submit" and args.resume_receipt and not args.receipt:
+                raise ValueError("A continuation requires an explicit NEW --receipt path")
+            proposal = plan(args.namespace, args.budget_usd, args.config, args.resume_receipt)
             result = (
                 proposal
                 if args.command == "plan"
-                else submit(proposal, args.receipt, HfApi(), get_token())
+                else submit(
+                    proposal,
+                    args.receipt
+                    or ROOT
+                    / ".hf-jobs"
+                    / ("qwen-pilot.json" if proposal["generated_texts"] else "first.json"),
+                    HfApi(),
+                    get_token(),
+                )
             )
         else:
             state = read_json(args.receipt)

@@ -1,0 +1,42 @@
+{
+  "protocol": "qwen-reference-action-v1",
+  "engine": "qwen-pilot",
+  "harness_version": "0.4.13",
+  "model": {
+    "repo": "Qwen/Qwen2.5-7B-Instruct",
+    "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "dtype": "bfloat16",
+    "max_length": 2048
+  },
+  "action_version": "action-permissions-v2.1-draft",
+  "dataset_seed": 1729,
+  "scenarios": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "formats": [
+    "plain",
+    "chat"
+  ],
+  "generation": {
+    "seeds": [
+      42,
+      43
+    ],
+    "temperature": 0.8,
+    "top_p": 0.95,
+    "max_new_tokens": 256
+  },
+  "batch_size": 1,
+  "num_fewshot": 0,
+  "score": "sum_log_likelihood",
+  "gate_threshold": 0.8,
+  "bootstrap_samples": 10000,
+  "max_seconds": 5400
+}

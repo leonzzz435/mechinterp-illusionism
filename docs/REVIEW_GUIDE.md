@@ -1,6 +1,15 @@
+# New review target: bounded Qwen pilot
+
+The [Qwen handover](QWEN_PILOT.md) specifies the new model, tokenizer boundary, frozen prompts,
+capability gates, blind-rating rubric, stopping rules and reproduction commands. Its CPU
+tokenizer audit is tracked in `review/qwen-tokenizer-audit.json`. No Qwen inference results
+exist yet. The historical evidence and independent review below remain unchanged.
+
+---
+
 # Independent review: evidence and decisions
 
-**Reviewable research draft; not ready for a new paid experiment or a confirmatory claim.**
+**Reviewable research draft; a new paid pilot requires its own cost approval. No confirmatory claim.**
 This guide supplies the context without requiring the conversation, local HF job receipts,
 cloud credentials or a GPU. Repository access is still required: the GitHub repository is private.
 
@@ -12,14 +21,14 @@ the article; these experiments cannot decide whether an experience exists. The d
 is a technically defensible, accessible English article with reproducible figures, including
 negative results. An attractive dissociation is a hypothesis, not a required conclusion.
 
-The immediate decision is narrower: does the new action task, with its controls, justify
-freezing a small behavioral screen? The author chose task redesign before model selection,
-focused on available actions. No model shopping, prompt tournament or intervention sweep is
+The immediate review target is the frozen Qwen pilot: exact scoring, complete paired coverage,
+capability gates and faithful reporting. The earlier independent review below preceded
+model selection and focused on available actions. No model shopping, prompt tournament or intervention sweep is
 the next authorized step. The USD 10 approval covered the completed first cloud job only.
 
 ## Read in this order
 
-1. [Current action design](ACTION_TASK_DESIGN.md): exact task, mathematics, rationale and open choices.
+1. [Qwen protocol](QWEN_PILOT.md) and [action design](ACTION_TASK_DESIGN.md): frozen pilot and construct limits.
 2. [Fresh-context AI review](reviews/2026-11-06-independent-review.md): findings at `d863776`, fixes,
    and remaining objections. This is not external human peer review.
 3. [Historical GPU audit](PILOT_REVIEW.md) and [completed cloud pilot](HF_PILOT.md): what actually ran.
@@ -35,7 +44,7 @@ the next authorized step. The USD 10 approval covered the completed first cloud 
 | Original notebook and essay | `archive/` | Historical exploratory motivation; original strong interpretations are not current findings |
 | Blackwell reference, baseline and feasibility runs | `runs/{reference,baseline,feasibility}/`, matching `exports/*.tar.gz` | Tracked raw outputs, manifests, source snapshots and checksums; reference/development, baseline/validation, feasibility/development respectively |
 | Revised four-shot cloud baseline | `review/evidence/harness-cd3646dae2964bbc.tar.gz` | Original complete export, 24 development blocks / 768 variants; all functional gates failed |
-| New executable-action task | `src/self_model_study/action_task.py`, `tests/test_action_task.py` | CPU-only development design; no model adapter or model result yet |
+| New executable-action task | `src/self_model_study/action_task.py`, `tests/test_action_task.py` | Development design; separate Qwen adapter implemented, no Qwen result yet |
 | New task illustration | `assets/action_design.{svg,pdf,png}` | Simulator illustration, explicitly not a measured result |
 
 The cloud run executed source commit `c0ae5521d5bbdcb63e46dcaec615e8add95f10be`, protocol

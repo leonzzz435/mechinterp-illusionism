@@ -4,11 +4,10 @@ Verified on 2026-11-06. Software tests and real-model evidence are identified se
 
 ## Checks
 
-- Current suite: **61 passed in 148.04 seconds**, including seven executable-action-design
-  tests, two offline review-evidence tests, the original real-library CPU integrations,
-  native-harness integration and seven cloud-adapter tests. The independent reviewer also
-  passed all nine targeted action/evidence tests. All network mutations and paid job creation
-  are mocked in these tests.
+- Current suite: **74 passed in 167.24 seconds**, including eight Qwen-pilot tests and
+  twelve cloud-adapter/worker tests, plus all historical tests. The independent reviewer
+  previously passed all nine targeted action/evidence tests; no new independent review is
+  implied. All network mutations and paid job creation are mocked in these tests.
 - CPU tests cover deterministic generation and split isolation, counterfactual gold answers, scoring, intervention positions, residual-preserving ablation, hook cleanup, interrupted-run recovery, error retention, protocol freezing, test-access claims, statistics, ratings and export checksums.
 - Optional integration tests use the real TransformerLens and SAELens libraries with tiny randomly initialized CPU weights and an offline tokenizer. They exercise forced-choice scoring and generation as well as hook behavior. No pretrained weights are downloaded.
 - Ruff lint and formatting, lockfile consistency, shell syntax and whitespace checks pass.
@@ -100,3 +99,48 @@ self/other and paired accuracies. It uses only the Python standard library and n
 extracts files nor runs inference. Regression checks cover the actual archive and rejection
 of a changed archive. The [review guide](REVIEW_GUIDE.md) inventories both pilot generations
 and explains which scientific decisions remain open.
+
+
+## Bounded Qwen reference/action pilot
+
+The separate `qwen-reference-action-v1` protocol is implemented through the main
+validate/run/analyze/export CLI. This is preparation and software verification, **not a
+Qwen GPU result**. The [handover](QWEN_PILOT.md) specifies all prompts, scoring, gates,
+blind-rating rules, continuation procedures and the new cost-approval requirement.
+
+- Fixed inventory: 160 language outputs, 3,072 action selections, eight independent action
+  scenarios and 40 human-rating entries. Development only; historical generators/archives
+  remain separate.
+- The real pinned Qwen tokenizer was checked on every planned input/candidate. All boundaries
+  preserve the prompt prefix; commands decode exactly. Maximum context including generation
+  reserve: **305 tokens**, below 2,048. Command lengths are three or four tokens. Full audit:
+  `review/qwen-tokenizer-audit.json`.
+- A tiny random CPU HF model exercises the actual pinned native HFLM token scorer. Independent
+  teacher-forced likelihood arithmetic agrees for every multi-token command in both formats.
+  Tests also verify per-output generation seeding and reject silent truncation.
+- Recovery tests simulate a journal commit without its manifest update, skip existing outputs,
+  retain failed trials, reject source/config changes and prevent synthetic gate eligibility.
+  Counterfactual tests expose the ignore-update shortcut despite its favorable pooled accuracy.
+- Blinded rating tests cover all 40 entries, absent ratings, unclear judgments, duplicate IDs
+  and changes to original text. Export tests compare byte-identical re-exports and file hashes.
+- HF tests check explicit configuration propagation, private pinned checkpoint restoration,
+  rejection of concurrent continuations, separate receipts and nonzero worker exit after a
+  recorded failure. No real new cloud dispatch occurred.
+
+A final synthetic fixture containing all **3,232 outputs** was analyzed and exported through
+`self-study analyze` and `self-study export`. The report has matching execution/analysis source
+hashes and rejects model-evidence eligibility. The local artifact
+`exports/qwen-software-check-final.tar.gz` has SHA256
+`658c3a51893a95af2c7b1e4e8f2de58d37e586b0896a48c1da83c98de8aff725`;
+all **48 file checksums** were independently checked inside the archive. The fixture deliberately
+uses an oracle to test reporting, not to estimate model ability.
+
+Five figure groups are exported as SVG/PDF/PNG: protocol, action screen, lexical format effects,
+human ratings and control diagnostics. The synthetic action/language plots and protocol
+illustration were visually inspected. The protocol figure is tracked in `assets/qwen_pilot_design`;
+synthetic result artifacts remain ignored. Human/model findings are pending.
+
+`uv lock --check --offline` and `uv build --wheel --offline` pass; the wheel's pilot modules
+and frozen prompt resource match the source files. Ruff and whitespace checks pass.
+The read-only HF quote was **USD 1.613293** for the two-hour L4 bound plus one rounding minute;
+USD 5 is a proposed per-job budget, not an authorization. No Qwen weights were downloaded here.

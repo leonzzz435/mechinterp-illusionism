@@ -112,27 +112,29 @@ dissociation would require selective effects in both directions. Neither result 
 Scenario-clustered inference, matched intervention positions and general degradation controls
 must be frozen before an intervention study. The current draft implements no intervention.
 
-## Keep the scoring question open and bounded
+## Scoring question and subsequent frozen pilot
+
+The [Qwen reference/action pilot](QWEN_PILOT.md) now freezes the previously open model,
+response boundary, screening subset, scoring and counterfactual criteria. The design below
+remains unchanged; the historical discussion records why a scoring protocol was needed.
+This implementation is not evidence that a model passes the task.
 
 Commands replace A/B/C/D in this interface. This removes the letter-to-action translation;
 it does **not** prove that tokenization, command-length or order biases are solved.
 
-Before another model run, specify one model, its exact tokenizer/chat template, one response
-boundary and the pinned native harness's full-continuation likelihood scoring of the four
-commands. Record rendered input, continuation tokens, lengths, all four scores and selected
-command. Use the executor to score the selected command. Separately retain malformed free
-responses as failures/format diagnostics; do not silently repair or exclude them. This
-CPU draft's scorer accepts exact commands only and never extracts letters from prose.
+The separate Qwen adapter now specifies one model, its tokenizer/chat template, an exact
+response boundary and pinned native full-continuation token scoring. It records rendered
+inputs, continuation tokens, lengths, all four scores and the selected command, then executes
+that command. The action assay is constrained selection; it does not claim free-response
+format compliance. Its scorer accepts exact commands only and never extracts letters from prose.
 
 CPU tests must establish the executor's rules, exact role binding, paired counterfactuals,
 position balance, isolation of scenarios and that model inputs omit gold metadata. A later
 model screen must additionally inspect paired update success and all three views, roles,
 positions and the before/after-relevant/after-irrelevant strata against the 80% accuracy floor.
-The numerical criterion for counterfactual
-consistency (including the paired grant-value change) must be registered before that run.
-Continuation whitespace/termination, sum versus length-normalized scoring, ties, the screening
-subset, diagnostic decoding and failure denominators also remain to be frozen and exercised
-through the actual adapter in a CPU integration test. No prompt tournament or automatic model
+The Qwen protocol now registers 80% both-correct for each counterfactual type and perspective,
+including paired grant changes. It freezes continuation boundaries, summed scoring, ties,
+the screening subset and failure denominators, exercised through the actual CPU adapter. No prompt tournament or automatic model
 escalation follows failure. A passing behavioral screen still does not authorize an SAE
 sweep without fresh compatibility and delivered-edit checks.
 
@@ -161,6 +163,5 @@ is an interpretation, not an experimental outcome.
 The export contains model-facing prompts, separate oracle rows, a deterministic example,
 simulator and scripted-shortcut checks, a checksum manifest and an SVG/PDF/PNG explanation.
 Every export says **task design only**. Oracle success is software verification, not LLM
-accuracy. The next decision is whether this construct and its controls justify freezing a
-small model screen; model/checkpoint, response format, SAE suitability and a new cloud budget
-must be settled then. There is no automatic new job or claim of a resolved scoring cause.
+accuracy. The small Qwen screen is now frozen separately; its new cloud budget still needs
+explicit approval. SAE suitability remains a later question because this pilot uses no SAE. There is no automatic new job or claim of a resolved scoring cause.

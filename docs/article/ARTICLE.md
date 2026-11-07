@@ -30,7 +30,8 @@ $$r'=r+\alpha m v.$$
 
 The direction v has unit length; m is a measured reference scale; α controls size and sign. This defines what changes mathematically. It does not establish the direction's psychological meaning.
 
-The original Gemma intervention protocol compares a contrast direction, two candidate SAE directions and random controls, and removes individual encoded contributions while preserving reconstruction error. A future Qwen intervention would need its own compatible protocol. The controls test whether apparent effects are specific or merely network disturbance.
+The original Gemma intervention protocol compares a contrast direction, two candidate SAE directions and random controls, and removes individual encoded contributions while preserving reconstruction error. The separately frozen [Qwen exchange protocol](../QWEN_ROLE_PATCH.md) now uses native
+Qwen hooks to test the narrower wording effect described below; its GPU result is pending. The controls test whether apparent effects are specific or merely network disturbance.
 
 ## What the original pilot showed
 
@@ -268,3 +269,25 @@ Our question is how observable components of self-related behavior are implement
 The [protocol](../PROTOCOL.md) defines data, estimands, interventions and stopping rules. Exports contain checkpoint identities, prompts, full outputs and failures. The [runbook](../RUNBOOK.md) separates GPU execution from CPU analysis.
 
 Before publication: complete registered runs, independent ratings, updated novelty review and discussion of task/model limitations. The final title and central figure follow the evidence.
+
+
+## Next: moving a state while keeping the question fixed
+
+The [completed role-framing control](../QWEN_ROLE_RESULTS.md) motivates a single,
+predefined activation exchange. We copy the 3,584-component state at the end of the role
+line, after transformer block 14, from the reference-worded computation to its active-worded
+counterpart and back. The question, facts and candidate commands remain the recipient's.
+Causal attention keeps later permission facts out of the state being copied.
+
+![Planned activation exchange](../../assets/qwen_role_patch/role_patch_design.png)
+
+This is a protocol diagram, not a discovered circuit. Reinserting the original state tests
+the machinery; ten equally large random changes test unspecific disturbance. The sole primary
+contrast compares bidirectional transfer with average random transfer, with uncertainty over
+eight scenarios. The [protocol](../QWEN_ROLE_PATCH.md) defines the equations, thresholds and
+technical checks before any pretrained-model intervention. **Result pending.**
+
+An internal contribution to this wording effect would be a concrete mechanistic finding,
+but would not establish privileged introspection, subjective experience or human illusionism.
+A null result would constrain this chosen site rather than every possible self-model mechanism.
+The philosophical question remains in view while the experiment tests a narrower claim.

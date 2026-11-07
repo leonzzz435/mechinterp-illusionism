@@ -1,0 +1,58 @@
+{
+  "action_version": "action-permissions-v2.1-draft",
+  "analysis_seed": 1729,
+  "batch_size": 1,
+  "bootstrap_samples": 10000,
+  "context_lines": {
+    "active": "Your active connection: {actor}.",
+    "reference": "Reference connection: {actor}."
+  },
+  "dataset_seed": 1729,
+  "decision": {
+    "control_accuracy": 0.8,
+    "control_change_lower_bound": -0.05,
+    "minimum_positive_scenarios": 6,
+    "minimum_transfer": 0.05,
+    "primary_stratum": "after_relevant",
+    "primary_two_sided_alpha": 0.05
+  },
+  "engine": "qwen-role-patch",
+  "formats": [
+    "chat"
+  ],
+  "generation": {},
+  "harness_version": "0.4.13",
+  "max_seconds": 5400,
+  "model": {
+    "dtype": "bfloat16",
+    "max_length": 2048,
+    "repo": "Qwen/Qwen2.5-7B-Instruct",
+    "revision": "a09a35458c702b33eeacc393d103063234e8bc28"
+  },
+  "num_fewshot": 0,
+  "patch": {
+    "baseline_archive_sha256": "36614cb2aae236d450d57540c9b76dfddfec2d4bd2a59f177dce296058b13a8d",
+    "baseline_score_tolerance": 0.001,
+    "layer": 13,
+    "logits_cache": false,
+    "null_score_tolerance": 1e-06,
+    "random_directions": 10,
+    "random_norm_tolerance": 0.05,
+    "random_seed": 1729,
+    "role_end_token": 624,
+    "use_cache": false,
+    "width": 3584
+  },
+  "protocol": "qwen-role-patch-v1",
+  "scenarios": [
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "score": "sum_log_likelihood"
+}

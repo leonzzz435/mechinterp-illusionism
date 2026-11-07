@@ -45,7 +45,8 @@
 - [x] Prepare and test the role-control HF adapter; obtain USD 19 authorization for one L4 job (quoted compute bound USD 1.613293).
 - [x] Submit the frozen role control from pushed commit `e7bd7a6`; see [execution record](docs/QWEN_ROLE_RUN.md).
 - [x] Complete and verify all 2,048 role-control choices: 32/32 controls pass; +16.41 pp primary interaction, 7/8 positive scenarios; `wording_sensitive_candidate`.
-- [ ] Plan one targeted mechanistic experiment for the wording interaction with frozen controls; no internal intervention has been authorized or run.
+- [x] Freeze and implement one targeted activation exchange at block 14 / role-line end: 11,264 scientific choices plus 32 technical repeats, eight known scenarios, explicit random and null controls.
+- [ ] Obtain a separate concrete cost approval, run the prepared patch protocol and verify its report; no pretrained-model intervention has run yet.
 - [x] Obtain a separate USD 5 approval and submit one pinned L4 job after CPU verification.
 - [x] Verify the cloud export and publish the failed screen: plain 4/24 checks failed, chat 7/24.
 
@@ -65,7 +66,9 @@ with neutral reference wording, not another search for a passing prompt. The sep
 choices in scenarios 8–15, one primary interaction, explicit stop rules and no internal edit.
 Its single authorized L4 run completed on 2026-11-07. The [verified control report](docs/QWEN_ROLE_RESULTS.md)
 finds a +16.41 pp primary interaction (nominal 95% interval +8.59 to +25.78), with all 32 controls
-passing. This permits targeted mechanistic planning; it does not repair the failed original
+passing. This motivated the separately frozen [activation-exchange protocol](docs/QWEN_ROLE_PATCH.md),
+now implemented for CPU verification and bounded HF execution. Its paid start remains pending;
+it does not repair the failed original
 capability screen or establish functional separation. An independent methodological review
 remains outstanding. The old 40/40/100 dataset and historical pilots are preserved.
 

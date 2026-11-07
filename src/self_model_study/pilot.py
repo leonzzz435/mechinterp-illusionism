@@ -232,16 +232,43 @@ def run(spec, directory, max_jobs=None, backend_factory=create_backend, checkpoi
     return run_plan(spec, build_plan(spec), directory, max_jobs, backend_factory, checkpoint)
 
 
-def run_plan(spec, plan, directory, max_jobs=None, backend_factory=create_backend, checkpoint=None):
+def run_plan(
+    spec,
+    plan,
+    directory,
+    max_jobs=None,
+    backend_factory=create_backend,
+    checkpoint=None,
+    trial_executor=None,
+    artifact_audit=None,
+):
     """Shared journaled execution; the caller validates and freezes its own protocol."""
     if max_jobs is not None and (type(max_jobs) is not int or max_jobs < 1):
         raise ValueError("max_jobs must be a positive integer")
     directory = Path(directory)
     with run_lock(directory):
-        return _run(spec, plan, directory, max_jobs, backend_factory, checkpoint)
+        return _run(
+            spec,
+            plan,
+            directory,
+            max_jobs,
+            backend_factory,
+            checkpoint,
+            trial_executor,
+            artifact_audit,
+        )
 
 
-def _run(spec, plan, directory, max_jobs, backend_factory, checkpoint):
+def _run(
+    spec,
+    plan,
+    directory,
+    max_jobs,
+    backend_factory,
+    checkpoint,
+    trial_executor=None,
+    artifact_audit=None,
+):
     started = time.monotonic()
     prov = provenance()
     fingerprint = digest(scientific_spec(spec))
@@ -297,6 +324,8 @@ def _run(spec, plan, directory, max_jobs, backend_factory, checkpoint):
         write_json(path, manifest)
     records = read_records(directory)
     manifest["records"] = audit_records(records, plan, manifest, recover=True)
+    if artifact_audit:
+        artifact_audit(directory, manifest, records)
     if len(records) == manifest["expected_jobs"]:
         manifest["status"] = (
             "complete_with_errors" if any(r["status"] != "ok" for r in records) else "complete"
@@ -331,12 +360,18 @@ def _run(spec, plan, directory, max_jobs, backend_factory, checkpoint):
                 # Only prompt, candidate commands, format and sampling seed reach inference.
                 try:
                     result = (
-                        backend.choice(row["prompt"], row["choices"], job["format"])
-                        if job["kind"] == "action"
-                        else backend.generate(row["prompt"], job["format"], job["seed"])
+                        trial_executor(backend, job)
+                        if trial_executor
+                        else (
+                            backend.choice(row["prompt"], row["choices"], job["format"])
+                            if job["kind"] == "action"
+                            else backend.generate(row["prompt"], job["format"], job["seed"])
+                        )
                     )
                     if job["kind"] == "action":
                         result["execution"] = score_command(row, result["selected_command"])
+                    if result.get("technical_failure"):
+                        manifest["status"] = "failed"
                 except Exception as exc:
                     result = {
                         "status": "error",

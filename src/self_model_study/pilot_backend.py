@@ -149,6 +149,7 @@ def create_backend(spec):
             trust_remote_code=False,
             parallelize=False,
             attn_implementation="eager",
+            **({"logits_cache": False} if spec["engine"] == "qwen-role-patch" else {}),
         )
     except Exception as exc:
         raise RuntimeError(
@@ -156,6 +157,8 @@ def create_backend(spec):
             "Check access, dependencies and GPU memory; no alternative checkpoint was used."
         ) from exc
     lm.model.eval()
+    if spec["engine"] == "qwen-role-patch":
+        lm.model.config.use_cache = False
     return PilotBackend(lm, spec["generation"]), {
         "synthetic": False,
         "gpu": torch.cuda.get_device_name(0),

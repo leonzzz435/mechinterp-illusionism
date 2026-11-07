@@ -25,7 +25,7 @@ def restore_checkpoint(resume, repo, output, directory, expected_engine="qwen-pi
     source = staging / resume["run_name"] / "run"
     manifest = read_json(source / "manifest.json")
     if (
-        expected_engine not in {"qwen-pilot", "qwen-role-control"}
+        expected_engine not in {"qwen-pilot", "qwen-role-control", "qwen-role-patch"}
         or manifest.get("engine") != expected_engine
         or manifest["status"] == "failed"
     ):
@@ -53,6 +53,7 @@ def main():
         "configs/harness-baseline.json",
         "configs/qwen-pilot.json",
         "configs/qwen-role-control.json",
+        "configs/qwen-role-patch.json",
     }:
         raise ValueError("Unsupported worker configuration")
     expected_hash = os.environ.get("STUDY_CONFIG_SHA256")
@@ -62,6 +63,12 @@ def main():
     if engine == "qwen-pilot":
         from self_model_study.pilot import load_spec, run
         from self_model_study.pilot_reporting import export
+    elif engine == "qwen-role-patch":
+        from self_model_study.role_patch import run, validate_spec
+        from self_model_study.role_patch_reporting import export
+
+        def load_spec(path):
+            return validate_spec(read_json(path))
     elif engine == "qwen-role-control":
         from self_model_study.role_control import run, validate_spec
         from self_model_study.role_control_reporting import export

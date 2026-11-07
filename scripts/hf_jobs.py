@@ -41,6 +41,15 @@ CONFIGURATIONS = {
         "scored_variants": 3072,
         "generated_texts": 160,
     },
+    "configs/qwen-role-patch.json": {
+        "engine": "qwen-role-patch",
+        "run_prefix": "qwen-patch-",
+        "receipt_name": "qwen-role-patch.json",
+        "blocks": 8,
+        "scored_variants": 11264,
+        "technical_repeats": 32,
+        "generated_texts": 0,
+    },
     "configs/qwen-role-control.json": {
         "engine": "qwen-role-control",
         "run_prefix": "qwen-role-",
@@ -153,7 +162,11 @@ def resume_details(receipt, proposal, api):
         if previous.get(key) != proposal.get(key):
             raise ValueError(f"Resume requires the same {key}")
     selected = CONFIGURATIONS.get(proposal["config"], {})
-    if selected.get("engine") not in {"qwen-pilot", "qwen-role-control"} or not re.fullmatch(
+    if selected.get("engine") not in {
+        "qwen-pilot",
+        "qwen-role-control",
+        "qwen-role-patch",
+    } or not re.fullmatch(
         re.escape(selected["run_prefix"]) + r"[0-9a-f]{16}", previous.get("run_name", "")
     ):
         raise ValueError("Only a recorded Qwen pilot can be resumed through this launcher")

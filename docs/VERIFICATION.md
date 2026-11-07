@@ -1,6 +1,36 @@
 # Implementation verification
 
-Verified on 2026-11-06. Software tests and real-model evidence are identified separately below.
+Verification records through 2026-11-07. Software tests and real-model evidence are identified separately below.
+
+## Role-patch implementation and CPU preflight — 2026-11-07
+
+The [single-site activation exchange](QWEN_ROLE_PATCH.md) is implemented; no new paid job
+or pretrained-model intervention has run. [Machine-readable preflight](../review/qwen-role-patch-preflight.json)
+records configuration/source hashes, tokenizer checks, archive checksums and pending GPU checks.
+
+- Full suite: `uv run --no-sync pytest -q --durations=8` — **111 passed in 359.13 seconds**.
+- Seven native tiny-Qwen integration tests use random CPU weights. They check independent
+  full-sequence likelihood against native scoring, semantic position alignment, future-token
+  independence, own-state null, both transfer directions, single-token changes, BF16 norm
+  rounding, actual candidate tokens and hook cleanup on exceptions. They download no weights.
+- Protocol/runner tests cover all 11,264 scientific choices plus 32 technical repeats, donor
+  mapping, simulator use, exact transfer arithmetic, scenario sampling units, one-way and
+  nonspecific-effect rejection, error/missing-data retention, journal recovery, corrupted
+  donor rejection before model loading, and failure retention. Repeated exports are byte-identical.
+- All three Qwen engines are checked for explicit HF dispatch, distinct receipts, failed-run
+  export, immutable interrupted-run restoration and no duplicate/unknown submission retries.
+- Actual pinned tokenizer: all 2,048 original prompts and 8,192 candidate boundaries match
+  historical evidence; role-end token 624 at indices 61–63, maximum total length 158.
+- Nine design payload checksums verified; two exports are byte-identical. Design figure
+  exported as SVG/PDF/PNG and visually checked. Complete synthetic result figures were
+  separately inspected in a temporary directory and are not published as empirical data.
+- Ruff lint/format (57 files), offline lockfile validation, offline wheel build, whitespace
+  checks and 73 relative documentation links pass. The old independent role-evidence audit
+  still passes; all historical result archives remain byte-unchanged.
+
+The read-only HF quote remains USD 1.613293 for two hours plus one rounding minute on L4.
+The proposed USD 5 allowance is **not authorized**; submission remains pending. Real-model
+baseline parity, null parity, delivered BF16 edit norms, runtime and effects require that job.
 
 ## Completed role-control evidence — 2026-11-07
 

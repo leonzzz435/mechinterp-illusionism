@@ -202,8 +202,11 @@ and functional self-model use. Human illusionism remains a philosophical analogy
 motivation, with other interpretations still compatible.
 
 The [internal method review](reviews/2026-11-07-role-patch-method-review.md) is now complete.
-It recommends an equal-length Your/The wording control with a Reference anchor, to test
-whether personal reference contributes before investigating another internal site. This is
-a CPU-checked draft, not a frozen or launched experiment. We do not search for a better layer within
-this protocol or automatically launch another paid job. Fresh scenarios and a passing task
+It recommended an equal-length Your/The wording control with a Reference anchor, to test
+whether personal reference contributes before investigating another internal site. That
+separately frozen control has now [completed](QWEN_POSSESSIVE_RESULTS.md): the primary
+accuracy interaction is +1.95 pp [−0.78, +4.69], exact p=0.3125, failing its candidate rule.
+The large role gap persists with The, while a secondary margin interaction remains positive.
+This does not change the patch decision. We do not search for a better layer within this
+protocol or automatically launch another paid job. Fresh scenarios and a passing task
 protocol remain necessary before any confirmatory functional-separation claim.

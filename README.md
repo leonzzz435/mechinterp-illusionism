@@ -14,17 +14,19 @@ identity/limitation judgments were 11/20 plain versus 15/20 chat. Two unclear ju
 retained; no full paired effect is estimated for experience claims or coherence.
 Every additional paid job requires separate authorization.
 
-- **[Next bounded experiment: Your/The wording control](docs/QWEN_POSSESSIVE_CONTROL.md)** —
-  frozen and CPU-verified: 16 fresh development scenarios, 6,144 selections, one-token
-  primary contrast. Code, analysis and SVG/PDF/PNG exports are ready; no model results or
-  paid launch yet. The earlier Reference wording remains a descriptive anchor.
+- **[Completed Your/The control: results and plots](docs/QWEN_POSSESSIVE_RESULTS.md)** —
+  6,144 choices on 16 fresh development scenarios; 48/48 controls passed. Primary accuracy
+  interaction **+1.95 pp [−0.78, +4.69], exact p=0.3125**: the possessive-specific candidate
+  rule failed. The large role gap persists with “The”; a secondary probability-score shift
+  remains. [Frozen protocol](docs/QWEN_POSSESSIVE_CONTROL.md) ·
+  [Execution and offline reproduction](docs/QWEN_POSSESSIVE_RUN.md).
 - **[Completed activation exchange: results, mathematics and plots](docs/QWEN_ROLE_PATCH_RESULTS.md)** —
   11,264 scientific selections plus 32 repeats; all technical checks pass. An asymmetric shift
   fails the frozen bidirectional-transfer rule: T +2.34 pp; primary C +2.77 pp, exact p=0.109.
   [Frozen protocol](docs/QWEN_ROLE_PATCH.md).
   [Execution and retrieval](docs/QWEN_ROLE_PATCH_RUN.md).
   [Method review and proposed next control](docs/reviews/2026-11-07-role-patch-method-review.md):
-  motivated the now-frozen Your/The protocol above; no additional model inference yet.
+  motivated the completed Your/The control above.
 - **[Completed role-framing control: results, mathematics and plots](docs/QWEN_ROLE_RESULTS.md)** —
   2,048 choices, 32/32 controls passed; +16.41 pp wording interaction (nominal 95% interval
   +8.59 to +25.78). This qualified the later targeted patch for planning; the role control itself

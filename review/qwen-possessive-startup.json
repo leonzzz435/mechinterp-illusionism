@@ -1,0 +1,19 @@
+{
+  "checked_utc": "2026-11-07T13:35:54.747518+00:00",
+  "job_id": "6aef27e1e6320c66fad5b4f1",
+  "provider_stage": "RUNNING",
+  "artifact_revision": "7dbdfea5f00aafaeddf981849e88f80d5b18d493",
+  "private_checkpoint_verified": true,
+  "source_commit": "15e6bf8534b8f8985b941fa164dfcc832ce75c17",
+  "source_hash": "c010eed1fccb01572f7ed6316fcb5aa9859059cde4bda13a7eb242e86a6881f4",
+  "plan_hash": "ab455c85fb4a1c0e237dcbd317f1e0be4401d65dc2cc0a8d9bbe95994d0b511d",
+  "checkpoint_status": "running",
+  "checkpoint_records": 384,
+  "expected_jobs": 6144,
+  "synthetic": false,
+  "gpu": "NVIDIA L4",
+  "matched_token_check": true,
+  "record_status_counts": {
+    "ok": 384
+  }
+}

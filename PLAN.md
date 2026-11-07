@@ -56,9 +56,13 @@
   16 fresh development scenarios, 6,144 choices, one token changed, one primary contrast.
 - [x] Verify input disjointness, exact token boundaries, resumable execution, report/plot exports
   and explicit HF configuration selection. Preserve all historical protocols and evidence.
-- [ ] Obtain a separate budget approval for one Your/The L4 job; run, retrieve and audit it.
-- [ ] Reassess the research line and article after this bounded control; independent external
-  methodological review remains outstanding. No automatic layer/model expansion.
+- [x] Obtain separate USD 5 approval for one Your/The L4 job; complete and audit all 6,144 choices.
+  48/48 controls pass; primary +1.95 pp [−0.78, +4.69], exact p=0.3125;
+  `no_clear_possessive_specificity`. Preserve the positive secondary margin separately.
+- [x] Reassess the research line and update the article after this bounded control: the large
+  role gap persists without possessive wording; functional separation remains unestablished.
+- [ ] Obtain external methodological review and choose a justified measurement strategy
+  for the original language/function question before further GPU work. No automatic layer/model expansion.
 - [x] Obtain a separate USD 5 approval and submit one pinned L4 job after CPU verification.
 - [x] Verify the cloud export and publish the failed screen: plain 4/24 checks failed, chat 7/24.
 
@@ -86,9 +90,14 @@ scenario contrasts out of eight. No layer search or new paid run follows automat
 This does not repair the failed original capability screen or establish functional separation.
 The [internal methodological review](docs/reviews/2026-11-07-role-patch-method-review.md)
 recommends one equal-length Your/The wording control, retaining Reference as a descriptive
-anchor, on 16 fresh development scenarios. The [6,144-case protocol](docs/QWEN_POSSESSIVE_CONTROL.md) is now frozen and implemented,
-with CPU-verified input disjointness and token matching. No model run has started; a new
-concrete budget approval is pending. Independent external review remains outstanding.
+anchor, on 16 fresh development scenarios. The [6,144-case protocol](docs/QWEN_POSSESSIVE_CONTROL.md)
+has now completed with CPU-verified input disjointness, matched tokens and 48/48 controls passing.
+The [verified result](docs/QWEN_POSSESSIVE_RESULTS.md) is +1.95 pp [−0.78, +4.69], exact p=0.3125:
+no possessive-specific accuracy candidate. The descriptive Your/Reference anchor is +13.67 pp;
+the large role gap also occurs with The. A positive secondary margin interaction prevents a
+zero-influence claim, but cannot rescue the primary endpoint. This ends the bounded diagnostic
+branch. The central causal-separation question is unresolved; independent external review and
+reassessment of its operationalization remain outstanding before further GPU work.
 The old 40/40/100 dataset and historical pilots are preserved.
 
 The [review guide](docs/REVIEW_GUIDE.md) is the handoff for a reviewer without chat context.

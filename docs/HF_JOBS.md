@@ -1,10 +1,12 @@
-# Next job: frozen Your/The wording control
+# Latest completed job: Your/The wording control
 
-The Qwen format pilot, role-framing control and activation exchange are complete. The next
-prepared experiment is [the Your/The control](QWEN_POSSESSIVE_CONTROL.md), selected explicitly
-with `--config configs/qwen-possessive-control.json`; its separate receipt is
-`.hf-jobs/qwen-possessive-control.json`. No launch has occurred and fresh budget approval is
-required. Its handover includes read-only quoting, bounded submission, checkpoints and export.
+The Qwen format pilot, role-framing control, activation exchange and
+[Your/The control](QWEN_POSSESSIVE_RESULTS.md) are complete. The last run contains all 6,144
+choices, with no measurement errors; its possessive-specific candidate rule failed.
+The [execution handover](QWEN_POSSESSIVE_RUN.md) records source pins, the unchanged archive,
+offline verification and read-only retrieval through `review/qwen-possessive-job.json`.
+Keep the separate local duplicate guard `.hf-jobs/qwen-possessive-control.json`.
+No additional cloud job is planned or submitted automatically.
 The Gemma commands below are retained as historical execution documentation.
 
 ---

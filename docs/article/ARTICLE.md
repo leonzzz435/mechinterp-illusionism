@@ -1,6 +1,6 @@
 # When a Language Model Says “I”, What Is Doing the Work?
 
-*Research article in preparation. We have measured format-sensitive self-descriptions, a role-wording effect and an asymmetric response to one internal activation exchange. The exchange failed its prespecified bidirectional criterion. Functional separation and a self-monitoring mechanism remain unestablished. A matched Your/The wording control is prepared; its results are pending.*
+*Research article in preparation. We measured format-sensitive self-descriptions, a role-wording effect and an asymmetric response to one internal activation exchange. The exchange failed its bidirectional criterion. A subsequent one-token Your/The control found that the large role gap persists without possessive wording; its possessive-specific accuracy criterion also failed. Functional separation and a self-monitoring mechanism remain unestablished.*
 
 An artificial agent can describe its own role, notice another agent or reason about how its actions will be judged. What kind of representation of itself is the system using?
 
@@ -296,26 +296,54 @@ partial contributions and the bundled wording/meaning/position contrast. A descr
 one-way shift remains visible; a bidirectional mechanism and functional separation remain
 unestablished. The philosophical motivation survives, but it does not decide the result.
 
-## The next question: does “your” matter?
+## Remove “your”: what survives?
 
 Suppose the task stays identical, but we replace **“Your active connection: Cedar”** with
 **“The active connection: Cedar.”** The second line still describes an active connection;
 it removes the personal reference. For the fixed tokenizer, that edit replaces exactly
 one token and leaves every later token at the same position.
 
-The [next frozen experiment](../QWEN_POSSESSIVE_CONTROL.md) makes that comparison on 16 fresh
-development scenarios. It also retains “Reference connection” so we can inspect whether
-the earlier contrast recurs. We compare how each wording changes accuracy when the context
-names the queried account versus the other account:
+The [completed control](../QWEN_POSSESSIVE_RESULTS.md) made that comparison on 16 fresh
+development scenarios. It retained “Reference connection” as a descriptive check on the
+earlier contrast. We compared how each wording changes accuracy when the context names
+the queried account versus the other account:
 
 $$S=(A_{Your,other}-A_{Your,target})-(A_{The,other}-A_{The,target}).$$
 
-This asks what the observed role effect depends on. It does not search for a stronger
-internal patch. The 6,144 choices remain clustered within 16 scenarios for uncertainty;
-repeating variants does not create thousands of independent experiments. The practical
-threshold, paired uncertainty calculation, controls and six displayed examples were fixed
-before inference. **There are no results from this control yet.** A clear effect could
-still reflect semantics, salience or instruction relevance rather than self-monitoring.
+All 6,144 choices completed, with no measurement errors and all 48 quality controls passing.
+When the context named the queried account, accuracy after its permission changed was
+**72.7% with “Your” and 73.8% with “The”**. When it named the other account, the corresponding
+accuracies were **100.0% and 99.2%**. The large role gap survived removal of personal wording.
+
+![The matched Your/The result](../../assets/qwen_possessive_results/article_possessive.png)
+
+The primary interaction was **+1.95 percentage points**, with a nominal 95% scenario-bootstrap
+interval of **−0.78 to +4.69**. Its exact two-sided sign-flip p was **0.3125**, and only four
+of 16 scenario contrasts were positive. **The prespecified possessive-specific candidate
+rule failed.** The earlier Your/Reference contrast recurred descriptively at +13.67 points
+([+9.38, +17.97]); it cannot substitute for the primary result. The six examples selected
+before inference all chose the correct command—an ordinary case retained alongside the
+aggregate failures, with full inputs and scores in the [report](../QWEN_POSSESSIVE_FULL_REPORT.md).
+
+There is a subtle distinction between moving probabilities and changing an answer. A command
+can remain the highest-scoring option even when its lead changes. Our prespecified secondary
+measure subtracts the other account's allowed-command log-likelihood from the correct
+command's log-likelihood. The Your/The interaction in this margin was +0.346 nats, with a
+nominal interval [+0.078, +0.621]. This is a secondary, unadjusted description, not a replacement
+success criterion. It also means that “your has no influence” would overstate the negative result.
+
+The narrower conclusion matters: the large behavioral pattern does not require the word
+“your” in this task, making a specifically possessive explanation less compelling. We have
+not isolated which aspect of “active connection” drives it; the Reference phrase differs
+in semantics and token positions. General role binding, contextual salience and instruction
+interpretation remain plausible explanations. The task supplies a role; it does not directly
+measure the model monitoring its own computation.
+
+All uncertainty calculations keep the variants of each scenario together. Sixteen scenarios
+remain a small set from the same template and vocabulary. The pooled quality controls do not
+repair the original failed capability screen: relevant-update target accuracies still fall
+below 80%, and changed-answer pairs expose additional inconsistency. This bounded control
+brings us back to the study's central measurement question before any further internal search.
 
 ## What would count as separation?
 

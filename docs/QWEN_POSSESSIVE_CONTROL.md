@@ -1,6 +1,10 @@
 # Does “your” contribute to the role effect?
 
-**Frozen pilot `qwen-possessive-v1`; implemented and CPU-verified, no model results yet.**
+**Frozen pilot `qwen-possessive-v1`; completed on 2026-11-07.**
+All 6,144 choices and 48 controls are present. The
+[result](QWEN_POSSESSIVE_RESULTS.md) is `no_clear_possessive_specificity`; see the
+[execution record](QWEN_POSSESSIVE_RUN.md). The design, estimands and decision rules below
+were fixed before inference and remain unchanged.
 The [method review](reviews/2026-11-07-role-patch-method-review.md) motivated this single
 follow-up. It changes an input word, with no activation patch, feature search, generation,
 new model or layer sweep. The completed patch's failed bidirectional decision remains unchanged.
@@ -145,8 +149,9 @@ Cloud quote only (reads hardware price, does not submit):
 uv run --script scripts/hf_jobs.py plan --namespace zett13 --budget-usd 5 --config configs/qwen-possessive-control.json
 ```
 
-**No paid launch is authorized by this document.** After explicit approval for this one job,
-from a clean, pushed main branch:
+**Historical launch commands:** this one job received explicit USD 5 approval and is complete.
+Do not resubmit it. Read-only retrieval now also works with the tracked receipt in the
+[execution record](QWEN_POSSESSIVE_RUN.md). The original commands were:
 
 ```bash
 uv run --script scripts/hf_jobs.py submit --namespace zett13 --budget-usd 5 --config configs/qwen-possessive-control.json
@@ -162,7 +167,7 @@ scorer's cache behavior. The launcher refreshes the live price and reserves one 
 minute in its compute bound; it requires that bound to be at most half the approved budget.
 The read-only price check on 2026-11-07 quotes **USD 0.013333/minute**, hence
 **USD 1.613293 maximum compute** for 121 billable minutes. The proposed total budget is
-USD 5, pending approval; the price is checked again before submission.
+USD 5, subsequently approved for the completed single job; the price was checked at submission.
 No credit purchase, repeat job or model expansion is automatic.
 
 Exports contain the source snapshot, provenance, all scores/tokens, simulator results, errors,

@@ -1,0 +1,79 @@
+{
+  "archive_sha256": "d521a63c21c360b33ba8452ab5d572eaf0d06c4e4be02df02425dfc1c2fe3e59",
+  "bootstrap_intervals_recomputed": 162,
+  "controls_passed": true,
+  "decision": "no_clear_possessive_specificity",
+  "limitations": "Independent saved-output reaggregation, including the seeded bootstrap and exact sign test; not an independent researcher, new model inference, independent likelihood arithmetic or construct validation.",
+  "matched_token_pairs": 2048,
+  "primary_interaction": {
+    "ci95": [
+      -0.0078125,
+      0.046875
+    ],
+    "complete_pairs": true,
+    "estimate": 0.01953125,
+    "expected_sextets": 256,
+    "n_clusters": 16,
+    "n_observations": 256,
+    "observed_sextets": 256,
+    "positive_scenarios": 4,
+    "scenario_means": {
+      "action-permissions-v2.1-draft:1729:development:0016": 0.0,
+      "action-permissions-v2.1-draft:1729:development:0017": -0.0625,
+      "action-permissions-v2.1-draft:1729:development:0018": 0.125,
+      "action-permissions-v2.1-draft:1729:development:0019": 0.0,
+      "action-permissions-v2.1-draft:1729:development:0020": 0.0,
+      "action-permissions-v2.1-draft:1729:development:0021": 0.0,
+      "action-permissions-v2.1-draft:1729:development:0022": 0.0625,
+      "action-permissions-v2.1-draft:1729:development:0023": 0.0,
+      "action-permissions-v2.1-draft:1729:development:0024": -0.0625,
+      "action-permissions-v2.1-draft:1729:development:0025": 0.125,
+      "action-permissions-v2.1-draft:1729:development:0026": 0.0,
+      "action-permissions-v2.1-draft:1729:development:0027": 0.0,
+      "action-permissions-v2.1-draft:1729:development:0028": 0.125,
+      "action-permissions-v2.1-draft:1729:development:0029": 0.0,
+      "action-permissions-v2.1-draft:1729:development:0030": 0.0,
+      "action-permissions-v2.1-draft:1729:development:0031": 0.0
+    },
+    "two_sided_sign_flip_p": 0.3125
+  },
+  "reference_anchor": {
+    "ci95": [
+      0.09375,
+      0.1796875
+    ],
+    "complete_pairs": true,
+    "estimate": 0.13671875,
+    "expected_sextets": 256,
+    "n_clusters": 16,
+    "n_observations": 256,
+    "observed_sextets": 256,
+    "positive_scenarios": 15,
+    "scenario_means": {
+      "action-permissions-v2.1-draft:1729:development:0016": 0.0625,
+      "action-permissions-v2.1-draft:1729:development:0017": 0.0625,
+      "action-permissions-v2.1-draft:1729:development:0018": 0.25,
+      "action-permissions-v2.1-draft:1729:development:0019": 0.125,
+      "action-permissions-v2.1-draft:1729:development:0020": 0.0625,
+      "action-permissions-v2.1-draft:1729:development:0021": 0.1875,
+      "action-permissions-v2.1-draft:1729:development:0022": 0.1875,
+      "action-permissions-v2.1-draft:1729:development:0023": 0.0625,
+      "action-permissions-v2.1-draft:1729:development:0024": 0.1875,
+      "action-permissions-v2.1-draft:1729:development:0025": 0.1875,
+      "action-permissions-v2.1-draft:1729:development:0026": -0.0625,
+      "action-permissions-v2.1-draft:1729:development:0027": 0.125,
+      "action-permissions-v2.1-draft:1729:development:0028": 0.1875,
+      "action-permissions-v2.1-draft:1729:development:0029": 0.125,
+      "action-permissions-v2.1-draft:1729:development:0030": 0.3125,
+      "action-permissions-v2.1-draft:1729:development:0031": 0.125
+    },
+    "two_sided_sign_flip_p": null
+  },
+  "source_hash": "c010eed1fccb01572f7ed6316fcb5aa9859059cde4bda13a7eb242e86a6881f4",
+  "verified_accuracy_groups": 114,
+  "verified_counterfactual_groups": 18,
+  "verified_paired_statistics": 30,
+  "verified_payloads": 54,
+  "verified_records": 6144,
+  "verified_sextets": 1024
+}

@@ -1,12 +1,24 @@
-# Review target: frozen Your/The control and completed activation exchange
+# Review target: completed Your/The control and activation exchange
 
-For the next experiment, start with [the frozen possessive-wording protocol](QWEN_POSSESSIVE_CONTROL.md),
-`configs/qwen-possessive-control.json` and [its CPU preflight](../review/qwen-possessive-preflight.json).
-Review the single primary Your/The contrast, 16-scenario inference, frozen pilot thresholds,
-48 quality controls and clearly descriptive Reference anchor. The exact token/input inventory,
-all-task disjointness checks and report/export implementation are ready; no new model evidence
-or paid run exists. Reproduce with `uv run --no-sync python scripts/review_possessive_design.py --tokenizer-check`.
-An independent external review has not yet been obtained.
+Start with [the Your/The results](QWEN_POSSESSIVE_RESULTS.md),
+[full report](QWEN_POSSESSIVE_FULL_REPORT.md), [frozen protocol](QWEN_POSSESSIVE_CONTROL.md)
+and [execution provenance](QWEN_POSSESSIVE_RUN.md). All 6,144 choices completed, zero errors,
+48/48 controls passed. The sole primary accuracy interaction is **+1.95 pp [−0.78, +4.69]**,
+exact p=0.3125, positive in 4/16 scenarios: **`no_clear_possessive_specificity`**.
+The large role gap persists with nonpossessive The; a positive secondary margin remains.
+Review why neither the descriptive +13.67 pp Your/Reference anchor nor the margin replaces
+the primary endpoint, and why pooled controls do not restore the original capability gate.
+
+The unchanged archive `review/evidence/qwen-possessive-f2baaa2fb6b74880.tar.gz` has SHA256
+`d521a63c21c360b33ba8452ab5d572eaf0d06c4e4be02df02425dfc1c2fe3e59`.
+`uv run --no-sync python scripts/review_possessive_evidence.py` reaggregates all outcomes,
+matched comparisons, 162 bootstrap intervals and the exact test without study-package imports.
+`scripts/verify_possessive_run.py` reproduces the archived analysis and original figures,
+checks SQLite/JSONL parity and all real tokenizer boundaries (eval extras and cached tokenizer).
+The [preflight](../review/qwen-possessive-preflight.json) preserves the pre-run input-disjointness
+checks. These are two software paths, not external peer review or new likelihood computation.
+Independent external review remains outstanding; the next decision concerns the original
+self-language/function operationalization, not an automatic follow-up GPU job.
 
 For the prior empirical finding, start with the [exchange results](QWEN_ROLE_PATCH_RESULTS.md),
 the [single-site patch protocol](QWEN_ROLE_PATCH.md) and
@@ -80,14 +92,15 @@ the article; these experiments cannot decide whether an experience exists. The d
 is a technically defensible, accessible English article with reproducible figures, including
 negative results. An attractive dissociation is a hypothesis, not a required conclusion.
 
-The immediate review target is the completed exchange and its full evidence chain: exact scoring,
+The immediate review target is the completed wording control, exchange and their evidence chain: exact scoring,
 paired coverage, frozen gates, raw results and faithful reporting. The earlier independent review below preceded
 model selection and focused on available actions. No model shopping, prompt tournament or intervention sweep is
 the next authorized step. The USD 10 approval covered the completed first cloud job only.
 
 ## Read in this order
 
-0. [Completed exchange](QWEN_ROLE_PATCH_RESULTS.md), [complete cloud report](QWEN_ROLE_PATCH_FULL_REPORT.md),
+0. [Completed Your/The control](QWEN_POSSESSIVE_RESULTS.md), its full report and audit commands
+   above; then [completed exchange](QWEN_ROLE_PATCH_RESULTS.md), [complete cloud report](QWEN_ROLE_PATCH_FULL_REPORT.md),
    [frozen protocol](QWEN_ROLE_PATCH.md) and [execution provenance](QWEN_ROLE_PATCH_RUN.md).
    Run `uv run --no-sync python scripts/review_patch_evidence.py` for the standard-library audit.
    `scripts/verify_patch_run.py` additionally reproduces the frozen bootstrap, checks the journal,
@@ -111,6 +124,7 @@ the next authorized step. The USD 10 approval covered the completed first cloud 
 | Revised four-shot cloud baseline | `review/evidence/harness-cd3646dae2964bbc.tar.gz` | Original complete export, 24 development blocks / 768 variants; all functional gates failed |
 | Qwen plain/chat pilot | `review/evidence/qwen-78ee6db8adfc4f3e.tar.gz`, `docs/QWEN_RESULTS.md` | Complete real-model export; 160 texts and 3,072 action choices; both capability screens failed; raw evidence preserved |
 | Rated Qwen export | `review/evidence/qwen-78ee6db8adfc4f3e-with-ratings-v1.tar.gz` | Same model data plus 40 supplied human ratings; two unclear cells; single-rater exploratory estimates |
+| Completed Your/The control | `review/evidence/qwen-possessive-f2baaa2fb6b74880.tar.gz`, `docs/QWEN_POSSESSIVE_RESULTS.md` | 6,144 choices, 16 fresh development instances; failed possessive-specific accuracy candidate, descriptive role contrast persists, positive secondary margin |
 | New executable-action task | `src/self_model_study/action_task.py`, `tests/test_action_task.py` | Development-only design used unchanged by the Qwen pilot |
 | New task illustration | `assets/action_design.{svg,pdf,png}` | Simulator illustration, explicitly not a measured result |
 

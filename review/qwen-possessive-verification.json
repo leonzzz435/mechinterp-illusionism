@@ -1,0 +1,12 @@
+{
+  "archive_sha256": "d521a63c21c360b33ba8452ab5d572eaf0d06c4e4be02df02425dfc1c2fe3e59",
+  "candidate_boundaries_rechecked": 24576,
+  "figures_byte_identical": 12,
+  "journal_matches_jsonl": true,
+  "local_frozen_analysis_exactly_matches_cloud": true,
+  "matched_your_the_pairs": 2048,
+  "no_additional_model_inference": true,
+  "source_hash": "c010eed1fccb01572f7ed6316fcb5aa9859059cde4bda13a7eb242e86a6881f4",
+  "tokenizer_inputs_rechecked": 6144,
+  "verified_payloads": 54
+}

@@ -88,6 +88,10 @@ def test_explicit_qwen_configuration_and_historical_default(cloud):
     assert patch["scored_variants"] == 11264 and patch["technical_repeats"] == 32
     assert patch["blocks"] == 8 and patch["run_limit_seconds"] == 5400
     assert patch["receipt_name"] == "qwen-role-patch.json"
+    possessive = cloud.config_details("configs/qwen-possessive-control.json")
+    assert possessive["scored_variants"] == 6144 and possessive["blocks"] == 16
+    assert possessive["run_limit_seconds"] == 5400
+    assert possessive["receipt_name"] == "qwen-possessive-control.json"
     for path in ("../elsewhere.json", "configs/development.json"):
         with pytest.raises(ValueError, match="explicitly supported"):
             cloud.config_details(path)
@@ -99,6 +103,7 @@ def test_explicit_qwen_configuration_and_historical_default(cloud):
         ("qwen-pilot", "qwen-"),
         ("qwen-role-control", "qwen-role-"),
         ("qwen-role-patch", "qwen-patch-"),
+        ("qwen-possessive-control", "qwen-possessive-"),
     ],
 )
 def test_qwen_selection_reaches_worker_without_reusing_first_receipt(
@@ -125,11 +130,16 @@ def test_qwen_selection_reaches_worker_without_reusing_first_receipt(
     assert api.calls[0]["env"]["STUDY_CONFIG_SHA256"] == result["config_sha256"]
 
 
-@pytest.mark.parametrize("config", ["qwen-pilot", "qwen-role-control", "qwen-role-patch"])
+@pytest.mark.parametrize(
+    "config", ["qwen-pilot", "qwen-role-control", "qwen-role-patch", "qwen-possessive-control"]
+)
 def test_qwen_worker_routes_exports_failed_runs_and_exits_nonzero(monkeypatch, tmp_path, config):
     pytest.importorskip("huggingface_hub")
     if config == "qwen-pilot":
         from self_model_study import pilot, pilot_reporting
+    elif config == "qwen-possessive-control":
+        from self_model_study import possessive as pilot
+        from self_model_study import possessive_reporting as pilot_reporting
     elif config == "qwen-role-patch":
         from self_model_study import role_patch as pilot
         from self_model_study import role_patch_reporting as pilot_reporting
@@ -189,6 +199,7 @@ def test_qwen_worker_routes_exports_failed_runs_and_exits_nonzero(monkeypatch, t
         ("qwen-pilot", "qwen-"),
         ("qwen-role-control", "qwen-role-"),
         ("qwen-role-patch", "qwen-patch-"),
+        ("qwen-possessive-control", "qwen-possessive-"),
     ],
 )
 def test_cloud_continuation_is_pinned_and_rejects_active_or_changed_jobs(

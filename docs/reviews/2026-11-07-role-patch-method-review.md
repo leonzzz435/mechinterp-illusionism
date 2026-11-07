@@ -184,3 +184,10 @@ uv run --no-sync python scripts/review_patch_method.py --tokenizer-check
 
 Without `--tokenizer-check`, the command uses only the standard library and the unchanged
 archive. Neither mode performs model inference or contacts a paid compute service.
+
+## Subsequent implementation
+
+The proposal above is now implemented and frozen in [qwen-possessive-v1](../QWEN_POSSESSIVE_CONTROL.md).
+The later preflight verifies disjointness against every prior Qwen action archive, not only
+scenario IDs. This does not alter the historical review calculations or patch decision.
+No results from the new wording control are available yet.

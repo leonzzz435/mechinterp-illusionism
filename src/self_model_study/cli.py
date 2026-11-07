@@ -57,6 +57,8 @@ def main(argv=None):
             engine = read_json(args.run / "manifest.json").get("engine")
         else:
             engine = None
+        if engine == "qwen-possessive-control":
+            return role_control_command(args, "possessive")
         if engine == "qwen-role-patch":
             return role_patch_command(args)
         if engine == "qwen-role-control":
@@ -152,10 +154,12 @@ def pilot_command(args):
     return 2 if result.get("status") in {"failed", "complete_with_errors"} else 0
 
 
-def role_control_command(args):
-    from . import role_control
-    from .role_control_analysis import analyze as control_analyze
-    from .role_control_reporting import export as control_export
+def role_control_command(args, module_name="role_control"):
+    from importlib import import_module
+
+    role_control = import_module("." + module_name, __package__)
+    control_analyze = import_module("." + module_name + "_analysis", __package__).analyze
+    control_export = import_module("." + module_name + "_reporting", __package__).export
 
     if args.command in {"validate", "run"}:
         spec = role_control.validate_spec(read_json(args.config))

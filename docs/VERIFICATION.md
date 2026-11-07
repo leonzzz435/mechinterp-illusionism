@@ -2,6 +2,52 @@
 
 Verification records through 2026-11-07. Software tests and real-model evidence are identified separately below.
 
+## Frozen possessive-wording control — 2026-11-07
+
+Final verification: **126 tests passed in 426.60 seconds** with
+`OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 uv run --no-sync pytest -q`.
+`ruff check` and `ruff format --check` pass for `src scripts tests`; `git diff --check`
+is clean. All 118 local documentation links checked resolve. The unchanged Gemma, Qwen,
+role-control and patch evidence audits pass; the historical full patch verification exactly
+matches its saved JSON. A separate cached-tokenizer check also passed after adding its
+explicit offline-cache prerequisite.
+
+The [new protocol](QWEN_POSSESSIVE_CONTROL.md) and `configs/qwen-possessive-control.json`
+are frozen before model inference. Preparation verifies 6,144 cases, 16 development scenarios,
+1,024 matched sextets, 3,840 distinct prompts and a simulator oracle accuracy of 100%.
+The 2,048 Your/The pairs all change only token 7771 → 785 at position 57. All 24,576
+candidate boundaries decode to the exact command; the maximum prompt plus answer is 156 tokens.
+Three- and four-token command lengths remain visible; summed scoring is unchanged.
+
+`scripts/review_possessive_design.py` checks the three hash-pinned prior Qwen action archives,
+including patch technical repeats. There is no overlap in scenario IDs, exact model inputs,
+or inputs after removing the context wording. The [preflight artifact](../review/qwen-possessive-preflight.json)
+records hashes, all counts and tokenizer/template provenance. These are software and data checks,
+not evidence of model competence or statistical power.
+
+The eight new experiment tests cover complete matching and answer exclusion, real tokenizer
+alignment and token tampering, historical exposure, scenario-level inference and sign-flip
+rules, a descriptive-anchor effect that cannot rescue a null primary comparison, every decision
+gate, counterfactual pair failures, incomplete sextets, errors, atomic resume recovery, strict
+configuration freezing, CLI routing, deterministic repeated export, and all six fixed examples.
+HF tests additionally exercise the explicit new config, unique receipt, mocked dispatch and
+worker failure export. No GPU or paid provider call is used by these tests.
+The cached-tokenizer integration test passed locally; on a fresh offline machine it skips
+when the tokenizer is absent. The explicit preflight and real-run token checks are mandatory
+and cannot be skipped by the cloud backend.
+
+The historical patch verifier now runs analysis using the **checksum-verified archived source**
+in a subprocess, because adding a protocol changes today's package source hash. It still
+requires that archived hash and exact equality to the original analysis, then independently
+retokenizes and checks the saved tensors. `scripts/verify_patch_run.py` produces exactly the
+previous verification JSON, including all norm/parity counts; the old archive is unchanged.
+
+The checked design is exported to `review/evidence/qwen-possessive-v1-design.tar.gz`
+(SHA256 `c29be33f178eef2e513445bb7e751431ffbda3423cda3f11b0ff6918bea0cec1`).
+Its SVG/PDF/PNG illustration is also in `assets/qwen_possessive_design.*` and was visually
+inspected. Real-result plots, the report and an accessible article section are generated
+from recorded outcomes only. No new cloud job has been launched.
+
 ## Post-run method review and proposed wording control — 2026-11-07
 
 `scripts/review_patch_method.py` reads the unchanged hash-pinned exchange archive. It records

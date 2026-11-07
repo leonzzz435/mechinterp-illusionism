@@ -6,7 +6,10 @@ Uses a temporary extraction after validating all archive paths and checksums.
 
 import json
 import math
+import os
 import sqlite3
+import subprocess
+import sys
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
@@ -15,9 +18,6 @@ from review_patch_evidence import ARCHIVE, SHA256
 from review_qwen_evidence import archive_files, require
 from safetensors.torch import load_file
 from transformers import AutoTokenizer
-
-from self_model_study.role_patch import read_run
-from self_model_study.role_patch_analysis import summarize
 
 
 def verify():
@@ -28,11 +28,30 @@ def verify():
             dest.parent.mkdir(parents=True, exist_ok=True)
             dest.write_bytes(data)
         directory = Path(tmp) / "run"
-        manifest, plan, records = read_run(directory)
-        require(
-            summarize(manifest, plan, records) == json.loads(files["run/analysis.json"]),
-            "Frozen analysis does not reproduce exactly",
+        # Historical inference is tied to its archived source, not today's package hash.
+        # The archive and every source file were checksum-verified before extraction.
+        subprocess.run(
+            [
+                sys.executable,
+                "-c",
+                """
+import json, sys
+from self_model_study.role_patch import read_run
+from self_model_study.role_patch_analysis import summarize
+from self_model_study.io import source_hash
+manifest, plan, records = read_run(sys.argv[1])
+assert source_hash() == manifest["provenance"]["source_hash"], "Archived source hash mismatch"
+with open(sys.argv[1] + "/analysis.json") as stream:
+    assert summarize(manifest, plan, records) == json.load(stream), "Frozen analysis mismatch"
+""",
+                str(directory),
+            ],
+            env={**os.environ, "PYTHONPATH": str(directory / "source")},
+            cwd=tmp,
+            check=True,
         )
+        manifest = json.loads(files["run/manifest.json"])
+        records = [json.loads(line) for line in files["run/records.jsonl"].splitlines()]
         with sqlite3.connect(f"file:{directory}/trials.sqlite?mode=ro", uri=True) as con:
             journal = con.execute("SELECT id,status,payload FROM trials ORDER BY id").fetchall()
         require(

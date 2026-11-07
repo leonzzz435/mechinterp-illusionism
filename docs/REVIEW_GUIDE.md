@@ -1,6 +1,14 @@
-# Review target: completed activation exchange and its prior evidence
+# Review target: frozen Your/The control and completed activation exchange
 
-Start with the [exchange results](QWEN_ROLE_PATCH_RESULTS.md),
+For the next experiment, start with [the frozen possessive-wording protocol](QWEN_POSSESSIVE_CONTROL.md),
+`configs/qwen-possessive-control.json` and [its CPU preflight](../review/qwen-possessive-preflight.json).
+Review the single primary Your/The contrast, 16-scenario inference, frozen pilot thresholds,
+48 quality controls and clearly descriptive Reference anchor. The exact token/input inventory,
+all-task disjointness checks and report/export implementation are ready; no new model evidence
+or paid run exists. Reproduce with `uv run --no-sync python scripts/review_possessive_design.py --tokenizer-check`.
+An independent external review has not yet been obtained.
+
+For the prior empirical finding, start with the [exchange results](QWEN_ROLE_PATCH_RESULTS.md),
 the [single-site patch protocol](QWEN_ROLE_PATCH.md) and
 `configs/qwen-role-patch.json`. It uses eight already observed scenarios to investigate the
 known wording interaction, not to claim held-out confirmation. Review donor/candidate mapping,
@@ -18,7 +26,8 @@ examines the asymmetry, answer transitions, prespecified secondary command margi
 edit size. It recommends a one-token Your/The comparison before another internal patch.
 Its [reproducible review artifact](../review/qwen-role-patch-method-review.json) includes
 CPU feasibility of 6,144 proposed cases, without model inference. This review was written
-by the same coding assistant, not an independent reviewer; the proposed experiment is not frozen.
+by the same coding assistant, not an independent reviewer. Its unfrozen proposal has now
+been superseded by the frozen protocol linked above; the review artifact remains historical.
 
 The [Qwen handover](QWEN_PILOT.md) specifies the new model, tokenizer boundary, frozen prompts,
 capability gates, blind-rating rubric, stopping rules and reproduction commands. Its CPU
@@ -36,7 +45,7 @@ measurement errors, 32/32 controls passed, `wording_sensitive_candidate`**. The 
 interaction is +16.41 pp (nominal 95% interval +8.59 to +25.78); seven of eight scenarios
 are positive, and exact two-sided sign-flip p=0.015625. The
 [result report](QWEN_ROLE_RESULTS.md) includes every cell/control, the reversed before-update
-interaction and all four examples fixed before inference. No internal intervention was run.
+interaction and all four examples fixed before inference. No internal intervention was run in that role-control experiment.
 It contains 2,048 choices on development scenarios 8–15, a four-condition comparison,
 one primary scenario-level interaction and explicit stop rules. Review the exact-wording
 construct limitation, the 32 competence controls, the sign-flip assumptions and the rule

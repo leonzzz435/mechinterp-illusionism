@@ -1,6 +1,6 @@
 # When a Language Model Says “I”, What Is Doing the Work?
 
-*Research article in preparation. The Qwen pilot completed: 91–92% overall action accuracy, but failed capability checks on role-sensitive cases. A subsequent frozen role-framing control found a +16.41 percentage-point interaction and met its mechanistic-planning criteria. No internal intervention or functional dissociation has been established. The 40 human ratings show more explicit AI qualifications in chat, driven by four prompt pairs; two ambiguous judgments remain unresolved. Earlier Gemma failures remain part of the evidence.*
+*Research article in preparation. We have measured format-sensitive self-descriptions, a role-wording effect and an asymmetric response to one internal activation exchange. The exchange failed its prespecified bidirectional criterion. Functional separation and a self-monitoring mechanism remain unestablished. A matched Your/The wording control is prepared; its results are pending.*
 
 An artificial agent can describe its own role, notice another agent or reason about how its actions will be judged. What kind of representation of itself is the system using?
 
@@ -143,8 +143,9 @@ role binding and other effects of the supplied context remain possible explanati
 
 For a nontechnical reader, the point is concrete: knowing how to choose many correct commands
 is not the same as reliably choosing the command available to the actor being addressed.
-The controls made that distinction visible. We therefore retain the failed screen and pause
-the proposed internal intervention. The human language comparison below adds a separate
+The controls made that distinction visible. We therefore retained the failed screen and paused
+the original broad intervention study. The later role experiment and single-site patch
+below investigated a narrower wording effect; neither repaired that capability screen. The human language comparison below adds a separate
 measurement; it does not override that failed screen.
 
 ## The same model, a different account of itself
@@ -295,6 +296,27 @@ partial contributions and the bundled wording/meaning/position contrast. A descr
 one-way shift remains visible; a bidirectional mechanism and functional separation remain
 unestablished. The philosophical motivation survives, but it does not decide the result.
 
+## The next question: does “your” matter?
+
+Suppose the task stays identical, but we replace **“Your active connection: Cedar”** with
+**“The active connection: Cedar.”** The second line still describes an active connection;
+it removes the personal reference. For the fixed tokenizer, that edit replaces exactly
+one token and leaves every later token at the same position.
+
+The [next frozen experiment](../QWEN_POSSESSIVE_CONTROL.md) makes that comparison on 16 fresh
+development scenarios. It also retains “Reference connection” so we can inspect whether
+the earlier contrast recurs. We compare how each wording changes accuracy when the context
+names the queried account versus the other account:
+
+$$S=(A_{Your,other}-A_{Your,target})-(A_{The,other}-A_{The,target}).$$
+
+This asks what the observed role effect depends on. It does not search for a stronger
+internal patch. The 6,144 choices remain clustered within 16 scenarios for uncertainty;
+repeating variants does not create thousands of independent experiments. The practical
+threshold, paired uncertainty calculation, controls and six displayed examples were fixed
+before inference. **There are no results from this control yet.** A clear effect could
+still reflect semantics, salience or instruction relevance rather than self-monitoring.
+
 ## What would count as separation?
 
 A persuasive result changes one measured property selectively while keeping another within a predefined tolerance, without broadly damaging performance. One significant and one nonsignificant comparison are insufficient.
@@ -311,7 +333,7 @@ Illusionist approaches make construction of self-reports an interesting explanat
 The motivating intuition is that an apparently unified speaker may be assembled from
 distinguishable processes: describing a perspective, keeping track of a role and selecting
 an available action. Making those processes experimentally tractable gives the philosophical
-question substance. The proposed action experiment asks about one of these links; it does
+question substance. The action experiments address parts of this chain; they do
 not assume that a fluent self-description reveals an inner observer, or that removing such
 a description would remove experience.
 

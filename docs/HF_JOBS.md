@@ -1,9 +1,11 @@
-# Next job: Qwen pilot
+# Next job: frozen Your/The wording control
 
-The historical Gemma job below is complete. For the newly implemented, separately budgeted
-Qwen protocol use [the Qwen handover](QWEN_PILOT.md), explicit
-`--config configs/qwen-pilot.json`, and `.hf-jobs/qwen-pilot.json` for its receipt.
-The first-job authorization does not cover a new submission.
+The Qwen format pilot, role-framing control and activation exchange are complete. The next
+prepared experiment is [the Your/The control](QWEN_POSSESSIVE_CONTROL.md), selected explicitly
+with `--config configs/qwen-possessive-control.json`; its separate receipt is
+`.hf-jobs/qwen-possessive-control.json`. No launch has occurred and fresh budget approval is
+required. Its handover includes read-only quoting, bounded submission, checkpoints and export.
+The Gemma commands below are retained as historical execution documentation.
 
 ---
 

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="784.8pt" height="426.683556pt" viewBox="0 0 784.8 426.683556" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 426.683556 
+L 784.8 426.683556 
+L 784.8 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="392.4" y="19.3575" transform="rotate(-0 392.4 19.3575)">Does one word change how a role affects the answer?</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="392.4" y="61.354555" transform="rotate(-0 392.4 61.354555)">Same permissions, update, question and commands · queried account: Cedar</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="30.312" y="110.987439" transform="rotate(-0 30.312 110.987439)">Queried account named</text>
+   </g>
+   <g id="text_4">
+    <g id="patch_2">
+     <path d="M 30.312 168.7629 
+L 197.214656 168.7629 
+Q 202.714656 168.7629 202.714656 163.2629 
+L 202.714656 152.262041 
+Q 202.714656 146.762041 197.214656 146.762041 
+L 30.312 146.762041 
+Q 24.812 146.762041 24.812 152.262041 
+L 24.812 163.2629 
+Q 24.812 168.7629 30.312 168.7629 
+z
+" style="fill: #eff7f8; stroke: #006579; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="30.312" y="160.620322" transform="rotate(-0 30.312 160.620322)">Your active connection: Cedar.</text>
+   </g>
+   <g id="text_5">
+    <g id="patch_3">
+     <path d="M 30.312 237.485355 
+L 194.191375 237.485355 
+Q 199.691375 237.485355 199.691375 231.985355 
+L 199.691375 220.984495 
+Q 199.691375 215.484495 194.191375 215.484495 
+L 30.312 215.484495 
+Q 24.812 215.484495 24.812 220.984495 
+L 24.812 231.985355 
+Q 24.812 237.485355 30.312 237.485355 
+z
+" style="fill: #eff7f8; stroke: #006579; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="30.312" y="229.342776" transform="rotate(-0 30.312 229.342776)">The active connection: Cedar.</text>
+   </g>
+   <g id="text_6">
+    <g id="patch_4">
+     <path d="M 30.312 306.207809 
+L 192.195906 306.207809 
+Q 197.695906 306.207809 197.695906 300.707809 
+L 197.695906 289.706949 
+Q 197.695906 284.206949 192.195906 284.206949 
+L 30.312 284.206949 
+Q 24.812 284.206949 24.812 289.706949 
+L 24.812 300.707809 
+Q 24.812 306.207809 30.312 306.207809 
+z
+" style="fill: #eff7f8; stroke: #006579; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="30.312" y="298.065231" transform="rotate(-0 30.312 298.065231)">Reference connection: Cedar.</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="415.512" y="110.987439" transform="rotate(-0 415.512 110.987439)">Other account named</text>
+   </g>
+   <g id="text_8">
+    <g id="patch_5">
+     <path d="M 415.512 168.7629 
+L 579.908719 168.7629 
+Q 585.408719 168.7629 585.408719 163.2629 
+L 585.408719 152.262041 
+Q 585.408719 146.762041 579.908719 146.762041 
+L 415.512 146.762041 
+Q 410.012 146.762041 410.012 152.262041 
+L 410.012 163.2629 
+Q 410.012 168.7629 415.512 168.7629 
+z
+" style="fill: #eff7f8; stroke: #006579; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="415.512" y="160.620322" transform="rotate(-0 415.512 160.620322)">Your active connection: Dune.</text>
+   </g>
+   <g id="text_9">
+    <g id="patch_6">
+     <path d="M 415.512 237.485355 
+L 576.885437 237.485355 
+Q 582.385437 237.485355 582.385437 231.985355 
+L 582.385437 220.984495 
+Q 582.385437 215.484495 576.885437 215.484495 
+L 415.512 215.484495 
+Q 410.012 215.484495 410.012 220.984495 
+L 410.012 231.985355 
+Q 410.012 237.485355 415.512 237.485355 
+z
+" style="fill: #eff7f8; stroke: #006579; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="415.512" y="229.342776" transform="rotate(-0 415.512 229.342776)">The active connection: Dune.</text>
+   </g>
+   <g id="text_10">
+    <g id="patch_7">
+     <path d="M 415.512 306.207809 
+L 574.889969 306.207809 
+Q 580.389969 306.207809 580.389969 300.707809 
+L 580.389969 289.706949 
+Q 580.389969 284.206949 574.889969 284.206949 
+L 415.512 284.206949 
+Q 410.012 284.206949 410.012 289.706949 
+L 410.012 300.707809 
+Q 410.012 306.207809 415.512 306.207809 
+z
+" style="fill: #eff7f8; stroke: #006579; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="415.512" y="298.065231" transform="rotate(-0 415.512 298.065231)">Reference connection: Dune.</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(289.337734 345.948849)">Primary: Your role gap − The role gap</text>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(211.700078 359.151856)">Your → The changes one token; Reference is a descriptive anchor.</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; fill: #555555" transform="translate(262.577812 405.618107)">DESIGN ONLY · 16 development scenarios · 6,144 choices</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; fill: #555555" transform="translate(239.814844 416.420568)">No internal intervention, measured result or discovered mechanism</text>
+   </g>
+  </g>
+ </g>
+</svg>

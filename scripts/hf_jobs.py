@@ -25,6 +25,14 @@ GIT_URL = "https://github.com/leonzzz435/mechinterp-illusionism.git"
 FLAVOR = "l4x1"
 HARD_TIMEOUT = 7200
 CONFIGURATIONS = {
+    "configs/qwen-possessive-control.json": {
+        "engine": "qwen-possessive-control",
+        "run_prefix": "qwen-possessive-",
+        "receipt_name": "qwen-possessive-control.json",
+        "blocks": 16,
+        "scored_variants": 6144,
+        "generated_texts": 0,
+    },
     "configs/harness-baseline.json": {
         "engine": "lm-eval",
         "run_prefix": "harness-",
@@ -166,6 +174,7 @@ def resume_details(receipt, proposal, api):
         "qwen-pilot",
         "qwen-role-control",
         "qwen-role-patch",
+        "qwen-possessive-control",
     } or not re.fullmatch(
         re.escape(selected["run_prefix"]) + r"[0-9a-f]{16}", previous.get("run_name", "")
     ):

@@ -52,8 +52,13 @@
 - [x] Preserve original patch archive, all figures, complete example and English article section.
 - [x] Complete an internal methodological review of the asymmetric patch finding, with
   saved-data transition/margin checks and CPU feasibility of a Your/The wording control.
-- [ ] Decide and freeze the proposed possessive-reference control before any further inference;
-  independent external review remains outstanding.
+- [x] Freeze and implement the [Your/The wording control](docs/QWEN_POSSESSIVE_CONTROL.md):
+  16 fresh development scenarios, 6,144 choices, one token changed, one primary contrast.
+- [x] Verify input disjointness, exact token boundaries, resumable execution, report/plot exports
+  and explicit HF configuration selection. Preserve all historical protocols and evidence.
+- [ ] Obtain a separate budget approval for one Your/The L4 job; run, retrieve and audit it.
+- [ ] Reassess the research line and article after this bounded control; independent external
+  methodological review remains outstanding. No automatic layer/model expansion.
 - [x] Obtain a separate USD 5 approval and submit one pinned L4 job after CPU verification.
 - [x] Verify the cloud export and publish the failed screen: plain 4/24 checks failed, chat 7/24.
 
@@ -81,8 +86,9 @@ scenario contrasts out of eight. No layer search or new paid run follows automat
 This does not repair the failed original capability screen or establish functional separation.
 The [internal methodological review](docs/reviews/2026-11-07-role-patch-method-review.md)
 recommends one equal-length Your/The wording control, retaining Reference as a descriptive
-anchor, on 16 fresh development scenarios. Its 6,144-case draft is CPU-checked only; it is
-not a frozen protocol or a launched job. Independent external review remains outstanding.
+anchor, on 16 fresh development scenarios. The [6,144-case protocol](docs/QWEN_POSSESSIVE_CONTROL.md) is now frozen and implemented,
+with CPU-verified input disjointness and token matching. No model run has started; a new
+concrete budget approval is pending. Independent external review remains outstanding.
 The old 40/40/100 dataset and historical pilots are preserved.
 
 The [review guide](docs/REVIEW_GUIDE.md) is the handoff for a reviewer without chat context.

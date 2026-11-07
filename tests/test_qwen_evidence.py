@@ -97,6 +97,31 @@ def test_actual_human_ratings_preserve_ambiguity_and_model_evidence():
     assert all(effect["estimate"] is None for effect in calculated["effects"][1:])
 
 
+def test_same_target_role_review_and_rejection_of_extra_prompt_changes(monkeypatch):
+    import importlib
+
+    monkeypatch.syspath_prepend("scripts")
+    review = importlib.import_module("review_qwen_role_pairs")
+    report = review.review()
+    assert report == json.loads(Path("review/qwen-role-pairs.json").read_text())
+    assert report["matched_pairs_verified"] == 1024
+    assert not report["action_gate_passed"]
+    group = report["groups"]["chat/after_relevant"]
+    assert group["correctness_named_self_other"] == {"0/1": 39, "1/1": 89}
+    assert group["mean_scenario_other_minus_named_self"] == 39 / 128
+    assert len(report["examples"]) == len(report["chat_after_relevant_by_scenario"]) == 8
+    # A nominally matched pair must fail if anything beyond the role line changed.
+    files, _, _ = auditor().archive_files(review.ARCHIVE, review.SHA256)
+    records = [json.loads(line) for line in files["run/records.jsonl"].splitlines()]
+    _, named, other = review.match_pairs(records)[0]
+    corrupted = deepcopy(named)
+    corrupted["result"]["rendered_prompt"] += "\nAn extra instruction."
+    with pytest.raises(ValueError, match="Prompt differs outside"):
+        review.match_pairs([corrupted, other])
+    with pytest.raises(ValueError, match="Incomplete matched-role pair"):
+        review.match_pairs([named])
+
+
 def test_reviewer_reconstructs_state_and_rejects_changed_selection():
     check = auditor().outcome
     row, result = example()

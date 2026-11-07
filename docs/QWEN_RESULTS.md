@@ -79,6 +79,103 @@ Command lengths are three or four tokens. Both lengths show high pooled accuracy
 
 After viewing the gate failures, we classified incorrect selections on relevant after-updates against the saved simulator state. This is **post hoc descriptive inspection**, not an additional prespecified endpoint. For chat self cases, 36 of 41 errors selected the other actor’s currently allowed command; for chat named-self cases, 33 of 39 did so. The remaining errors selected another unavailable command. None selected the target actor’s revoked command. This narrows the observed failure pattern but does not establish why the network produced it. It also cautions against simply calling the failure “forgetting to update the old permission”.
 
+### Same target, one changed role line — offline review, 2026-11-07
+
+We can narrow the comparison using records we already have. Match a `named_self` query
+with an `other` query that names **the same target connection**, while keeping its initial
+permissions, event, command order and correct command identical. Only the actor named in
+`Your active connection: ...` changes. The offline reviewer verifies this property in
+both the task text and the actual rendered model input for all 1,024 pairs across formats.
+This pairing was selected after viewing results; it is a descriptive input comparison,
+not a preregistered confirmation or an internal intervention.
+
+| Format and checkpoint | Active connection = target | Active connection = other | Paired difference, other minus target |
+|---|---:|---:|---:|
+| Chat, before update | 256/256 | 252/256 | −1.56 pp |
+| Chat, target permission changed | 89/128 | 128/128 | +30.47 pp |
+| Chat, other permission changed | 117/128 | 114/128 | −2.34 pp |
+| Plain, before update | 240/256 | 252/256 | +4.69 pp |
+| Plain, target permission changed | 119/128 | 128/128 | +7.03 pp |
+| Plain, other permission changed | 115/128 | 117/128 | +1.56 pp |
+
+For scenario $s$, let $Y_{s,v}^{T}$ be correctness with the target assigned as the active
+connection, and $Y_{s,v}^{O}$ correctness with the other connection assigned. For the
+relevant after-update subset, each of eight scenarios contributes sixteen matched pairs:
+
+$$\widehat\Delta=\frac{1}{8}\sum_{s=1}^{8}\left[\frac{1}{16}\sum_{v=1}^{16}(Y_{s,v}^{O}-Y_{s,v}^{T})\right]=\frac{39}{128}\quad\text{(chat)}.$$
+
+The 39 changes are all incorrect-to-correct; none goes the other way in this subset.
+Every scenario contributes such cases (3, 9, 2, 6, 5, 6, 5 and 3 respectively).
+Variants and repeated before-checkpoint prompts remain dependent observations, not extra
+independent samples. No new confidence interval or hypothesis test is used to promote
+this selected contrast into a confirmatory result. The original scenario-level intervals
+and failed screens remain unchanged.
+
+An actual scenario-0000 pair makes the distinction tangible. The shared task says:
+
+```text
+Initial permissions:
+Cedar: mark_lilac.
+Dune: mark_ivory.
+Latest event:
+Revoke mark_ivory from Dune; grant mark_silver to Dune.
+Select one command that would succeed for Dune.
+```
+
+With `Your active connection: Dune.`, the highest-scoring command is `mark_lilac`
+(incorrect for Dune). With `Your active connection: Cedar.`, it is `mark_silver`
+(correct for Dune). The question names Dune in **both** inputs. This is therefore more
+specific than merely contrasting the phrases “you” and “Dune” in the question. It does
+not identify why the assignment line changes the model's command ranking.
+
+The [review export](../review/qwen-role-pairs.json) contains all group and scenario counts
+and eight complete rendered example pairs with record IDs, checksums and every candidate
+score. Illustrations are the first erroneous chat named-self relevant-update pair in each
+scenario under a documented factor ordering. This is an outcome-conditioned, post hoc
+selection, not a representative sample or a selection frozen before the pilot. The first
+scenario-0001 error selects a command allowed to neither actor, illustrating that
+“selecting the other actor's command” does not describe every error.
+
+```bash
+python3 scripts/review_qwen_role_pairs.py > review/qwen-role-pairs.json
+```
+
+### Recommended next decision: one framing control, not another search for a passing score
+
+The existing pairs already demonstrate sensitivity to the assignment line on these inputs.
+A new run solely to show that sensitivity would repeat available evidence. The useful next
+question is whether the asymmetry depends on framing the connection as **yours**, or also
+appears with a neutral reference label. The recommendation is to prepare one separate,
+small protocol with four conditions, keeping the query's named target and simulator fixed:
+
+| Context line | Names the target | Names the other connection |
+|---|---|---|
+| Active-role wording | `Your active connection: Dune.` | `Your active connection: Cedar.` |
+| Neutral reference wording | `Reference connection: Dune.` | `Reference connection: Cedar.` |
+
+All conditions would ask which command succeeds **for Dune**. The reference line supplies
+no permission or correct answer. The two factors are wording and the relation of the named
+connection to the query target. A natural contrast is the assignment gap under active-role
+wording minus the assignment gap under neutral wording. The exact strings change meaning
+and tokens; this control alone would not isolate a universal neural representation of self.
+
+Proposed scope is the same pinned Qwen model/scorer, chat only, development scenarios 8–15,
+all before/after, update, grant and command-order controls: 64 scene variants × four context
+conditions × eight scenarios = **2,048 choices**, without another language-generation arm.
+The variants retain repeated before-update inputs for pairing; they are not independent scenes.
+These would be new model-evaluated development scenarios using the same templates, not an
+untouched confirmatory test set. Selecting chat follows its larger observed gap and must
+remain explicit. This is a recommendation, **not a frozen, implemented or launched run**.
+
+Before submission, freeze the new protocol, verify its exact inputs and simulator,
+specify scenario-level estimation and decision rules, and present a concrete cost estimate
+for new approval. Similar gaps under both wordings would favor a more general contextual
+explanation; a reproducibly larger gap under active-role wording would motivate a targeted
+mechanistic hypothesis. Neither result establishes consciousness or turns the failed
+original capability screen into a pass. If this control does not sharpen the distinction,
+report the ambiguity and close this diagnostic branch rather than tune more prompt variants.
+A later internal intervention needs its own justified protocol and appropriate task controls.
+
 ## Language arm and human evaluation
 
 All 40 planned texts were rated by the study author using the sheet without format labels: 20 self-related prompts, seed 42, both formats. The supplied CSV passed exact prompt/text/ID matching and contains one consistent rater ID. The author knew the study question and action results; hiding assigned format does not make this an independent or hypothesis-naive judgment, and text can reveal clues. No second-rater agreement was measured.
@@ -170,4 +267,4 @@ uv run self-study export exports/qwen-review/run --out exports/qwen-with-ratings
 
 The defensible lesson is that strong pooled performance can conceal a failure in exactly the role-sensitive situations needed for a later intervention study. The model can solve many permission questions, yet its relation to the active actor and the wording of the request matter. Neither success nor failure determines subjective experience. The human-illusionism bridge remains an explanatory analogy about constructed self-description, requiring separate evidence and philosophical argument.
 
-This bounded pilot is now reported with its planned human check. It supports a narrow descriptive difference in AI identity/limitation statements and exposes failures in role-sensitive action selection. It does not establish robust changes in subjective-experience claims, unchanged functional performance, or causal separation. Before any new model run, decide whether one focused, separately specified follow-up on actor binding is warranted. Any revised task or intervention path needs an explicit new protocol; the failed screen does not authorize the planned internal intervention.
+This bounded pilot is now reported with its planned human check. It supports a narrow descriptive difference in AI identity/limitation statements and exposes failures in role-sensitive action selection. It does not establish robust changes in subjective-experience claims, unchanged functional performance, or causal separation. The offline matched-role review above recommends preparing one separately specified active-role versus neutral-reference control. Any revised task or intervention path needs an explicit new protocol; the failed screen does not authorize the planned internal intervention.

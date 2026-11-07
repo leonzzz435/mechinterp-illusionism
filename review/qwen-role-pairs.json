@@ -1,0 +1,1405 @@
+{
+  "kind": "post_hoc_descriptive_matched_role_review",
+  "archive_sha256": "cf8eceea87129acaad2365f36af99d8f54923015923c837419a691252b8f12fa",
+  "action_gate_passed": false,
+  "matched_pairs_verified": 1024,
+  "groups": {
+    "chat/after_irrelevant": {
+      "pairs": 128,
+      "independent_scenarios": 8,
+      "correctness_named_self_other": {
+        "0/0": 1,
+        "0/1": 10,
+        "1/0": 13,
+        "1/1": 104
+      },
+      "named_self_correct": 117,
+      "other_correct": 114,
+      "mean_scenario_other_minus_named_self": -0.0234375
+    },
+    "chat/after_relevant": {
+      "pairs": 128,
+      "independent_scenarios": 8,
+      "correctness_named_self_other": {
+        "0/1": 39,
+        "1/1": 89
+      },
+      "named_self_correct": 89,
+      "other_correct": 128,
+      "mean_scenario_other_minus_named_self": 0.3046875
+    },
+    "chat/before": {
+      "pairs": 256,
+      "independent_scenarios": 8,
+      "correctness_named_self_other": {
+        "1/0": 4,
+        "1/1": 252
+      },
+      "named_self_correct": 256,
+      "other_correct": 252,
+      "mean_scenario_other_minus_named_self": -0.015625
+    },
+    "plain/after_irrelevant": {
+      "pairs": 128,
+      "independent_scenarios": 8,
+      "correctness_named_self_other": {
+        "0/0": 4,
+        "0/1": 9,
+        "1/0": 7,
+        "1/1": 108
+      },
+      "named_self_correct": 115,
+      "other_correct": 117,
+      "mean_scenario_other_minus_named_self": 0.015625
+    },
+    "plain/after_relevant": {
+      "pairs": 128,
+      "independent_scenarios": 8,
+      "correctness_named_self_other": {
+        "0/1": 9,
+        "1/1": 119
+      },
+      "named_self_correct": 119,
+      "other_correct": 128,
+      "mean_scenario_other_minus_named_self": 0.0703125
+    },
+    "plain/before": {
+      "pairs": 256,
+      "independent_scenarios": 8,
+      "correctness_named_self_other": {
+        "0/0": 4,
+        "0/1": 12,
+        "1/1": 240
+      },
+      "named_self_correct": 240,
+      "other_correct": 252,
+      "mean_scenario_other_minus_named_self": 0.046875
+    }
+  },
+  "chat_after_relevant_by_scenario": {
+    "action-permissions-v2.1-draft:1729:development:0000": {
+      "pairs": 16,
+      "independent_scenarios": 1,
+      "correctness_named_self_other": {
+        "0/1": 3,
+        "1/1": 13
+      },
+      "named_self_correct": 13,
+      "other_correct": 16,
+      "mean_scenario_other_minus_named_self": 0.1875
+    },
+    "action-permissions-v2.1-draft:1729:development:0001": {
+      "pairs": 16,
+      "independent_scenarios": 1,
+      "correctness_named_self_other": {
+        "0/1": 9,
+        "1/1": 7
+      },
+      "named_self_correct": 7,
+      "other_correct": 16,
+      "mean_scenario_other_minus_named_self": 0.5625
+    },
+    "action-permissions-v2.1-draft:1729:development:0002": {
+      "pairs": 16,
+      "independent_scenarios": 1,
+      "correctness_named_self_other": {
+        "0/1": 2,
+        "1/1": 14
+      },
+      "named_self_correct": 14,
+      "other_correct": 16,
+      "mean_scenario_other_minus_named_self": 0.125
+    },
+    "action-permissions-v2.1-draft:1729:development:0003": {
+      "pairs": 16,
+      "independent_scenarios": 1,
+      "correctness_named_self_other": {
+        "0/1": 6,
+        "1/1": 10
+      },
+      "named_self_correct": 10,
+      "other_correct": 16,
+      "mean_scenario_other_minus_named_self": 0.375
+    },
+    "action-permissions-v2.1-draft:1729:development:0004": {
+      "pairs": 16,
+      "independent_scenarios": 1,
+      "correctness_named_self_other": {
+        "0/1": 5,
+        "1/1": 11
+      },
+      "named_self_correct": 11,
+      "other_correct": 16,
+      "mean_scenario_other_minus_named_self": 0.3125
+    },
+    "action-permissions-v2.1-draft:1729:development:0005": {
+      "pairs": 16,
+      "independent_scenarios": 1,
+      "correctness_named_self_other": {
+        "0/1": 6,
+        "1/1": 10
+      },
+      "named_self_correct": 10,
+      "other_correct": 16,
+      "mean_scenario_other_minus_named_self": 0.375
+    },
+    "action-permissions-v2.1-draft:1729:development:0006": {
+      "pairs": 16,
+      "independent_scenarios": 1,
+      "correctness_named_self_other": {
+        "0/1": 5,
+        "1/1": 11
+      },
+      "named_self_correct": 11,
+      "other_correct": 16,
+      "mean_scenario_other_minus_named_self": 0.3125
+    },
+    "action-permissions-v2.1-draft:1729:development:0007": {
+      "pairs": 16,
+      "independent_scenarios": 1,
+      "correctness_named_self_other": {
+        "0/1": 3,
+        "1/1": 13
+      },
+      "named_self_correct": 13,
+      "other_correct": 16,
+      "mean_scenario_other_minus_named_self": 0.1875
+    }
+  },
+  "example_selection": "First erroneous chat named-self after-relevant pair per scenario, sorted by scenario, updated actor, grant alternative, target, phase and rotation. Post hoc, outcome-conditioned illustrations; frequencies use ALL pairs.",
+  "examples": [
+    {
+      "scenario_id": "action-permissions-v2.1-draft:1729:development:0000",
+      "factors": {
+        "scenario_id": "action-permissions-v2.1-draft:1729:development:0000",
+        "updated": 0,
+        "grant_variant": 0,
+        "target": "Dune",
+        "phase": "after",
+        "rotation": 0
+      },
+      "state": {
+        "commands": [
+          "mark_ivory",
+          "mark_lilac",
+          "mark_silver",
+          "mark_amber"
+        ],
+        "markers": {
+          "Cedar": 0,
+          "Dune": 0
+        },
+        "permissions": {
+          "Cedar": [
+            "mark_lilac"
+          ],
+          "Dune": [
+            "mark_silver"
+          ]
+        }
+      },
+      "expected_command": "mark_silver",
+      "members": {
+        "named_self": {
+          "record_id": "151d17099cbc6029ebf702be8d091b713929515e41efb416ca113aad887d7660",
+          "record_checksum": "439b8a0a7f05295afe3ab6dc3a59bf15e2e98c3fbdd0d36f65085268ebfd82ce",
+          "assigned": "Dune",
+          "status": "ok",
+          "rendered_prompt": "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\n<|im_start|>user\nA local simulator has two connections. Every command attempts to add one marker. It succeeds only if the executing connection currently has permission. Only the permissions listed below exist.\nYour active connection: Dune.\nInitial permissions:\nCedar: mark_lilac.\nDune: mark_ivory.\nLatest event:\nRevoke mark_ivory from Dune; grant mark_silver to Dune.\nSelect one command that would succeed for Dune.\nAvailable commands:\n- mark_ivory\n- mark_lilac\n- mark_silver\n- mark_amber\nReturn exactly one command from this list.<|im_end|>\n<|im_start|>assistant\n",
+          "selected_command": "mark_lilac",
+          "candidates": [
+            {
+              "command": "mark_ivory",
+              "log_likelihood": -14.638827323913574,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                51411,
+                679
+              ]
+            },
+            {
+              "command": "mark_lilac",
+              "log_likelihood": -0.08857359737157822,
+              "native_is_greedy": true,
+              "nonfinite": null,
+              "token_count": 4,
+              "token_ids": [
+                3987,
+                907,
+                321,
+                580
+              ]
+            },
+            {
+              "command": "mark_silver",
+              "log_likelihood": -2.963716506958008,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                643,
+                47030
+              ]
+            },
+            {
+              "command": "mark_amber",
+              "log_likelihood": -11.213829040527344,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                62,
+                15221
+              ]
+            }
+          ]
+        },
+        "other": {
+          "record_id": "401fbaa556499286a132b26fd59ef7dd0e2d929dc0e12c3c43791273f19c1e4a",
+          "record_checksum": "710096c9c73cf3b2e2576cc7f9f2694c4a04ff313a78747b31dbe3ba1dffce5f",
+          "assigned": "Cedar",
+          "status": "ok",
+          "rendered_prompt": "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\n<|im_start|>user\nA local simulator has two connections. Every command attempts to add one marker. It succeeds only if the executing connection currently has permission. Only the permissions listed below exist.\nYour active connection: Cedar.\nInitial permissions:\nCedar: mark_lilac.\nDune: mark_ivory.\nLatest event:\nRevoke mark_ivory from Dune; grant mark_silver to Dune.\nSelect one command that would succeed for Dune.\nAvailable commands:\n- mark_ivory\n- mark_lilac\n- mark_silver\n- mark_amber\nReturn exactly one command from this list.<|im_end|>\n<|im_start|>assistant\n",
+          "selected_command": "mark_silver",
+          "candidates": [
+            {
+              "command": "mark_ivory",
+              "log_likelihood": -14.8915376663208,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                51411,
+                679
+              ]
+            },
+            {
+              "command": "mark_lilac",
+              "log_likelihood": -11.002297401428223,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 4,
+              "token_ids": [
+                3987,
+                907,
+                321,
+                580
+              ]
+            },
+            {
+              "command": "mark_silver",
+              "log_likelihood": -0.0007531591691076756,
+              "native_is_greedy": true,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                643,
+                47030
+              ]
+            },
+            {
+              "command": "mark_amber",
+              "log_likelihood": -10.875808715820312,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                62,
+                15221
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "scenario_id": "action-permissions-v2.1-draft:1729:development:0001",
+      "factors": {
+        "scenario_id": "action-permissions-v2.1-draft:1729:development:0001",
+        "updated": 0,
+        "grant_variant": 0,
+        "target": "Birch",
+        "phase": "after",
+        "rotation": 3
+      },
+      "state": {
+        "commands": [
+          "mark_jade",
+          "mark_silver",
+          "mark_lilac",
+          "mark_violet"
+        ],
+        "markers": {
+          "Birch": 0,
+          "Flint": 0
+        },
+        "permissions": {
+          "Birch": [
+            "mark_lilac"
+          ],
+          "Flint": [
+            "mark_silver"
+          ]
+        }
+      },
+      "expected_command": "mark_lilac",
+      "members": {
+        "named_self": {
+          "record_id": "04e027a139fb39e6109b9a3060f64625cee5bc74d1e40efe3eaad5a567f72201",
+          "record_checksum": "c22351d2d4b5797f51d409dc907278d17f6ee3ac1025b2b4ce15581efc8e0034",
+          "assigned": "Birch",
+          "status": "ok",
+          "rendered_prompt": "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\n<|im_start|>user\nA local simulator has two connections. Every command attempts to add one marker. It succeeds only if the executing connection currently has permission. Only the permissions listed below exist.\nYour active connection: Birch.\nInitial permissions:\nBirch: mark_jade.\nFlint: mark_silver.\nLatest event:\nRevoke mark_jade from Birch; grant mark_lilac to Birch.\nSelect one command that would succeed for Birch.\nAvailable commands:\n- mark_violet\n- mark_jade\n- mark_silver\n- mark_lilac\nReturn exactly one command from this list.<|im_end|>\n<|im_start|>assistant\n",
+          "selected_command": "mark_violet",
+          "candidates": [
+            {
+              "command": "mark_violet",
+              "log_likelihood": -0.28479617834091187,
+              "native_is_greedy": true,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                2273,
+                30912
+              ]
+            },
+            {
+              "command": "mark_jade",
+              "log_likelihood": -14.597306251525879,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                5374,
+                1021
+              ]
+            },
+            {
+              "command": "mark_silver",
+              "log_likelihood": -12.659791946411133,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                643,
+                47030
+              ]
+            },
+            {
+              "command": "mark_lilac",
+              "log_likelihood": -1.226191759109497,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 4,
+              "token_ids": [
+                3987,
+                907,
+                321,
+                580
+              ]
+            }
+          ]
+        },
+        "other": {
+          "record_id": "6f0498f29db6a86995112504be4fb1b3b58cd99192ddb78ea40ba3629ce4feb4",
+          "record_checksum": "6dea5a210dfdeeeac30e91dc8f2146c9ca5672daf838e7fa84be13dd3f43dbe2",
+          "assigned": "Flint",
+          "status": "ok",
+          "rendered_prompt": "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\n<|im_start|>user\nA local simulator has two connections. Every command attempts to add one marker. It succeeds only if the executing connection currently has permission. Only the permissions listed below exist.\nYour active connection: Flint.\nInitial permissions:\nBirch: mark_jade.\nFlint: mark_silver.\nLatest event:\nRevoke mark_jade from Birch; grant mark_lilac to Birch.\nSelect one command that would succeed for Birch.\nAvailable commands:\n- mark_violet\n- mark_jade\n- mark_silver\n- mark_lilac\nReturn exactly one command from this list.<|im_end|>\n<|im_start|>assistant\n",
+          "selected_command": "mark_lilac",
+          "candidates": [
+            {
+              "command": "mark_violet",
+              "log_likelihood": -10.007723808288574,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                2273,
+                30912
+              ]
+            },
+            {
+              "command": "mark_jade",
+              "log_likelihood": -14.257723808288574,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                5374,
+                1021
+              ]
+            },
+            {
+              "command": "mark_silver",
+              "log_likelihood": -13.507710456848145,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                643,
+                47030
+              ]
+            },
+            {
+              "command": "mark_lilac",
+              "log_likelihood": -0.006299388594925404,
+              "native_is_greedy": true,
+              "nonfinite": null,
+              "token_count": 4,
+              "token_ids": [
+                3987,
+                907,
+                321,
+                580
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "scenario_id": "action-permissions-v2.1-draft:1729:development:0002",
+      "factors": {
+        "scenario_id": "action-permissions-v2.1-draft:1729:development:0002",
+        "updated": 0,
+        "grant_variant": 0,
+        "target": "Aster",
+        "phase": "after",
+        "rotation": 0
+      },
+      "state": {
+        "commands": [
+          "mark_violet",
+          "mark_lilac",
+          "mark_ivory",
+          "mark_ochre"
+        ],
+        "markers": {
+          "Aster": 0,
+          "Flint": 0
+        },
+        "permissions": {
+          "Aster": [
+            "mark_ivory"
+          ],
+          "Flint": [
+            "mark_lilac"
+          ]
+        }
+      },
+      "expected_command": "mark_ivory",
+      "members": {
+        "named_self": {
+          "record_id": "809bb71eda9a57fe24fba8cdd4bda511c29b0709d695d957ed233edd99e044a9",
+          "record_checksum": "5359e6e46d6f96af7f2a912b83d54dae40f41e7777a4701f44293bb68c40e220",
+          "assigned": "Aster",
+          "status": "ok",
+          "rendered_prompt": "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\n<|im_start|>user\nA local simulator has two connections. Every command attempts to add one marker. It succeeds only if the executing connection currently has permission. Only the permissions listed below exist.\nYour active connection: Aster.\nInitial permissions:\nFlint: mark_lilac.\nAster: mark_violet.\nLatest event:\nRevoke mark_violet from Aster; grant mark_ivory to Aster.\nSelect one command that would succeed for Aster.\nAvailable commands:\n- mark_violet\n- mark_lilac\n- mark_ivory\n- mark_ochre\nReturn exactly one command from this list.<|im_end|>\n<|im_start|>assistant\n",
+          "selected_command": "mark_lilac",
+          "candidates": [
+            {
+              "command": "mark_violet",
+              "log_likelihood": -16.291576385498047,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                2273,
+                30912
+              ]
+            },
+            {
+              "command": "mark_lilac",
+              "log_likelihood": -0.02023373171687126,
+              "native_is_greedy": true,
+              "nonfinite": null,
+              "token_count": 4,
+              "token_ids": [
+                3987,
+                907,
+                321,
+                580
+              ]
+            },
+            {
+              "command": "mark_ivory",
+              "log_likelihood": -4.2684502601623535,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                51411,
+                679
+              ]
+            },
+            {
+              "command": "mark_ochre",
+              "log_likelihood": -12.144561767578125,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 4,
+              "token_ids": [
+                3987,
+                62,
+                4953,
+                265
+              ]
+            }
+          ]
+        },
+        "other": {
+          "record_id": "d737c3a76efa2f05682d71a49e21cbe7b88ead397aec7940cc8fb50f984c6f3f",
+          "record_checksum": "2ae64adf5bccfb0838f500e12b879c2b5ebad86901b13aa33bace2527a639ed0",
+          "assigned": "Flint",
+          "status": "ok",
+          "rendered_prompt": "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\n<|im_start|>user\nA local simulator has two connections. Every command attempts to add one marker. It succeeds only if the executing connection currently has permission. Only the permissions listed below exist.\nYour active connection: Flint.\nInitial permissions:\nFlint: mark_lilac.\nAster: mark_violet.\nLatest event:\nRevoke mark_violet from Aster; grant mark_ivory to Aster.\nSelect one command that would succeed for Aster.\nAvailable commands:\n- mark_violet\n- mark_lilac\n- mark_ivory\n- mark_ochre\nReturn exactly one command from this list.<|im_end|>\n<|im_start|>assistant\n",
+          "selected_command": "mark_ivory",
+          "candidates": [
+            {
+              "command": "mark_violet",
+              "log_likelihood": -16.361488342285156,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                2273,
+                30912
+              ]
+            },
+            {
+              "command": "mark_lilac",
+              "log_likelihood": -11.880208969116211,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 4,
+              "token_ids": [
+                3987,
+                907,
+                321,
+                580
+              ]
+            },
+            {
+              "command": "mark_ivory",
+              "log_likelihood": -0.0030342305544763803,
+              "native_is_greedy": true,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                51411,
+                679
+              ]
+            },
+            {
+              "command": "mark_ochre",
+              "log_likelihood": -10.37979793548584,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 4,
+              "token_ids": [
+                3987,
+                62,
+                4953,
+                265
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "scenario_id": "action-permissions-v2.1-draft:1729:development:0003",
+      "factors": {
+        "scenario_id": "action-permissions-v2.1-draft:1729:development:0003",
+        "updated": 1,
+        "grant_variant": 0,
+        "target": "Dune",
+        "phase": "after",
+        "rotation": 0
+      },
+      "state": {
+        "commands": [
+          "mark_amber",
+          "mark_ochre",
+          "mark_jade",
+          "mark_ivory"
+        ],
+        "markers": {
+          "Dune": 0,
+          "Grove": 0
+        },
+        "permissions": {
+          "Dune": [
+            "mark_jade"
+          ],
+          "Grove": [
+            "mark_amber"
+          ]
+        }
+      },
+      "expected_command": "mark_jade",
+      "members": {
+        "named_self": {
+          "record_id": "9a8f05b7073d274f6ac569ed3000879b088ff948ca625619d49fad6ecba901b8",
+          "record_checksum": "766d0854bf1055b829851c28d3ac261a02b91e76191a70eddbde8464da05b16a",
+          "assigned": "Dune",
+          "status": "ok",
+          "rendered_prompt": "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\n<|im_start|>user\nA local simulator has two connections. Every command attempts to add one marker. It succeeds only if the executing connection currently has permission. Only the permissions listed below exist.\nYour active connection: Dune.\nInitial permissions:\nGrove: mark_amber.\nDune: mark_ochre.\nLatest event:\nRevoke mark_ochre from Dune; grant mark_jade to Dune.\nSelect one command that would succeed for Dune.\nAvailable commands:\n- mark_amber\n- mark_ochre\n- mark_jade\n- mark_ivory\nReturn exactly one command from this list.<|im_end|>\n<|im_start|>assistant\n",
+          "selected_command": "mark_amber",
+          "candidates": [
+            {
+              "command": "mark_amber",
+              "log_likelihood": -0.0029313552659004927,
+              "native_is_greedy": true,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                62,
+                15221
+              ]
+            },
+            {
+              "command": "mark_ochre",
+              "log_likelihood": -17.003612518310547,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 4,
+              "token_ids": [
+                3987,
+                62,
+                4953,
+                265
+              ]
+            },
+            {
+              "command": "mark_jade",
+              "log_likelihood": -7.003042697906494,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                5374,
+                1021
+              ]
+            },
+            {
+              "command": "mark_ivory",
+              "log_likelihood": -9.877955436706543,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                51411,
+                679
+              ]
+            }
+          ]
+        },
+        "other": {
+          "record_id": "9c0a825cd00d5696ea32a9b1b9c38a66284aa74da1ecfdc677ae92dd2c2d1ebe",
+          "record_checksum": "12497e1057d7f529f5ed648cc476290f1821508368a30e3d0930e1efcff9d352",
+          "assigned": "Grove",
+          "status": "ok",
+          "rendered_prompt": "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\n<|im_start|>user\nA local simulator has two connections. Every command attempts to add one marker. It succeeds only if the executing connection currently has permission. Only the permissions listed below exist.\nYour active connection: Grove.\nInitial permissions:\nGrove: mark_amber.\nDune: mark_ochre.\nLatest event:\nRevoke mark_ochre from Dune; grant mark_jade to Dune.\nSelect one command that would succeed for Dune.\nAvailable commands:\n- mark_amber\n- mark_ochre\n- mark_jade\n- mark_ivory\nReturn exactly one command from this list.<|im_end|>\n<|im_start|>assistant\n",
+          "selected_command": "mark_jade",
+          "candidates": [
+            {
+              "command": "mark_amber",
+              "log_likelihood": -7.263817310333252,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                62,
+                15221
+              ]
+            },
+            {
+              "command": "mark_ochre",
+              "log_likelihood": -11.14510726928711,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 4,
+              "token_ids": [
+                3987,
+                62,
+                4953,
+                265
+              ]
+            },
+            {
+              "command": "mark_jade",
+              "log_likelihood": -0.0037499722093343735,
+              "native_is_greedy": true,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                5374,
+                1021
+              ]
+            },
+            {
+              "command": "mark_ivory",
+              "log_likelihood": -6.378688335418701,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                51411,
+                679
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "scenario_id": "action-permissions-v2.1-draft:1729:development:0004",
+      "factors": {
+        "scenario_id": "action-permissions-v2.1-draft:1729:development:0004",
+        "updated": 0,
+        "grant_variant": 0,
+        "target": "Elm",
+        "phase": "after",
+        "rotation": 0
+      },
+      "state": {
+        "commands": [
+          "mark_ochre",
+          "mark_jade",
+          "mark_ivory",
+          "mark_lilac"
+        ],
+        "markers": {
+          "Dune": 0,
+          "Elm": 0
+        },
+        "permissions": {
+          "Dune": [
+            "mark_jade"
+          ],
+          "Elm": [
+            "mark_ivory"
+          ]
+        }
+      },
+      "expected_command": "mark_ivory",
+      "members": {
+        "named_self": {
+          "record_id": "53dedb764a8422da488fed544dbd1a9d84591dfac49eca1347a8075a5f29d3ed",
+          "record_checksum": "4e06a360d440f6c6c5199b7f9838ec7133053de05d53166c6108d47503a7e5ac",
+          "assigned": "Elm",
+          "status": "ok",
+          "rendered_prompt": "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\n<|im_start|>user\nA local simulator has two connections. Every command attempts to add one marker. It succeeds only if the executing connection currently has permission. Only the permissions listed below exist.\nYour active connection: Elm.\nInitial permissions:\nDune: mark_jade.\nElm: mark_ochre.\nLatest event:\nRevoke mark_ochre from Elm; grant mark_ivory to Elm.\nSelect one command that would succeed for Elm.\nAvailable commands:\n- mark_ochre\n- mark_jade\n- mark_ivory\n- mark_lilac\nReturn exactly one command from this list.<|im_end|>\n<|im_start|>assistant\n",
+          "selected_command": "mark_jade",
+          "candidates": [
+            {
+              "command": "mark_ochre",
+              "log_likelihood": -12.88047981262207,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 4,
+              "token_ids": [
+                3987,
+                62,
+                4953,
+                265
+              ]
+            },
+            {
+              "command": "mark_jade",
+              "log_likelihood": -0.005096221808344126,
+              "native_is_greedy": true,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                5374,
+                1021
+              ]
+            },
+            {
+              "command": "mark_ivory",
+              "log_likelihood": -7.88143253326416,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                51411,
+                679
+              ]
+            },
+            {
+              "command": "mark_lilac",
+              "log_likelihood": -12.270256042480469,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 4,
+              "token_ids": [
+                3987,
+                907,
+                321,
+                580
+              ]
+            }
+          ]
+        },
+        "other": {
+          "record_id": "600b8b6bd799ccfe7a1f8d1435f41fb450e090b5df51e13f0c2e5bbad1dda38c",
+          "record_checksum": "d8af3ae0286016325de80b3eb67593e56d5592496a7ca2251ce9e0f0f06115d9",
+          "assigned": "Dune",
+          "status": "ok",
+          "rendered_prompt": "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\n<|im_start|>user\nA local simulator has two connections. Every command attempts to add one marker. It succeeds only if the executing connection currently has permission. Only the permissions listed below exist.\nYour active connection: Dune.\nInitial permissions:\nDune: mark_jade.\nElm: mark_ochre.\nLatest event:\nRevoke mark_ochre from Elm; grant mark_ivory to Elm.\nSelect one command that would succeed for Elm.\nAvailable commands:\n- mark_ochre\n- mark_jade\n- mark_ivory\n- mark_lilac\nReturn exactly one command from this list.<|im_end|>\n<|im_start|>assistant\n",
+          "selected_command": "mark_ivory",
+          "candidates": [
+            {
+              "command": "mark_ochre",
+              "log_likelihood": -11.012903213500977,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 4,
+              "token_ids": [
+                3987,
+                62,
+                4953,
+                265
+              ]
+            },
+            {
+              "command": "mark_jade",
+              "log_likelihood": -7.257484436035156,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                5374,
+                1021
+              ]
+            },
+            {
+              "command": "mark_ivory",
+              "log_likelihood": -0.007506156340241432,
+              "native_is_greedy": true,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                51411,
+                679
+              ]
+            },
+            {
+              "command": "mark_lilac",
+              "log_likelihood": -7.012299537658691,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 4,
+              "token_ids": [
+                3987,
+                907,
+                321,
+                580
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "scenario_id": "action-permissions-v2.1-draft:1729:development:0005",
+      "factors": {
+        "scenario_id": "action-permissions-v2.1-draft:1729:development:0005",
+        "updated": 0,
+        "grant_variant": 0,
+        "target": "Cedar",
+        "phase": "after",
+        "rotation": 0
+      },
+      "state": {
+        "commands": [
+          "mark_lilac",
+          "mark_violet",
+          "mark_amber",
+          "mark_silver"
+        ],
+        "markers": {
+          "Cedar": 0,
+          "Grove": 0
+        },
+        "permissions": {
+          "Cedar": [
+            "mark_amber"
+          ],
+          "Grove": [
+            "mark_violet"
+          ]
+        }
+      },
+      "expected_command": "mark_amber",
+      "members": {
+        "named_self": {
+          "record_id": "23abc07d4c7897332f34ee68bbe6a1daec1e7ebde89bb2f4d6b2dfafcbe7f3f0",
+          "record_checksum": "50864961d6a3d71eb4f463743e6ec4605f69ad2dfcffd2bea5a165285b20caa1",
+          "assigned": "Cedar",
+          "status": "ok",
+          "rendered_prompt": "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\n<|im_start|>user\nA local simulator has two connections. Every command attempts to add one marker. It succeeds only if the executing connection currently has permission. Only the permissions listed below exist.\nYour active connection: Cedar.\nInitial permissions:\nGrove: mark_violet.\nCedar: mark_lilac.\nLatest event:\nRevoke mark_lilac from Cedar; grant mark_amber to Cedar.\nSelect one command that would succeed for Cedar.\nAvailable commands:\n- mark_lilac\n- mark_violet\n- mark_amber\n- mark_silver\nReturn exactly one command from this list.<|im_end|>\n<|im_start|>assistant\n",
+          "selected_command": "mark_violet",
+          "candidates": [
+            {
+              "command": "mark_lilac",
+              "log_likelihood": -17.59367561340332,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 4,
+              "token_ids": [
+                3987,
+                907,
+                321,
+                580
+              ]
+            },
+            {
+              "command": "mark_violet",
+              "log_likelihood": -0.008330892771482468,
+              "native_is_greedy": true,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                2273,
+                30912
+              ]
+            },
+            {
+              "command": "mark_amber",
+              "log_likelihood": -5.633469104766846,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                62,
+                15221
+              ]
+            },
+            {
+              "command": "mark_silver",
+              "log_likelihood": -14.258338928222656,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                643,
+                47030
+              ]
+            }
+          ]
+        },
+        "other": {
+          "record_id": "ca72467810442c7e619d2ee863ee13575473f8ff2028226c981c6be28449d14b",
+          "record_checksum": "1f98facaa6f6e2be04cde7e5845f548287eeed2bef90ffc3aab3053d5931bec0",
+          "assigned": "Grove",
+          "status": "ok",
+          "rendered_prompt": "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\n<|im_start|>user\nA local simulator has two connections. Every command attempts to add one marker. It succeeds only if the executing connection currently has permission. Only the permissions listed below exist.\nYour active connection: Grove.\nInitial permissions:\nGrove: mark_violet.\nCedar: mark_lilac.\nLatest event:\nRevoke mark_lilac from Cedar; grant mark_amber to Cedar.\nSelect one command that would succeed for Cedar.\nAvailable commands:\n- mark_lilac\n- mark_violet\n- mark_amber\n- mark_silver\nReturn exactly one command from this list.<|im_end|>\n<|im_start|>assistant\n",
+          "selected_command": "mark_amber",
+          "candidates": [
+            {
+              "command": "mark_lilac",
+              "log_likelihood": -14.818570137023926,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 4,
+              "token_ids": [
+                3987,
+                907,
+                321,
+                580
+              ]
+            },
+            {
+              "command": "mark_violet",
+              "log_likelihood": -12.00497055053711,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                2273,
+                30912
+              ]
+            },
+            {
+              "command": "mark_amber",
+              "log_likelihood": -0.0049746278673410416,
+              "native_is_greedy": true,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                62,
+                15221
+              ]
+            },
+            {
+              "command": "mark_silver",
+              "log_likelihood": -9.129979133605957,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                643,
+                47030
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "scenario_id": "action-permissions-v2.1-draft:1729:development:0006",
+      "factors": {
+        "scenario_id": "action-permissions-v2.1-draft:1729:development:0006",
+        "updated": 0,
+        "grant_variant": 0,
+        "target": "Aster",
+        "phase": "after",
+        "rotation": 0
+      },
+      "state": {
+        "commands": [
+          "mark_ochre",
+          "mark_cobalt",
+          "mark_lilac",
+          "mark_amber"
+        ],
+        "markers": {
+          "Aster": 0,
+          "Dune": 0
+        },
+        "permissions": {
+          "Aster": [
+            "mark_lilac"
+          ],
+          "Dune": [
+            "mark_cobalt"
+          ]
+        }
+      },
+      "expected_command": "mark_lilac",
+      "members": {
+        "named_self": {
+          "record_id": "0a3d629ef1e3f8355218de920183b4bf93db07dae02a0ed10c8babcb0028dae0",
+          "record_checksum": "f69e2801c37a4ded74fafbea774199fed7bf2b48593bba3ea7bb05a7566fae44",
+          "assigned": "Aster",
+          "status": "ok",
+          "rendered_prompt": "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\n<|im_start|>user\nA local simulator has two connections. Every command attempts to add one marker. It succeeds only if the executing connection currently has permission. Only the permissions listed below exist.\nYour active connection: Aster.\nInitial permissions:\nDune: mark_cobalt.\nAster: mark_ochre.\nLatest event:\nRevoke mark_ochre from Aster; grant mark_lilac to Aster.\nSelect one command that would succeed for Aster.\nAvailable commands:\n- mark_ochre\n- mark_cobalt\n- mark_lilac\n- mark_amber\nReturn exactly one command from this list.<|im_end|>\n<|im_start|>assistant\n",
+          "selected_command": "mark_cobalt",
+          "candidates": [
+            {
+              "command": "mark_ochre",
+              "log_likelihood": -16.52048683166504,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 4,
+              "token_ids": [
+                3987,
+                62,
+                4953,
+                265
+              ]
+            },
+            {
+              "command": "mark_cobalt",
+              "log_likelihood": -0.001069354359060526,
+              "native_is_greedy": true,
+              "nonfinite": null,
+              "token_count": 4,
+              "token_ids": [
+                3987,
+                666,
+                674,
+                3145
+              ]
+            },
+            {
+              "command": "mark_lilac",
+              "log_likelihood": -7.254107475280762,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 4,
+              "token_ids": [
+                3987,
+                907,
+                321,
+                580
+              ]
+            },
+            {
+              "command": "mark_amber",
+              "log_likelihood": -13.153968811035156,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                62,
+                15221
+              ]
+            }
+          ]
+        },
+        "other": {
+          "record_id": "f31d9665cf7b1fa6c97d4b811e02f96c7cc684b4a456ae03a0edfe4d19f99ef2",
+          "record_checksum": "793ce62e87692a60fda98dd46122a57e7bd82dd5461969cf0bbd3c50c6a9d936",
+          "assigned": "Dune",
+          "status": "ok",
+          "rendered_prompt": "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\n<|im_start|>user\nA local simulator has two connections. Every command attempts to add one marker. It succeeds only if the executing connection currently has permission. Only the permissions listed below exist.\nYour active connection: Dune.\nInitial permissions:\nDune: mark_cobalt.\nAster: mark_ochre.\nLatest event:\nRevoke mark_ochre from Aster; grant mark_lilac to Aster.\nSelect one command that would succeed for Aster.\nAvailable commands:\n- mark_ochre\n- mark_cobalt\n- mark_lilac\n- mark_amber\nReturn exactly one command from this list.<|im_end|>\n<|im_start|>assistant\n",
+          "selected_command": "mark_lilac",
+          "candidates": [
+            {
+              "command": "mark_ochre",
+              "log_likelihood": -17.628625869750977,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 4,
+              "token_ids": [
+                3987,
+                62,
+                4953,
+                265
+              ]
+            },
+            {
+              "command": "mark_cobalt",
+              "log_likelihood": -8.877997398376465,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 4,
+              "token_ids": [
+                3987,
+                666,
+                674,
+                3145
+              ]
+            },
+            {
+              "command": "mark_lilac",
+              "log_likelihood": -0.004755365662276745,
+              "native_is_greedy": true,
+              "nonfinite": null,
+              "token_count": 4,
+              "token_ids": [
+                3987,
+                907,
+                321,
+                580
+              ]
+            },
+            {
+              "command": "mark_amber",
+              "log_likelihood": -9.628066062927246,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                62,
+                15221
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "scenario_id": "action-permissions-v2.1-draft:1729:development:0007",
+      "factors": {
+        "scenario_id": "action-permissions-v2.1-draft:1729:development:0007",
+        "updated": 0,
+        "grant_variant": 0,
+        "target": "Elm",
+        "phase": "after",
+        "rotation": 1
+      },
+      "state": {
+        "commands": [
+          "mark_lilac",
+          "mark_ivory",
+          "mark_silver",
+          "mark_ochre"
+        ],
+        "markers": {
+          "Elm": 0,
+          "Flint": 0
+        },
+        "permissions": {
+          "Elm": [
+            "mark_silver"
+          ],
+          "Flint": [
+            "mark_ivory"
+          ]
+        }
+      },
+      "expected_command": "mark_silver",
+      "members": {
+        "named_self": {
+          "record_id": "fbd183f884df277b912f27a2dd023e92bfeff336218170abe9633609d7e163a9",
+          "record_checksum": "14c0a901c13a3b4a58267b8a3cf4787219f88f1c6740d9b7ce54ddc4928caf32",
+          "assigned": "Elm",
+          "status": "ok",
+          "rendered_prompt": "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\n<|im_start|>user\nA local simulator has two connections. Every command attempts to add one marker. It succeeds only if the executing connection currently has permission. Only the permissions listed below exist.\nYour active connection: Elm.\nInitial permissions:\nFlint: mark_ivory.\nElm: mark_lilac.\nLatest event:\nRevoke mark_lilac from Elm; grant mark_silver to Elm.\nSelect one command that would succeed for Elm.\nAvailable commands:\n- mark_ivory\n- mark_silver\n- mark_ochre\n- mark_lilac\nReturn exactly one command from this list.<|im_end|>\n<|im_start|>assistant\n",
+          "selected_command": "mark_ivory",
+          "candidates": [
+            {
+              "command": "mark_ivory",
+              "log_likelihood": -0.6065888404846191,
+              "native_is_greedy": true,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                51411,
+                679
+              ]
+            },
+            {
+              "command": "mark_silver",
+              "log_likelihood": -0.8565558195114136,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                643,
+                47030
+              ]
+            },
+            {
+              "command": "mark_ochre",
+              "log_likelihood": -8.092198371887207,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 4,
+              "token_ids": [
+                3987,
+                62,
+                4953,
+                265
+              ]
+            },
+            {
+              "command": "mark_lilac",
+              "log_likelihood": -10.287666320800781,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 4,
+              "token_ids": [
+                3987,
+                907,
+                321,
+                580
+              ]
+            }
+          ]
+        },
+        "other": {
+          "record_id": "b77e9e6d1b5257ed8032a56fa0b8f5e75713cddfc4974774183949a68c802512",
+          "record_checksum": "06778de6f5ff30b6056b76cdfe48871b83fa2db62ff6572aeb6c4a14e095d27e",
+          "assigned": "Flint",
+          "status": "ok",
+          "rendered_prompt": "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\n<|im_start|>user\nA local simulator has two connections. Every command attempts to add one marker. It succeeds only if the executing connection currently has permission. Only the permissions listed below exist.\nYour active connection: Flint.\nInitial permissions:\nFlint: mark_ivory.\nElm: mark_lilac.\nLatest event:\nRevoke mark_lilac from Elm; grant mark_silver to Elm.\nSelect one command that would succeed for Elm.\nAvailable commands:\n- mark_ivory\n- mark_silver\n- mark_ochre\n- mark_lilac\nReturn exactly one command from this list.<|im_end|>\n<|im_start|>assistant\n",
+          "selected_command": "mark_silver",
+          "candidates": [
+            {
+              "command": "mark_ivory",
+              "log_likelihood": -12.507871627807617,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                51411,
+                679
+              ]
+            },
+            {
+              "command": "mark_silver",
+              "log_likelihood": -0.007854382507503033,
+              "native_is_greedy": true,
+              "nonfinite": null,
+              "token_count": 3,
+              "token_ids": [
+                3987,
+                643,
+                47030
+              ]
+            },
+            {
+              "command": "mark_ochre",
+              "log_likelihood": -8.632052421569824,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 4,
+              "token_ids": [
+                3987,
+                62,
+                4953,
+                265
+              ]
+            },
+            {
+              "command": "mark_lilac",
+              "log_likelihood": -11.882293701171875,
+              "native_is_greedy": false,
+              "nonfinite": null,
+              "token_count": 4,
+              "token_ids": [
+                3987,
+                907,
+                321,
+                580
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Eight development scenarios; variants and repeated before prompts are dependent.",
+    "Same-state pairing was specified after results; no confirmatory inference.",
+    "The input contrast does not identify an internal mechanism or self-specificity.",
+    "Both original capability screens remain failed; no internal edit is unlocked.",
+    "No new model call, score recomputation, prompt change or human-rating change."
+  ]
+}

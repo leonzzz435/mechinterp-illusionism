@@ -1,7 +1,8 @@
 # One activation exchange for the Qwen role-framing effect
 
-**Protocol `qwen-role-patch-v1` is implemented and frozen; no pretrained-model intervention
-has run yet. A paid start requires a separate concrete approval.** The prior
+**Protocol `qwen-role-patch-v1` is implemented and frozen. Its single USD 5-authorized
+L4 job was submitted on 2026-11-07; results remain pending.** See the
+[execution record and retrieval handover](QWEN_ROLE_PATCH_RUN.md). The prior
 [role-control result](QWEN_ROLE_RESULTS.md) motivates this exploratory experiment on the
 same eight development scenarios (8–15). It does not repair the original failed capability
 screen or establish a dissociation between self-language and functional self-model use.
@@ -164,7 +165,8 @@ Read-only price/source proposal, **not a submission**:
 uv run --script scripts/hf_jobs.py plan --namespace zett13 --budget-usd 5 --config configs/qwen-role-patch.json
 ```
 
-Only after a new explicit USD 5 allowance for this single job, from clean pushed source:
+**Already submitted with explicit USD 5 approval. Do not repeat the submit command.**
+The following documents the original dispatch and local receipt commands:
 
 ```bash
 uv run --script scripts/hf_jobs.py submit --namespace zett13 --budget-usd 5 --config configs/qwen-role-patch.json

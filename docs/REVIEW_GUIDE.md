@@ -5,7 +5,7 @@ Start with the [single-site patch protocol](QWEN_ROLE_PATCH.md) and
 known wording interaction, not to claim held-out confirmation. Review donor/candidate mapping,
 causal role-end alignment, full-command scoring, BF16 norm controls, source integrity, the
 sole primary transfer-vs-random contrast and conservative decision rules. The implementation
-and CPU checks are separate from the still-pending paid GPU run. Historical archives below
+and CPU checks are separate from the [submitted GPU run](QWEN_ROLE_PATCH_RUN.md), whose results remain pending. Historical archives below
 are unchanged; the original failed capability screen remains failed.
 
 The [Qwen handover](QWEN_PILOT.md) specifies the new model, tokenizer boundary, frozen prompts,

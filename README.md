@@ -16,7 +16,8 @@ Every additional paid job requires separate authorization.
 
 - **[Prepared activation exchange: protocol, mathematics and HF handover](docs/QWEN_ROLE_PATCH.md)** —
   11,264 scientific selections plus 32 technical repeats; one fixed block/token, both directions,
-  own-state and random controls. Implementation prepared; new paid start and GPU results pending.
+  own-state and random controls. Single authorized L4 job submitted; GPU results pending.
+  [Execution and retrieval](docs/QWEN_ROLE_PATCH_RUN.md).
 - **[Completed role-framing control: results, mathematics and plots](docs/QWEN_ROLE_RESULTS.md)** —
   2,048 choices, 32/32 controls passed; +16.41 pp wording interaction (nominal 95% interval
   +8.59 to +25.78). A candidate for targeted mechanistic planning; no internal intervention

@@ -29,7 +29,8 @@ records configuration/source hashes, tokenizer checks, archive checksums and pen
   still passes; all historical result archives remain byte-unchanged.
 
 The read-only HF quote remains USD 1.613293 for two hours plus one rounding minute on L4.
-The proposed USD 5 allowance is **not authorized**; submission remains pending. Real-model
+At preflight, the proposed USD 5 allowance was not yet authorized. The user subsequently
+approved the single [submitted job](QWEN_ROLE_PATCH_RUN.md); its results remain pending. Real-model
 baseline parity, null parity, delivered BF16 edit norms, runtime and effects require that job.
 
 ## Completed role-control evidence — 2026-11-07

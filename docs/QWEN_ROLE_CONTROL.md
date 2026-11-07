@@ -1,9 +1,9 @@
 # Qwen role-framing control
 
-**Status: frozen, CPU-tested and connected to HF Jobs; execution authorized on 2026-11-07.**
+**Status: frozen, CPU-tested and submitted to HF Jobs on 2026-11-07; results pending.**
 The user allocated an upper bound of USD 19 to this one control. The live provider quote
 is USD 0.013333/minute for one L4, giving a compute bound of USD 1.613293 for two hours
-plus one rounding minute. Submission and results are recorded separately below.
+plus one rounding minute. See the [execution record](QWEN_ROLE_RUN.md) for the actual job.
 Protocol: `qwen-role-framing-v1`. This is a separate development control prompted by the
 failed Qwen capability screen. It does not reopen, repair or replace that screen, and it
 does not authorize an internal intervention. Consciousness and human illusionism remain

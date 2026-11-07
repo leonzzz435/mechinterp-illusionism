@@ -1,2 +1,2 @@
 # Matplotlib SVG path data contains valid line-end whitespace; preserve artifact bytes.
-assets/*.svg -whitespace
+assets/**/*.svg -whitespace

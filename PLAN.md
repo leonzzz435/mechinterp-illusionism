@@ -44,7 +44,8 @@
 - [x] Prepare and freeze the separate role-framing protocol, full input plan, CPU checks and decision rules.
 - [x] Prepare and test the role-control HF adapter; obtain USD 19 authorization for one L4 job (quoted compute bound USD 1.613293).
 - [x] Submit the frozen role control from pushed commit `e7bd7a6`; see [execution record](docs/QWEN_ROLE_RUN.md).
-- [ ] Run and evaluate the frozen role-framing control, preserving all predeclared stop rules.
+- [x] Complete and verify all 2,048 role-control choices: 32/32 controls pass; +16.41 pp primary interaction, 7/8 positive scenarios; `wording_sensitive_candidate`.
+- [ ] Plan one targeted mechanistic experiment for the wording interaction with frozen controls; no internal intervention has been authorized or run.
 - [x] Obtain a separate USD 5 approval and submit one pinned L4 job after CPU verification.
 - [x] Verify the cloud export and publish the failed screen: plain 4/24 checks failed, chat 7/24.
 
@@ -62,8 +63,10 @@ wrong to correct across all eight scenarios. The recommendation is one controlle
 with neutral reference wording, not another search for a passing prompt. The separate
 [role-control protocol](docs/QWEN_ROLE_CONTROL.md) is now frozen and CPU-prepared: 2,048
 choices in scenarios 8–15, one primary interaction, explicit stop rules and no internal edit.
-Its HF adapter is tested and one authorized bounded run was submitted on 2026-11-07;
-results are pending. An independent methodological review
+Its single authorized L4 run completed on 2026-11-07. The [verified control report](docs/QWEN_ROLE_RESULTS.md)
+finds a +16.41 pp primary interaction (nominal 95% interval +8.59 to +25.78), with all 32 controls
+passing. This permits targeted mechanistic planning; it does not repair the failed original
+capability screen or establish functional separation. An independent methodological review
 remains outstanding. The old 40/40/100 dataset and historical pilots are preserved.
 
 The [review guide](docs/REVIEW_GUIDE.md) is the handoff for a reviewer without chat context.

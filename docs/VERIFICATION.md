@@ -2,6 +2,32 @@
 
 Verified on 2026-11-06. Software tests and real-model evidence are identified separately below.
 
+## Completed role-control evidence — 2026-11-07
+
+The single authorized job completed all 2,048 choices without execution/scoring errors.
+`fetch` pinned result revision `6d67821e9a2c3d8f7739087784b41c95bde3d236` and verified the
+export. The original archive is tracked unchanged, SHA256
+`36614cb2aae236d450d57540c9b76dfddfec2d4bd2a59f177dce296058b13a8d`.
+
+- `python3 scripts/review_role_evidence.py` verifies 39 payload checksums, 2,048 record
+  digests and score selections, independently reconstructs simulator outcomes, verifies 512
+  matched input quartets, and reaggregates all 12 cells, 32 controls, interactions and exact
+  sign flips. Its limitations explicitly exclude model likelihood arithmetic and independent
+  bootstrap implementation. This is not an independent external review.
+- The frozen package's complete analysis was rerun locally and exactly matches cloud JSON,
+  including all bootstrap intervals and the candidate decision. Execution/source hashes match.
+- The actual cached tokenizer reproduces all 2,048 rendered prompts and 8,192 continuation
+  boundaries, maximum 158 tokens. No model inference or download was performed locally.
+- SQLite and JSONL records agree exactly. Result figures in SVG/PDF/PNG are copied unchanged
+  from the original export; the PNG was visually inspected.
+- `uv run --no-sync pytest -q tests/test_role_evidence.py tests/test_qwen_evidence.py`:
+  **11 passed in 7.73 seconds**. The new audit tests reject altered score selections,
+  fabricated positive-scenario counts and altered sign-flip p-values even after bypassing
+  the outer file-integrity check. Historical Qwen and human-rating audits still pass.
+
+The [report](QWEN_ROLE_RESULTS.md) retains secondary/reversed effects, all control checks
+and the unchanged failed original capability gate. No new intervention or paid job followed.
+
 ## Role-control cloud adapter — 2026-11-07
 
 `uv run --no-sync pytest -q tests/test_hf_jobs.py`: **16 passed in 1.43 seconds**.

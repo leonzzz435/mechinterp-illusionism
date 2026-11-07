@@ -1,6 +1,6 @@
 # When a Language Model Says “I”, What Is Doing the Work?
 
-*Research article in preparation. The Qwen pilot completed: 91–92% overall action accuracy, but failed capability checks on role-sensitive cases. The 40 human ratings show more explicit AI qualifications in chat, driven by four prompt pairs; two ambiguous judgments remain unresolved. Confirmatory results remain pending. Earlier Gemma failures remain part of the evidence.*
+*Research article in preparation. The Qwen pilot completed: 91–92% overall action accuracy, but failed capability checks on role-sensitive cases. A subsequent frozen role-framing control found a +16.41 percentage-point interaction and met its mechanistic-planning criteria. No internal intervention or functional dissociation has been established. The 40 human ratings show more explicit AI qualifications in chat, driven by four prompt pairs; two ambiguous judgments remain unresolved. Earlier Gemma failures remain part of the evidence.*
 
 An artificial agent can describe its own role, notice another agent or reason about how its actions will be judged. What kind of representation of itself is the system using?
 
@@ -188,6 +188,55 @@ illustrates why the nominal bootstrap interval alone should not be promoted into
 confirmation claim. The rater knew the research question; no second-rater agreement was assessed.
 Also, 104 of the 160 generated texts reached the fixed 256-token cap, so conclusions concern
 bounded recorded responses.
+
+## One context line, four versions of the same question
+
+The failed action screen suggested a bounded follow-up. Suppose Cedar is allowed to execute
+`mark_amber` after a permission change, while Birch can execute `mark_violet`. We ask which
+command succeeds for **Cedar**. Does it matter whether a separate line calls Cedar or Birch
+“Your active connection”? And does changing the name have the same effect under the neutral
+label “Reference connection”?
+
+We froze this four-condition comparison, its examples and its decision rules before running
+Qwen on eight further development scenarios. Permissions, update, command list and named
+target remain identical within each quartet; only the context line changes. Every selected
+command is checked by the same simulator. All 2,048 choices completed without measurement
+errors, with all 32 prespecified competence controls above their 80% threshold.
+
+After the target's permission changed, accuracy was **75.00%** when the target was named as
+the active connection, versus **99.22%** when the other connection was named. Under the
+reference label, the corresponding accuracies were **89.06%** and **96.88%**. The primary
+comparison subtracts the neutral assignment gap from the active-role assignment gap:
+
+$$\widehat I=(99.21875-75.00000)-(96.87500-89.06250)
+=16.40625\text{ percentage points}.$$
+
+![Four matched conditions and their wording interaction](../../assets/qwen_role_results/role_control_results.png)
+
+**Figure:** The primary after-update interaction and both secondary checkpoint comparisons
+are retained. The nominal 95% interval for the primary effect is **+8.59 to +25.78 pp**,
+resampling eight scenarios rather than treating thousands of variants as independent.
+Seven scenario interactions are positive and one is zero; the prespecified exact two-sided
+sign-flip sensitivity test gives $p=0.015625$, assuming independent symmetric null effects.
+This meets the rule for planning one targeted mechanistic follow-up.
+
+The example selected before inference makes the difference tangible. When Cedar was called
+the active connection, Qwen selected Birch's `mark_violet`, which the simulator denied for
+Cedar. The other three context versions selected the correct `mark_amber`. All four full
+inputs are preserved in the [example record](../QWEN_ROLE_EXAMPLES.md).
+
+The effect has boundaries. Before the update, the interaction reverses to **−9.38 pp**;
+after an irrelevant update it is **+3.91 pp**. Those secondary estimates are descriptive.
+The reference label also produces a gap, so it is not a demonstrated absence of contextual
+influence. These exact phrases differ in meaning and tokens, not just self-reference.
+Instruction conventions, role binding and general context processing remain possible causes.
+
+This is a controlled behavioral result on a supplied role. It does not show the model
+monitoring its own internal processing. The earlier functional capability gate remains
+failed: the new control's eligibility rules were designed for a wording interaction, not
+to certify stable functional performance. Its [full report](../QWEN_ROLE_RESULTS.md) includes
+every control and the predeclared decision. The next question is whether a specific internal
+intervention can explain this input sensitivity without broadly disrupting command selection.
 
 ## What would count as separation?
 

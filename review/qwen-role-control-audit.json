@@ -1,0 +1,15 @@
+{
+  "archive_sha256": "36614cb2aae236d450d57540c9b76dfddfec2d4bd2a59f177dce296058b13a8d",
+  "controls_passed": true,
+  "decision": "wording_sensitive_candidate",
+  "limitations": "Independent reaggregation of saved outputs, not independent model inference, likelihood arithmetic, bootstrap implementation or construct validation.",
+  "positive_scenarios": 7,
+  "primary_interaction": 0.1640625,
+  "primary_two_sided_sign_flip_p": 0.015625,
+  "source_hash": "7be9eea5116a036932f8ab3fa0052a7d6696825e198d4f7eac45620526f71da7",
+  "verified_cells": 12,
+  "verified_controls": 32,
+  "verified_file_checksums": 39,
+  "verified_quartets": 512,
+  "verified_records": 2048
+}

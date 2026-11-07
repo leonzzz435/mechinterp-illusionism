@@ -1,4 +1,4 @@
-# New review target: bounded Qwen pilot
+# Review target: Qwen pilot and completed role-framing control
 
 The [Qwen handover](QWEN_PILOT.md) specifies the new model, tokenizer boundary, frozen prompts,
 capability gates, blind-rating rubric, stopping rules and reproduction commands. Its CPU
@@ -9,9 +9,14 @@ pooled accuracy. All 40 human ratings are now integrated in a separate rated exp
 unclear cells remain. The +20 pp disclaimer contrast is driven by four prompt pairs.
 The historical evidence and independent review below remain unchanged.
 
-## Submitted follow-up, 2026-11-07
+## Completed role-framing control, 2026-11-07
 
-The [role-framing control](QWEN_ROLE_CONTROL.md) is frozen and **submitted; results pending**.
+The [role-framing control](QWEN_ROLE_CONTROL.md) completed: **2,048/2,048 choices, zero
+measurement errors, 32/32 controls passed, `wording_sensitive_candidate`**. The primary
+interaction is +16.41 pp (nominal 95% interval +8.59 to +25.78); seven of eight scenarios
+are positive, and exact two-sided sign-flip p=0.015625. The
+[result report](QWEN_ROLE_RESULTS.md) includes every cell/control, the reversed before-update
+interaction and all four examples fixed before inference. No internal intervention was run.
 It contains 2,048 choices on development scenarios 8–15, a four-condition comparison,
 one primary scenario-level interaction and explicit stop rules. Review the exact-wording
 construct limitation, the 32 competence controls, the sign-flip assumptions and the rule
@@ -20,6 +25,15 @@ remain failed. [CPU preflight](../review/qwen-role-control-preflight.json) and t
 design archive contain complete inputs, simulator oracles, tokenizer checks and a clearly
 labeled design figure. The [execution record](QWEN_ROLE_RUN.md) records the authorized L4
 job, exact source and budget; the tracked receipt supports status/fetch from another checkout.
+
+The unchanged original archive is tracked as
+`review/evidence/qwen-role-96787d5e7adf4c4d.tar.gz`, SHA256
+`36614cb2aae236d450d57540c9b76dfddfec2d4bd2a59f177dce296058b13a8d`.
+Run `python3 scripts/review_role_evidence.py` for independent standard-library reaggregation
+of all 39 payload checksums, 2,048 records, 512 quartets, 12 cells, 32 controls and exact
+sign flips. This is a second implementation audit, not an independent human review or
+independent recomputation of model likelihoods. The frozen analysis and tokenizer boundaries
+also reproduce locally; see `review/qwen-role-control-verification.json`.
 
 ---
 

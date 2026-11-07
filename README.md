@@ -14,8 +14,10 @@ identity/limitation judgments were 11/20 plain versus 15/20 chat. Two unclear ju
 retained; no full paired effect is estimated for experience claims or coherence.
 Every additional paid job requires separate authorization.
 
-- **[Next control: frozen CPU design, mathematics and decision rules](docs/QWEN_ROLE_CONTROL.md)** —
-  four context conditions, 2,048 choices, no model run yet.
+- **[Completed role-framing control: results, mathematics and plots](docs/QWEN_ROLE_RESULTS.md)** —
+  2,048 choices, 32/32 controls passed; +16.41 pp wording interaction (nominal 95% interval
+  +8.59 to +25.78). A candidate for targeted mechanistic planning; no internal intervention
+  or functional-separation finding. [Frozen protocol](docs/QWEN_ROLE_CONTROL.md).
 - **[Qwen pilot: frozen protocol, verification and execution handover](docs/QWEN_PILOT.md)**
 
 - **[Cloud execution: Hugging Face Jobs](docs/HF_JOBS.md)**

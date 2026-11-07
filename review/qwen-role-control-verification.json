@@ -1,0 +1,21 @@
+{
+  "all_record_digests_verified": true,
+  "archive_sha256": "36614cb2aae236d450d57540c9b76dfddfec2d4bd2a59f177dce296058b13a8d",
+  "artifact_revision": "6d67821e9a2c3d8f7739087784b41c95bde3d236",
+  "command_boundaries_checked": 8192,
+  "document_links_checked": 66,
+  "figure_artifacts_match_archive": 6,
+  "independent_reaggregation": "review/qwen-role-control-audit.json",
+  "journal_matches_jsonl": true,
+  "local_frozen_analysis_exactly_matches_cloud": true,
+  "max_prompt_plus_command_tokens": 158,
+  "no_additional_model_inference": true,
+  "rendered_prompts_checked": 2048,
+  "source_hash": "7be9eea5116a036932f8ab3fa0052a7d6696825e198d4f7eac45620526f71da7",
+  "tests": {
+    "command": "uv run --no-sync pytest -q tests/test_role_evidence.py tests/test_qwen_evidence.py",
+    "passed": 11,
+    "seconds": 7.73
+  },
+  "tokenizer_revision": "a09a35458c702b33eeacc393d103063234e8bc28"
+}

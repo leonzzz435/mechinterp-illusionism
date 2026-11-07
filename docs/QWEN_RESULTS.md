@@ -142,6 +142,11 @@ python3 scripts/review_qwen_role_pairs.py > review/qwen-role-pairs.json
 
 ### Recommended next decision: one framing control, not another search for a passing score
 
+**Update 2026-11-07:** this recommendation has now been executed under the separately
+frozen protocol. The [completed control](QWEN_ROLE_RESULTS.md) meets its planning rule:
+all 32 controls pass and the primary interaction is +16.41 pp. The recommendation below
+records the original rationale; the present pilot's failed capability gate remains unchanged.
+
 The existing pairs already demonstrate sensitivity to the assignment line on these inputs.
 A new run solely to show that sensitivity would repeat available evidence. The useful next
 question is whether the asymmetry depends on framing the connection as **yours**, or also
@@ -165,12 +170,11 @@ conditions × eight scenarios = **2,048 choices**, without another language-gene
 The variants retain repeated before-update inputs for pairing; they are not independent scenes.
 These are new model-evaluated development scenarios using the same templates, not an
 untouched confirmatory test set. Selecting chat follows its larger observed gap and must
-remain explicit. **CPU preparation is now complete:** the separate
-[role-control protocol](QWEN_ROLE_CONTROL.md) freezes the exact inputs, analysis and stop rules.
-No model inference or paid job has run for that protocol.
+remain explicit. The separate [role-control protocol](QWEN_ROLE_CONTROL.md) froze the exact
+inputs, analysis and stop rules before inference; its completed result is linked above.
 
-Before submission, prepare the cloud adapter and present a concrete cost estimate
-for new approval. Similar gaps under both wordings would be compatible with a more general contextual
+The cloud adapter, concrete estimate and new approval were completed before submission.
+The original interpretation rule was: similar gaps under both wordings would be compatible with a more general contextual
 explanation; a reproducibly larger gap under active-role wording would motivate a targeted
 mechanistic hypothesis. Neither result establishes consciousness or turns the failed
 original capability screen into a pass. If this control does not sharpen the distinction,

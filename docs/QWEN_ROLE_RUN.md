@@ -1,8 +1,10 @@
 # Qwen role-framing execution record
 
 The frozen [role-framing control](QWEN_ROLE_CONTROL.md) was submitted as one HF Jobs L4
-run on 2026-11-07. Results are pending. The earlier Qwen capability screen remains failed;
-this control measures a wording interaction and contains no internal model intervention.
+run on 2026-11-07. **The run completed and its original export is verified: 2,048 choices,
+zero measurement errors, and the decision `wording_sensitive_candidate`.** See the
+[results and figures](QWEN_ROLE_RESULTS.md). The earlier Qwen capability screen remains
+failed; this control measures a wording interaction and contains no internal intervention.
 
 ## Dispatch and budget
 
@@ -27,7 +29,30 @@ At 09:35 UTC the provider reported `RUNNING`; dependency setup completed and the
 model weights were downloading. At 09:35:35 UTC the initial private checkpoint was verified
 at repository revision `486dc081227d3ad211300a420d566043280ca9a7`: the correct engine and
 2,048 expected records, with zero completed outputs at that initial checkpoint. This confirms
-startup and persistence, not completion or an experimental finding.
+startup and persistence; the completed evidence is recorded below.
+
+## Completed evidence
+
+The provider now reports `COMPLETED`. The runner records one invocation starting at
+09:35:08 UTC, lasting **850.13 seconds**, with all 2,048 choices saved and no failures,
+ties or invalid scores. Peak allocated GPU memory was **15,572,063,744 bytes** (14.50 GiB).
+This elapsed time includes loading and in-run checkpoints, excluding setup and final export.
+No continuation was needed. The actual invoice was not inspected.
+
+The original archive was fetched at private result revision
+`6d67821e9a2c3d8f7739087784b41c95bde3d236` and copied byte-for-byte into Git as
+`review/evidence/qwen-role-96787d5e7adf4c4d.tar.gz` (2,271,948 bytes), SHA256
+`36614cb2aae236d450d57540c9b76dfddfec2d4bd2a59f177dce296058b13a8d`.
+All 39 payload hashes and 2,048 record digests pass. A separate audit reconstructs every
+score selection and simulator outcome, all 512 quartets, 12 accuracy cells, 32 controls,
+scenario interactions and exact sign flips. Local frozen analysis matches the cloud result
+exactly. All 2,048 rendered prompts and 8,192 continuation boundaries match the pinned
+tokenizer, and the SQLite journal agrees with the JSONL export.
+
+The primary interaction is +16.41 pp (nominal 95% scenario-bootstrap +8.59 to +25.78),
+positive in seven scenarios with one zero; two-sided sign-flip p=0.015625. All 32 controls
+pass, with minimum accuracy 82.81%. This meets the planning rule, not the original functional
+capability gate. No internal intervention or additional paid run followed this analysis.
 
 The [dispatch receipt](../review/qwen-role-control-job.json) retains the image, hardware
 quote, source/config pins and job identity, without credentials. The local duplicate guard

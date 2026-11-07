@@ -1,6 +1,8 @@
 # Qwen role-framing control
 
-**Status: frozen, CPU-tested and submitted to HF Jobs on 2026-11-07; results pending.**
+**Status: completed and verified on 2026-11-07; `wording_sensitive_candidate`.**
+All 2,048 choices and 32 controls are complete; the primary interaction is +16.41 pp.
+See the [result report](QWEN_ROLE_RESULTS.md). The protocol below was frozen before inference.
 The user allocated an upper bound of USD 19 to this one control. The live provider quote
 is USD 0.013333/minute for one L4, giving a compute bound of USD 1.613293 for two hours
 plus one rounding minute. See the [execution record](QWEN_ROLE_RUN.md) for the actual job.
@@ -39,7 +41,7 @@ create attention or relevance effects.
 - Official chat template, including its default system text. Chat was selected after its
   larger historical gap; there is no new plain-text or language-generation arm.
 - `action-permissions-v2.1-draft`, seed 1729, development scenarios **8–15**. These scenarios
-  have not been evaluated by the model in this study. They reuse the generator and templates;
+  had not been evaluated by the model in this study before this run. They reuse the generator and templates;
   they are not an untouched confirmatory test set.
 - 64 scene variants per scenario: two named targets × two updated actors × two grant
   alternatives × two checkpoints × four command rotations. Four context conditions give

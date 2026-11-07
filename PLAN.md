@@ -42,7 +42,8 @@
 - [x] Collect all 40 human ratings, retain two unclear entries, and integrate the language findings.
 - [x] Review existing same-target role pairs and recommend one active-role versus neutral-reference control.
 - [x] Prepare and freeze the separate role-framing protocol, full input plan, CPU checks and decision rules.
-- [ ] Prepare the HF submission adapter and a concrete cost estimate; obtain separate approval before any new paid run.
+- [x] Prepare and test the role-control HF adapter; obtain USD 19 authorization for one L4 job (quoted compute bound USD 1.613293).
+- [ ] Run and evaluate the frozen role-framing control, preserving all predeclared stop rules.
 - [x] Obtain a separate USD 5 approval and submit one pinned L4 job after CPU verification.
 - [x] Verify the cloud export and publish the failed screen: plain 4/24 checks failed, chat 7/24.
 
@@ -60,7 +61,7 @@ wrong to correct across all eight scenarios. The recommendation is one controlle
 with neutral reference wording, not another search for a passing prompt. The separate
 [role-control protocol](docs/QWEN_ROLE_CONTROL.md) is now frozen and CPU-prepared: 2,048
 choices in scenarios 8–15, one primary interaction, explicit stop rules and no internal edit.
-It remains unrun and requires cloud preparation and separate cost approval. An independent methodological review
+Its HF adapter is tested and the user authorized one bounded run on 2026-11-07. An independent methodological review
 remains outstanding. The old 40/40/100 dataset and historical pilots are preserved.
 
 The [review guide](docs/REVIEW_GUIDE.md) is the handoff for a reviewer without chat context.

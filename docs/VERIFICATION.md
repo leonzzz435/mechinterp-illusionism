@@ -2,6 +2,20 @@
 
 Verified on 2026-11-06. Software tests and real-model evidence are identified separately below.
 
+## Role-control cloud adapter — 2026-11-07
+
+`uv run --no-sync pytest -q tests/test_hf_jobs.py`: **16 passed in 1.43 seconds**.
+Both Qwen protocols are checked for explicit configuration propagation, distinct receipts,
+worker dispatch, export and upload of failed runs, and pinned interrupted-run restoration.
+Restoration rejects a mismatched engine; existing duplicate/unknown-submission and secret
+isolation tests pass. Ruff lint and formatting pass for all changed Python files.
+
+The read-only provider endpoint still quotes 13,333 micro-USD/minute for `l4x1`:
+USD 1.613293 for 121 minutes. A positive explicit budget may now exceed the historical
+USD 10 launcher ceiling; hardware and the two-hour provider timeout remain fixed, and the
+compute quote must fit within half the budget. The user authorized USD 19 for this single
+control. Scientific configuration, frozen input plan and analysis rules are unchanged.
+
 ## Role-control CPU preparation — 2026-11-07
 
 The separate [role-framing protocol](QWEN_ROLE_CONTROL.md) is frozen and CPU-prepared.

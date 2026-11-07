@@ -24,6 +24,32 @@ IMAGE = (
 GIT_URL = "https://github.com/leonzzz435/mechinterp-illusionism.git"
 FLAVOR = "l4x1"
 HARD_TIMEOUT = 7200
+CONFIGURATIONS = {
+    "configs/harness-baseline.json": {
+        "engine": "lm-eval",
+        "run_prefix": "harness-",
+        "receipt_name": "first.json",
+        "blocks": 24,
+        "scored_variants": 768,
+        "generated_texts": 0,
+    },
+    "configs/qwen-pilot.json": {
+        "engine": "qwen-pilot",
+        "run_prefix": "qwen-",
+        "receipt_name": "qwen-pilot.json",
+        "blocks": 16,
+        "scored_variants": 3072,
+        "generated_texts": 160,
+    },
+    "configs/qwen-role-control.json": {
+        "engine": "qwen-role-control",
+        "run_prefix": "qwen-role-",
+        "receipt_name": "qwen-role-control.json",
+        "blocks": 8,
+        "scored_variants": 2048,
+        "generated_texts": 0,
+    },
+}
 BOOTSTRAP = """
 uv run --no-project --with huggingface-hub==0.36.2 python - <<'PY'
 import hashlib, os, pathlib, subprocess
@@ -87,8 +113,8 @@ def quote_budget(hardware, budget):
         budget = Decimal(str(budget))
     except InvalidOperation:
         raise ValueError("Budget must be a number in US dollars") from None
-    if not budget.is_finite() or budget <= 0 or budget > 10:
-        raise ValueError("This launcher accepts an explicit per-job budget of at most USD 10")
+    if not budget.is_finite() or budget <= 0:
+        raise ValueError("Budget must be a finite, positive amount in US dollars")
     if hardware["name"] != FLAVOR or hardware["unitLabel"] != "minute":
         raise ValueError("Unexpected hardware/price units; recheck before spending")
     rate = hardware["unitCostMicroUSD"]
@@ -104,19 +130,19 @@ def quote_budget(hardware, budget):
 
 def config_details(config):
     path = (ROOT / config).resolve()
-    allowed = {"configs/harness-baseline.json", "configs/qwen-pilot.json"}
+    allowed = CONFIGURATIONS
     if not path.is_relative_to(ROOT) or path.relative_to(ROOT).as_posix() not in allowed:
         raise ValueError("Choose an explicitly supported study configuration")
     spec = read_json(path)
-    qwen = spec["engine"] == "qwen-pilot"
+    details = CONFIGURATIONS[path.relative_to(ROOT).as_posix()]
+    if spec["engine"] != details["engine"]:
+        raise ValueError("Configuration engine differs from the selected protocol")
     return {
         "config": path.relative_to(ROOT).as_posix(),
         "config_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
         "protocol": spec["protocol"],
         "run_limit_seconds": spec["max_seconds"],
-        "blocks": 16 if qwen else 24,
-        "scored_variants": 3072 if qwen else 768,
-        "generated_texts": 160 if qwen else 0,
+        **details,
     }
 
 
@@ -126,8 +152,9 @@ def resume_details(receipt, proposal, api):
     for key in ("artifact_repo", "config", "config_sha256", "commit"):
         if previous.get(key) != proposal.get(key):
             raise ValueError(f"Resume requires the same {key}")
-    if proposal["config"] != "configs/qwen-pilot.json" or not re.fullmatch(
-        r"qwen-[0-9a-f]{16}", previous.get("run_name", "")
+    selected = CONFIGURATIONS.get(proposal["config"], {})
+    if selected.get("engine") not in {"qwen-pilot", "qwen-role-control"} or not re.fullmatch(
+        re.escape(selected["run_prefix"]) + r"[0-9a-f]{16}", previous.get("run_name", "")
     ):
         raise ValueError("Only a recorded Qwen pilot can be resumed through this launcher")
     if not previous.get("job_id"):
@@ -191,8 +218,7 @@ def submit(proposal, receipt, api, token):
     state = {
         **proposal,
         **publish_source(api, proposal["artifact_repo"], proposal["commit"]),
-        "run_name": ("qwen-" if proposal.get("generated_texts") else "harness-")
-        + uuid.uuid4().hex[:16],
+        "run_name": proposal.get("run_prefix", "harness-") + uuid.uuid4().hex[:16],
         "state": "submitting",
         "budget_status": "submitted_with_explicit_cli_budget",
         "approved_budget_usd": proposal.get(
@@ -316,10 +342,7 @@ def main(argv=None):
                 if args.command == "plan"
                 else submit(
                     proposal,
-                    args.receipt
-                    or ROOT
-                    / ".hf-jobs"
-                    / ("qwen-pilot.json" if proposal["generated_texts"] else "first.json"),
+                    args.receipt or ROOT / ".hf-jobs" / proposal["receipt_name"],
                     HfApi(),
                     get_token(),
                 )

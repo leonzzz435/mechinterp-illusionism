@@ -1,6 +1,9 @@
-# Qwen role-framing control: frozen CPU preparation
+# Qwen role-framing control
 
-**Status: prepared and tested on CPU; no model inference or paid job has run.**
+**Status: frozen, CPU-tested and connected to HF Jobs; execution authorized on 2026-11-07.**
+The user allocated an upper bound of USD 19 to this one control. The live provider quote
+is USD 0.013333/minute for one L4, giving a compute bound of USD 1.613293 for two hours
+plus one rounding minute. Submission and results are recorded separately below.
 Protocol: `qwen-role-framing-v1`. This is a separate development control prompted by the
 failed Qwen capability screen. It does not reopen, repair or replace that screen, and it
 does not authorize an internal intervention. Consciousness and human illusionism remain
@@ -49,8 +52,8 @@ create attention or relevance effects.
   the unchanged native `lm-eval==0.4.13` full-continuation summed log-likelihood: exact command,
   no added whitespace, EOS or length normalization. Ties, nonfinite scores and errors count
   as failures. Errors are retained; a raised inference exception stops the invocation.
-- A 90-minute cooperative invocation limit is retained. This is not a provider cost cap;
-  cloud submission, provider timeout and an updated cost quote remain a separate step.
+- A 90-minute cooperative invocation limit and two-hour provider timeout, including setup,
+  are configured. Completed blocks are uploaded to the private result repository.
 
 Configuration: [configs/qwen-role-control.json](../configs/qwen-role-control.json).
 Frozen plan SHA256: `ee4dfa480160113843b530897828e6b94009b00f8e1590a7d38975e4bacc4a76`.
@@ -155,7 +158,22 @@ authorized GPU execution uses `self-study run configs/qwen-role-control.json --o
 a **different** directory, followed by `analyze` and `export`. Completed records are not
 repeated on resume; changed protocol, source or environment is rejected. Raw outputs,
 rendered prompts, token IDs, every candidate score and simulator outcomes are retained.
-The HF launcher has not been changed to submit this new protocol in this CPU-only step.
+The HF launcher now explicitly selects this protocol, with a separate run prefix and receipt:
+
+```bash
+uv run --script scripts/hf_jobs.py plan --namespace zett13 --budget-usd 19 \
+  --config configs/qwen-role-control.json
+uv run --script scripts/hf_jobs.py submit --namespace zett13 --budget-usd 19 \
+  --config configs/qwen-role-control.json --receipt .hf-jobs/qwen-role-control.json
+uv run --script scripts/hf_jobs.py status --receipt .hf-jobs/qwen-role-control.json
+uv run --script scripts/hf_jobs.py fetch --receipt .hf-jobs/qwen-role-control.json
+```
+
+The submit command documents the single authorized run; an existing receipt prevents
+duplicate dispatch. The worker saves a checkpoint before loading and after each of eight
+256-choice blocks, then exports complete or partial results. Provider termination can lose
+the current block, but previously uploaded blocks remain. Any later continuation uses a
+separate receipt and restores a pinned snapshot with the same protocol and source commit.
 
 Result exports include all cell/control statistics, the primary and secondary interactions,
 the decision and figures in SVG/PDF/PNG. Complete examples are fixed to scenario 0008,

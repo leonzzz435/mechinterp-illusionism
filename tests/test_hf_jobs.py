@@ -54,7 +54,9 @@ class FakeAPI:
 def test_fixed_hardware_quote_rejects_unbounded_or_expensive_jobs(cloud):
     hardware = {"name": "l4x1", "unitLabel": "minute", "unitCostMicroUSD": 13333}
     assert cloud.quote_budget(hardware, "10")["max_compute_usd"] == "1.613293"
-    for budget in ("0", "-1", "nan", "inf", "11", "1"):
+    assert cloud.quote_budget(hardware, "19")["approved_budget_usd"] == "19"
+    assert cloud.quote_budget(hardware, "19")["max_compute_usd"] == "1.613293"
+    for budget in ("0", "-1", "nan", "inf", "1"):
         with pytest.raises(ValueError):
             cloud.quote_budget(hardware, budget)
     for change in (
@@ -76,13 +78,22 @@ def test_explicit_qwen_configuration_and_historical_default(cloud):
     )
     historical = cloud.config_details("configs/harness-baseline.json")
     assert historical["scored_variants"] == 768 and historical["generated_texts"] == 0
+    role = cloud.config_details("configs/qwen-role-control.json")
+    assert role["engine"] == "qwen-role-control" and role["blocks"] == 8
+    assert role["scored_variants"] == 2048 and role["generated_texts"] == 0
+    assert role["run_limit_seconds"] == 5400
+    assert role["receipt_name"] == "qwen-role-control.json"
+    assert len({c["receipt_name"] for c in (historical, qwen, role)}) == 3
     for path in ("../elsewhere.json", "configs/development.json"):
         with pytest.raises(ValueError, match="explicitly supported"):
             cloud.config_details(path)
 
 
+@pytest.mark.parametrize(
+    "config,prefix", [("qwen-pilot", "qwen-"), ("qwen-role-control", "qwen-role-")]
+)
 def test_qwen_selection_reaches_worker_without_reusing_first_receipt(
-    cloud, proposal, monkeypatch, tmp_path
+    cloud, proposal, monkeypatch, tmp_path, config, prefix
 ):
     monkeypatch.setattr(cloud, "git", lambda *args: "a" * 40 + "\trefs/heads/main")
     monkeypatch.setattr(
@@ -95,19 +106,24 @@ def test_qwen_selection_reaches_worker_without_reusing_first_receipt(
     )
     api = FakeAPI()
     result = cloud.submit(
-        {**proposal, **cloud.config_details("configs/qwen-pilot.json")},
-        tmp_path / "qwen-pilot.json",
+        {**proposal, **cloud.config_details(f"configs/{config}.json")},
+        tmp_path / f"{config}.json",
         api,
         "fixture-secret",
     )
-    assert result["run_name"].startswith("qwen-")
-    assert api.calls[0]["env"]["STUDY_CONFIG"] == "configs/qwen-pilot.json"
+    assert result["run_name"].startswith(prefix)
+    assert api.calls[0]["env"]["STUDY_CONFIG"] == f"configs/{config}.json"
     assert api.calls[0]["env"]["STUDY_CONFIG_SHA256"] == result["config_sha256"]
 
 
-def test_qwen_worker_routes_exports_failed_runs_and_exits_nonzero(monkeypatch, tmp_path):
+@pytest.mark.parametrize("config", ["qwen-pilot", "qwen-role-control"])
+def test_qwen_worker_routes_exports_failed_runs_and_exits_nonzero(monkeypatch, tmp_path, config):
     pytest.importorskip("huggingface_hub")
-    from self_model_study import pilot, pilot_reporting
+    if config == "qwen-pilot":
+        from self_model_study import pilot, pilot_reporting
+    else:
+        from self_model_study import role_control as pilot
+        from self_model_study import role_control_reporting as pilot_reporting
     from self_model_study.io import file_hash, write_json
 
     spec = importlib.util.spec_from_file_location("hf_worker", "scripts/hf_worker.py")
@@ -124,8 +140,8 @@ def test_qwen_worker_routes_exports_failed_runs_and_exits_nonzero(monkeypatch, t
     )
     monkeypatch.setattr(worker.subprocess, "check_output", lambda *a, **k: "fixture GPU")
     for key, value in {
-        "STUDY_CONFIG": "configs/qwen-pilot.json",
-        "STUDY_CONFIG_SHA256": file_hash("configs/qwen-pilot.json"),
+        "STUDY_CONFIG": f"configs/{config}.json",
+        "STUDY_CONFIG_SHA256": file_hash(f"configs/{config}.json"),
         "STUDY_RUN_NAME": "fixture",
         "STUDY_ARTIFACT_REPO": "example/results",
         "STUDY_COMMIT": "a" * 40,
@@ -155,10 +171,15 @@ def test_qwen_worker_routes_exports_failed_runs_and_exits_nonzero(monkeypatch, t
     assert (tmp_path / "fixture/export.json").exists()
 
 
-def test_cloud_continuation_is_pinned_and_rejects_active_or_changed_jobs(cloud, proposal, tmp_path):
-    selected = {**proposal, **cloud.config_details("configs/qwen-pilot.json")}
+@pytest.mark.parametrize(
+    "config,prefix", [("qwen-pilot", "qwen-"), ("qwen-role-control", "qwen-role-")]
+)
+def test_cloud_continuation_is_pinned_and_rejects_active_or_changed_jobs(
+    cloud, proposal, tmp_path, config, prefix
+):
+    selected = {**proposal, **cloud.config_details(f"configs/{config}.json")}
     receipt = tmp_path / "prior.json"
-    previous = {**selected, "run_name": "qwen-" + "d" * 16, "job_id": "prior"}
+    previous = {**selected, "run_name": prefix + "d" * 16, "job_id": "prior"}
     cloud.write_json(receipt, previous)
     api = FakeAPI()
     api.inspect_job = lambda **_: SimpleNamespace(status=SimpleNamespace(stage="COMPLETED"))
@@ -171,8 +192,9 @@ def test_cloud_continuation_is_pinned_and_rejects_active_or_changed_jobs(cloud, 
         cloud.resume_details(receipt, {**selected, "commit": "f" * 40}, api)
 
 
+@pytest.mark.parametrize("engine", ["qwen-pilot", "qwen-role-control"])
 def test_worker_restores_verified_partial_snapshot_without_overwriting_source(
-    monkeypatch, tmp_path
+    monkeypatch, tmp_path, engine
 ):
     pytest.importorskip("huggingface_hub")
     from self_model_study.io import file_hash, read_json, write_json
@@ -188,7 +210,7 @@ def test_worker_restores_verified_partial_snapshot_without_overwriting_source(
         write_json(
             source / "manifest.json",
             {
-                "engine": "qwen-pilot",
+                "engine": engine,
                 "status": "paused",
                 "records": {"a": "b"},
                 "expected_jobs": 3232,
@@ -200,7 +222,14 @@ def test_worker_restores_verified_partial_snapshot_without_overwriting_source(
 
     monkeypatch.setattr(worker, "snapshot_download", download)
     output = tmp_path / "new-job"
-    worker.restore_checkpoint(resume, "example/results", output, output / "run")
+    other_engine = "qwen-pilot" if engine == "qwen-role-control" else "qwen-role-control"
+    with pytest.raises(ValueError, match="Only interrupted"):
+        worker.restore_checkpoint(
+            resume, "example/results", output, output / "run", expected_engine=other_engine
+        )
+    worker.restore_checkpoint(
+        resume, "example/results", output, output / "run", expected_engine=engine
+    )
     assert read_json(output / "run/manifest.json")["records"] == {"a": "b"}
     assert not (output / ".restore").exists()
     assert not (output / "run/checksums.json").exists()

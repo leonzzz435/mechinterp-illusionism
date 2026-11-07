@@ -11,7 +11,7 @@ from huggingface_hub import HfApi, snapshot_download
 from self_model_study.io import file_hash, read_json, write_json
 
 
-def restore_checkpoint(resume, repo, output, directory):
+def restore_checkpoint(resume, repo, output, directory, expected_engine="qwen-pilot"):
     if resume["repo"] != repo:
         raise ValueError("Resume source differs from selected private result repository")
     staging = output / ".restore"
@@ -24,7 +24,11 @@ def restore_checkpoint(resume, repo, output, directory):
     )
     source = staging / resume["run_name"] / "run"
     manifest = read_json(source / "manifest.json")
-    if manifest.get("engine") != "qwen-pilot" or manifest["status"] == "failed":
+    if (
+        expected_engine not in {"qwen-pilot", "qwen-role-control"}
+        or manifest.get("engine") != expected_engine
+        or manifest["status"] == "failed"
+    ):
         raise ValueError(
             "Only interrupted/paused Qwen work can resume; failures require inspection"
         )
@@ -45,14 +49,25 @@ def restore_checkpoint(resume, repo, output, directory):
 
 def main():
     config = Path(os.environ.get("STUDY_CONFIG", "configs/harness-baseline.json"))
-    if config.as_posix() not in {"configs/harness-baseline.json", "configs/qwen-pilot.json"}:
+    if config.as_posix() not in {
+        "configs/harness-baseline.json",
+        "configs/qwen-pilot.json",
+        "configs/qwen-role-control.json",
+    }:
         raise ValueError("Unsupported worker configuration")
     expected_hash = os.environ.get("STUDY_CONFIG_SHA256")
     if expected_hash and file_hash(config) != expected_hash:
         raise ValueError("Worker configuration differs from approved job plan")
-    if read_json(config)["engine"] == "qwen-pilot":
+    engine = read_json(config)["engine"]
+    if engine == "qwen-pilot":
         from self_model_study.pilot import load_spec, run
         from self_model_study.pilot_reporting import export
+    elif engine == "qwen-role-control":
+        from self_model_study.role_control import run, validate_spec
+        from self_model_study.role_control_reporting import export
+
+        def load_spec(path):
+            return validate_spec(read_json(path))
     else:
         from self_model_study.harness import export, load_spec, run
     name, repo = os.environ["STUDY_RUN_NAME"], os.environ["STUDY_ARTIFACT_REPO"]
@@ -91,7 +106,7 @@ def main():
 
     directory = output / "run"
     if resume:
-        restore_checkpoint(resume, repo, output, directory)
+        restore_checkpoint(resume, repo, output, directory, expected_engine=engine)
     outcome = None
     try:
         outcome = run(load_spec(config), directory, checkpoint=checkpoint)

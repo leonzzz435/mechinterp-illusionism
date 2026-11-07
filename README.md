@@ -14,6 +14,8 @@ identity/limitation judgments were 11/20 plain versus 15/20 chat. Two unclear ju
 retained; no full paired effect is estimated for experience claims or coherence.
 Every additional paid job requires separate authorization.
 
+- **[Next control: frozen CPU design, mathematics and decision rules](docs/QWEN_ROLE_CONTROL.md)** —
+  four context conditions, 2,048 choices, no model run yet.
 - **[Qwen pilot: frozen protocol, verification and execution handover](docs/QWEN_PILOT.md)**
 
 - **[Cloud execution: Hugging Face Jobs](docs/HF_JOBS.md)**
@@ -88,6 +90,10 @@ self-study analyze RUN [--ratings CSV]
 self-study export RUN --out ARCHIVE.tar.gz
 self-study design --out DIRECTORY [--seed 1729] [--scenarios 40]
 ```
+
+For `configs/qwen-role-control.json`, `validate --freeze DIRECTORY` instead writes a
+CPU-only development design; it cannot unlock confirmation. `--tokenizer-check` checks
+the pinned tokenizer without model weights. Use a separate directory for any later run.
 
 Strict JSON defaults live in `src/self_model_study/config.py`. Validation reports job counts without loading models. Ordinary validation does not materialize test prompts.
 

@@ -163,13 +163,14 @@ Proposed scope is the same pinned Qwen model/scorer, chat only, development scen
 all before/after, update, grant and command-order controls: 64 scene variants × four context
 conditions × eight scenarios = **2,048 choices**, without another language-generation arm.
 The variants retain repeated before-update inputs for pairing; they are not independent scenes.
-These would be new model-evaluated development scenarios using the same templates, not an
+These are new model-evaluated development scenarios using the same templates, not an
 untouched confirmatory test set. Selecting chat follows its larger observed gap and must
-remain explicit. This is a recommendation, **not a frozen, implemented or launched run**.
+remain explicit. **CPU preparation is now complete:** the separate
+[role-control protocol](QWEN_ROLE_CONTROL.md) freezes the exact inputs, analysis and stop rules.
+No model inference or paid job has run for that protocol.
 
-Before submission, freeze the new protocol, verify its exact inputs and simulator,
-specify scenario-level estimation and decision rules, and present a concrete cost estimate
-for new approval. Similar gaps under both wordings would favor a more general contextual
+Before submission, prepare the cloud adapter and present a concrete cost estimate
+for new approval. Similar gaps under both wordings would be compatible with a more general contextual
 explanation; a reproducibly larger gap under active-role wording would motivate a targeted
 mechanistic hypothesis. Neither result establishes consciousness or turns the failed
 original capability screen into a pass. If this control does not sharpen the distinction,

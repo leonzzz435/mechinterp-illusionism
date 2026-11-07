@@ -9,6 +9,17 @@ pooled accuracy. All 40 human ratings are now integrated in a separate rated exp
 unclear cells remain. The +20 pp disclaimer contrast is driven by four prompt pairs.
 The historical evidence and independent review below remain unchanged.
 
+## CPU-prepared follow-up, 2026-11-07
+
+The [role-framing control](QWEN_ROLE_CONTROL.md) is now frozen but **has not run on a model**.
+It contains 2,048 choices on development scenarios 8–15, a four-condition comparison,
+one primary scenario-level interaction and explicit stop rules. Review the exact-wording
+construct limitation, the 32 competence controls, the sign-flip assumptions and the rule
+that a candidate only motivates further planning. The original failed capability screens
+remain failed. [CPU preflight](../review/qwen-role-control-preflight.json) and the linked
+design archive contain complete inputs, simulator oracles, tokenizer checks and a clearly
+labeled design figure. The existing HF launcher does not yet submit this protocol.
+
 ---
 
 # Independent review: evidence and decisions

@@ -134,7 +134,7 @@ def preview(spec):
     }
 
 
-def tokenizer_audit(spec, tokenizer=None):
+def tokenizer_audit(spec, tokenizer=None, *, plan=None):
     """CPU-only optional check using the actual pinned tokenizer, never model weights."""
     if tokenizer is None:
         from transformers import AutoTokenizer
@@ -142,7 +142,8 @@ def tokenizer_audit(spec, tokenizer=None):
         tokenizer = AutoTokenizer.from_pretrained(
             spec["model"]["repo"], revision=spec["model"]["revision"], trust_remote_code=False
         )
-    plan = build_plan(spec)
+    summary = preview(spec) if plan is None else {"plan_hash": digest(plan)}
+    plan = build_plan(spec) if plan is None else plan
     lengths, examples, maximum = {}, {}, 0
     for job in jobs_in(plan):
         rendered = render_prompt(tokenizer, job["row"]["prompt"], job["format"])
@@ -163,7 +164,7 @@ def tokenizer_audit(spec, tokenizer=None):
                 raise ValueError("Generation exceeds context limit; no truncation")
             maximum = max(maximum, length)
     return {
-        **preview(spec),
+        **summary,
         "tokenizer_checked": True,
         "tokenizer_revision": spec["model"]["revision"],
         "tokenizer_vocabulary_hash": digest(tokenizer.get_vocab()),
@@ -228,16 +229,21 @@ def read_run(directory):
 
 def run(spec, directory, max_jobs=None, backend_factory=create_backend, checkpoint=None):
     validate_spec(spec)
+    return run_plan(spec, build_plan(spec), directory, max_jobs, backend_factory, checkpoint)
+
+
+def run_plan(spec, plan, directory, max_jobs=None, backend_factory=create_backend, checkpoint=None):
+    """Shared journaled execution; the caller validates and freezes its own protocol."""
     if max_jobs is not None and (type(max_jobs) is not int or max_jobs < 1):
         raise ValueError("max_jobs must be a positive integer")
     directory = Path(directory)
     with run_lock(directory):
-        return _run(spec, directory, max_jobs, backend_factory, checkpoint)
+        return _run(spec, plan, directory, max_jobs, backend_factory, checkpoint)
 
 
-def _run(spec, directory, max_jobs, backend_factory, checkpoint):
+def _run(spec, plan, directory, max_jobs, backend_factory, checkpoint):
     started = time.monotonic()
-    plan, prov = build_plan(spec), provenance()
+    prov = provenance()
     fingerprint = digest(scientific_spec(spec))
     path = directory / "manifest.json"
     if path.exists():
@@ -275,8 +281,8 @@ def _run(spec, directory, max_jobs, backend_factory, checkpoint):
         for name in ("pyproject.toml", "uv.lock"):
             shutil.copy2(root / name, directory / "source" / name)
         manifest = {
-            "protocol": PROTOCOL,
-            "engine": "qwen-pilot",
+            "protocol": plan["protocol"],
+            "engine": spec["engine"],
             "run_id": "qwen-" + uuid.uuid4().hex[:16],
             "config": spec,
             "config_hash": fingerprint,
@@ -285,7 +291,7 @@ def _run(spec, directory, max_jobs, backend_factory, checkpoint):
             "synthetic": True,  # Only a successfully initialized real backend clears this.
             "status": "prepared",
             "records": {},
-            "expected_jobs": 3232,
+            "expected_jobs": len(jobs_in(plan)),
             "invocations": [],
         }
         write_json(path, manifest)
@@ -356,7 +362,10 @@ def _run(spec, directory, max_jobs, backend_factory, checkpoint):
                     return manifest
             if checkpoint:
                 checkpoint(directory)
-            print(f"Pilot checkpoint: {len(manifest['records'])}/3232 outputs", flush=True)
+            print(
+                f"Pilot checkpoint: {len(manifest['records'])}/{manifest['expected_jobs']} outputs",
+                flush=True,
+            )
         manifest["status"] = (
             "complete_with_errors"
             if any(r["status"] != "ok" for r in journal.rows())

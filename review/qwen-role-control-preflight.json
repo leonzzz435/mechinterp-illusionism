@@ -1,0 +1,31 @@
+{
+  "status": "cpu_prepared_no_model_run",
+  "archive_sha256": "37a915036640f58674ec01a50fbfb88f1f26e194111ac1786d609d73bc70282d",
+  "archive_bytes": 374288,
+  "verified_checksums": 8,
+  "deterministic_repeat": true,
+  "plan_hash": "ee4dfa480160113843b530897828e6b94009b00f8e1590a7d38975e4bacc4a76",
+  "config_hash": "198046dba2e6469d8eefaa3309cad54d56d41b2b4998258e6045a1ade251f962",
+  "action_choices": 2048,
+  "independent_scenarios": 8,
+  "unique_model_inputs": 1280,
+  "tokenizer_checked": true,
+  "max_context_with_command": 158,
+  "tokenizer_vocabulary_hash": "36cd562eb06d9cff856d898c9700031561bf42c50bf57dc82e4c5d8655e61f8c",
+  "chat_template_hash": "2e2d2512cfe46af53dc1eed45368ecaab26ac4461c480e6b69fe571cf0ceaa75",
+  "model_inference": false,
+  "paid_job_submitted": false,
+  "analysis_source_hash": "7be9eea5116a036932f8ab3fa0052a7d6696825e198d4f7eac45620526f71da7",
+  "verification": {
+    "targeted_tests_passed": 13,
+    "full_suite_passed": 85,
+    "full_suite_initial_failures": 1,
+    "failure": "Configuration catalog test needed explicit new-protocol routing",
+    "corrected_test_recheck_passed": 1,
+    "production_code_changed_after_full_suite": false,
+    "ruff_check": "passed",
+    "ruff_format_files": 48,
+    "offline_lock_check": "passed",
+    "figure_visually_inspected": true
+  }
+}

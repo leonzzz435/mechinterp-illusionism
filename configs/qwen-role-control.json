@@ -1,0 +1,45 @@
+{
+  "action_version": "action-permissions-v2.1-draft",
+  "analysis_seed": 1729,
+  "batch_size": 1,
+  "bootstrap_samples": 10000,
+  "context_lines": {
+    "active": "Your active connection: {actor}.",
+    "reference": "Reference connection: {actor}."
+  },
+  "dataset_seed": 1729,
+  "decision": {
+    "control_accuracy": 0.8,
+    "minimum_active_gap": 0.1,
+    "minimum_interaction": 0.1,
+    "minimum_positive_scenarios": 6,
+    "primary_stratum": "after_relevant",
+    "primary_two_sided_alpha": 0.05
+  },
+  "engine": "qwen-role-control",
+  "formats": [
+    "chat"
+  ],
+  "generation": {},
+  "harness_version": "0.4.13",
+  "max_seconds": 5400,
+  "model": {
+    "dtype": "bfloat16",
+    "max_length": 2048,
+    "repo": "Qwen/Qwen2.5-7B-Instruct",
+    "revision": "a09a35458c702b33eeacc393d103063234e8bc28"
+  },
+  "num_fewshot": 0,
+  "protocol": "qwen-role-framing-v1",
+  "scenarios": [
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "score": "sum_log_likelihood"
+}

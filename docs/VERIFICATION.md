@@ -2,6 +2,30 @@
 
 Verified on 2026-11-06. Software tests and real-model evidence are identified separately below.
 
+## Role-control CPU preparation — 2026-11-07
+
+The separate [role-framing protocol](QWEN_ROLE_CONTROL.md) is frozen and CPU-prepared.
+No new pretrained-model inference or cloud job was performed. Evidence is recorded in
+`review/qwen-role-control-preflight.json` and the checksummed design archive.
+
+- Targeted new/shared-pilot suite: **13 passed in 46.69 seconds**.
+- Full regression run: **85 passed**, with one failure in the pre-existing configuration
+  catalog test, which routed the new config to the historical Gemma validator. Adding the
+  explicit new-validator branch resolved it: **1 passed in 0.07 seconds** on recheck.
+  All 86 collected tests therefore have passing verification; no production code changed
+  after the full run. The full suite was not redundantly repeated after this test-only fix.
+- Ruff check passes; all **48** Python files pass formatting. Lockfile validation passes
+  offline. Git whitespace checks pass; generated SVG path whitespace is explicitly exempt
+  so the published figures retain their archive bytes.
+- Actual pinned tokenizer checked on CPU with `HF_HUB_OFFLINE=1`: 2,048 prompts, 8,192
+  command continuations, exact command boundaries, maximum length 158 tokens. No truncation.
+- Eight design payload checksums verified; two archive exports are byte-identical.
+  The design figure is available in SVG/PDF/PNG and was visually inspected.
+- Historical Qwen plan hash remains
+  `01014cf0746e4d42836454bec780a0917d4b2b953dab6ddc373a4dda8d03243f`.
+  Existing model and rated result archives are unchanged. Shared execution/export helpers
+  now accept the separate protocol; the historical inputs, scores and gates are preserved.
+
 ## Checks
 
 - Pre-submission suite: **74 passed in 167.24 seconds**, including eight Qwen-pilot tests and

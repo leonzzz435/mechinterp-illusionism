@@ -353,32 +353,34 @@ def export(directory, destination):
         export_ratings(directory, jobs, records)
         plots(report, directory / "figures")
         (directory / "report.md").write_text(markdown_report(report, jobs, records))
-        files = sorted(
-            p
-            for p in directory.rglob("*")
-            if p.is_file()
-            and p.name not in {".lock", "checksums.json"}
-            and not p.name.endswith(".tmp")
-        )
-        write_json(
-            directory / "checksums.json",
-            {str(p.relative_to(directory)): file_hash(p) for p in files},
-        )
-        files.append(directory / "checksums.json")
-        destination.parent.mkdir(parents=True, exist_ok=True)
-        with (
-            destination.open("wb") as raw,
-            gzip.GzipFile(filename="", mode="wb", fileobj=raw, mtime=0) as gz,
-        ):
-            with tarfile.open(fileobj=gz, mode="w") as tar:
-                for path in sorted(files):
-                    info = tar.gettarinfo(str(path), "run/" + str(path.relative_to(directory)))
-                    info.mtime, info.uid, info.gid, info.uname, info.gname = 0, 0, 0, "", ""
-                    info.mode = 0o644
-                    with path.open("rb") as stream:
-                        tar.addfile(info, stream)
-        return {
-            "archive": str(destination),
-            "sha256": file_hash(destination),
-            "status": report["status"],
-        }
+        return portable_archive(directory, destination, report["status"])
+
+
+def portable_archive(directory, destination, status):
+    """Deterministic packaging; caller holds the directory lock and renders its report."""
+    directory, destination = Path(directory), Path(destination)
+    if destination.exists() or destination.resolve().is_relative_to(directory.resolve()):
+        raise ValueError("Choose a new export path outside the run directory")
+    files = sorted(
+        p
+        for p in directory.rglob("*")
+        if p.is_file() and p.name not in {".lock", "checksums.json"} and not p.name.endswith(".tmp")
+    )
+    write_json(
+        directory / "checksums.json",
+        {str(p.relative_to(directory)): file_hash(p) for p in files},
+    )
+    files.append(directory / "checksums.json")
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    with (
+        destination.open("wb") as raw,
+        gzip.GzipFile(filename="", mode="wb", fileobj=raw, mtime=0) as gz,
+    ):
+        with tarfile.open(fileobj=gz, mode="w") as tar:
+            for path in sorted(files):
+                info = tar.gettarinfo(str(path), "run/" + str(path.relative_to(directory)))
+                info.mtime, info.uid, info.gid, info.uname, info.gname = 0, 0, 0, "", ""
+                info.mode = 0o644
+                with path.open("rb") as stream:
+                    tar.addfile(info, stream)
+    return {"archive": str(destination), "sha256": file_hash(destination), "status": status}

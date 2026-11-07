@@ -52,12 +52,14 @@ def main(argv=None):
     args = parser.parse_args(argv)
     try:
         if args.command in {"validate", "run"}:
-            pilot = read_json(args.config).get("engine") == "qwen-pilot"
+            engine = read_json(args.config).get("engine")
         elif args.command in {"analyze", "export"}:
-            pilot = read_json(args.run / "manifest.json").get("engine") == "qwen-pilot"
+            engine = read_json(args.run / "manifest.json").get("engine")
         else:
-            pilot = False
-        if pilot:
+            engine = None
+        if engine == "qwen-role-control":
+            return role_control_command(args)
+        if engine == "qwen-pilot":
             return pilot_command(args)
         if args.command == "validate" and args.tokenizer_check:
             raise ValueError("--tokenizer-check is available only for the Qwen pilot")
@@ -144,6 +146,41 @@ def pilot_command(args):
         }
     else:
         result = pilot_export(args.run, args.out)
+    print(canonical(result))
+    return 2 if result.get("status") in {"failed", "complete_with_errors"} else 0
+
+
+def role_control_command(args):
+    from . import role_control
+    from .role_control_analysis import analyze as control_analyze
+    from .role_control_reporting import export as control_export
+
+    if args.command in {"validate", "run"}:
+        spec = role_control.validate_spec(read_json(args.config))
+    if args.command == "validate":
+        if args.evidence:
+            raise ValueError("Role control cannot unlock the historical confirmation protocol")
+        if args.freeze:
+            result = role_control.prepare(spec, args.freeze, args.tokenizer_check)
+        else:
+            result = (
+                role_control.tokenizer_audit(spec)
+                if args.tokenizer_check
+                else role_control.preview(spec)
+            )
+    elif args.command == "run":
+        if args.max_seconds is not None:
+            spec["max_seconds"] = args.max_seconds
+        result = role_control.run(spec, args.out, max_jobs=args.max_jobs)
+        result = {k: result[k] for k in ("run_id", "status", "expected_jobs", "synthetic")}
+    elif args.command == "analyze":
+        if args.ratings:
+            raise ValueError("Role control has no generation or human-rating arm")
+        with run_lock(args.run):
+            result = control_analyze(args.run)
+        result = {k: result[k] for k in ("run_id", "status", "completed_jobs", "decision")}
+    else:
+        result = control_export(args.run, args.out)
     print(canonical(result))
     return 2 if result.get("status") in {"failed", "complete_with_errors"} else 0
 

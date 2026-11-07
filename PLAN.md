@@ -41,7 +41,8 @@
 - [x] Complete the frozen Qwen GPU pilot: 160 texts and 3,072 action choices, zero execution/scoring errors.
 - [x] Collect all 40 human ratings, retain two unclear entries, and integrate the language findings.
 - [x] Review existing same-target role pairs and recommend one active-role versus neutral-reference control.
-- [ ] Prepare and freeze that separate control protocol, CPU checks, decision rules and a cost estimate before any new paid run.
+- [x] Prepare and freeze the separate role-framing protocol, full input plan, CPU checks and decision rules.
+- [ ] Prepare the HF submission adapter and a concrete cost estimate; obtain separate approval before any new paid run.
 - [x] Obtain a separate USD 5 approval and submit one pinned L4 job after CPU verification.
 - [x] Verify the cloud export and publish the failed screen: plain 4/24 checks failed, chat 7/24.
 
@@ -56,8 +57,10 @@ claim was rated positive; one was unclear. This completes the bounded pilot repo
 the broader causal study. The 2026-11-07 offline review matched 1,024 same-target pairs;
 changing only the active-connection name changes 39/128 relevant-update chat cases from
 wrong to correct across all eight scenarios. The recommendation is one controlled comparison
-with neutral reference wording, not another search for a passing prompt. It remains unrun
-and requires a separate protocol and cost approval. An independent methodological review
+with neutral reference wording, not another search for a passing prompt. The separate
+[role-control protocol](docs/QWEN_ROLE_CONTROL.md) is now frozen and CPU-prepared: 2,048
+choices in scenarios 8–15, one primary interaction, explicit stop rules and no internal edit.
+It remains unrun and requires cloud preparation and separate cost approval. An independent methodological review
 remains outstanding. The old 40/40/100 dataset and historical pilots are preserved.
 
 The [review guide](docs/REVIEW_GUIDE.md) is the handoff for a reviewer without chat context.

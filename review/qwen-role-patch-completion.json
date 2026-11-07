@@ -1,0 +1,13 @@
+{
+  "observed_utc": "2026-11-07T12:13:15.006981+00:00",
+  "provider_status": "COMPLETED",
+  "job_id": "6aef008ce6320c66fad57f27",
+  "job_url": "https://huggingface.co/jobs/zett13/6aef008ce6320c66fad57f27",
+  "artifact_repo": "zett13/mechinterp-illusionism-results",
+  "artifact_revision": "69e255415d2ad29036f216c3428bcb7688ddd3c3",
+  "run_folder": "qwen-patch-3bd8fc27cbb147c9",
+  "archive": "review/evidence/qwen-patch-3bd8fc27cbb147c9.tar.gz",
+  "archive_bytes": 45093102,
+  "archive_sha256": "017e6e0f78e6ae793fbdb5a7ca3a2e4055750c840cc2da2553819fafb0304207",
+  "download_note": "Full snapshot hit HTTP 429 on separate activation-file downloads. Complete archive arrived first; verified against export receipt, pinned download metadata and all 2098 payload hashes. Archive extracted into a separate local verification directory."
+}

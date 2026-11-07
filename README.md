@@ -14,9 +14,10 @@ identity/limitation judgments were 11/20 plain versus 15/20 chat. Two unclear ju
 retained; no full paired effect is estimated for experience claims or coherence.
 Every additional paid job requires separate authorization.
 
-- **[Prepared activation exchange: protocol, mathematics and HF handover](docs/QWEN_ROLE_PATCH.md)** —
-  11,264 scientific selections plus 32 technical repeats; one fixed block/token, both directions,
-  own-state and random controls. Single authorized L4 job submitted; GPU results pending.
+- **[Completed activation exchange: results, mathematics and plots](docs/QWEN_ROLE_PATCH_RESULTS.md)** —
+  11,264 scientific selections plus 32 repeats; all technical checks pass. An asymmetric shift
+  fails the frozen bidirectional-transfer rule: T +2.34 pp; primary C +2.77 pp, exact p=0.109.
+  [Frozen protocol](docs/QWEN_ROLE_PATCH.md).
   [Execution and retrieval](docs/QWEN_ROLE_PATCH_RUN.md).
 - **[Completed role-framing control: results, mathematics and plots](docs/QWEN_ROLE_RESULTS.md)** —
   2,048 choices, 32/32 controls passed; +16.41 pp wording interaction (nominal 95% interval

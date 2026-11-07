@@ -2,10 +2,50 @@
 
 Verification records through 2026-11-07. Software tests and real-model evidence are identified separately below.
 
+## Completed role-patch evidence — 2026-11-07
+
+The authorized L4 job completed all **11,264 scientific choices and 32 unpatched repeats**.
+The unchanged archive has SHA256
+`017e6e0f78e6ae793fbdb5a7ca3a2e4055750c840cc2da2553819fafb0304207`, 45,093,102 bytes and
+2,098 verified payloads. All 61,472 recorded technical checks pass. Historical baseline,
+own-patch and repeat score differences are exactly zero. The frozen scientific decision is
+`no_bidirectional_transfer_candidate`, not a technical or coverage failure.
+
+`scripts/review_patch_evidence.py` independently reconstructs all 11,296 outcomes, verifies
+record and source integrity, donor/candidate mapping, forward input hashes and parity,
+and reaggregates 258 accuracy groups, both transfer directions, eight scenario contrasts,
+the exact sign-flip calculation and the failed decision. It uses only the standard library
+and earlier independent simulator audit helpers; it does not import the study package.
+Its output is [preserved here](../review/qwen-role-patch-audit.json).
+
+`scripts/verify_patch_run.py` separately reproduces the cloud analysis exactly with the
+unchanged frozen package, including all bootstrap intervals and secondary margins. SQLite
+matches JSONL. The cached pinned tokenizer reproduces 2,048 prompts and 8,192 command
+boundaries; all intervention inputs match their baselines. Maximum input length is 158.
+All 2,048 lossless activation files contain the expected 8,192 finite BF16 vectors. CPU
+reconstruction of 36,864 candidate edits reproduces desired/delivered norms within the
+documented floating-point tolerance: maximum norm discrepancy 0.000006582. This CPU
+verification tolerance does not change the frozen GPU random-norm gate. See the
+[verification record](../review/qwen-role-patch-verification.json).
+
+The nine original SVG/PDF/PNG files match the archive byte-for-byte. The article view is
+generated directly from the hash-pinned archive by `scripts/plot_qwen_patch.py`; repeated
+export is byte-identical in all three formats. Plots were visually inspected. The full
+Markdown report is copied with relative figure links adjusted and trailing whitespace removed. The original
+archive, experiment package, model configuration and decision rules remain unchanged.
+
+Targeted regression checks: **15 passed in 14.48 seconds**, using
+`uv run --no-sync pytest -q tests/test_patch_evidence.py tests/test_role_evidence.py tests/test_qwen_evidence.py`.
+The four new tests cover the actual patch archive, false primary p/count claims and score
+drift despite unchanged choices. Ruff lint/format and whitespace checks pass. No local
+pretrained-model inference or additional cloud job was performed. These are software and
+saved-evidence audits, not external peer review or an independent likelihood computation.
+
 ## Role-patch implementation and CPU preflight — 2026-11-07
 
-The [single-site activation exchange](QWEN_ROLE_PATCH.md) is implemented; no new paid job
-or pretrained-model intervention has run. [Machine-readable preflight](../review/qwen-role-patch-preflight.json)
+At this preflight stage, the [single-site activation exchange](QWEN_ROLE_PATCH.md) was
+implemented but no paid patch job or pretrained-model intervention had run.
+[Machine-readable preflight](../review/qwen-role-patch-preflight.json)
 records configuration/source hashes, tokenizer checks, archive checksums and pending GPU checks.
 
 - Full suite: `uv run --no-sync pytest -q --durations=8` — **111 passed in 359.13 seconds**.
@@ -30,8 +70,8 @@ records configuration/source hashes, tokenizer checks, archive checksums and pen
 
 The read-only HF quote remains USD 1.613293 for two hours plus one rounding minute on L4.
 At preflight, the proposed USD 5 allowance was not yet authorized. The user subsequently
-approved the single [submitted job](QWEN_ROLE_PATCH_RUN.md); its results remain pending. Real-model
-baseline parity, null parity, delivered BF16 edit norms, runtime and effects require that job.
+approved the single [job](QWEN_ROLE_PATCH_RUN.md). Its completed baseline parity, null parity,
+delivered BF16 edit norms, runtime and effects are documented in the completion section above.
 
 ## Completed role-control evidence — 2026-11-07
 

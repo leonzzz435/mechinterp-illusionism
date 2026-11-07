@@ -1,11 +1,16 @@
-# Review target: prepared activation exchange and its prior evidence
+# Review target: completed activation exchange and its prior evidence
 
-Start with the [single-site patch protocol](QWEN_ROLE_PATCH.md) and
+Start with the [exchange results](QWEN_ROLE_PATCH_RESULTS.md),
+the [single-site patch protocol](QWEN_ROLE_PATCH.md) and
 `configs/qwen-role-patch.json`. It uses eight already observed scenarios to investigate the
 known wording interaction, not to claim held-out confirmation. Review donor/candidate mapping,
 causal role-end alignment, full-command scoring, BF16 norm controls, source integrity, the
 sole primary transfer-vs-random contrast and conservative decision rules. The implementation
-and CPU checks are separate from the [submitted GPU run](QWEN_ROLE_PATCH_RUN.md), whose results remain pending. Historical archives below
+and CPU checks are separate from the [completed GPU run](QWEN_ROLE_PATCH_RUN.md).
+All 11,264 choices and 32 repeats are present; technical checks pass. The frozen
+bidirectional-transfer decision fails: T=+2.34 pp, C=+2.77 pp, exact p=0.109375, 5/8
+positive scenario contrasts. Review the asymmetric directional findings and the difference
+between the positive bootstrap interval and failed joint decision. Historical archives below
 are unchanged; the original failed capability screen remains failed.
 
 The [Qwen handover](QWEN_PILOT.md) specifies the new model, tokenizer boundary, frozen prompts,
@@ -59,13 +64,19 @@ the article; these experiments cannot decide whether an experience exists. The d
 is a technically defensible, accessible English article with reproducible figures, including
 negative results. An attractive dissociation is a hypothesis, not a required conclusion.
 
-The immediate review target is the frozen Qwen pilot: exact scoring, complete paired coverage,
-capability gates, actual raw results and faithful reporting. The earlier independent review below preceded
+The immediate review target is the completed exchange and its full evidence chain: exact scoring,
+paired coverage, frozen gates, raw results and faithful reporting. The earlier independent review below preceded
 model selection and focused on available actions. No model shopping, prompt tournament or intervention sweep is
 the next authorized step. The USD 10 approval covered the completed first cloud job only.
 
 ## Read in this order
 
+0. [Completed exchange](QWEN_ROLE_PATCH_RESULTS.md), [complete cloud report](QWEN_ROLE_PATCH_FULL_REPORT.md),
+   [frozen protocol](QWEN_ROLE_PATCH.md) and [execution provenance](QWEN_ROLE_PATCH_RUN.md).
+   Run `uv run --no-sync python scripts/review_patch_evidence.py` for the standard-library audit.
+   `scripts/verify_patch_run.py` additionally reproduces the frozen bootstrap, checks the journal,
+   retokenizes all baselines and reconstructs saved BF16 edit norms on CPU (eval extras and cached
+   tokenizer required; no inference). This is software reaggregation, not external human review.
 1. [Qwen results](QWEN_RESULTS.md), [protocol](QWEN_PILOT.md) and [action design](ACTION_TASK_DESIGN.md): actual findings, frozen pilot and construct limits.
 2. [Fresh-context AI review](reviews/2026-11-06-independent-review.md): findings at `d863776`, fixes,
    and remaining objections. This is not external human peer review.

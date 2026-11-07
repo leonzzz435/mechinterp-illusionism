@@ -1,7 +1,8 @@
 # One activation exchange for the Qwen role-framing effect
 
 **Protocol `qwen-role-patch-v1` is implemented and frozen. Its single USD 5-authorized
-L4 job was submitted on 2026-11-07; results remain pending.** See the
+L4 job completed on 2026-11-07. All technical checks pass, but the bidirectional-transfer
+decision fails.** See the [completed result report](QWEN_ROLE_PATCH_RESULTS.md) and
 [execution record and retrieval handover](QWEN_ROLE_PATCH_RUN.md). The prior
 [role-control result](QWEN_ROLE_RESULTS.md) motivates this exploratory experiment on the
 same eight development scenarios (8–15). It does not repair the original failed capability
@@ -165,7 +166,7 @@ Read-only price/source proposal, **not a submission**:
 uv run --script scripts/hf_jobs.py plan --namespace zett13 --budget-usd 5 --config configs/qwen-role-patch.json
 ```
 
-**Already submitted with explicit USD 5 approval. Do not repeat the submit command.**
+**Completed with explicit USD 5 approval. Do not repeat the submit command.**
 The following documents the original dispatch and local receipt commands:
 
 ```bash

@@ -1,8 +1,9 @@
 # Qwen role activation-exchange execution record
 
-The frozen [activation-exchange protocol](QWEN_ROLE_PATCH.md) was submitted on
-2026-11-07 as **one authorized HF Jobs L4 run**. At 2026-11-07T10:42:43.774190+00:00 the provider
-reported **RUNNING**. This records startup, not a completed experiment or a result.
+The frozen [activation-exchange protocol](QWEN_ROLE_PATCH.md) completed on
+2026-11-07 as **one authorized HF Jobs L4 run**. All 11,264 scientific trials and 32 technical
+repeats are present, with no failed technical checks. The
+[result](QWEN_ROLE_PATCH_RESULTS.md) is `no_bidirectional_transfer_candidate`.
 
 ## Dispatch and budget
 
@@ -48,14 +49,42 @@ uv run --script scripts/hf_jobs.py fetch --receipt review/qwen-role-patch-job.js
 The tracked receipt is sufficient for these read-only commands on another checkout with
 HF authentication. Fetch pins one artifact revision and verifies available export checksums.
 Preserve the downloaded original archive unchanged before working on an analysis copy.
-The running job remains pinned to the source commit above even after this handover is committed.
+The completed job used the source commit above; reporting commits do not change its provenance.
 
 The worker uploads an initial checkpoint, each completed scenario block and a final export
 when it can exit cooperatively. Local trial commits are atomic; after a provider kill the
 last uploaded checkpoint remains available. Resuming is a separately approved job, not an
 automatic retry. A technical failure stops execution and retains available scores and errors.
 
-## What to inspect after completion
+## Completion and immutable evidence
+
+The provider reports **COMPLETED**. The final archive was downloaded at private dataset
+revision `69e255415d2ad29036f216c3428bcb7688ddd3c3`, with SHA256
+`017e6e0f78e6ae793fbdb5a7ca3a2e4055750c840cc2da2553819fafb0304207`.
+It is preserved unchanged as `review/evidence/qwen-patch-3bd8fc27cbb147c9.tar.gz`
+(45,093,102 bytes; 2,098 verified payload hashes). The manifest's internal run ID is
+`qwen-68dd86357ea64825`; the HF folder name above is a separate dispatch identifier.
+
+The full-snapshot downloader hit HF's HTTP 429 limit while downloading separate activation
+files. The complete archive had already arrived, matched its export receipt and pinned
+download metadata, and passed its full checksum inventory. A separate local extraction was
+used for verification. No GPU restart, new paid job or altered archive was needed.
+
+Runtime was 4,689.73 seconds (78.16 minutes), with 15,475,621,376 bytes peak allocated GPU
+memory. The quoted compute bound above is retained; actual billing has not been inspected.
+
+- [Completion and retrieval provenance](../review/qwen-role-patch-completion.json).
+- [Independent saved-output audit](../review/qwen-role-patch-audit.json).
+- [Frozen analysis, tokenizer, tensor and journal verification](../review/qwen-role-patch-verification.json).
+- [Interpreted results](QWEN_ROLE_PATCH_RESULTS.md) and [complete exported report](QWEN_ROLE_PATCH_FULL_REPORT.md).
+
+From either computer, the checked-in archive can now be audited without HF credentials:
+
+```bash
+uv run --no-sync python scripts/review_patch_evidence.py
+```
+
+## Completed inspection
 
 1. Coverage: 11,264 scientific trials and 32 technical repeats, with errors visible.
 2. Historical baseline parity, own-state/repeat parity, candidate mappings and BF16 edit norms.

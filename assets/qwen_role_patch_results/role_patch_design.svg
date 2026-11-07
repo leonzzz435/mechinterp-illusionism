@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="856.8pt" height="388.8pt" viewBox="0 0 856.8 388.8" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 388.8 
+L 856.8 388.8 
+L 856.8 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="428.4" y="32.16" transform="rotate(-0 428.4 32.16)">Can an internal state carry a wording-dependent role effect?</text>
+   </g>
+   <g id="text_2">
+    <g id="patch_2">
+     <path d="M 17.73 134.402734 
+L 169.459688 134.402734 
+Q 175.459688 134.402734 175.459688 128.402734 
+L 175.459688 104.397266 
+Q 175.459688 98.397266 169.459688 98.397266 
+L 17.73 98.397266 
+Q 11.73 98.397266 11.73 104.397266 
+L 11.73 128.402734 
+Q 11.73 134.402734 17.73 134.402734 
+z
+" style="fill: #f4f6f8; stroke: #005f73; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(17.73 112.99668)">Your active connection: Cedar.</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(17.73 124.999414)">Same named actor</text>
+   </g>
+   <g id="text_3">
+    <g id="patch_3">
+     <path d="M 313.130937 140.403711 
+L 417.309062 140.403711 
+Q 423.309062 140.403711 423.309062 134.403711 
+L 423.309062 98.396289 
+Q 423.309062 92.396289 417.309062 92.396289 
+L 313.130937 92.396289 
+Q 307.130937 92.396289 307.130937 98.396289 
+L 307.130937 134.403711 
+Q 307.130937 140.403711 313.130937 140.403711 
+z
+" style="fill: #e3edf2; stroke: #005f73; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(325.664531 106.995703)">Block 14 output</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(313.130937 118.998437)">role-line endpoint .\n</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(318.425469 131.000391)">3,584 components</text>
+   </g>
+   <g id="text_4">
+    <g id="patch_4">
+     <path d="M 586.345781 138.003691 
+L 733.774219 138.003691 
+Q 739.174219 138.003691 739.174219 132.603691 
+L 739.174219 100.196309 
+Q 739.174219 94.796309 733.774219 94.796309 
+L 586.345781 94.796309 
+Q 580.945781 94.796309 580.945781 100.196309 
+L 580.945781 132.603691 
+Q 580.945781 138.003691 586.345781 138.003691 
+z
+" style="fill: #f4f6f8; stroke: #005f73; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(611.137969 107.935781)">Later tokens + blocks</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(586.345781 118.738242)">Permissions / changes / question</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(592.521328 129.540703)">Four full-command likelihoods</text>
+   </g>
+   <g id="patch_5">
+    <path d="M 233.840511 116.4 
+Q 256.410441 116.4 277.862336 116.4 
+" style="fill: none; stroke: #005f73; stroke-linecap: round"/>
+    <path d="M 273.862336 114.4 
+L 277.862336 116.4 
+L 273.862336 118.4 
+" style="fill: none; stroke: #005f73; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 451.457512 116.4 
+Q 491.578584 116.4 530.581622 116.4 
+" style="fill: none; stroke: #005f73; stroke-linecap: round"/>
+    <path d="M 526.581622 114.4 
+L 530.581622 116.4 
+L 526.581622 118.4 
+" style="fill: none; stroke: #005f73; stroke-linecap: round"/>
+   </g>
+   <g id="text_5">
+    <g id="patch_7">
+     <path d="M 17.73 262.322734 
+L 164.897188 262.322734 
+Q 170.897188 262.322734 170.897188 256.322734 
+L 170.897188 232.317266 
+Q 170.897188 226.317266 164.897188 226.317266 
+L 17.73 226.317266 
+Q 11.73 226.317266 11.73 232.317266 
+L 11.73 256.322734 
+Q 11.73 262.322734 17.73 262.322734 
+z
+" style="fill: #f4f6f8; stroke: #9b5b29; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(17.73 240.91668)">Reference connection: Cedar.</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(17.73 252.919414)">Same named actor</text>
+   </g>
+   <g id="text_6">
+    <g id="patch_8">
+     <path d="M 313.130937 268.323711 
+L 417.309062 268.323711 
+Q 423.309062 268.323711 423.309062 262.323711 
+L 423.309062 226.316289 
+Q 423.309062 220.316289 417.309062 220.316289 
+L 313.130937 220.316289 
+Q 307.130937 220.316289 307.130937 226.316289 
+L 307.130937 262.323711 
+Q 307.130937 268.323711 313.130937 268.323711 
+z
+" style="fill: #e3edf2; stroke: #9b5b29; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(325.664531 234.915703)">Block 14 output</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(313.130937 246.918437)">role-line endpoint .\n</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(318.425469 258.920391)">3,584 components</text>
+   </g>
+   <g id="text_7">
+    <g id="patch_9">
+     <path d="M 586.345781 265.923691 
+L 733.774219 265.923691 
+Q 739.174219 265.923691 739.174219 260.523691 
+L 739.174219 228.116309 
+Q 739.174219 222.716309 733.774219 222.716309 
+L 586.345781 222.716309 
+Q 580.945781 222.716309 580.945781 228.116309 
+L 580.945781 260.523691 
+Q 580.945781 265.923691 586.345781 265.923691 
+z
+" style="fill: #f4f6f8; stroke: #9b5b29; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(611.137969 235.855781)">Later tokens + blocks</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(586.345781 246.658242)">Permissions / changes / question</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(592.521328 257.460703)">Four full-command likelihoods</text>
+   </g>
+   <g id="patch_10">
+    <path d="M 233.840511 244.32 
+Q 256.410441 244.32 277.862336 244.32 
+" style="fill: none; stroke: #9b5b29; stroke-linecap: round"/>
+    <path d="M 273.862336 242.32 
+L 277.862336 244.32 
+L 273.862336 246.32 
+" style="fill: none; stroke: #9b5b29; stroke-linecap: round"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 451.457512 244.32 
+Q 491.578584 244.32 530.581622 244.32 
+" style="fill: none; stroke: #9b5b29; stroke-linecap: round"/>
+    <path d="M 526.581622 242.32 
+L 530.581622 244.32 
+L 526.581622 246.32 
+" style="fill: none; stroke: #9b5b29; stroke-linecap: round"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 365.22 161.198436 
+Q 365.22 180.361823 365.22 199.52521 
+" style="fill: none; stroke: #b33a3a; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 363.22 165.198436 
+L 365.22 161.198436 
+L 367.22 165.198436 
+" style="fill: none; stroke: #b33a3a; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 367.22 195.52521 
+L 365.22 199.52521 
+L 363.22 195.52521 
+" style="fill: none; stroke: #b33a3a; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; fill: #b33a3a" transform="translate(428.4 178.857012)">Exchange in</text>
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; fill: #b33a3a" transform="translate(428.4 189.659473)">both directions</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="428.4" y="328.56" transform="rotate(-0 428.4 328.56)">Controls: unchanged baseline · own activation reinserted · 10 norm-matched random directions</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #475569" x="428.4" y="366" transform="rotate(-0 428.4 366)">PROTOCOL ONLY · Causal attention prevents this endpoint from reading later facts or answers</text>
+   </g>
+  </g>
+ </g>
+</svg>

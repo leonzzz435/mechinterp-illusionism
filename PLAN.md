@@ -47,7 +47,10 @@
 - [x] Complete and verify all 2,048 role-control choices: 32/32 controls pass; +16.41 pp primary interaction, 7/8 positive scenarios; `wording_sensitive_candidate`.
 - [x] Freeze and implement one targeted activation exchange at block 14 / role-line end: 11,264 scientific choices plus 32 technical repeats, eight known scenarios, explicit random and null controls.
 - [x] Obtain separate USD 5 approval and submit one pinned L4 patch job; [execution and retrieval](docs/QWEN_ROLE_PATCH_RUN.md).
-- [ ] Complete the patch run, verify numerical checks and evaluate the frozen transfer decision.
+- [x] Complete and audit all 11,264 patch choices and 32 repeats: technical checks pass;
+  `no_bidirectional_transfer_candidate` (T +2.34 pp, C +2.77 pp, exact p=0.109375).
+- [x] Preserve original patch archive, all figures, complete example and English article section.
+- [ ] Review the completed asymmetric patch finding before selecting any separately frozen follow-up.
 - [x] Obtain a separate USD 5 approval and submit one pinned L4 job after CPU verification.
 - [x] Verify the cloud export and publish the failed screen: plain 4/24 checks failed, chat 7/24.
 
@@ -68,8 +71,11 @@ choices in scenarios 8–15, one primary interaction, explicit stop rules and no
 Its single authorized L4 run completed on 2026-11-07. The [verified control report](docs/QWEN_ROLE_RESULTS.md)
 finds a +16.41 pp primary interaction (nominal 95% interval +8.59 to +25.78), with all 32 controls
 passing. This motivated the separately frozen [activation-exchange protocol](docs/QWEN_ROLE_PATCH.md),
-implemented and CPU-verified; its separately approved L4 job is now submitted, with results pending;
-it does not repair the failed original
+whose L4 job is complete. The [verified exchange report](docs/QWEN_ROLE_PATCH_RESULTS.md)
+finds an asymmetric shift that fails the frozen bidirectional-transfer rule. All technical
+checks pass; the primary comparison with random edits has exact p=0.109375 and five positive
+scenario contrasts out of eight. No layer search or new paid run follows automatically.
+This does not repair the failed original
 capability screen or establish functional separation. An independent methodological review
 remains outstanding. The old 40/40/100 dataset and historical pilots are preserved.
 
@@ -95,4 +101,6 @@ The canonical layer-14 residual SAE resolves to `average_l0_84`. New runs use un
 
 Contextual tasks expose the scene to the model, so they do not establish private-state introspection. Baseline failure ends the current functional pilot rather than triggering an undocumented model switch.
 
-Circuit attribution, another model, private-state introspection and a full novelty review are follow-ups contingent on pilot findings. There is no measured mechanism diagram yet.
+Circuit attribution, another model, private-state introspection and a full novelty review are
+follow-ups contingent on pilot findings. The exchange diagram now documents a performed
+intervention; it is not a discovered circuit or a demonstrated self-monitoring mechanism.

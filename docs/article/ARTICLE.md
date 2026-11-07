@@ -31,7 +31,9 @@ $$r'=r+\alpha m v.$$
 The direction v has unit length; m is a measured reference scale; α controls size and sign. This defines what changes mathematically. It does not establish the direction's psychological meaning.
 
 The original Gemma intervention protocol compares a contrast direction, two candidate SAE directions and random controls, and removes individual encoded contributions while preserving reconstruction error. The separately frozen [Qwen exchange protocol](../QWEN_ROLE_PATCH.md) now uses native
-Qwen hooks to test the narrower wording effect described below; its GPU result is pending. The controls test whether apparent effects are specific or merely network disturbance.
+Qwen hooks to test the narrower wording effect described below; the completed exchange
+failed its bidirectional-transfer criterion despite passing the technical controls. These
+controls test whether apparent effects are specific or merely network disturbance.
 
 ## What the original pilot showed
 
@@ -239,11 +241,68 @@ to certify stable functional performance. Its [full report](../QWEN_ROLE_RESULTS
 every control and the predeclared decision. The next question is whether a specific internal
 intervention can explain this input sensitivity without broadly disrupting command selection.
 
+## Moving a state while keeping the question fixed
+
+The [completed role-framing control](../QWEN_ROLE_RESULTS.md) motivated a single,
+predefined activation exchange. We copied the 3,584-component state at the end of the role
+line, after transformer block 14, between the reference-worded and active-worded computations
+in both directions. Think of moving an intermediate note from one computation into another:
+the receiving computation keeps its own question, facts and candidate commands. Causal
+attention prevents that earlier state from reading the later permission facts.
+
+![The performed activation exchange](../../assets/qwen_role_patch_results/role_patch_design.png)
+
+This diagram describes the performed intervention, not a discovered circuit. Reinserting the
+original state checked the machinery; ten equally large random changes tested nonspecific
+disturbance. All 11,264 scientific choices and 32 unpatched repeats completed. Historical
+baselines and own-state patches reproduced their comparison scores exactly.
+
+The result was asymmetric. Moving the active state into the reference computation enlarged
+its role gap by 5.47 percentage points. Moving the reference state back into the active
+computation did not reduce the gap: the directional estimate was −0.78 points. The average
+transfer was +2.34 points, below our predefined five-point threshold.
+
+![Measured exchange results](../../assets/qwen_role_patch_results/article_patch.png)
+
+Let $D$ be the accuracy difference between contexts naming the other account and the queried
+account. The registered transfer statistic measures whether the two wordings move toward
+each other's gaps:
+
+$$
+T_c=\frac12\left[D_{\mathrm{active}}^{\mathrm{self}}-D_{\mathrm{active}}^c
++D_{\mathrm{reference}}^c-D_{\mathrm{reference}}^{\mathrm{self}}\right],\qquad
+C=T_{\mathrm{swap}}-\frac1{10}\sum_k T_{\mathrm{random},k}.
+$$
+
+The primary comparison C was +2.77 points, with a nominal scenario-bootstrap interval of
++0.31 to +5.39. But the exact sign-flip test gave p=0.109, and only five of eight scenario
+contrasts were positive. **The prespecified bidirectional-transfer rule did not pass.**
+Eight scenarios support a fragile pilot estimate; thousands of variants do not turn them
+into thousands of independent observations. We retained both uncertainty calculations and
+the original decision rule rather than promoting the favorable interval into a success.
+
+The example selected before execution makes the asymmetry concrete. Cedar's permitted
+command changes to `mark_amber`; Birch retains `mark_violet`. The active/Cedar baseline
+wrongly chooses Birch's command. The exchange leaves that error in place and induces the
+same error in the reference/Cedar condition. “Transfer” here can mean transferring an error,
+not improving reasoning. All conditions and candidate scores are in the
+[full report](../QWEN_ROLE_PATCH_FULL_REPORT.md).
+
+This experiment constrains the proposed explanation at one location. It does not establish
+that the entire role effect is stored there, nor that internal role representations are
+absent. The [result report](../QWEN_ROLE_PATCH_RESULTS.md) discusses distributed processing,
+partial contributions and the bundled wording/meaning/position contrast. A descriptive
+one-way shift remains visible; a bidirectional mechanism and functional separation remain
+unestablished. The philosophical motivation survives, but it does not decide the result.
+
 ## What would count as separation?
 
 A persuasive result changes one measured property selectively while keeping another within a predefined tolerance, without broadly damaging performance. One significant and one nonsignificant comparison are insufficient.
 
-The planned generation and choice interventions target different sets of token positions. A strong dissociation claim would require site-matched controls and independent replication. The completed Qwen pilot changed input format, not internal activations.
+The planned generation and choice interventions target different sets of token positions.
+A strong dissociation claim would require site-matched controls and independent replication.
+The first Qwen pilot changed input format. The subsequent internal exchange tested an action
+role effect alone; it did not jointly intervene on self-language and functional performance.
 
 ## Returning to consciousness
 
@@ -269,25 +328,3 @@ Our question is how observable components of self-related behavior are implement
 The [protocol](../PROTOCOL.md) defines data, estimands, interventions and stopping rules. Exports contain checkpoint identities, prompts, full outputs and failures. The [runbook](../RUNBOOK.md) separates GPU execution from CPU analysis.
 
 Before publication: complete registered runs, independent ratings, updated novelty review and discussion of task/model limitations. The final title and central figure follow the evidence.
-
-
-## Next: moving a state while keeping the question fixed
-
-The [completed role-framing control](../QWEN_ROLE_RESULTS.md) motivates a single,
-predefined activation exchange. We copy the 3,584-component state at the end of the role
-line, after transformer block 14, from the reference-worded computation to its active-worded
-counterpart and back. The question, facts and candidate commands remain the recipient's.
-Causal attention keeps later permission facts out of the state being copied.
-
-![Planned activation exchange](../../assets/qwen_role_patch/role_patch_design.png)
-
-This is a protocol diagram, not a discovered circuit. Reinserting the original state tests
-the machinery; ten equally large random changes test unspecific disturbance. The sole primary
-contrast compares bidirectional transfer with average random transfer, with uncertainty over
-eight scenarios. The [protocol](../QWEN_ROLE_PATCH.md) defines the equations, thresholds and
-technical checks before any pretrained-model intervention. **Result pending.**
-
-An internal contribution to this wording effect would be a concrete mechanistic finding,
-but would not establish privileged introspection, subjective experience or human illusionism.
-A null result would constrain this chosen site rather than every possible self-model mechanism.
-The philosophical question remains in view while the experiment tests a narrower claim.

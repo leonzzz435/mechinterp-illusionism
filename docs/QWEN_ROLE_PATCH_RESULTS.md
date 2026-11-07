@@ -43,6 +43,14 @@ queried-account condition and rose for the other-account condition. The reverse 
 did not recover the active queried-account condition. **Positive transfer measures movement
 toward the donor's role gap; it does not mean improved task performance.**
 
+A later saved-data review finds one wrong-to-correct and one correct-to-wrong change in the
+active/target cell: its unchanged accuracy is not identical answers. The prespecified
+secondary margin also shows the asymmetry: +2.063 nats for active → reference versus
+−0.079 nats in reverse. Most of that forward margin-gap change comes from the already
+high-accuracy reference/other cell. These observations do not change the primary decision;
+see the [method review](reviews/2026-11-07-role-patch-method-review.md) for decomposition
+and explicit post hoc versus prespecified labels.
+
 Define the role gap and the two-way average:
 
 $$
@@ -193,7 +201,9 @@ not evidence of a discovered self-monitoring circuit or causal separation of sel
 and functional self-model use. Human illusionism remains a philosophical analogy and
 motivation, with other interpretations still compatible.
 
-The next step is a methodological review of this completed pilot and a decision about a
-single separately frozen follow-up, if justified. We do not search for a better layer within
+The [internal method review](reviews/2026-11-07-role-patch-method-review.md) is now complete.
+It recommends an equal-length Your/The wording control with a Reference anchor, to test
+whether personal reference contributes before investigating another internal site. This is
+a CPU-checked draft, not a frozen or launched experiment. We do not search for a better layer within
 this protocol or automatically launch another paid job. Fresh scenarios and a passing task
 protocol remain necessary before any confirmatory functional-separation claim.

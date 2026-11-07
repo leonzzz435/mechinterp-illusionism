@@ -19,6 +19,8 @@ Every additional paid job requires separate authorization.
   fails the frozen bidirectional-transfer rule: T +2.34 pp; primary C +2.77 pp, exact p=0.109.
   [Frozen protocol](docs/QWEN_ROLE_PATCH.md).
   [Execution and retrieval](docs/QWEN_ROLE_PATCH_RUN.md).
+  [Method review and proposed next control](docs/reviews/2026-11-07-role-patch-method-review.md):
+  isolate “Your” versus “The” at equal token length; CPU feasibility only, no new model run.
 - **[Completed role-framing control: results, mathematics and plots](docs/QWEN_ROLE_RESULTS.md)** —
   2,048 choices, 32/32 controls passed; +16.41 pp wording interaction (nominal 95% interval
   +8.59 to +25.78). A candidate for targeted mechanistic planning; no internal intervention

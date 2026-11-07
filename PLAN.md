@@ -50,7 +50,10 @@
 - [x] Complete and audit all 11,264 patch choices and 32 repeats: technical checks pass;
   `no_bidirectional_transfer_candidate` (T +2.34 pp, C +2.77 pp, exact p=0.109375).
 - [x] Preserve original patch archive, all figures, complete example and English article section.
-- [ ] Review the completed asymmetric patch finding before selecting any separately frozen follow-up.
+- [x] Complete an internal methodological review of the asymmetric patch finding, with
+  saved-data transition/margin checks and CPU feasibility of a Your/The wording control.
+- [ ] Decide and freeze the proposed possessive-reference control before any further inference;
+  independent external review remains outstanding.
 - [x] Obtain a separate USD 5 approval and submit one pinned L4 job after CPU verification.
 - [x] Verify the cloud export and publish the failed screen: plain 4/24 checks failed, chat 7/24.
 
@@ -75,9 +78,12 @@ whose L4 job is complete. The [verified exchange report](docs/QWEN_ROLE_PATCH_RE
 finds an asymmetric shift that fails the frozen bidirectional-transfer rule. All technical
 checks pass; the primary comparison with random edits has exact p=0.109375 and five positive
 scenario contrasts out of eight. No layer search or new paid run follows automatically.
-This does not repair the failed original
-capability screen or establish functional separation. An independent methodological review
-remains outstanding. The old 40/40/100 dataset and historical pilots are preserved.
+This does not repair the failed original capability screen or establish functional separation.
+The [internal methodological review](docs/reviews/2026-11-07-role-patch-method-review.md)
+recommends one equal-length Your/The wording control, retaining Reference as a descriptive
+anchor, on 16 fresh development scenarios. Its 6,144-case draft is CPU-checked only; it is
+not a frozen protocol or a launched job. Independent external review remains outstanding.
+The old 40/40/100 dataset and historical pilots are preserved.
 
 The [review guide](docs/REVIEW_GUIDE.md) is the handoff for a reviewer without chat context.
 The [first independent AI review](docs/reviews/2026-11-06-independent-review.md) found two

@@ -2,6 +2,24 @@
 
 Verification records through 2026-11-07. Software tests and real-model evidence are identified separately below.
 
+## Post-run method review and proposed wording control — 2026-11-07
+
+`scripts/review_patch_method.py` reads the unchanged hash-pinned exchange archive. It records
+primary-cell answer transitions, edit/residual norm ratios, the already prespecified secondary
+margin findings and a labeled post hoc decomposition of the primary random comparison.
+The directional components average exactly to the frozen C; each primary cell has 128 cases.
+These calculations do not change the original experiment decision or source package.
+
+With `--tokenizer-check`, the cached pinned tokenizer verifies that replacing “Your active
+connection” with “The active connection” changes exactly token 7771 to 785 at index 57,
+with no length or later-token changes, in all 1,024 existing active prompts. A CPU-only draft
+enumerates 16 development scenarios (16–31), three context wordings and both named-account
+relations: 6,144 cases, 2,048 matched Your/The pairs and 24,576 command boundaries. All checks
+pass. This is feasibility, not model evidence, statistical power analysis or a frozen protocol.
+The [review artifact](../review/qwen-role-patch-method-review.json) contains the draft input
+checksum and the exact reproducible values. No model weights, new generations, GPU job or
+provider submission are used. Existing execution configs and historical archives are unchanged.
+
 ## Completed role-patch evidence — 2026-11-07
 
 The authorized L4 job completed all **11,264 scientific choices and 32 unpatched repeats**.

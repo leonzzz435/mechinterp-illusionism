@@ -13,6 +13,13 @@ positive scenario contrasts. Review the asymmetric directional findings and the 
 between the positive bootstrap interval and failed joint decision. Historical archives below
 are unchanged; the original failed capability screen remains failed.
 
+The [2026-11-07 internal method review](reviews/2026-11-07-role-patch-method-review.md)
+examines the asymmetry, answer transitions, prespecified secondary command margins and
+edit size. It recommends a one-token Your/The comparison before another internal patch.
+Its [reproducible review artifact](../review/qwen-role-patch-method-review.json) includes
+CPU feasibility of 6,144 proposed cases, without model inference. This review was written
+by the same coding assistant, not an independent reviewer; the proposed experiment is not frozen.
+
 The [Qwen handover](QWEN_PILOT.md) specifies the new model, tokenizer boundary, frozen prompts,
 capability gates, blind-rating rubric, stopping rules and reproduction commands. Its CPU
 tokenizer audit is tracked in `review/qwen-tokenizer-audit.json`. The job has now completed:

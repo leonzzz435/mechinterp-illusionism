@@ -1,0 +1,12 @@
+{
+  "status": "failed",
+  "records": 32,
+  "valid": 31,
+  "ties": 1,
+  "assessment_records": 0,
+  "archive_sha256": "7b4b37c8a66ee0b71e796d755d9c921739ccb15abaef2347f2f3282f4d8bcb13",
+  "artifact_revision": "a2b7db41c2dfef9a95aa9001d09fb8815e428041",
+  "maximum_menu_mass_recomputation_delta": 2.220446049250313e-16,
+  "tolerant_probability_audit_passed": true,
+  "note": "Original scores, records and failed decision unchanged. Float tolerance is for rechecking derived probabilities only."
+}

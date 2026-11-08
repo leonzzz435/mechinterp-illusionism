@@ -1,6 +1,10 @@
 # Qwen confidence and abstention: bounded replication design
 
 **Status, 2026-11-08: execution adapter implemented and prelaunch verification completed.**
+V1 subsequently stopped on an exact score tie during calibration, before any assessment
+question. The explicit [v2 amendment](QWEN_CONFIDENCE_V2.md) replaces the unique-maximum
+requirement with deterministic greedy tie-breaking and reports ties plus a sensitivity
+analysis. The original v1 rules below remain historical; this amendment governs the next run.
 The original [machine-readable design](../designs/qwen-confidence-pilot.json) retains its
 historical preparation status. The executable [configuration](../configs/qwen-confidence-pilot.json)
 preserves its exact sample, prompts and scoring and adds the isolated `qwen-confidence`

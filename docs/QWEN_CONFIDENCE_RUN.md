@@ -1,10 +1,30 @@
 # Qwen confidence pilot: execution record
 
+**V1 ended with a retained calibration tie; no assessment data were collected.**
+The [v2 amendment](QWEN_CONFIDENCE_V2.md) defines the reviewed replacement under the same
+total USD 5 cap. V1's raw data and decision are not revised.
+
+## V1 dispatch and outcome
+
+- Job [`6af05c9de6320c66fad74947`](https://huggingface.co/jobs/zett13/6af05c9de6320c66fad74947),
+  created 2026-11-08 11:27:25 UTC; final provider status `ERROR`, study status `failed`.
+- Pushed source commit `491cf64dbe34b41472968149dcb00547780c12bc`.
+- Run folder `qwen-confidence-3ec0b47c7d324b58`; 32/1,792 selections: 31 valid, one tied.
+  All 32 are calibration selections; none is an assessment question.
+- Model invocation 117.47 seconds, peak allocated GPU memory 15,440,193,024 bytes.
+- Retrieved private dataset revision `a2b7db41c2dfef9a95aa9001d09fb8815e428041`;
+  export checksums verified. [Job receipt](../review/qwen-confidence-job.json) and
+  [immutable original archive](../review/evidence/qwen-confidence-3ec0b47c7d324b58.tar.gz).
+
+The equal top scores were retained; v1 did not invent an answer or proceed to its dependent
+confidence prompt. This is a measurement-policy failure, not a negative result on the main
+scientific question. The source, evidence and failed decision remain reviewable.
+
 The user authorized implementation and the bounded pilot on 2026-11-08
 (“ja go is alles freigegeben”). The selected scope is one L4 job, no automatic continuation,
 90 minutes cooperative execution and a two-hour provider limit. A separate **USD 5 budget**
-is used for this dispatch. This document will retain the actual job ID and source pins
-after submission; it is not evidence that a job has already run.
+was set for this milestone. After inspecting v1, one versioned replacement was allocated
+within that same cap; see the amendment for the conservative arithmetic.
 
 The live HF hardware quote on 2026-11-08 is 13,333 micro-USD per minute. Including one extra
 minute for billing rounding gives **USD 1.613293 maximum compute**. This is a quote, not an

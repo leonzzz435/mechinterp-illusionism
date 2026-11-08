@@ -233,6 +233,96 @@ def test_all_abstention_is_unusable_and_answered_accuracy_undefined(small, tmp_p
 def test_shared_cpu_design_and_packaged_spec_remain_identical():
     assert c.DEFAULT_SPEC["design"] == read_json("designs/qwen-confidence-pilot.json")
     assert c.DEFAULT_SPEC == read_json("configs/qwen-confidence-pilot.json")
+    assert c.V2_SPEC["design"] == c.DEFAULT_SPEC["design"]
+    assert c.V2_SPEC == read_json("configs/qwen-confidence-pilot-v2.json")
+
+
+def test_canonical_tie_matches_vocabulary_argmax_not_menu_order():
+    candidates = [
+        {"command": digit, "token_count": 1, "token_ids": [token], "log_likelihood": score}
+        for digit, token, score in [
+            ("4", 19, -0.6943995356559753),
+            ("2", 17, -0.6943995356559753),
+            ("1", 16, -6.694399356842041),
+        ]
+    ]
+    result = c.canonical_selection(candidates)
+    assert result["selected_command"] == "2" and result["score_tie"]
+    assert result["tied_commands"] == ["4", "2"]
+    assert result["original_selection_status"] == "tie" and result["status"] == "ok"
+    torch = pytest.importorskip("torch")
+    scores = torch.full((30,), float("-inf"))
+    for candidate in candidates:
+        scores[candidate["token_ids"][0]] = candidate["log_likelihood"]
+    assert int(torch.argmax(scores)) == 17
+    candidates[0]["log_likelihood"] = None
+    assert c.canonical_selection(candidates)["status"] == "invalid_scores"
+
+
+def test_v2_ties_continue_remain_visible_and_sensitivity_excludes_whole_questions(
+    small, monkeypatch, tmp_path
+):
+    spec = deepcopy(c.V2_SPEC)
+    spec["design"] = deepcopy(small[0]["design"])
+    monkeypatch.setattr(c, "V2_SPEC", spec)
+    plan = c.build_plan(spec)
+
+    class Tied(FakeBackend):
+        def choice(self, *args):
+            result = super().choice(*args)
+            for i, candidate in enumerate(result["candidates"]):
+                candidate["log_likelihood"] = -0.9 if i < 2 else -4
+            result.update(status="tie", selected_command=None)
+            return result
+
+    result = c.run(
+        spec, tmp_path, backend_factory=lambda _: (Tied(), {"synthetic": True}), plan=plan
+    )
+    assert result["status"] == "complete"
+    _, _, records = c.read_run(tmp_path)
+    assert len(records) == 104 and all(r["result"]["score_tie"] for r in records)
+    report = analysis.analyze(tmp_path)
+    assert report["tie_counts"]["calibration/answer"] == 8
+    assert report["tie_counts"]["assessment/confidence"] == 32
+    assert report["tie_sensitivity"]["removed_questions"] == 8
+    assert report["tie_sensitivity"]["primary"] is None
+
+
+def test_probability_audit_allows_only_roundoff_not_changed_decisions():
+    expected = {
+        "correct": True,
+        "abstained": False,
+        "confidence": None,
+        "menu_mass": 0.75,
+        "restricted_probabilities": [0.25, 0.25, 0.25, 0.25],
+    }
+    perturbed = deepcopy(expected)
+    perturbed["menu_mass"] = float(np.nextafter(0.75, 1))
+    perturbed["restricted_probabilities"][0] = float(np.nextafter(0.25, 1))
+    assert c.judgments_equal(perturbed, expected)
+    perturbed["correct"] = False
+    assert not c.judgments_equal(perturbed, expected)
+    perturbed["correct"] = True
+    perturbed["menu_mass"] += 1e-6
+    assert not c.judgments_equal(perturbed, expected)
+
+
+def test_archived_v1_failure_remains_failure_under_v2_reader(tmp_path):
+    import tarfile
+    from pathlib import Path
+
+    path = Path("review/evidence/qwen-confidence-3ec0b47c7d324b58.tar.gz")
+    with tarfile.open(path) as archive:
+        for member in archive.getmembers():
+            target = (tmp_path / member.name).resolve()
+            assert target.is_relative_to(tmp_path.resolve()) and member.isfile()
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes(archive.extractfile(member).read())
+    manifest, _, records = c.read_run(tmp_path / "run")
+    assert manifest["status"] == "failed" and len(records) == 32
+    failed = [r for r in records if r["status"] != "ok"]
+    assert len(failed) == 1 and failed[0]["status"] == "tie"
+    assert failed[0]["result"]["selected_command"] is None
 
 
 def test_real_tiny_qwen_likelihood_matches_independent_full_forward():

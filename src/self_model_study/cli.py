@@ -57,7 +57,7 @@ def main(argv=None):
             engine = read_json(args.run / "manifest.json").get("engine")
         else:
             engine = None
-        if engine == "qwen-confidence":
+        if engine in {"qwen-confidence", "qwen-confidence-v2"}:
             return confidence_command(args)
         if engine == "qwen-possessive-control":
             return role_control_command(args, "possessive")

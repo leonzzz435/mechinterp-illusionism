@@ -2,6 +2,28 @@
 
 Verification records through 2026-11-08. Software tests and real-model evidence are identified separately below.
 
+## Confidence v2 amendment and v1 evidence — 2026-11-08
+
+The original L4 run stopped on an exact tie during calibration: 32 records, 31 valid,
+one tied, zero assessment records. Its original archive is retained unchanged. Reading it
+locally exposed only a 2.22e−16 difference in derived menu mass; the amended audit permits
+1e−12 absolute probability roundoff while keeping scores, decisions and hashes exact.
+See the [v1 audit](../review/qwen-confidence-v1-audit.json).
+
+The [v2 amendment](QWEN_CONFIDENCE_V2.md) chooses the smallest token ID among exactly
+tied maxima and records all ties. It preserves the original sample, prompts, primary
+analysis and candidate rule. **52 targeted tests passed in 116.08 seconds**, covering
+confidence execution/analysis, source design, HF dispatch and configuration discovery.
+New checks compare the tie rule to actual vocabulary argmax, retain nonfinite-score
+failure, complete a synthetic tied run, exclude whole questions in the descriptive tie
+sensitivity, reject substantive judgment changes and replay the unchanged failed v1 archive.
+This is a targeted rerun after the earlier full-suite verification recorded below.
+
+The [v2 CPU preflight](../review/qwen-confidence-v2-preflight.json) checks 26,112 candidate
+boundaries and all possible dependent confidence inputs with the pinned tokenizer. Its
+token fingerprint is identical to v1; 1,792 selections and 24 upload blocks remain fixed.
+No pretrained inference was used for these v2 prelaunch checks.
+
 ## Executable confidence/abstention pilot — 2026-11-08
 
 The [execution configuration](../configs/qwen-confidence-pilot.json) preserves the original

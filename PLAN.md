@@ -47,6 +47,11 @@ claim of privileged introspection, functional dissociation or a discovered mecha
   separate USD 5 dispatch cap. No automatic follow-up jobs.
 - [ ] Finish full prelaunch verification, run the authorized pilot and report complete,
   negative or incomplete results.
+- [x] Verify and run v1; preserve its calibration-only failure (31 valid selections, one
+  exact tie; no assessment exposure). Source/data persistence worked.
+- [x] Define a versioned canonical tie policy before assessment exposure, preserve all tie
+  flags and add a whole-question sensitivity analysis. Allocate one reviewed v2 replacement
+  within the same USD 5 total cap; no automatic retry loop.
 - [ ] Consider one fixed internal intervention only after a useful baseline and review of
   generic-difficulty explanations. No automatic layer/model/prompt search.
 

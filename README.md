@@ -20,6 +20,8 @@ Every additional paid job requires separate authorization.
   difficulty controls. The dependent runner, analysis and export are implemented;
   [execution status and handover](docs/QWEN_CONFIDENCE_RUN.md) track the authorized bounded
   pilot separately from results. No internal intervention is part of this run.
+  V1 stopped on a calibration tie before assessment; the [v2 amendment](docs/QWEN_CONFIDENCE_V2.md)
+  uses deterministic greedy tie-breaking while preserving the original failed archive.
 - **[Completed Your/The control: results and plots](docs/QWEN_POSSESSIVE_RESULTS.md)** —
   6,144 choices on 16 fresh development scenarios; 48/48 controls passed. Primary accuracy
   interaction **+1.95 pp [−0.78, +4.69], exact p=0.3125**: the possessive-specific candidate

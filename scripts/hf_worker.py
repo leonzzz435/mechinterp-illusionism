@@ -32,6 +32,7 @@ def restore_checkpoint(resume, repo, output, directory, expected_engine="qwen-pi
             "qwen-role-patch",
             "qwen-possessive-control",
             "qwen-confidence",
+            "qwen-confidence-v2",
         }
         or manifest.get("engine") != expected_engine
         or manifest["status"] == "failed"
@@ -63,13 +64,14 @@ def main():
         "configs/qwen-role-patch.json",
         "configs/qwen-possessive-control.json",
         "configs/qwen-confidence-pilot.json",
+        "configs/qwen-confidence-pilot-v2.json",
     }:
         raise ValueError("Unsupported worker configuration")
     expected_hash = os.environ.get("STUDY_CONFIG_SHA256")
     if expected_hash and file_hash(config) != expected_hash:
         raise ValueError("Worker configuration differs from approved job plan")
     engine = read_json(config)["engine"]
-    if engine == "qwen-confidence":
+    if engine in {"qwen-confidence", "qwen-confidence-v2"}:
         from self_model_study.confidence import build_plan, run, validate_spec
         from self_model_study.confidence_reporting import export
 

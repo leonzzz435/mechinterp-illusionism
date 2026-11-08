@@ -97,6 +97,9 @@ def paired_rows(records, temperature):
                 "calibrated_confidence": float(probabilities(scores, temperature)[selected]),
                 "external_difficulty": row["external_difficulty"],
                 "embedding": row["embedding"],
+                "score_ties": {
+                    s: bool(stages[s]["result"].get("score_tie", False)) for s in stages
+                },
                 "menu_mass": {s: stages[s]["result"]["judgment"]["menu_mass"] for s in stages},
             }
         )
@@ -259,6 +262,15 @@ def summarize(manifest, plan, records, directory=None):
     report["blocked_confidence_jobs"] = [
         j["id"] for block in plan["blocks"] for j in block["jobs"] if j["parent_id"] in errors
     ]
+    report["tie_counts"] = dict(
+        sorted(
+            Counter(
+                r["job"]["row"]["split"] + "/" + r["job"]["row"]["phase"]
+                for r in records
+                if r["result"].get("score_tie", r["status"] == "tie")
+            ).items()
+        )
+    )
     if not item_ids:
         return report
     n = len(item_ids)
@@ -275,6 +287,35 @@ def summarize(manifest, plan, records, directory=None):
         right_z[indices].sum(1), right[indices].sum(1)
     )
     report["primary"] = interval(s, draws)
+    if spec.get("selection_policy"):
+        keep = np.array(
+            [
+                not any(any(r["score_ties"].values()) for r in groups[item_id])
+                for item_id in item_ids
+            ]
+        )
+        count = int(keep.sum())
+        sensitivity = {
+            "independent_questions": count,
+            "removed_questions": n - count,
+            "interpretation": "Descriptive exclusion of whole questions with any assessment tie; "
+            "not a replacement primary.",
+            "primary": None,
+            "confidence_auroc": None,
+        }
+        if count:
+            sub = np.random.default_rng(design["seed"]).integers(
+                0, count, (design["bootstrap_resamples"], count)
+            )
+            wn, wd, rn, rd = (values[keep] for values in (wrong_z, wrong, right_z, right))
+            estimate = ratio(wn.sum(), wd.sum()) - ratio(rn.sum(), rd.sum())
+            distribution = ratio(wn[sub].sum(1), wd[sub].sum(1)) - ratio(
+                rn[sub].sum(1), rd[sub].sum(1)
+            )
+            sensitivity["primary"] = interval(estimate, distribution)
+            verbal = np.array([r["confidence"] for r in selected]).reshape(n, 4)
+            sensitivity["confidence_auroc"] = clustered_auc(y[keep], verbal[keep], sub)
+        report["tie_sensitivity"] = sensitivity
     metrics = report["metrics"]
     denominator = np.full(n, 4)
     for name, numerator, den in (

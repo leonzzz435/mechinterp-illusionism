@@ -203,6 +203,8 @@ def markdown(report, plan, records):
                     "menu_mass",
                     "transitions",
                     "breakdowns",
+                    "tie_counts",
+                    "tie_sensitivity",
                 )
             }
         ),

@@ -13,18 +13,21 @@ from .pilot_backend import create_backend, encode_boundary, render_prompt, selec
 from .storage import read_records
 
 DEFAULT_SPEC = read_json(Path(__file__).with_name("confidence_spec.json"))
+V2_SPEC = read_json(Path(__file__).with_name("confidence_spec_v2.json"))
 PROTOCOL = DEFAULT_SPEC["protocol"]
 ENGINE = DEFAULT_SPEC["engine"]
 # Input hashes from the approved CPU design, independent of the new runner.
 FROZEN_ITEMS = "82779d2bd33dc13d69296ee96a0febf04f5128090ce9dda9e620c176d5fc9b20"
 FROZEN_INPUTS = "67057c1f6eea12e279e2181288a0b08e0381abc433c8aaa109799c7d51d34446"
 FROZEN_PLAN = "9ed0bc8322c2bbdc5f41a6a1ee870c49c11cce11d2a92e29c8ae8dc569edfc16"
+FROZEN_PLAN_V2 = "c6b66f80b92502b237bd3734dfbbc970cf367dfd5b0c72473e6e2bf365bc6e90"
 
 
 def validate_spec(spec):
-    if set(spec) != set(DEFAULT_SPEC):
+    expected = V2_SPEC if spec.get("protocol") == V2_SPEC["protocol"] else DEFAULT_SPEC
+    if set(spec) != set(expected):
         raise ValueError("Unknown/incomplete confidence configuration")
-    for key, value in DEFAULT_SPEC.items():
+    for key, value in expected.items():
         if key != "max_seconds" and canonical(spec[key]) != canonical(value):
             raise ValueError(f"Frozen confidence field changed: {key}")
     if type(spec["max_seconds"]) is not int or not 0 < spec["max_seconds"] <= 5400:
@@ -51,7 +54,7 @@ def build_plan(spec, cache=None, fetch=False):
         for offset in range(0, len(selected), 32):
             jobs = []
             for item in selected[offset : offset + 32]:
-                parent = digest([PROTOCOL, item["item_id"], item["rotation"], "answer"])
+                parent = digest([spec["protocol"], item["item_id"], item["rotation"], "answer"])
                 stages = (
                     ("answer",)
                     if split == "calibration"
@@ -78,16 +81,23 @@ def build_plan(spec, cache=None, fetch=False):
                     )
                     jobs.append(
                         {
-                            "id": digest([PROTOCOL, item["item_id"], item["rotation"], phase]),
+                            "id": digest(
+                                [spec["protocol"], item["item_id"], item["rotation"], phase]
+                            ),
                             "kind": "confidence_choice",
                             "format": "chat",
                             "row": row,
                             "parent_id": parent if phase == "confidence" else None,
+                            **(
+                                {"selection_policy": spec["selection_policy"]}
+                                if "selection_policy" in spec
+                                else {}
+                            ),
                         }
                     )
             blocks.append({"id": f"{split}-{offset // 32:02d}", "jobs": jobs})
     return {
-        "protocol": PROTOCOL,
+        "protocol": spec["protocol"],
         "split": "development_replication",
         "blocks": blocks,
         "source_audit": source_audit,
@@ -101,7 +111,7 @@ def preview(spec, plan=None):
     plan = plan or build_plan(spec)
     return {
         "valid": True,
-        "protocol": PROTOCOL,
+        "protocol": spec["protocol"],
         "plan_hash": digest(plan),
         "expected_jobs": len(jobs_in(plan)),
         "blocks": len(plan["blocks"]),
@@ -174,6 +184,29 @@ def probabilities(scores, temperature=1.0):
     return values / values.sum(axis=-1, keepdims=True)
 
 
+def canonical_selection(candidates):
+    """Constrained greedy decoding, with the first vocabulary index on an exact tie."""
+    choices = [c["command"] for c in candidates]
+    scores = [
+        c["log_likelihood"] if c["log_likelihood"] is not None else float("nan") for c in candidates
+    ]
+    selected, original = select_command(choices, scores)
+    winners = []
+    if original == "tie":
+        winners = [c for c in candidates if c["log_likelihood"] == max(scores)]
+        if any(c["token_count"] != 1 or len(c["token_ids"]) != 1 for c in winners):
+            raise ValueError("Canonical tie rule requires single-token candidates")
+        selected = min(winners, key=lambda c: c["token_ids"][0])["command"]
+    return {
+        "selected_command": selected,
+        "status": "ok" if original == "tie" else original,
+        "score_tie": original == "tie",
+        "tied_commands": [c["command"] for c in winners],
+        "original_selection_status": original,
+        "selection_policy": "max_score_then_lowest_token_id",
+    }
+
+
 def derived_result(job, result):
     choices = job["row"]["choices"]
     if [c["command"] for c in result["candidates"]] != choices:
@@ -183,6 +216,11 @@ def derived_result(job, result):
         for c in result["candidates"]
     ]
     selected, status = select_command(choices, scores)
+    if job.get("selection_policy") == "max_score_then_lowest_token_id":
+        expected = canonical_selection(result["candidates"])
+        if any(result.get(k) != v for k, v in expected.items()):
+            raise ValueError("Canonical tie metadata disagrees with scores")
+        selected, status = expected["selected_command"], expected["status"]
     if selected != result["selected_command"] or status != result["status"]:
         raise ValueError("Selection disagrees with likelihoods")
     if status != "ok":
@@ -206,6 +244,24 @@ def derived_result(job, result):
         "menu_mass": mass,
         "restricted_probabilities": probabilities(scores).tolist(),
     }
+
+
+def judgments_equal(saved, expected):
+    """Allow only CPU-libm rounding in derived probabilities; decisions remain exact."""
+    if set(saved) != set(expected):
+        return False
+    for key in ("correct", "abstained", "confidence"):
+        if saved[key] != expected[key]:
+            return False
+    for key in ("menu_mass", "restricted_probabilities"):
+        if expected[key] is None or saved[key] is None:
+            if saved[key] != expected[key]:
+                return False
+        elif np.shape(saved[key]) != np.shape(expected[key]) or not np.allclose(
+            saved[key], expected[key], rtol=0, atol=1e-12
+        ):
+            return False
+    return True
 
 
 def check_tokens(result, prompt, choices, tokenizer, max_length):
@@ -260,7 +316,7 @@ def audit_scientific_records(spec, plan, records, manifest, directory=None):
             raise ValueError("Dependent prompt differs from actual parent answer")
         if result.get("parent_checksum") != (parent["checksum"] if parent else None):
             raise ValueError("Changed parent record")
-        if result["judgment"] != derived_result(job, result):
+        if not judgments_equal(result["judgment"], derived_result(job, result)):
             raise ValueError("Stored confidence judgment differs from scores")
         if not manifest["synthetic"]:
             if any(c["token_count"] != 1 for c in result["candidates"]):
@@ -291,14 +347,15 @@ def read_run(directory):
     manifest, plan = read_json(directory / "manifest.json"), read_json(directory / "plan.json")
     spec = validate_spec(manifest["config"])
     if (
-        manifest["engine"] != ENGINE
-        or manifest["protocol"] != PROTOCOL
+        manifest["engine"] != spec["engine"]
+        or manifest["protocol"] != spec["protocol"]
         or digest(plan) != manifest["plan_hash"]
     ):
         raise ValueError("Confidence plan identity/checksum mismatch")
     if digest(scientific_spec(spec)) != manifest["config_hash"]:
         raise ValueError("Confidence config checksum mismatch")
-    if not manifest["synthetic"] and digest(plan) != FROZEN_PLAN:
+    expected_plan = FROZEN_PLAN_V2 if spec["protocol"] == V2_SPEC["protocol"] else FROZEN_PLAN
+    if not manifest["synthetic"] and digest(plan) != expected_plan:
         raise ValueError("Real run differs from frozen confidence execution plan")
     records = read_records(directory)
     audit_records(records, plan, manifest)
@@ -314,7 +371,8 @@ def run(spec, directory, max_jobs=None, backend_factory=None, checkpoint=None, p
     def factory(config):
         if backend_factory is not None:
             return backend_factory(config)
-        if digest(plan) != FROZEN_PLAN:
+        expected_plan = FROZEN_PLAN_V2 if config["protocol"] == V2_SPEC["protocol"] else FROZEN_PLAN
+        if digest(plan) != expected_plan:
             raise ValueError("Refusing to execute unfrozen confidence plan")
         audit = token_inputs(config, plan, load_tokenizer(config))
         write_json(directory / "tokenizer_audit.json", audit)
@@ -344,6 +402,8 @@ def run(spec, directory, max_jobs=None, backend_factory=None, checkpoint=None, p
         if row["split"] == "assessment":
             result["calibration_checksum"] = digest(read_json(directory / "calibration.json"))
         try:
+            if job.get("selection_policy") == "max_score_then_lowest_token_id":
+                result.update(canonical_selection(result["candidates"]))
             result["judgment"] = derived_result(job, result)
             if hasattr(backend, "tokenizer"):
                 check_tokens(

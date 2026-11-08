@@ -410,3 +410,96 @@ confirm all 388 other tracked files are unchanged, including `designs/`, `review
 the original error-count JSON, audits, preflights, existing result reports, scripts and `src/`.
 The original revision history and replication prose are preserved before the appended
 supplements. `git diff --check` passes. Only the five requested documentation files change.
+
+---
+
+# Publication polish, round four: the crossed control stratum
+
+Base: `7784d1b`; date: 2026-11-08. No new model inference or analysis of raw outputs.
+All added empirical values come from the existing full report; no interval, significance
+test or candidate decision has been added. Earlier revision records remain unchanged.
+
+Article word count: **3,167 before → 3,415 after**, using the same rule as preceding rounds:
+exclude comments, link destinations, images, fenced commands and display equations;
+include headings, prose, captions and tables. Source whitespace counts: 3,432 → 3,677.
+
+## Exact scope and stable IDs
+
+- **P41a:** changes only the final sentence to introduce the partial clarification from
+  irrelevant updates. The observation that the simplest named-record rule predicts the
+  opposite direction in the Cedar/Birch example remains verbatim.
+- **P41b (new):** gives the relevant and irrelevant target-named → other-named accuracy
+  pairs for Your, The and Reference, the conditional freshness argument, the distinction
+  between accuracy and score-margin interactions, and the limits in the same paragraph.
+  Its ledger sources are exclusively `docs/QWEN_POSSESSIVE_FULL_REPORT.md:3-9,24-40,43-91,172-189`.
+- **P43:** adds the irrelevant-update challenge to a freshness-only account for Your/The,
+  with Reference explicitly excepted. Zero revoked-target errors remain a separate,
+  weaker argument against ignoring an update while retaining the target as subject.
+- **P44:** changes “do not separate these explanations” to “do not separate them fully”.
+- **Replication supplement:** adds one sentence explaining why the existing control
+  stratum only partly anticipates the prospective categorical-error analysis; the 2×2
+  stays in place. No frozen endpoint, threshold or normative JSON changes.
+- **Ledger:** updates those blocks and shifted line links; all previous P identifiers
+  remain stable. P41b brings coverage to 59 blocks. No other article block changes,
+  including P16, P22, P37, P38 and the gap definition in P34.
+
+## Corrections required by the source
+
+The requested parenthesized irrelevant-update differences used the reverse of the article's
+existing **other minus target** subtraction. P41b keeps that definition in both strata:
+the control gaps are **+5.47**, **+2.73** and **−1.96** percentage points for Your, The and
+Reference, respectively. These are explicitly differences of the report's displayed,
+rounded percentages, not newly estimated unrounded effects.
+
+The requested signs can instead describe unchanged-account-named minus changed-account-named:
+that orientation coincides with other minus target after relevant updates, but reverses it
+after irrelevant updates. This would change the contrast being compared across strata;
+it is not a sign reversal of the unchanged P34 accuracy interaction.
+
+Consequently, **the accuracy interaction does not reverse sign**: the Your gap remains
+larger than the The gap in both strata. The requested negative accuracy interaction cannot
+be stated consistently with the listed cells and the unchanged P34 definition.
+The article reports its positive direction in the control stratum without adding a new
+numeric interaction estimate. In contrast, the score-margin interaction really does change
+from **+0.346** to **−0.398 nats**, as recorded at full-report lines 188–189.
+
+The claim that target naming hurts in both strata also needs a frame restriction:
+it holds for **Your and The**, whereas Reference has higher target-named accuracy after
+irrelevant updates. This exception is retained in P41b and P43, so the freshness-only
+challenge is not presented as an identical pattern across all formulations.
+Reference/other accuracies occur at full-report lines **24–25**, outside the suggested
+27–40 range; the ledger cites the actual rows rather than an incomplete range.
+
+## Explicit ceiling limit and interpretation boundary
+
+The irrelevant-update other-named cells are around **89–94%**, near the accuracy ceiling.
+They have limited upward headroom, but they are not all-success cells; the new paragraph
+does not extend P16's all-success bootstrap argument to them. The stratum also changes
+which account receives the update and is a competence control, not the primary endpoint.
+The existing crossing therefore supplies a partial descriptive check, not a complete
+identification of a mechanism or a new decision. Naming effects without a freshness
+component remain possible. These limits are explicit in P41b and motivate retaining the
+prospective crossed categorical-error comparison in the replication supplement.
+
+## Round-four verification
+
+Full suite, with local thread limits and offline Hugging Face mode:
+
+```bash
+OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 \
+HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 uv run --no-sync pytest -q
+# 172 passed in 568.64s (0:09:28)
+```
+
+Documentation checks pass: all 59 block texts match their ledger entries, local links and
+section anchors resolve, and cited line ranges exist. The six displayed accuracy pairs
+and their signed differences agree with the full report; arithmetic on those displayed
+cells confirms positive Your/The accuracy interactions in both strata, while the saved
+margin interaction changes sign. P41b uses only full-report sources.
+
+The scope check confirms that only P41a, P43 and P44 changed and P41b was added; all other
+article blocks and all prior numeric occurrences are preserved. The replication supplement
+contains exactly one added sentence. SHA256 checks confirm that all 389 protected tracked
+files remain unchanged, including both design JSONs, every result report, evidence archive,
+audit, preflight, `src/` and `scripts/`. Existing revision-history text is preserved.
+`git diff --check` passes. Only the four requested documentation files change.

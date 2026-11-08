@@ -118,6 +118,7 @@ cross the mentioned account (target / other) with the updated account (target / 
 an after-update 2×2, holding the queried target fixed. The frozen balancing already includes
 these combinations; this proposal adds an explicit reading of them, with categorical error
 direction as the outcome and the full distribution and all-choice denominator retained.
+The existing control stratum only partly anticipates this analysis, given its near-ceiling cells and different update target, so the prospective 2×2 comparison of categorical errors remains in the supplement.
 It would distinguish naming an updated record from naming the target; it would not by itself
 identify an internal mechanism. This is an unexecuted supplement, not a new primary test:
 the normative JSON, primary stratum, thresholds and decision rules remain unchanged.

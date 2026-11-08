@@ -38,9 +38,13 @@
 - [x] Report the negative [result](docs/QWEN_OWNERSHIP_RESULTS.md): primary categorical
   contrast −0.39 pp [−1.43, +0.74], unadjusted p=0.4893; 6/12 competence cells pass,
   with all six irrelevant-update cells failing. No qualifying role-error replication.
-- [ ] Review task validity and the update/account-binding failure before deciding on any
-  further model, template or internal intervention. The remaining cells cannot rescue
-  the frozen all-four success rule; no new job is automatically authorized.
+- [x] Complete the [CPU design review](docs/OWNERSHIP_DESIGN_REVIEW.md): conditional
+  ceiling arithmetic, exact historical prompt reconstruction, scripted shortcuts,
+  frame diagnostics and unrun query-reference/lookup/Their proposals. Preserve the failed
+  frozen decision; the quoted historical cohort already used a named query.
+- [ ] Review the prospective measurement choice, co-endpoints and competence controls
+  before freezing a new protocol with fresh assessment worlds. The remaining cells cannot
+  rescue the frozen all-four success rule; Mistral, routing and further patches remain unrun.
 
 ### Completed milestone: confidence and abstention pilot
 

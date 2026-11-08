@@ -5,14 +5,21 @@ The predicted increase in other-account commands when the queried account is nam
 not recur at the prespecified magnitude. Its world-averaged contrast is **−0.39 percentage
 points**, with a nominal 95% paired-world bootstrap interval **[−1.43, +0.74] pp**.
 All six competence cells after an irrelevant update fail the required 80% accuracy.
-This is a completed negative result for this model/template cell, not an infrastructure
-failure or a demonstration of a functional self-model.
+At the observed relevant-update accuracies, the categorical contrast can be at most
+**+2.69 pp** if the total error counts are held fixed. The +10 pp rule therefore fails
+in a regime with little error available to redistribute, alongside a separate failure
+to resist irrelevant updates. This is a negative result under the frozen rule for this
+model/template cell; it neither erases the historical effect nor establishes a functional
+self-model. The bound is conditional on these observations, not a pre-run impossibility.
 
 The [complete machine-generated report](../review/ownership-permissions-results/report.md),
 [analysis](../review/ownership-permissions-results/analysis.json),
 [offline audit](../review/ownership-permissions-results/audit.json) and
 [archive provenance](../review/ownership-permissions-results/provenance.json) provide the evidence.
 The publication draft remains unchanged at `article-v1`; this report is a separate addendum.
+The subsequent [CPU design review](OWNERSHIP_DESIGN_REVIEW.md) and its
+[reproducible audit](../review/ownership-design-audit/audit.json) examine the ceiling,
+historical prompt parity, shortcuts and proposed controls without new model inference.
 
 ## What was tested
 
@@ -30,6 +37,16 @@ after observing this tranche. This is an extension of the historical task: it us
 labels/worlds and a shared introduction identifying observer Rowan as the antecedent of
 “their.” It is not an exact rerun of the historical prompts. The result cannot isolate
 which of these contextual changes accounts for the difference from earlier cohorts.
+
+One historical distinction matters here. The original pilot's **self** view asked for
+“your active connection,” but the later role and Your/The cohorts already put the frame
+in a separate context line and named the target in the question. All 2,048 role-control
+and 6,144 Your/The inputs reconstruct exactly with that historical named-query template.
+The historical 186/256 comparison below comes from the latter cohort, not the pilot's
+self view. Thus moving a possessive out of the queried noun phrase cannot explain
+this particular cross-cohort comparison: it was already outside it. Shorter task
+instructions, the Rowan introduction, event wording, answer presentation and fresh
+worlds remain bundled differences. Their individual causal contributions are unknown.
 
 ## Primary result
 
@@ -61,7 +78,49 @@ no Holm-adjusted four-cell decision and no wording-equivalence conclusion. Three
 model/template cells remain unrun. The narrow interval pertains to this categorical
 endpoint and context, not to all role or wording effects.
 
-## The decisive competence failure
+## Ceiling arithmetic: what this negative result can distinguish
+
+Let \(q_{f,r}\) be the probability of selecting the other account's current command,
+and \(e_{f,r}=1-A_{f,r}\) the total error probability, for frame \(f\) and mention
+relation \(r\). Since \(0\leq q_{f,r}\leq e_{f,r}\), the primary contrast obeys
+
+\[
+-\frac13\sum_f e_{f,\mathrm{other}}
+\;\leq E\leq\;
+\frac13\sum_f e_{f,\mathrm{target}}.
+\]
+
+The target-named cells have **62 total errors in 2,304 selections**; the other-named
+cells have **72**, of which **71** are other-current errors. Holding these observed
+accuracies fixed bounds \(E\) to **[−3.125, +2.691] pp**. These are algebraic bounds,
+not confidence limits. Relabeling every available target-named error as other-current
+and none of the other-named errors that way still cannot yield +10 pp. The frozen
+threshold remains unmet; changing the threshold after seeing the ceiling would not
+make this a successful replication.
+
+| Relevant-update Your cell | Historical Your/The cohort | This tranche |
+|---|---:|---:|
+| Target named: correct | 186/256 = 72.66% | 735/768 = 95.70% |
+| Other named: correct | 256/256 = 100.00% | 754/768 = 98.18% |
+| Target named: total error | 70/256 = 27.34% | 33/768 = 4.30% |
+
+The target-named error rate fell by a factor of **6.36**, not 6.8. This is better
+performance in this cell, not a general competence improvement: performance after an
+irrelevant update is much worse. Nor does 98% accuracy in the other-named cell alone
+exclude a large positive contrast; the upper bound depends on target-named errors.
+The historical Your accuracy gap of +27.34 pp is unavailable at these *observed*
+accuracies, but it was not prohibited by the new generator before the model answered.
+The data do not determine why the error budget changed.
+
+For comparison, the pooled accuracy gap \(D=A_{\mathrm{other}}-A_{\mathrm{target}}\)
+is **−0.434 pp**, versus categorical \(E=-0.391\) pp. Their difference,
+**−0.043 pp**, is the target-minus-other contrast in remaining errors: one other-named
+selection chose a different valid command. Reporting both preserves the distinction
+between overall performance and error direction. It does not remove the ceiling;
+the accuracy gap is also constrained by total errors. Counts, historical prompts
+and these calculations are reproduced by the CPU design-review script.
+
+## The frozen competence gate and its recency confound
 
 ![Accuracy by updated account and context mention](../review/ownership-permissions-results/figures/update_account_accuracy.png)
 
@@ -86,6 +145,20 @@ account's current command, which in this stratum is precisely its newly granted 
 These conditional counts explain errors; they do not replace the all-choice denominators
 of 4,608 selections per after-update stratum.
 
+In the irrelevant-update stratum, the other account's current command and the newly
+granted command are the same option by construction. Consequently, these errors cannot
+distinguish “select the newest grant” from “select for the other account.” The gate
+tests a demanding part of update/account tracking, with this unresolved mechanism
+confound. It remains a failed gate under the frozen specification; its difficulty alone
+does not invalidate requiring resistance to irrelevant changes.
+
+The zero count for **revoked_target** has different meanings across strata. Following
+a relevant update, that answer exists and its observed count is zero. Before an update
+or after an irrelevant update, the target's original command remains correct, so the
+category is structurally inapplicable. Its zero there supplies no evidence against
+stale-state selection. The historical relevant-update zero must not be generalized
+to these controls.
+
 This pattern is compatible with the update or its new command dominating account
 selection. It does not identify an attention mechanism or establish a causal explanation.
 The descriptive 2×2 addresses the supplementary question about which account is named
@@ -97,6 +170,45 @@ Changed-answer consistency is also uneven: both answers are correct in 5,904/9,2
 target-identity pairs, 4,134/4,608 before/after pairs, and 2,176/2,304 alternative-grant
 pairs. None are missing. The full position-, command- and world-level distributions are
 retained in `analysis.json`.
+
+## CPU shortcuts and frame differences
+
+Scripted policies evaluated on all saved task states give the following accuracies.
+They read structured state; they are diagnostic shortcuts, not measured language models.
+
+| Policy | Before | Target updated | Other updated |
+|---|---:|---:|---:|
+| Newest grant, or first option before an update | 25% | 100% | 0% |
+| Ignore update; use initial target permission | 100% | 0% | 100% |
+| Use current permission of context-named account | 50% | 50% | 50% |
+| Use own active account (Your only) | 50% | 50% | 50% |
+
+The newest-grant policy agrees with Qwen on **4,474/4,608** relevant-update responses
+and **2,442/4,608** irrelevant-update responses. Agreement is not a causal fraction:
+in the first stratum, following the shortcut and correctly tracking the target give
+identical answers. In the second, the shortcut and selecting the other account coincide.
+All cell-level accuracies and agreements are retained in the
+[CPU audit](../review/ownership-design-audit/audit.json).
+
+The frozen endpoint measures a mention contrast within frames, not every frame effect.
+A purely additive frame effect cancels in the within-frame target-minus-other
+subtraction. Averaging across frames can additionally cancel oppositely directed
+frame-by-mention effects. The following descriptive accuracies average the two mention
+relations with equal weights:
+
+| Stratum | Your | Their | Reference |
+|---|---:|---:|---:|
+| Before | 88.02% | 91.41% | 96.61% |
+| Target updated | 96.94% | 97.46% | 96.88% |
+| Other updated | 43.49% | 50.78% | 46.68% |
+
+Before updates, Your is **8.59 pp** below Reference and Their **5.21 pp** below Reference.
+The ranking changes after updates; there is no single frame penalty shared across strata.
+These are post hoc contrasts, not additional successful primary tests. The separate
+review reports nominal paired-world intervals for all six frame comparisons and their
+limits. “Their” also assigns the connection to Rowan, whereas “Your” assigns it to the
+addressee; it adds an antecedent-resolution requirement absent from historical “The.”
+It cannot be treated as a parallel lexical substitution without checking those semantics.
 
 ## Data integrity and recovery
 
@@ -143,8 +255,11 @@ model/template cell to pass, successful results in the other cells could not res
 that rule with the present Qwen/permissions result retained. They could still characterize
 limits of generalization, which would be a separate reason to run them.
 
-The next decision should be a review of the measurement and its update/account-binding
-failure before spending on Mistral, routing or another patch. The historical findings
+The CPU review now supplies reconstructed historical templates, separate query-reference
+probes, shortcut results, a proposed accuracy co-endpoint and proposed lookup controls.
+These are [unrun design proposals](OWNERSHIP_DESIGN_REVIEW.md), not amendments to this
+completed protocol. Before/lookup competence would not by itself demonstrate competence
+at dynamic update tracking. Mistral, routing and another patch remain unrun. The historical findings
 remain observations in their original contexts; the new result limits how broadly they
 can be described. Neither a functional self-model nor its absence, phenomenal consciousness,
 or human illusionism is established. No further GPU job was launched during this analysis.

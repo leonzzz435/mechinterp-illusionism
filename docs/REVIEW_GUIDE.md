@@ -12,6 +12,11 @@ The article remains unchanged at `article-v1`; read this addendum before assessi
 generalization. Three raw archives and an audit requiring neither cloud access nor inference
 are included in `review/ownership-permissions-results/`. Run
 `uv run --no-sync python scripts/review_ownership_evidence.py` to verify them.
+The [CPU design review](OWNERSHIP_DESIGN_REVIEW.md) adds the conditional error-budget
+bound (+2.69 pp at fixed observed accuracies), exact historical prompt checks and
+scripted shortcut results. It distinguishes the pilot's query-bound self view from
+the later named-query cohorts. Its proposed endpoints and gates do not amend the
+frozen protocol. Reproduce it with `uv run --no-sync python scripts/review_ownership_design.py`.
 
 The article preserves positive findings as well as failed stronger criteria. Three disjoint
 development cohorts are not three independent confirmatory replications; the patch reuses

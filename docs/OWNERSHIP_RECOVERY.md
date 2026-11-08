@@ -5,6 +5,13 @@ evaluation had already produced most of the scheduled records. This is an infras
 failure, not a failed scientific endpoint. No conclusion is drawn from the incomplete
 tranche. The article remains frozen at `article-v1`.
 
+**Continuation launched on 2026-11-08:** after explicit approval of the additional
+$0.62 budget, [one L4 job](https://huggingface.co/jobs/zett13/6af09fc30e0338d1bb84c173)
+was submitted from commit `846e274fcef7a55f6a1fc5d9a1f82f543f93350a`. The provider
+reported `RUNNING`; startup logs showed the preserved snapshot restored and model
+weights downloading. This is a launch observation, not a completed result. The
+[launch receipt](../review/ownership-recovery-job.json) records the source and limits.
+
 ## What failed and what survived
 
 All three logs identify `ConnectionError: ... (429 Too Many Requests)` in
@@ -75,11 +82,11 @@ group. No second recovery is automatic.
 
 The cooperative limit is 30 minutes across the group, with a 45-minute provider limit.
 At the refreshed $0.013333/minute quote, reserving 46 billable minutes bounds this new
-job's compute at **$0.613318**. The proposed explicit budget is **$0.62 additional**;
-this is a quote, not authorization or an invoice for the initial jobs. The original
+job's compute at **$0.613318**. The user approved **$0.62 additional** for this one
+continuation; the quote is not an invoice for the initial jobs. The original
 three-job receipts and aggregate guard are retained.
 
-After explicit approval of this single continuation and a clean, pushed checkout:
+Commands used for this approved continuation from a clean, pushed checkout:
 
 ```bash
 uv run --script scripts/hf_jobs.py plan --namespace zett13 --budget-usd 0.62 \
@@ -89,7 +96,7 @@ uv run --script scripts/hf_jobs.py submit --namespace zett13 --budget-usd 0.62 \
 ```
 
 The separate receipt `.hf-jobs/qwen-ownership-recovery.json` prevents duplicate starts.
-This repair does **not** submit that job. Read-only monitoring and download afterward:
+The job has been submitted; do not resubmit it. Read-only monitoring and download:
 
 ```bash
 uv run --script scripts/hf_jobs.py status --receipt .hf-jobs/qwen-ownership-recovery.json

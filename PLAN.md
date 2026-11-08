@@ -39,11 +39,14 @@ claim of privileged introspection, functional dissociation or a discovered mecha
 - [x] Pin source hashes; audit split separation, keys and covariate alignment; fix sample,
   option rotations, prompts, scoring, primary endpoint and pilot stopping rules.
 - [x] Prepare CPU-only input/token audit, regression tests and a labeled design diagram.
-- [ ] Review measurement limits and implement the isolated dependent-stage runner, analysis,
+- [x] Review measurement limits and implement the isolated dependent-stage runner, analysis,
   calibration, export and crash recovery. Preserve historical study engines and archives.
-- [ ] Verify tiny-model scoring, error handling, statistical edge cases and question-level
-  uncertainty; prepare one concrete L4 cost/runtime proposal before requesting new funding.
-- [ ] Run only after separate authorization; report complete, negative or incomplete results.
+- [x] Implement tiny-model scoring, error handling, statistical edge-case and question-level
+  uncertainty tests; prepare one L4 proposal (USD 1.613293 compute bound).
+- [x] Receive explicit authorization for implementation and one bounded pilot; apply a
+  separate USD 5 dispatch cap. No automatic follow-up jobs.
+- [ ] Finish full prelaunch verification, run the authorized pilot and report complete,
+  negative or incomplete results.
 - [ ] Consider one fixed internal intervention only after a useful baseline and review of
   generic-difficulty explanations. No automatic layer/model/prompt search.
 

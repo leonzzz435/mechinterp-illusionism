@@ -1,10 +1,11 @@
 # Qwen confidence and abstention: bounded replication design
 
-**Status, 2026-11-08: CPU preparation; no model results and no cloud submission.**
-The [machine-readable design](../designs/qwen-confidence-pilot.json) fixes the proposed
-sample, prompts and scoring. It is deliberately outside the executable `configs/`
-directory. The dependent execution adapter, analysis and recovery tests remain to be built.
-This document is a reviewable design, not a completed preregistered GPU experiment.
+**Status, 2026-11-08: execution adapter implemented and prelaunch verification completed.**
+The original [machine-readable design](../designs/qwen-confidence-pilot.json) retains its
+historical preparation status. The executable [configuration](../configs/qwen-confidence-pilot.json)
+preserves its exact sample, prompts and scoring and adds the isolated `qwen-confidence`
+engine. The dependent runner, grouped analysis, resume and evidence export are implemented.
+The [execution record](QWEN_CONFIDENCE_RUN.md) distinguishes authorization, dispatch and results.
 
 In plain language: give Qwen a factual question, record its answer, ask how likely that
 answer is to be correct, and separately let it answer or pass. Does it pass more often on
@@ -168,14 +169,17 @@ not authorize selecting whichever endpoint looks best.
 The published `difficulty_score` is the fraction correct in **20 GPT-4o runs**, so larger
 means easier. It is an external comparator, not Qwen's own ability or objective difficulty.
 Use the author's ten question embedding components as additional visible-content proxies.
+These are precomputed author projections; only our standardization and regression are
+fitted within training folds. They are not a new embedding model learned on our holdouts.
 The supplied RAG covariates are integrity-audited but not used as another predictor search.
 
 Prespecify five grouped folds: sort the 128 selected question IDs by
 SHA256 of `[1729, "fold", item_id]`, assign round-robin to folds 0–4. All rotations of one
 question stay in one fold. Fit three logistic predictors of forced correctness:
 
-1. **E:** external difficulty, ten embedding components and answer-position indicators
-   (positions 2–4, reference 1).
+1. **E:** external difficulty, ten embedding components and **recorded forced-answer**
+   position indicators (positions 2–4, reference 1). This is an observable answer feature;
+   the hidden correct-answer position is never a predictor.
 2. **E+Q:** E plus calibrated probability assigned to the forced answer.
 3. **E+Q+V:** E+Q plus reported confidence midpoint.
 
@@ -225,8 +229,8 @@ construction. A selective causal claim needs a separately justified intervention
 ## Implementation handoff and reproduction
 
 Reuse pinned Qwen loading, exact-boundary scoring and the established HF archive transport.
-Implement a new isolated adapter only after reviewing this design. Do not alter historical
-engines or append this experiment to their run journals. Needed before submission:
+The isolated adapter reuses the transactional journal without changing the historical
+experiment engines. The following requirements are implemented and tested before submission:
 
 1. Parent-answer hashes on confidence jobs; atomically persisted stage outputs, resumable
    question blocks and explicit blocked/failed states. No confidence job may substitute
@@ -239,7 +243,8 @@ engines or append this experiment to their run journals. Needed before submissio
    answer position, all stages; do not cherry-pick an impressive mistake after execution.
 4. L4 dry-run plan with measured/estimated runtime clearly separated, fixed cooperative
    and provider limits, current price, tested upload/resume and a concrete cost request.
-   This turn authorizes preparation; previous completed jobs do not fund a new one.
+   The user subsequently authorized implementation and this bounded pilot. The launch uses
+   a separate USD 5 cap for one job; previous receipts remain immutable.
 
 CPU reproduction (no model weights, provider credentials or paid API):
 
@@ -251,14 +256,16 @@ uv run --no-sync python scripts/review_confidence_design.py --tokenizer-check \
   --out review/qwen-confidence-preflight.json
 uv run --no-sync pytest -q tests/test_confidence_design.py
 uv run --no-sync python scripts/render_confidence_design.py
+uv run --no-sync self-study validate configs/qwen-confidence-pilot.json --tokenizer-check
 ```
 
 The [CPU audit](../review/qwen-confidence-preflight.json) contains source joins, sample IDs,
 input fingerprints, digit IDs, fixed example/fold IDs and maximum token length. The actual
 audit passed **26,112 candidate boundaries**, with maximum total length **312 tokens**;
-digits 0–9 each occupy one token. All **11 new CPU tests** and repository-wide Ruff
-checks pass. This verifies preparation, not the still-unimplemented runner or statistics.
-Author files remain in ignored
+digits 0–9 each occupy one token. The original **11 preparation tests** are supplemented by
+dependent-run, statistical, archive and tiny-Qwen likelihood tests; see the current
+[verification record](VERIFICATION.md). The execution tokenizer audit preserves the same
+input fingerprint. Author files remain in ignored
 cache; their notebook is inspected, never executed. The output diagram is explicitly a
 design. Actual result plots will come from archived records: calibration, confidence vs
 correctness, abstention/error rates, answer transitions and external-predictor comparisons,

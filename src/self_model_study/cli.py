@@ -57,6 +57,8 @@ def main(argv=None):
             engine = read_json(args.run / "manifest.json").get("engine")
         else:
             engine = None
+        if engine == "qwen-confidence":
+            return confidence_command(args)
         if engine == "qwen-possessive-control":
             return role_control_command(args, "possessive")
         if engine == "qwen-role-patch":
@@ -124,6 +126,45 @@ def main(argv=None):
         return 0
     except (ValueError, RuntimeError, OSError, ImportError) as exc:
         parser.exit(2, f"Error: {exc}\n")
+
+
+def confidence_command(args):
+    from . import confidence
+    from .confidence_analysis import analyze as confidence_analyze
+    from .confidence_reporting import export as confidence_export
+
+    if args.command in {"validate", "run"}:
+        spec = confidence.validate_spec(read_json(args.config))
+    if args.command == "validate":
+        if args.evidence:
+            raise ValueError("Confidence pilot cannot unlock historical confirmation")
+        plan = confidence.build_plan(spec)
+        result = (
+            confidence.tokenizer_audit(spec, plan)
+            if args.tokenizer_check
+            else confidence.preview(spec, plan)
+        )
+        if args.freeze:
+            from .io import write_json
+
+            write_json(args.freeze / "config.json", spec)
+            write_json(args.freeze / "plan.json", plan)
+            write_json(args.freeze / "preflight.json", result)
+    elif args.command == "run":
+        if args.max_seconds is not None:
+            spec["max_seconds"] = args.max_seconds
+        result = confidence.run(spec, args.out, max_jobs=args.max_jobs)
+        result = {k: result[k] for k in ("run_id", "status", "expected_jobs", "synthetic")}
+    elif args.command == "analyze":
+        if args.ratings:
+            raise ValueError("Confidence pilot has no human-rating arm")
+        with run_lock(args.run):
+            result = confidence_analyze(args.run)
+        result = {k: result[k] for k in ("run_id", "status", "completed_jobs", "decision")}
+    else:
+        result = confidence_export(args.run, args.out)
+    print(canonical(result))
+    return 2 if result.get("status") in {"failed", "complete_with_errors"} else 0
 
 
 def pilot_command(args):

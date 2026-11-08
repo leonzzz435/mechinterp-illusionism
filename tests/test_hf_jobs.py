@@ -92,6 +92,10 @@ def test_explicit_qwen_configuration_and_historical_default(cloud):
     assert possessive["scored_variants"] == 6144 and possessive["blocks"] == 16
     assert possessive["run_limit_seconds"] == 5400
     assert possessive["receipt_name"] == "qwen-possessive-control.json"
+    confidence = cloud.config_details("configs/qwen-confidence-pilot.json")
+    assert confidence["scored_variants"] == 1792 and confidence["blocks"] == 24
+    assert confidence["engine"] == "qwen-confidence"
+    assert confidence["receipt_name"] == "qwen-confidence-pilot.json"
     for path in ("../elsewhere.json", "configs/development.json"):
         with pytest.raises(ValueError, match="explicitly supported"):
             cloud.config_details(path)
@@ -104,6 +108,7 @@ def test_explicit_qwen_configuration_and_historical_default(cloud):
         ("qwen-role-control", "qwen-role-"),
         ("qwen-role-patch", "qwen-patch-"),
         ("qwen-possessive-control", "qwen-possessive-"),
+        ("qwen-confidence-pilot", "qwen-confidence-"),
     ],
 )
 def test_qwen_selection_reaches_worker_without_reusing_first_receipt(

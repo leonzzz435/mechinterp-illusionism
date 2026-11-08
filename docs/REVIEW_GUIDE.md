@@ -4,10 +4,13 @@ The current planning target is the [confidence/abstention replication](QWEN_CONF
 Its [design JSON](../designs/qwen-confidence-pilot.json),
 [author-source pins](../review/confidence-sources.json) and
 [CPU preflight](../review/qwen-confidence-preflight.json) are reviewable without running Qwen.
-This is preparation, not new model evidence. Review the interpretation of fresh-pass
+The [execution adapter and handover](QWEN_CONFIDENCE_RUN.md) now implement that design.
+The [execution preflight](../review/qwen-confidence-execution-preflight.json) preserves
+the original token-input fingerprint. Review the interpretation of fresh-pass
 self-evaluation, generic-difficulty predictors, answer revisions, grouped uncertainty and
-deviations from the source study. The execution adapter is not yet implemented; there is
-no launchable configuration or new job. This is an internal design, not an independent review.
+deviations from the source study. Dispatch/results are tracked in the execution record;
+software verification alone is not model evidence. This is an internal design, not an
+independent review.
 
 ## Completed empirical evidence
 

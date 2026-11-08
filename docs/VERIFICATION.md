@@ -1,6 +1,36 @@
 # Implementation verification
 
-Verification records through 2026-11-07. Software tests and real-model evidence are identified separately below.
+Verification records through 2026-11-08. Software tests and real-model evidence are identified separately below.
+
+## Executable confidence/abstention pilot — 2026-11-08
+
+The [execution configuration](../configs/qwen-confidence-pilot.json) preserves the original
+CPU design's sample and all model-visible prompts. The new isolated engine uses the shared
+transactional journal, actual parent-answer checksums, frozen calibration and the native
+single-digit likelihood scorer. No pretrained inference was used for software validation.
+
+Validation covers **all 154 collected test cases**. The full suite produced **153 passed,
+1 failed in 537.35 seconds**: the central configuration-discovery test needed a branch for
+the new engine. After adding that test registration (no production-code change), the
+affected configuration test plus confidence, source-design and HF tests produced **47
+passed in 91.91 seconds**. This is verification across the full run and targeted rerun,
+not a claim that a second full suite was run. Ruff check/format pass for all 79 Python files;
+`uv lock --check --offline` and `git diff --check` pass.
+
+The checks cover dependent execution after a crash between journal and manifest writes,
+resumption without duplicate inference, failed parents, tie/nonfinite outcomes, immutable
+calibration without assessment leakage, clustered AUROC ties/undefined groups, grouped
+predictor folds, all-abstention failure, tampered records and byte-identical repeated exports.
+A randomly initialized two-layer Qwen on CPU compares the native harness against a separate
+full-sequence forward for all three digit menus, within 1e−6. It downloads no model weights.
+
+The [execution preflight](../review/qwen-confidence-execution-preflight.json) confirms all
+26,112 possible candidate boundaries, including every answer-dependent confidence prompt;
+maximum total length is 312 tokens. The token fingerprint is unchanged from the original
+design. There are 1,792 planned selections in 24 upload blocks. Historical archives remain
+unchanged. The output charts were inspected using a visibly watermarked synthetic fixture;
+they are not Qwen findings. Dispatch and actual model evidence are tracked separately in
+the [execution record](QWEN_CONFIDENCE_RUN.md).
 
 ## Completed possessive-wording evidence — 2026-11-07
 

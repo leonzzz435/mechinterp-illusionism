@@ -26,7 +26,13 @@ def restore_checkpoint(resume, repo, output, directory, expected_engine="qwen-pi
     manifest = read_json(source / "manifest.json")
     if (
         expected_engine
-        not in {"qwen-pilot", "qwen-role-control", "qwen-role-patch", "qwen-possessive-control"}
+        not in {
+            "qwen-pilot",
+            "qwen-role-control",
+            "qwen-role-patch",
+            "qwen-possessive-control",
+            "qwen-confidence",
+        }
         or manifest.get("engine") != expected_engine
         or manifest["status"] == "failed"
     ):
@@ -56,13 +62,23 @@ def main():
         "configs/qwen-role-control.json",
         "configs/qwen-role-patch.json",
         "configs/qwen-possessive-control.json",
+        "configs/qwen-confidence-pilot.json",
     }:
         raise ValueError("Unsupported worker configuration")
     expected_hash = os.environ.get("STUDY_CONFIG_SHA256")
     if expected_hash and file_hash(config) != expected_hash:
         raise ValueError("Worker configuration differs from approved job plan")
     engine = read_json(config)["engine"]
-    if engine == "qwen-pilot":
+    if engine == "qwen-confidence":
+        from self_model_study.confidence import build_plan, run, validate_spec
+        from self_model_study.confidence_reporting import export
+
+        def load_spec(path):
+            spec = validate_spec(read_json(path))
+            # Public, versioned data only; never execute the author's notebook.
+            build_plan(spec, fetch=True)
+            return spec
+    elif engine == "qwen-pilot":
         from self_model_study.pilot import load_spec, run
         from self_model_study.pilot_reporting import export
     elif engine == "qwen-possessive-control":

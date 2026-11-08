@@ -18,6 +18,14 @@ scripted shortcut results. It distinguishes the pilot's query-bound self view fr
 the later named-query cohorts. Its proposed endpoints and gates do not amend the
 frozen protocol. Reproduce it with `uv run --no-sync python scripts/review_ownership_design.py`.
 
+**Selected next question:** [query-bound self-reference](QUERY_SELF_REFERENCE.md), with
+same-target named aliases and balanced third-person references. Its
+[versioned JSON](../designs/query-self-reference-v1.json) is a review draft, not a third
+frozen specification or an executed study. The frame-accuracy contrast is a co-endpoint.
+The [partial structural check](../review/query-self-reference-protocol-check.json) is not
+a rendered-input/token audit. The new question does not turn the tranche's post hoc frame
+contrast into an independently replicated finding.
+
 The article preserves positive findings as well as failed stronger criteria. Three disjoint
 development cohorts are not three independent confirmatory replications; the patch reuses
 the middle cohort. “Your” versus “The” was not an equivalence experiment. The

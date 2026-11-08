@@ -49,7 +49,13 @@ Every additional paid job requires separate authorization.
 
 - [Protocol and mathematics](docs/PROTOCOL.md)
 - [Two-machine runbook](docs/RUNBOOK.md)
-- [English article draft](docs/article/ARTICLE.md)
+- [English article draft — frozen at article-v1](docs/article/ARTICLE.md) —
+  dated observations; read the [later replication addendum](docs/QWEN_OWNERSHIP_RESULTS.md):
+  the fresh-world Qwen/permissions tranche did not confirm its prespecified contrast
+  and failed its irrelevant-update competence controls. The historical effect is not
+  established as a general replicated finding.
+- [Next question: query-bound self-reference](docs/QUERY_SELF_REFERENCE.md) —
+  versioned protocol draft with co-endpoints and matched owner aliases; no new inference.
 - [Sources and claim boundaries](docs/SOURCES_AND_CONTEXT.md)
 - [Implementation and empirical milestones](PLAN.md)
 - [Software verification and remaining empirical checks](docs/VERIFICATION.md)

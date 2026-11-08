@@ -1,0 +1,59 @@
+{
+  "checker_sha256": "08990e35bde6ea678031f12094f97f55d650022033cedfda3ba5fb5e652280ae",
+  "current_before_your_minus_reference": -0.0859375,
+  "current_comparison_source_sha256": "a953faa190e614f91c72b011f4000e21c6b48785cf725536450a937c86b6003c",
+  "historical_account_pair_overlap": 0,
+  "matched_historical_before": {
+    "reference": {
+      "correct": 1000,
+      "n": 1024
+    },
+    "your": {
+      "correct": 1016,
+      "n": 1024
+    }
+  },
+  "matched_historical_before_your_minus_reference": 0.015625,
+  "model_inference": false,
+  "not_checked": [
+    "full generated input manifest and exact/context-stripped prompt overlap",
+    "rendered query aliases and independent simulator agreement",
+    "actual tokenizer boundaries, IDs, lengths and chat defaults",
+    "scoring, resume, analysis implementation and software tests",
+    "sample precision or model performance"
+  ],
+  "nuisance_combination_counts": {
+    "0": 6,
+    "1": 6,
+    "2": 6,
+    "3": 6,
+    "4": 6,
+    "5": 6,
+    "6": 6,
+    "7": 6
+  },
+  "planned_choices": 16128,
+  "planned_counts_per_world": {
+    "after_both": 192,
+    "before": 48,
+    "snapshot": 96
+  },
+  "protocol_sha256": "6c1891acedcf758cb5ce099b001ba609c5627a484ccaf873f1f9019c5b3e81cc",
+  "rule_level_latest_grant_primary_accuracy": 0.5,
+  "source_archives": {
+    "review/evidence/qwen-78ee6db8adfc4f3e.tar.gz": "cf8eceea87129acaad2365f36af99d8f54923015923c837419a691252b8f12fa",
+    "review/evidence/qwen-possessive-f2baaa2fb6b74880.tar.gz": "d521a63c21c360b33ba8452ab5d572eaf0d06c4e4be02df02425dfc1c2fe3e59",
+    "review/evidence/qwen-role-96787d5e7adf4c4d.tar.gz": "36614cb2aae236d450d57540c9b76dfddfec2d4bd2a59f177dce296058b13a8d",
+    "review/ownership-permissions-results/archives/block-00.tar.gz": "e92dd6d94bc67bd0da156b674a610ba5dbc811563e64391fe5a31c50fdc826fe",
+    "review/ownership-permissions-results/archives/block-01.tar.gz": "00065f4c98b1552a8352b8531ac46d3f02cb6d3d800733b0db475a342cafd90e",
+    "review/ownership-permissions-results/archives/block-02.tar.gz": "b4a78e92369f40eff817c6dc34a5bba12c32422abc20ef7b1967ee54b8373f13"
+  },
+  "status": "structural_checks_passed_not_execution_ready",
+  "tokenizer_loaded": false,
+  "unique_account_command_sets": 48,
+  "world_assignment_hash": "2ba6989e553b11f6c7851c820285aca95616b049fd86a313255c301fb84bf605",
+  "worlds_per_operator_name_as_self": {
+    "Morgan": 24,
+    "Rowan": 24
+  }
+}

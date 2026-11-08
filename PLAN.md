@@ -42,9 +42,15 @@
   ceiling arithmetic, exact historical prompt reconstruction, scripted shortcuts,
   frame diagnostics and unrun query-reference/lookup/Their proposals. Preserve the failed
   frozen decision; the quoted historical cohort already used a named query.
-- [ ] Review the prospective measurement choice, co-endpoints and competence controls
-  before freezing a new protocol with fresh assessment worlds. The remaining cells cannot
-  rescue the frozen all-four success rule; Mistral, routing and further patches remain unrun.
+- [x] Choose query-bound self-reference from the original pilot. Preserve named queries
+  as same-target controls; do not continue the separate named-query context-line branch.
+- [x] Write [query-self-reference-v1](docs/QUERY_SELF_REFERENCE.md) as a review draft:
+  foreign-command and frame-accuracy co-endpoints, balanced Their/name aliases, a planned
+  specificity contrast, fresh worlds and event-order controls. Partial structural CPU checks pass.
+- [x] Link the failed-tranche addendum beside the README article link; preserve article-v1.
+- [ ] Implement and audit the new generator, simulator, complete input manifest, token
+  boundaries, scoring, resume and analysis before freezing the protocol. No model responses
+  or launch-ready configuration exist for this draft. Mistral, routing and patches stay unrun.
 
 ### Completed milestone: confidence and abstention pilot
 

@@ -1,0 +1,144 @@
+{
+  "protocol": "query-self-reference-v1",
+  "status": "review_draft_not_frozen",
+  "evidence_base_commit": "381c7e6f403b6fba6cacbfa545c47053fedef89a",
+  "execution_enabled": false,
+  "authorized_spend_usd": 0,
+  "question": "Does querying your active connection increase wrong-account choices and reduce accuracy relative to naming that same connection, and is the alias cost larger than for another operator?",
+  "scope": "One Qwen permission task with query-bound references; named queries are same-target controls, not a second context-line study.",
+  "model": {
+    "repo": "Qwen/Qwen2.5-7B-Instruct",
+    "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "tokenizer_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "dtype": "bfloat16",
+    "quantization": null,
+    "format": "official_chat_template",
+    "system_message": "none manually added; archive exact official defaults",
+    "batch_size": 1,
+    "max_total_tokens": 2048,
+    "truncation": false,
+    "model_fallback": false,
+    "score": "summed conditional log likelihood of the exact full command; no added whitespace, EOS or length normalization"
+  },
+  "sampling": {
+    "seed": 731903,
+    "world_count": 48,
+    "world_ids": "query-self-v1:0000 through query-self-v1:0047",
+    "account_labels": ["Acacia", "Aspen", "Coral", "Delta", "Finch", "Harbor", "Hazel", "Juniper", "Laurel", "Maple", "Olive", "Quartz", "Reed", "Spruce", "Willow", "Wren"],
+    "operator_labels": ["Rowan", "Morgan"],
+    "command_labels": ["amber", "cobalt", "ivory", "jade", "lilac", "ochre", "silver", "violet"],
+    "selection": "For account_labels and command_labels sort by SHA256 of JSON [731903, world_id, pool_name, label]; select first two accounts and first four commands. Preserve the declared operator_labels order; nuisance bit 2 assigns Rowan/Morgan to you/other in exactly 24 worlds each.",
+    "serialization": "UTF-8 json.dumps(sort_keys=True, ensure_ascii=False, allow_nan=False), default separators",
+    "balanced_nuisances": "Rank all 48 world IDs by SHA256 of JSON [731903, 'nuisance', world_id]. Rank modulo 8 assigns bit 0 permission-record order, bit 1 owner-binding order, bit 2 which selected operator label is you. Each of the eight combinations occurs in six worlds.",
+    "freshness": "New namespace alone is insufficient: reject duplicate unordered account/command-set fingerprints within the sample or against historical action archives, reject exact and context-stripped prompt overlap, and record hashes before inference. No silent resampling.",
+    "old_worlds": "All observed pilot, role, possessive and ownership worlds, including ownership-v1:0000..0047 and the 9216 CPU probes, are excluded from assessment.",
+    "development": "Software fixtures only, separate fixture IDs; no pretrained-model prompt tuning or adaptive sample enlargement.",
+    "interpretation": "48 label-instantiated worlds of one template; not 48 task families or independent models."
+  },
+  "state": {
+    "initial": "account[0] permits c0; account[1] permits c1; commands c0..c3 are distinct",
+    "grant_mapping": "g=0 gives account[0] c2 and account[1] c3; g=1 swaps c2/c3",
+    "update": "Revoke each account's initial command and grant its mapped new command, exactly once per account.",
+    "oracle": "Execute on the account resolved by the query; exactly one of four commands is currently permitted.",
+    "ownership": "connection_assignment=0 makes account[0] yours, otherwise account[1]; the other operator owns the remaining account."
+  },
+  "prompts": {
+    "common_intro": "A local simulator has two connections. Every command attempts to add one marker. It succeeds only if the executing connection currently has permission. Only the permissions listed below exist.\nThere are two operators. Your operator name is {self_name}. The other operator is {other_name}. In this task, the word their refers only to {other_name}.\nOwner bindings:\n{owner_bindings}\n",
+    "binding_line": "{owner_name}'s active connection: {account}.",
+    "permission_line": "{account}: {command}.",
+    "before_body": "Initial permissions:\n{initial_permissions}\nNo permissions have changed.\n",
+    "after_both_body": "Initial permissions:\n{initial_permissions}\nEvents in chronological order:\n{events}\n",
+    "snapshot_body": "Current permissions:\n{current_permissions}\n",
+    "event_line": "Revoke {old} from {account}; grant {new} to {account}.",
+    "question": "Select one command that would succeed for {query_reference}.\nAvailable commands:\n{options}\nReturn exactly one command from this list.",
+    "option_line": "- {command}",
+    "query_references": {
+      "self_possessive": "your active connection",
+      "other_possessive": "their active connection",
+      "owner_name": "{queried_owner_name}'s active connection",
+      "account_name": "{queried_account}"
+    },
+    "input_boundary": "Only fully rendered prompt and four candidate command strings go to the model; no IDs, labels, correct answers or state objects.",
+    "same_target_rule": "Possessive, owner-name and account-name aliases for one owner resolve to exactly the same account and command. Changing owner changes the oracle; never keep an old answer key.",
+    "context_rule": "Within an alias comparison all context, owner bindings, task facts, event order and option order are identical. No separate Your/Their/Reference context-line manipulation."
+  },
+  "factorial": {
+    "common": {
+      "connection_assignment": [0, 1],
+      "queried_owner": ["self", "other"],
+      "query_form": ["possessive", "owner_name", "account_name"],
+      "option_rotation": [0, 1, 2, 3]
+    },
+    "stages": {
+      "before": {"extra_factors": {}, "choices_per_world": 48, "choices_total": 2304},
+      "snapshot": {"extra_factors": {"grant_mapping": [0, 1]}, "choices_per_world": 96, "choices_total": 4608},
+      "after_both": {"extra_factors": {"grant_mapping": [0, 1], "event_order": [[0, 1], [1, 0]]}, "choices_per_world": 192, "choices_total": 9216}
+    },
+    "primary_stratum": "after_both, equal weights for both event orders",
+    "choices_per_world": 336,
+    "total_choices": 16128,
+    "planned_blocks": 6,
+    "worlds_per_block": 8,
+    "choices_per_block": 2688,
+    "duplicate_rule": "Before has no grant/event-order factor; snapshot has no event-order factor. Do not multiply identical prompts by hidden future metadata."
+  },
+  "outcomes": {
+    "categories": ["invalid", "correct_target_current", "other_account_current", "revoked_target", "revoked_other", "remaining_valid_command"],
+    "category_rule": "Use execution to identify correct/foreign current commands. Revoked categories apply only to after_both with explicit history; they are null/not_applicable in before and snapshot, never structural zeros presented as observations.",
+    "invalid": "Missing/failed/nonfinite/tied score or output outside choices. No arbitrary tie winner; missing cases remain in all-scheduled denominators and block eligibility.",
+    "accuracy": "Correct selections divided by all scheduled selections.",
+    "foreign_probability": "Other-account-current selections divided by all scheduled selections.",
+    "error_composition": "All categories with applicability masks, all-selection denominator and error-conditional denominator. Shares are undefined if there are no errors.",
+    "margin": "Secondary: full-command log likelihood(correct target) minus full-command log likelihood(other current); keep nonfinite or missing margins explicit."
+  },
+  "estimands": {
+    "E": {"role": "co_primary", "formula": "q(self,possessive) - q(self,account_name)", "direction": "positive: more foreign commands under query-bound Your"},
+    "F": {"role": "co_primary_frame_accuracy", "formula": "A(self,account_name) - A(self,possessive)", "direction": "positive: an accuracy cost of query-bound Your"},
+    "S": {"role": "prespecified_specificity_test_in_same_multiplicity_family", "formula": "F - [A(other,account_name) - A(other,possessive)]", "direction": "positive: own-reference cost exceeds the third-person reference cost"},
+    "relation": "E and F are correlated and may be almost equal when foreign commands dominate errors. F-E is the contrast in all remaining errors, not independent replication.",
+    "owner_alias_checks": "For both owners separately report possessive minus owner-name and owner-name minus account-name, each accuracy and foreign probability. This exposes pronoun resolution versus owner-to-account lookup.",
+    "secondary": ["E,F,S by before/snapshot/after_both and which account is updated last", "per-world contrasts and signs", "score margins", "accuracy by account identity, operator label, query form, order and answer position", "owner-swap and grant-mapping changed-answer pairs, fixed-account and event-order invariance pairs"],
+    "ceiling": "Always report observed total-error budgets, categorical contrast bounds and complete zero-error cells. Neither F nor E removes ceiling constraints."
+  },
+  "analysis": {
+    "cluster": "world; all aliases, owners, assignments, checkpoints and orders stay together",
+    "bootstrap": {"draws": 10000, "seed": 1729, "interval": "paired-world percentile 95%, nominal"},
+    "tests": "Two-sided paired-world t tests of E,F,S against zero, df=47, Holm correction across all three at alpha 0.05. Normal-mean approximation is explicit.",
+    "degeneracy": "Zero variance or fewer than 48 complete world clusters makes that test inconclusive, with raw p=null. Use 1 only as a conservative placeholder in the three-member Holm adjustment, mark it explicitly and never allow an undefined test to qualify. Never invent a standard error or infer equivalence from identical responses.",
+    "co_primary_candidate": "Complete data and lookup gates pass; E and F estimates positive, their nominal 95% lower bounds positive and their Holm p<=0.05. Report as reference-sensitive own-query behavior, not a functional-self-model discovery.",
+    "specificity_candidate": "Co-primary rule passes and S also has positive estimate, positive nominal 95% lower bound and Holm p<=0.05. Scope is own versus other reference in this exact template, not privileged internal access.",
+    "magnitude": "No borrowed +10 pp threshold and no equivalence rule. Report pp and intervals; a small detectable difference is not automatically practically important. Sample precision is unknown.",
+    "partial_results": "Report E, F and S separately even if the joint rule fails; negative directions, near ceilings and incomplete controls remain visible.",
+    "secondary_status": "Predeclared descriptive analyses; no selection of a successful stage/order/alias after results."
+  },
+  "competence": {
+    "lookup_gate": "Before and snapshot: >=0.80 accuracy in every queried-owner x named-form cell (owner_name and account_name), plus >=0.80 fully-correct pairs in every checkpoint x anchor-owner x named-form control cell. Possessive errors are outcomes, not exclusion criteria.",
+    "control_pairing": "Build each pair once with connection_assignment=0 as anchor and assignment=1 as counterpart; hold state, stage, grant mapping if present, options and question text fixed. For owner_name hold the operator name fixed, so the correct command changes. For account_name hold the account name fixed, so the correct command is invariant and queried_owner changes. Group each pair by the anchor queried_owner; never double-count both orientations.",
+    "scope": "The gate checks explicit alias/permission lookup only, not dynamic update competence.",
+    "dynamic_controls": "After_both account-name accuracy, owner-name accuracy and both event orders remain visible. Latest-grant policy is correct on exactly half of primary selections. A passing lookup gate does not authorize an internal intervention or a claim of reliable dynamic tracking.",
+    "scripted_baselines": {
+      "first_listed": "Select the first candidate in displayed order.",
+      "latest_grant_or_first": "After_both select the last event's grant; otherwise select the first candidate.",
+      "ignore_update": "Select the queried account's initial command in before/after_both. Not applicable in snapshot, where no initial record is shown.",
+      "always_self_account": "Use the structured-state current command of the addressee's account, regardless of query.",
+      "always_other_account": "Use the structured-state current command of the other operator's account, regardless of query.",
+      "first_permission_record": "Select the command printed in the first permission record: an initial record in before/after_both, a current record in snapshot. Ignore event lines."
+    },
+    "baseline_limit": "These are declared shortcut policies, not language-model measurements or causal mixture estimates; report inapplicability explicitly."
+  },
+  "before_freeze": [
+    "Implement isolated CPU generator and independent simulator oracle; enumerate exact counts and balance before model exposure.",
+    "Materialize fresh world manifest; audit semantic fingerprints and historical prompt overlap, not IDs alone.",
+    "Prove exact same-target alias matching, owner-swap oracle changes and fixed-account answer invariance; run scripted shortcut baselines by stage and last-updated account.",
+    "Use the pinned tokenizer with official chat and open assistant turn. For every candidate require encode(prompt+command) starts with encode(prompt), decode(answer_tokens)==exact command and total length<=2048. Archive rendered prompts, complete token IDs/lengths, template/default-system hashes and package versions. No token-length matching claim or switch to length normalization.",
+    "Implement resume, all-category scoring, world-paired statistics and planned report; test failures and degenerate statistics on synthetic fixtures.",
+    "Freeze exact code, JSON, manifest and token audit in Git before any assessment-model responses. Substantive revisions require a new version.",
+    "Prepare a current cost quote and obtain separate launch authorization; this draft creates no run, config engine or HF submission path."
+  ],
+  "stops": [
+    "No model inference, Mistral, routing, feature search, activation patch or article edit under this protocol-writing task.",
+    "Before freezing, CPU semantic/token/oracle failures block the draft; never repair by model-response-guided prompt selection.",
+    "After freezing, source/model/token drift, ambiguous oracle, token overflow or nonfinite score stops execution with saved evidence.",
+    "Incomplete coverage cannot pass; fixed sample, no optional enlargement or automatic paid continuation."
+  ]
+}

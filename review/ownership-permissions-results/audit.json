@@ -1,0 +1,60 @@
+{
+  "blocks": [
+    {
+      "archive_sha256": "e92dd6d94bc67bd0da156b674a610ba5dbc811563e64391fe5a31c50fdc826fe",
+      "backend_comparison_passed": true,
+      "block_index": 0,
+      "journal_jsonl_equal": true,
+      "new_records": 1152,
+      "payload_checksums": 62,
+      "preserved_records": 4992,
+      "records": 6144
+    },
+    {
+      "archive_sha256": "00065f4c98b1552a8352b8531ac46d3f02cb6d3d800733b0db475a342cafd90e",
+      "backend_comparison_passed": true,
+      "block_index": 1,
+      "journal_jsonl_equal": true,
+      "new_records": 768,
+      "payload_checksums": 63,
+      "preserved_records": 5376,
+      "records": 6144
+    },
+    {
+      "archive_sha256": "b4a78e92369f40eff817c6dc34a5bba12c32422abc20ef7b1967ee54b8373f13",
+      "backend_comparison_passed": true,
+      "block_index": 2,
+      "journal_jsonl_equal": true,
+      "new_records": 1536,
+      "payload_checksums": 63,
+      "preserved_records": 4608,
+      "records": 6144
+    }
+  ],
+  "choices": 18432,
+  "failed_control_cells": {
+    "neutral/other/after_irrelevant": 0.4348958333333333,
+    "neutral/target/after_irrelevant": 0.4986979166666667,
+    "their/other/after_irrelevant": 0.4765625,
+    "their/target/after_irrelevant": 0.5390625,
+    "your/other/after_irrelevant": 0.5247395833333334,
+    "your/target/after_irrelevant": 0.3450520833333333
+  },
+  "limits": "Saved-score reaggregation; no new inference or independent likelihood calculation. One model/template only; no Holm-family or wording-equivalence decision.",
+  "primary": {
+    "ci95": [
+      -0.014322916666666666,
+      0.007378472222222221
+    ],
+    "estimate": -0.0039062499999999996,
+    "unadjusted_t_p": 0.48930746041589823
+  },
+  "primary_10pp_threshold_met": false,
+  "status": "verified",
+  "world_signs": {
+    "negative": 19,
+    "positive": 9,
+    "zero": 20
+  },
+  "worlds": 48
+}

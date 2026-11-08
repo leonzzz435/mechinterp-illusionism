@@ -1,0 +1,153 @@
+{
+  "kind": "completed_ownership_tranche",
+  "checked_at_utc": "2026-11-08T17:06:49.323562+00:00",
+  "job_id": "6af0a3cee6320c66fad766af",
+  "job_url": "https://huggingface.co/jobs/zett13/6af0a3cee6320c66fad766af",
+  "artifact_repo": "zett13/mechinterp-illusionism-results",
+  "artifact_revision": "f114e53bb62b683c4d40277944985477567db498",
+  "run_name": "qwen-ownership-recovery-v2-968f9e7077d74715",
+  "scientific_execution_commit": "23f9ea8f6ebc31e4a6f3590481b8b8099bc1c2b5",
+  "continuation_worker_commit": "341fa5b7bd085d9b19013e4e8648d945437f0e3a",
+  "status": "complete",
+  "recovery_state": {
+    "blocks": [
+      {
+        "block_index": 0,
+        "new_records": 1152,
+        "status": "complete"
+      },
+      {
+        "block_index": 1,
+        "new_records": 768,
+        "status": "complete"
+      },
+      {
+        "block_index": 2,
+        "new_records": 1536,
+        "status": "complete"
+      }
+    ],
+    "elapsed_seconds": 1504.653603064,
+    "new_records": 3456,
+    "original_records": 14976,
+    "status": "complete"
+  },
+  "transport_events": [
+    {
+      "snapshot": "0606b638c018fbbca1cc609f6ddaabb65e45397ece4179f0a060d1e866a17966",
+      "state": "uploaded"
+    },
+    {
+      "snapshot": "dea50496dcf23961462f3e8efe9523b4e334046456c2543f12f657262cd0b20d",
+      "state": "uploaded"
+    },
+    {
+      "snapshot": "623dd13e9813d34cd82cc9b71c6737bf06b4bf6142a8c79a416128febbdd9308",
+      "state": "uploaded"
+    },
+    {
+      "snapshot": "27dbef1e72da9856a81a185aecafe850d826c18e0f30ce40df4d0e77397137e4",
+      "state": "uploaded"
+    },
+    {
+      "snapshot": "46bb4b701c26be8693e68fa2d2584f013bcf7161e29c230b9345beacf8302fe3",
+      "state": "uploaded"
+    },
+    {
+      "snapshot": "47f99b9db34a23fc7da3b5653933a4609655a692c1bf2f3da1e87f39e9a30a74",
+      "state": "uploaded"
+    },
+    {
+      "snapshot": "4f48e051ce5ab79adfffbf82c2190f40fe511b47e040ed908210ba01f050eafa",
+      "state": "uploaded"
+    },
+    {
+      "snapshot": "e8ea476e51b51670e2169040ef30415e97b4155276c82358039b5dad5501aff8",
+      "state": "uploaded"
+    },
+    {
+      "snapshot": "f394d5e734f248aa6270a58050a3e3dae20a296f1d544a73d56bfe83a0448f04",
+      "state": "uploaded"
+    },
+    {
+      "snapshot": "7c31cb7d224eb5ef2300f37566ffcc3bd8fa265f682742dbf319699e87d421bb",
+      "state": "uploaded"
+    },
+    {
+      "snapshot": "f3c763ec2917283524ddb1145caac5118ac21295f0a8cbb8c6470a0965267e63",
+      "state": "uploaded"
+    },
+    {
+      "snapshot": "0fbafcd85de64d64591c7ff5aecfae599a8e95b8764147f203b35afe401b1464",
+      "state": "uploaded"
+    },
+    {
+      "snapshot": "5b376730881c7b20e91340cdfeb99912639d680800388600545402aa846d080b",
+      "state": "uploaded"
+    },
+    {
+      "snapshot": "486f53e34d8560b1bd00e90c819de5b1f5369b504d7adcef4c6731689d6fe4f5",
+      "state": "uploaded"
+    },
+    {
+      "snapshot": "b08caa88e0c8d922f8ed856509e9898134827ae5656649ad81627009aecd73b6",
+      "state": "uploaded"
+    },
+    {
+      "snapshot": "fd4a5ac27f694047738aa589b64e4f7c85072cc7161960ff394e0849bece609b",
+      "state": "uploaded"
+    },
+    {
+      "snapshot": "cdb0d2dc2a937e264f905db584e2a275df28dfa8ac6f99330097bd9e629f22b6",
+      "state": "uploaded"
+    },
+    {
+      "snapshot": "77ffb58d0d9ce717300f0f010a4aa572c0ea1f4494bdcddc16c8bcdb4da9c2de",
+      "state": "uploaded"
+    },
+    {
+      "snapshot": "07f988c928412ff3e76fc91bf8c6f8cd2369da5923255829c7e1ce34fb47a810",
+      "state": "uploaded"
+    },
+    {
+      "snapshot": "c4e58ee4afc4399b366382725640b0e489e0acb0d6686d99382090c49c7c6cc2",
+      "state": "uploaded"
+    },
+    {
+      "snapshot": "9930b0f9821c35489e1612cfa893b53178abc05d232a4d850e657f26f9e3b913",
+      "state": "uploaded"
+    },
+    {
+      "snapshot": "012c503e85f0b261d0267ec677a2abf38224982e5df0c8dd0e3a4f4c3a13723e",
+      "state": "uploaded"
+    }
+  ],
+  "archives": [
+    {
+      "block_index": 0,
+      "path": "review/ownership-permissions-results/archives/block-00.tar.gz",
+      "sha256": "e92dd6d94bc67bd0da156b674a610ba5dbc811563e64391fe5a31c50fdc826fe"
+    },
+    {
+      "block_index": 1,
+      "path": "review/ownership-permissions-results/archives/block-01.tar.gz",
+      "sha256": "00065f4c98b1552a8352b8531ac46d3f02cb6d3d800733b0db475a342cafd90e"
+    },
+    {
+      "block_index": 2,
+      "path": "review/ownership-permissions-results/archives/block-02.tar.gz",
+      "sha256": "b4a78e92369f40eff817c6dc34a5bba12c32422abc20ef7b1967ee54b8373f13"
+    }
+  ],
+  "cloud_and_local_byte_identical": [
+    "analysis.json",
+    "figures/categorical_errors.pdf",
+    "figures/categorical_errors.png",
+    "figures/categorical_errors.svg",
+    "figures/world_contrasts.pdf",
+    "figures/world_contrasts.png",
+    "figures/world_contrasts.svg",
+    "report.md"
+  ],
+  "verification_scope": "Original cloud block archives copied unchanged; combined analysis, report and all six figures regenerated locally without inference."
+}

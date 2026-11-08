@@ -1,15 +1,17 @@
 # Qwen / permissions: one authorized ownership tranche
 
-**Current status:** all three initial jobs ended in upload errors (HTTP 429), after
-14,976 technically valid selections had been persisted. Those records were recovered
-and audited. The separately authorized recovery job also ended in `ERROR`, this time
-at the metadata comparison before any new selection. All 14,976 saved records are
-unchanged; 3,456 remained missing at the restart. The corrected, separately approved
-[v2 job](https://huggingface.co/jobs/zett13/6af0a3cee6320c66fad766af) is now `RUNNING`.
-Its uploaded backend comparison passes, and execution has moved beyond the previous
-failure point into new scoring. Completion has not yet been established. See the
-[incident and bounded continuation](OWNERSHIP_RECOVERY.md); the original launch
-record below is retained as history.
+**Current status: completed and audited.** The corrected
+[v2 job](https://huggingface.co/jobs/zett13/6af0a3cee6320c66fad766af) completed all
+18,432 choices across 48 worlds, preserving the original 14,976 records and adding
+the missing 3,456. There are no missing or technically invalid selections. The
+[scientific result](QWEN_OWNERSHIP_RESULTS.md) is negative for the planned effect:
+primary −0.39 pp [−1.43, +0.74], unadjusted p=0.4893; all six after-irrelevant-update
+competence cells fail. No intervention or automatic model/template expansion follows.
+
+The [verified archives and final provenance](../review/ownership-permissions-results/provenance.json)
+and [offline audit](../review/ownership-permissions-results/audit.json) are tracked in Git.
+The original upload failures and the first continuation's metadata failure remain in
+the [incident history](OWNERSHIP_RECOVERY.md). The original launch record below is retained.
 
 Submitted on 2026-11-08 from commit `23f9ea8f6ebc31e4a6f3590481b8b8099bc1c2b5`.
 All three jobs reported `RUNNING` at the recorded status check; this is a launch record,

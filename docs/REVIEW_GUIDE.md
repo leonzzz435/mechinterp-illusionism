@@ -5,21 +5,30 @@ Start with [Naming the Agent, Choosing for the Other](article/ARTICLE.md), then 
 after a relevant permission change; the other-account error direction has narrower evidence
 than the recurring accuracy gap. Review that distinction before evaluating the explanation.
 
+**New evidence after the article freeze:** the [completed Qwen/permissions tranche](QWEN_OWNERSHIP_RESULTS.md)
+contains 18,432 choices on 48 fresh worlds. The categorical primary contrast is −0.39 pp
+[−1.43, +0.74], unadjusted p=0.4893; all six irrelevant-update competence cells fail.
+The article remains unchanged at `article-v1`; read this addendum before assessing
+generalization. Three raw archives and an audit requiring neither cloud access nor inference
+are included in `review/ownership-permissions-results/`. Run
+`uv run --no-sync python scripts/review_ownership_evidence.py` to verify them.
+
 The article preserves positive findings as well as failed stronger criteria. Three disjoint
 development cohorts are not three independent confirmatory replications; the patch reuses
 the middle cohort. “Your” versus “The” was not an equivalence experiment. The
 [philosophical source notes](article/PHILOSOPHICAL_NOTES.md) distinguish a restricted
 report-use prediction from illusionism, HOT and GWT in general.
 
-Two new, locally frozen **specifications only** are separately reviewable:
+Two locally frozen specifications are separately reviewable:
 
 - [Role-binding replication](OWNERSHIP_REPLICATION.md) and [JSON](../designs/ownership-replication.json):
   categorical errors, fresh scenarios, another template/model and prospective equivalence tests.
 - [Confidence-record injection](REPORT_INJECTION.md) and [JSON](../designs/report-injection.json):
   abstention and fresh post-injection forced accuracy, with explicit theory assumptions.
 
-Neither has an execution adapter or new data; no inference or cloud job accompanies this
-rewrite. [Revision and verification notes](article/REVISION_NOTES.md) account for removed
+The role-binding protocol now has one completed Qwen/permissions cell; Mistral and routing
+remain unrun. The confidence-record injection specification remains unimplemented and unrun.
+[Revision and verification notes](article/REVISION_NOTES.md) account for removed
 sections, retained numbers, consistency searches and unchanged protected files.
 The evidence inventory below remains available in full.
 

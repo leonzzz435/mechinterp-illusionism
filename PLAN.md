@@ -27,6 +27,21 @@
 
 ## Decisions and blockers
 
+### Latest completed tranche: fresh-world Qwen / permissions
+
+- [x] Freeze `article-v1` and preserve its article, ledger and both specifications.
+- [x] Execute the authorized Qwen/permissions cell on 48 fresh worlds; recover upload
+  failures without changing scientific inputs or rerunning saved selections.
+- [x] Complete and audit all 18,432 choices: 14,976 original records unchanged, 3,456 added.
+- [x] Reproduce cloud analysis and six original figures byte-for-byte; archive all three
+  blocks, reaggregate raw outcomes separately and render the descriptive update/mention 2×2.
+- [x] Report the negative [result](docs/QWEN_OWNERSHIP_RESULTS.md): primary categorical
+  contrast −0.39 pp [−1.43, +0.74], unadjusted p=0.4893; 6/12 competence cells pass,
+  with all six irrelevant-update cells failing. No qualifying role-error replication.
+- [ ] Review task validity and the update/account-binding failure before deciding on any
+  further model, template or internal intervention. The remaining cells cannot rescue
+  the frozen all-four success rule; no new job is automatically authorized.
+
 ### Completed milestone: confidence and abstention pilot
 
 The bounded wording-diagnostic branch is complete. Return to a specific candidate component

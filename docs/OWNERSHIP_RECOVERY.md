@@ -8,11 +8,13 @@ tranche. The article remains frozen at `article-v1`.
 **Current continuation:** after renewed explicit approval of at most $0.62,
 [the corrected v2 job](https://huggingface.co/jobs/zett13/6af0a3cee6320c66fad766af)
 was submitted on 2026-11-08 from commit `341fa5b7bd085d9b19013e4e8648d945437f0e3a`.
-The provider reports `RUNNING`; the [v2 launch receipt](../review/ownership-recovery-v2-job.json)
-records the source and cost bound. The uploaded backend comparison confirms complete
-metadata equality, and worker logs show execution passed the previous failure point
-and reached new scoring after skipping all 4,992 saved records in block 00.
-Completion has not yet been established.
+The provider now reports **`COMPLETED`**. The [v2 launch receipt](../review/ownership-recovery-v2-job.json)
+retains its startup observation; [final provenance](../review/ownership-permissions-results/provenance.json)
+and the [offline audit](../review/ownership-permissions-results/audit.json) establish
+18,432/18,432 unique selections, unchanged original records, and passing backend comparisons
+in all three blocks. The continuation added exactly 3,456 records and ended with
+`status: complete`. Its scientific outcome is reported separately in
+[the results](QWEN_OWNERSHIP_RESULTS.md): the primary effect and competence rules do not pass.
 
 **Previous continuation, launched on 2026-11-08:** after explicit approval of the additional
 $0.62 budget, [one L4 job](https://huggingface.co/jobs/zett13/6af09fc30e0338d1bb84c173)
@@ -20,7 +22,8 @@ was submitted from commit `846e274fcef7a55f6a1fc5d9a1f82f543f93350a`. The provid
 initially reported `RUNNING`, but the job subsequently ended in **ERROR** during
 backend comparison, before any new selection. The [launch receipt](../review/ownership-recovery-job.json)
 is retained as history. The [failure audit](../review/ownership-recovery-metadata-failure.json)
-verifies all 14,976 original records remain identical; 3,456 selections are still missing.
+verified all 14,976 original records remained identical; 3,456 selections were still missing
+at that point and have now been completed by v2.
 
 ## Continuation failure: JSON metadata comparison
 

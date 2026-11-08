@@ -1,5 +1,16 @@
 # Qwen / permissions: one authorized ownership tranche
 
+Submitted on 2026-11-08 from commit `23f9ea8f6ebc31e4a6f3590481b8b8099bc1c2b5`.
+All three jobs reported `RUNNING` at the recorded status check; this is a launch record,
+not a completed result. The [receipts and live quote](../review/ownership-permissions-jobs.json)
+preserve source revisions, configuration checksums, hardware, limits and status timestamp.
+
+| Block | Worlds | Selections | HF job |
+|---|---|---:|---|
+| 00 | 0–15 | 6,144 | [6af08b8de6320c66fad75bf5](https://huggingface.co/jobs/zett13/6af08b8de6320c66fad75bf5) |
+| 01 | 16–31 | 6,144 | [6af08b910e0338d1bb84bbda](https://huggingface.co/jobs/zett13/6af08b910e0338d1bb84bbda) |
+| 02 | 32–47 | 6,144 | [6af08b94e6320c66fad75bf7](https://huggingface.co/jobs/zett13/6af08b94e6320c66fad75bf7) |
+
 The article is frozen at annotated tag `article-v1`, commit
 `2345ea463d58683e81df7d86b304e22a3eef7a6c`. Its P41b ceiling sentence distinguishes
 a bounded accuracy cell from its gap: target accuracy can still change. Subsequent

@@ -1,0 +1,17 @@
+{
+  "kind": "cpu_upload_and_download_check",
+  "model_inference": false,
+  "repo": "zett13/mechinterp-illusionism-results",
+  "path": "recovery/ownership-transport-57510f7bed1e",
+  "archive": "preserved-checkpoints.tar.gz",
+  "archive_sha256": "ad00be3f4c36be413a2979854274b6757ea5b4268eb45ca845d3c9ee9965706f",
+  "archive_bytes": 12753049,
+  "saved_records": 14976,
+  "source_revision": "60a71b30b5a86c1931653b20f968431118b76435",
+  "revision": "048da7a3b3d91900a9d1c0022aeed9fe7d011aac",
+  "verified_at_utc": "2026-11-08T15:48:32.425196+00:00",
+  "verified_download": true,
+  "xet_disabled": true,
+  "upload_threads": 1,
+  "retry_sleep_seconds": 0
+}

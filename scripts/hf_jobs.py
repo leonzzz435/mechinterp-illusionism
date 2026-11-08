@@ -25,6 +25,15 @@ GIT_URL = "https://github.com/leonzzz435/mechinterp-illusionism.git"
 FLAVOR = "l4x1"
 HARD_TIMEOUT = 7200
 CONFIGURATIONS = {
+    "configs/qwen-ownership-recovery.json": {
+        "engine": "qwen-ownership-recovery",
+        "run_prefix": "qwen-ownership-recovery-",
+        "receipt_name": "qwen-ownership-recovery.json",
+        "blocks": 3,
+        "scored_variants": 3456,
+        "generated_texts": 0,
+        "hard_timeout_seconds": 2700,
+    },
     "configs/qwen-confidence-pilot-v2.json": {
         "engine": "qwen-confidence-v2",
         "run_prefix": "qwen-confidence-v2-",
@@ -150,8 +159,8 @@ def publish_source(api, repo, commit):
     return {"source_revision": uploaded.oid, "source_sha256": checksum}
 
 
-def quote_budget(hardware, budget):
-    """A two-hour provider timeout bounds compute, including environment setup."""
+def quote_budget(hardware, budget, *, timeout=HARD_TIMEOUT, reserve_divisor=2):
+    """The selected provider timeout bounds compute, including environment setup."""
     try:
         budget = Decimal(str(budget))
     except InvalidOperation:
@@ -163,11 +172,12 @@ def quote_budget(hardware, budget):
     rate = hardware["unitCostMicroUSD"]
     if type(rate) is not int or rate <= 0:
         raise ValueError("Invalid hardware price")
-    # One extra billable minute is reserved for rounding. Keep half the approved
-    # budget unallocated; this is a compute bound, not an account-wide spend cap.
-    maximum = Decimal(rate) * (math.ceil(HARD_TIMEOUT / 60) + 1) / 1_000_000
-    if maximum > budget / 2:
-        raise ValueError("Quoted compute exceeds half the approved budget; do not submit")
+    # One extra billable minute is reserved for rounding. Historical plans keep
+    # half the budget unallocated; the explicitly capped recovery uses its whole
+    # small allocation. This is a compute bound, not an account-wide spend cap.
+    maximum = Decimal(rate) * (math.ceil(timeout / 60) + 1) / 1_000_000
+    if maximum > budget / reserve_divisor:
+        raise ValueError("Quoted compute exceeds the budget allocation; do not submit")
     return {"approved_budget_usd": str(budget), "max_compute_usd": str(maximum)}
 
 
@@ -229,7 +239,18 @@ def plan(namespace, budget, config="configs/harness-baseline.json", resume_recei
     response = get_session().get("https://huggingface.co/api/jobs/hardware", timeout=30)
     response.raise_for_status()
     hardware = next(h for h in response.json() if h["name"] == FLAVOR)
-    quote = quote_budget(hardware, budget)
+    details = config_details(config)
+    recovery = details["engine"] == "qwen-ownership-recovery"
+    if recovery:
+        from ownership_recovery import validate_spec
+
+        validate_spec(read_json(ROOT / details["config"]))
+    quote = quote_budget(
+        hardware,
+        budget,
+        timeout=details.get("hard_timeout_seconds", HARD_TIMEOUT),
+        reserve_divisor=1 if recovery else 2,
+    )
     quote["proposed_budget_usd"] = quote.pop("approved_budget_usd")
     proposal = {
         "namespace": namespace,
@@ -241,7 +262,7 @@ def plan(namespace, budget, config="configs/harness-baseline.json", resume_recei
         "flavor": FLAVOR,
         "hardware": hardware,
         "hard_timeout_seconds": HARD_TIMEOUT,
-        **config_details(config),
+        **details,
         "budget_status": "proposal_only_not_authorization",
         **quote,
     }
@@ -312,6 +333,7 @@ def submit(proposal, receipt, api, token):
                 "STUDY_RESUME": json.dumps(proposal.get("resume")),
                 "PYTHONUNBUFFERED": "1",
                 "HF_HUB_DISABLE_TELEMETRY": "1",
+                "HF_HUB_DISABLE_XET": "1",
             },
             secrets={"HF_TOKEN": token},
         )

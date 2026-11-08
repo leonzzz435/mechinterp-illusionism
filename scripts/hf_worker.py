@@ -2,13 +2,148 @@
 
 import json
 import os
+import random
+import re
 import shutil
 import subprocess
+import time
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 
-from huggingface_hub import HfApi, snapshot_download
+from huggingface_hub import CommitOperationAdd, HfApi, constants, snapshot_download
+from requests.exceptions import ConnectionError as RequestConnectionError
+from requests.exceptions import Timeout
 
-from self_model_study.io import file_hash, read_json, write_json
+from self_model_study.io import digest, file_hash, read_json, write_json
+
+
+def configure_transfer():
+    # Pinned hub 0.36.2 checks this constant before offering the Xet upload transport.
+    # Set the environment too, including for subprocesses. No dependency/model change.
+    os.environ["HF_HUB_DISABLE_XET"] = "1"
+    constants.HF_HUB_DISABLE_XET = True
+
+
+def upload_cause(exc):
+    # Hub 0.36.2 wraps LFS HTTP errors in RuntimeError from the original error.
+    seen = set()
+    while isinstance(exc, RuntimeError) and exc.__cause__ is not None and id(exc) not in seen:
+        seen.add(id(exc))
+        exc = exc.__cause__
+    return exc
+
+
+def transient_upload(exc):
+    exc = upload_cause(exc)
+    response = getattr(exc, "response", None)
+    if response is not None:
+        return response.status_code in {408, 429, 500, 502, 503, 504}
+    if isinstance(exc, (RequestConnectionError, Timeout)):
+        return True
+    # hf-xet raises a builtin ConnectionError rather than an HTTPError.
+    return isinstance(exc, ConnectionError) and bool(
+        re.search(r"HTTP status (?:client|server) error \((?:429|50[0234])\b", str(exc))
+    )
+
+
+def retry_delay(exc, attempt):
+    exc = upload_cause(exc)
+    delay = min(30 * 2**attempt, 240) + random.uniform(0, 5)
+    response = getattr(exc, "response", None)
+    if response is not None:
+        value = response.headers.get("Retry-After")
+        if value:
+            try:
+                seconds = float(value)
+            except ValueError:
+                try:
+                    seconds = parsedate_to_datetime(value).timestamp() - time.time()
+                except (ValueError, TypeError, OverflowError):
+                    seconds = 0
+            delay = max(delay, seconds)
+    return delay
+
+
+class CheckpointUploader:
+    """Serialize transfers, skip unchanged snapshots and bound retries across the job."""
+
+    def __init__(self, api, repo, output, name, *, sleep=None, max_retry_sleep=600):
+        configure_transfer()
+        self.api, self.repo, self.output, self.name = api, repo, Path(output), name
+        self.sleep = sleep or time.sleep
+        self.max_retry_sleep = max_retry_sleep
+        self.waited = 0
+        self.last_uploaded = None
+        self.failure = None
+        self.events = []
+
+    def __call__(self, _directory):
+        if self.failure is not None:
+            # The runner and worker both call checkpoint in finally. Do not hammer
+            # the service again after exhausting this job's transfer budget.
+            raise self.failure
+        fingerprint = digest(
+            {
+                str(p.relative_to(self.output)): file_hash(p)
+                for p in sorted(self.output.rglob("*"))
+                if p.is_file()
+                and p.name not in {".lock", "transport.json"}
+                and not p.name.endswith(".tmp")
+                and not any(part.startswith(".") for part in p.relative_to(self.output).parts)
+            }
+        )
+        if fingerprint == self.last_uploaded:
+            return
+        for attempt in range(5):
+            try:
+                # upload_folder in pinned hub 0.36.2 does not expose num_threads;
+                # the public commit API does. Build fresh operations on each retry.
+                operations = [
+                    CommitOperationAdd(
+                        path_in_repo=f"{self.name}/{p.relative_to(self.output).as_posix()}",
+                        path_or_fileobj=p,
+                    )
+                    for p in sorted(self.output.rglob("*"))
+                    if p.is_file()
+                    and p.name != ".lock"
+                    and not p.name.endswith(".tmp")
+                    and not any(part.startswith(".") for part in p.relative_to(self.output).parts)
+                ]
+                result = self.api.create_commit(
+                    repo_id=self.repo,
+                    repo_type="dataset",
+                    operations=operations,
+                    num_threads=1,
+                    commit_message=f"Checkpoint {self.name}",
+                )
+                self.last_uploaded = fingerprint
+                self.events.append({"state": "uploaded", "snapshot": fingerprint})
+                write_json(self.output / "transport.json", self.events)
+                return result
+            except Exception as exc:
+                delay = retry_delay(exc, attempt) if transient_upload(exc) else None
+                retry = (
+                    delay is not None
+                    and attempt < 4
+                    and self.waited + delay <= self.max_retry_sleep
+                )
+                self.events.append(
+                    {
+                        "state": "retry" if retry else "failed",
+                        "error_type": type(exc).__name__,
+                        "delay_seconds": delay if retry else None,
+                        "snapshot": fingerprint,
+                    }
+                )
+                write_json(self.output / "transport.json", self.events)
+                if not retry:
+                    self.failure = exc
+                    raise
+                self.waited += delay
+                print(
+                    f"Checkpoint transfer throttled/unavailable; retry in {delay:.1f}s", flush=True
+                )
+                self.sleep(delay)
 
 
 def restore_checkpoint(resume, repo, output, directory, expected_engine="qwen-pilot"):
@@ -56,6 +191,7 @@ def restore_checkpoint(resume, repo, output, directory, expected_engine="qwen-pi
 
 
 def main():
+    configure_transfer()
     config = Path(os.environ.get("STUDY_CONFIG", "configs/harness-baseline.json"))
     if config.as_posix() not in {
         "configs/harness-baseline.json",
@@ -68,13 +204,20 @@ def main():
         "configs/qwen-ownership-permissions-00.json",
         "configs/qwen-ownership-permissions-01.json",
         "configs/qwen-ownership-permissions-02.json",
+        "configs/qwen-ownership-recovery.json",
     }:
         raise ValueError("Unsupported worker configuration")
     expected_hash = os.environ.get("STUDY_CONFIG_SHA256")
     if expected_hash and file_hash(config) != expected_hash:
         raise ValueError("Worker configuration differs from approved job plan")
     engine = read_json(config)["engine"]
-    if engine == "qwen-ownership-permissions":
+    if engine == "qwen-ownership-recovery":
+        from ownership_recovery import run_group as run
+        from ownership_recovery import validate_spec
+
+        def load_spec(path):
+            return validate_spec(read_json(path))
+    elif engine == "qwen-ownership-permissions":
         from self_model_study.ownership import run, validate_spec
         from self_model_study.ownership_reporting import export
 
@@ -136,15 +279,7 @@ def main():
         },
     )
 
-    def checkpoint(_directory):
-        api.upload_folder(
-            repo_id=repo,
-            repo_type="dataset",
-            folder_path=output,
-            path_in_repo=name,
-            ignore_patterns=[".lock", "*.tmp"],
-            commit_message=f"Checkpoint {name}",
-        )
+    checkpoint = CheckpointUploader(api, repo, output, name)
 
     directory = output / "run"
     if resume:

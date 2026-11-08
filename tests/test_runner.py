@@ -137,6 +137,14 @@ def test_configs_are_loadable():
     from self_model_study.config import load_config
 
     for path in Path("configs").glob("*.json"):
+        if path.name == "qwen-ownership-recovery.json":
+            import runpy
+
+            from self_model_study.io import read_json
+
+            validate = runpy.run_path("scripts/ownership_recovery.py")["validate_spec"]
+            assert validate(read_json(path))["engine"] == "qwen-ownership-recovery"
+            continue
         if path.name in {f"qwen-ownership-permissions-{i:02d}.json" for i in range(3)}:
             from self_model_study.io import read_json
             from self_model_study.ownership import validate_spec

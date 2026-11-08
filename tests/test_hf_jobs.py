@@ -163,7 +163,7 @@ def test_qwen_worker_routes_exports_failed_runs_and_exits_nonzero(monkeypatch, t
     uploads = []
     api = SimpleNamespace(
         repo_info=lambda *a, **k: SimpleNamespace(private=True),
-        upload_folder=lambda **kwargs: uploads.append(kwargs),
+        create_commit=lambda **kwargs: uploads.append(kwargs),
     )
     monkeypatch.setattr(worker, "HfApi", lambda: api)
     monkeypatch.setattr(

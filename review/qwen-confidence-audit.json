@@ -1,0 +1,31 @@
+{
+  "archive_sha256": "ba8b0d01d31da9004758abacd054fbdf664ed235834bc5e7889ab5e3d6cb97dd",
+  "candidate_likelihoods": 10752,
+  "confidence_auroc": {
+    "ci95": [
+      0.4854580785750614,
+      0.6021450760718822
+    ],
+    "estimate": 0.5444418748072772,
+    "undefined_bootstrap_draws": 0
+  },
+  "decision": "no_behavioral_candidate",
+  "independent_assessment_questions": 128,
+  "likelihoods_recomputed_by_model": false,
+  "primary": {
+    "ci95": [
+      -0.10624318331556894,
+      0.07932240413249733
+    ],
+    "estimate": -0.013660191181005227,
+    "undefined_bootstrap_draws": 0
+  },
+  "tie_counts": {
+    "assessment/abstention": 6,
+    "assessment/answer": 1,
+    "assessment/confidence": 29,
+    "calibration/answer": 3
+  },
+  "verified_payloads": 61,
+  "verified_records": 1792
+}

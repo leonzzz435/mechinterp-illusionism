@@ -2,6 +2,38 @@
 
 Verification records through 2026-11-08. Software tests and real-model evidence are identified separately below.
 
+## Completed confidence v2 model evidence — 2026-11-08
+
+All 1,792 selections and 10,752 candidate likelihoods completed. The original 3,340,358-byte
+archive is retained unchanged, SHA256
+`ba8b0d01d31da9004758abacd054fbdf664ed235834bc5e7889ab5e3d6cb97dd`. All 61 payload hashes pass.
+The frozen result is `no_behavioral_candidate`: S −1.37 pp [−10.62, +7.93], verbal AUROC
+0.544 [0.485, 0.602]. There are zero failed/invalid records and 39 retained exact ties.
+
+`scripts/review_confidence_evidence.py` imports no study-package code. It checks every
+raw-score argmax, tie, actual-answer dependency, prompt, journal digest and calibration
+membership; independently recomputes the primary and AUROC question-bootstrap intervals
+using explicit pair comparisons; and checks feasibility and the candidate decision.
+Six targeted tests passed in 2.17 seconds, including actual evidence and rejection of
+changed estimates, intervals and undefined-draw counts. See the [audit](../review/qwen-confidence-audit.json).
+
+`scripts/verify_confidence_run.py` executes the checksum-verified archived source offline.
+It reproduces **the full cloud analysis exactly**, checks all 1,792 real input renderings
+and 10,752 token boundaries, verifies SQLite/JSONL identity, and regenerates **all nine
+original SVG/PDF/PNG files byte-for-byte**. See the [verification JSON](../review/qwen-confidence-verification.json).
+No new pretrained model inference was performed. These are software checks by the same
+assistant, not independent scientific review or independent likelihood arithmetic on the
+large model. The original tiny-Qwen arithmetic comparison remains the prelaunch check.
+
+The original plots are copied unchanged into `assets/qwen_confidence_results/`. The article
+overview is rendered from the pinned archive by `scripts/plot_qwen_confidence.py` and was
+visually inspected. Results, the full fixed example and the English article were updated;
+no future intervention or paid job is triggered by the negative result.
+All three article exports also reproduce byte-for-byte; the nine copied originals match
+their archive payloads. The full report differs only in figure-link destinations.
+Ruff lint/format pass for all 83 Python files; all 185 local links checked across the ten
+current status/result/article documents resolve; `git diff --check` passes.
+
 ## Confidence v2 amendment and v1 evidence — 2026-11-08
 
 The original L4 run stopped on an exact tie during calibration: 32 records, 31 valid,

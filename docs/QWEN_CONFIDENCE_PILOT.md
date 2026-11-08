@@ -1,10 +1,12 @@
 # Qwen confidence and abstention: bounded replication design
 
-**Status, 2026-11-08: execution adapter implemented and prelaunch verification completed.**
+**Status, 2026-11-08: v2 completed; [verified negative baseline](QWEN_CONFIDENCE_RESULTS.md).**
+All 1,792 selections are valid. Measurements are usable but the behavioral candidate rule
+fails: S −1.37 pp [−10.62, +7.93], verbal AUROC 0.544 [0.485, 0.602]. The protocol stops here.
 V1 subsequently stopped on an exact score tie during calibration, before any assessment
 question. The explicit [v2 amendment](QWEN_CONFIDENCE_V2.md) replaces the unique-maximum
 requirement with deterministic greedy tie-breaking and reports ties plus a sensitivity
-analysis. The original v1 rules below remain historical; this amendment governs the next run.
+analysis. The original v1 rules below remain historical; the amendment governs completed v2.
 The original [machine-readable design](../designs/qwen-confidence-pilot.json) retains its
 historical preparation status. The executable [configuration](../configs/qwen-confidence-pilot.json)
 preserves its exact sample, prompts and scoring and adds the isolated `qwen-confidence`

@@ -1,8 +1,58 @@
 # Qwen confidence pilot: execution record
 
-**V1 ended with a retained calibration tie; no assessment data were collected.**
+**V2 completed all 1,792 selections; its behavioral candidate rule failed.**
+See the [results, mathematics and figures](QWEN_CONFIDENCE_RESULTS.md).
+V1 ended with a retained calibration tie; no assessment data were collected in that run.
 The [v2 amendment](QWEN_CONFIDENCE_V2.md) defines the reviewed replacement under the same
 total USD 5 cap. V1's raw data and decision are not revised.
+
+## V2 dispatch
+
+- Job [`6af060e70e0338d1bb84b03c`](https://huggingface.co/jobs/zett13/6af060e70e0338d1bb84b03c),
+  created 2026-11-08 11:45:43 UTC; final provider status `COMPLETED`. Separate receipt and
+  fresh calibration stage.
+- Pushed source commit `0d0670fe542f0a7148aa15c4afeeddb67d16267c`; clean working tree at dispatch.
+- Run folder `qwen-confidence-v2-4ea43316ce714c03`;
+  [credential-free receipt](../review/qwen-confidence-v2-job.json).
+- Configuration SHA256 `9974c8cd5094aec09996892d691c7b47698afc6c2b2f5632b02a2c1b0a1e7425`.
+- L4, 90-minute cooperative limit, two-hour provider limit. Its USD 1.613293 maximum
+  compute quote plus the entire reserved v1 quote totals USD 3.226586 within the USD 5 cap.
+  These are compute bounds, not invoiced spend. No automatic third job follows.
+
+The [v2 preflight](../review/qwen-confidence-v2-preflight.json) and amendment were committed
+before dispatch. Only exact-tie selection and its reporting change; the original model,
+question sample and hypotheses remain frozen.
+
+The model invocation took **366.10 seconds**, including loading/checkpoints, with peak
+allocated GPU memory 15,703,265,792 bytes. Provider setup and final report/upload time are
+additional; this is not an invoice. All 1,792 selections completed without failed or invalid
+scores; 39 exact ties were retained under the v2 rule. No third job was launched.
+
+Retrieved private artifact revision `f7b3929fa4788a9ca5386654222ca7fc087ae0f6`.
+The unchanged 3,340,358-byte [archive](../review/evidence/qwen-confidence-v2-4ea43316ce714c03.tar.gz)
+has SHA256 `ba8b0d01d31da9004758abacd054fbdf664ed235834bc5e7889ab5e3d6cb97dd`.
+All 61 payload checksums pass. The [score/statistics audit](../review/qwen-confidence-audit.json)
+and [archived-source verification](../review/qwen-confidence-verification.json) agree with
+the cloud report; all nine original figures reproduce byte-for-byte.
+
+Offline reproduction from Git (no HF account, model weights or inference charges):
+
+```bash
+uv run --no-sync python scripts/review_confidence_evidence.py \
+  review/evidence/qwen-confidence-v2-4ea43316ce714c03.tar.gz \
+  --sha256 ba8b0d01d31da9004758abacd054fbdf664ed235834bc5e7889ab5e3d6cb97dd
+# Requires eval extras and the pinned tokenizer already in the local cache.
+uv run --no-sync python scripts/verify_confidence_run.py \
+  review/evidence/qwen-confidence-v2-4ea43316ce714c03.tar.gz \
+  --sha256 ba8b0d01d31da9004758abacd054fbdf664ed235834bc5e7889ab5e3d6cb97dd
+uv run --no-sync python scripts/plot_qwen_confidence.py \
+  review/evidence/qwen-confidence-v2-4ea43316ce714c03.tar.gz \
+  --sha256 ba8b0d01d31da9004758abacd054fbdf664ed235834bc5e7889ab5e3d6cb97dd
+```
+
+The first script imports no study-package code. The second uses the checksum-verified
+archived source, rechecks every actual token boundary and recomputes the full analysis.
+The raw score values are not recomputed with a second pretrained model execution.
 
 ## V1 dispatch and outcome
 

@@ -1,16 +1,25 @@
-# Review target: next measurement design and completed controls
+# Review target: negative confidence baseline and completed controls
 
-The current planning target is the [confidence/abstention replication](QWEN_CONFIDENCE_PILOT.md).
+Start with the [completed confidence/abstention results](QWEN_CONFIDENCE_RESULTS.md):
+1,792 valid selections, usable measurement groups, S −1.37 pp [−10.62, +7.93], verbal AUROC
+0.544 [0.485, 0.602], `no_behavioral_candidate`. The full analysis and all nine original
+figure files reproduce exactly. The [raw-score audit](../review/qwen-confidence-audit.json)
+also checks the primary statistic and AUROC using a separate implementation.
+
+The [confidence/abstention protocol](QWEN_CONFIDENCE_PILOT.md) remains frozen.
 Its [design JSON](../designs/qwen-confidence-pilot.json),
 [author-source pins](../review/confidence-sources.json) and
 [CPU preflight](../review/qwen-confidence-preflight.json) are reviewable without running Qwen.
-The [execution adapter and handover](QWEN_CONFIDENCE_RUN.md) now implement that design.
+The [execution record and reproduction commands](QWEN_CONFIDENCE_RUN.md) cover both versions.
+V1 stopped during calibration before assessment exposure; review the explicit
+[v2 exact-tie amendment](QWEN_CONFIDENCE_V2.md), all retained ties and whole-question sensitivity.
 The [execution preflight](../review/qwen-confidence-execution-preflight.json) preserves
 the original token-input fingerprint. Review the interpretation of fresh-pass
 self-evaluation, generic-difficulty predictors, answer revisions, grouped uncertainty and
-deviations from the source study. Dispatch/results are tracked in the execution record;
-software verification alone is not model evidence. This is an internal design, not an
-independent review.
+deviations from the source study. This is a conceptual partial replication, not evidence
+against all self-monitoring or the source paper's causal findings. The failed candidate rule
+does not justify an internal intervention or another prompt search. A different measurement
+needs a reasoned decision. Software cross-checks are not independent scientific peer review.
 
 ## Completed empirical evidence
 

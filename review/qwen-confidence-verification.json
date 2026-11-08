@@ -1,0 +1,12 @@
+{
+  "analysis_exact": true,
+  "analysis_maximum_float_difference": 0,
+  "archive_sha256": "ba8b0d01d31da9004758abacd054fbdf664ed235834bc5e7889ab5e3d6cb97dd",
+  "candidate_boundaries_rechecked": 10752,
+  "figures_byte_identical": 9,
+  "figures_regenerated": 9,
+  "journal_matches_jsonl": true,
+  "no_additional_model_inference": true,
+  "tokenizer_inputs_rechecked": 1792,
+  "verified_payloads": 61
+}

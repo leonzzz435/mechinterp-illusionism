@@ -27,7 +27,7 @@
 
 ## Decisions and blockers
 
-### Current milestone: confidence and abstention replication design
+### Completed milestone: confidence and abstention pilot
 
 The bounded wording-diagnostic branch is complete. Return to a specific candidate component
 of a functional self-model: evaluating own-answer reliability and selectively answering.
@@ -45,15 +45,23 @@ claim of privileged introspection, functional dissociation or a discovered mecha
   uncertainty tests; prepare one L4 proposal (USD 1.613293 compute bound).
 - [x] Receive explicit authorization for implementation and one bounded pilot; apply a
   separate USD 5 dispatch cap. No automatic follow-up jobs.
-- [ ] Finish full prelaunch verification, run the authorized pilot and report complete,
-  negative or incomplete results.
+- [x] Finish full prelaunch verification and submit the authorized pilot from pinned source.
+- [x] Verify and report the complete negative model result: 1,792 selections, primary
+  S −1.37 pp [−10.62, +7.93], verbal AUROC 0.544 [0.485, 0.602], `no_behavioral_candidate`.
+  Usable measurements do not meet the behavioral criterion; this protocol stops here.
 - [x] Verify and run v1; preserve its calibration-only failure (31 valid selections, one
   exact tie; no assessment exposure). Source/data persistence worked.
 - [x] Define a versioned canonical tie policy before assessment exposure, preserve all tie
   flags and add a whole-question sensitivity analysis. Allocate one reviewed v2 replacement
   within the same USD 5 total cap; no automatic retry loop.
-- [ ] Consider one fixed internal intervention only after a useful baseline and review of
-  generic-difficulty explanations. No automatic layer/model/prompt search.
+- [x] Pass 52 targeted v2 tests and all pinned-tokenizer checks; push and dispatch the
+  reviewed replacement from `0d0670f` with its own receipt and fresh calibration.
+- [x] Independently reimplement the two candidate statistics and raw-choice/dependency audit;
+  reproduce the complete archived analysis, tokenizer inputs and all nine original figures.
+  Preserve original archives, tie sensitivity, fixed example and English article section.
+- [ ] Obtain methodological review of the negative baseline before selecting another
+  measurement. A confidence-specific intervention is not justified by this result.
+  No automatic layer/model/prompt search or additional paid job.
 
 ### Completed milestone: bounded Qwen reference/action pilot
 

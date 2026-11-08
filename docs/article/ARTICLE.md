@@ -1,6 +1,6 @@
 # When a Language Model Says “I”, What Is Doing the Work?
 
-*Research article in preparation. We measured format-sensitive self-descriptions, a role-wording effect and an asymmetric response to one internal activation exchange. The exchange failed its bidirectional criterion. A subsequent one-token Your/The control found that the large role gap persists without possessive wording; its possessive-specific accuracy criterion also failed. Functional separation and a self-monitoring mechanism remain unestablished.*
+*Research article in preparation. We measured format-sensitive self-descriptions, a role-wording effect and an asymmetric response to one internal activation exchange. The exchange failed its bidirectional criterion. A subsequent one-token Your/The control found that the large role gap persists without possessive wording; its possessive-specific accuracy criterion also failed. A completed confidence/abstention pilot did not establish useful selectivity or reliable confidence discrimination. Functional separation and a self-monitoring mechanism remain unestablished.*
 
 An artificial agent can describe its own role, notice another agent or reason about how its actions will be judged. What kind of representation of itself is the system using?
 
@@ -345,17 +345,53 @@ repair the original failed capability screen: relevant-update target accuracies 
 below 80%, and changed-answer pairs expose additional inconsistency. This bounded control
 brings us back to the study's central measurement question before any further internal search.
 
-## What would count as separation?
+## A confidence report is not yet useful self-evaluation
 
-The next proposed experiment asks a more direct question about self-evaluation: can the
-model tell when its answer is unreliable, and does it then choose to answer or pass?
-We plan to reuse published factual questions, record an answer, ask for confidence in that
-answer, and separately offer an abstention option. A model that passes more often on questions
-it got wrong would show useful selectivity. But difficult questions might explain both
-the errors and the hesitation, so external difficulty predictors are part of the comparison.
-The [replication design](../QWEN_CONFIDENCE_PILOT.md) specifies that test; **no results from
-it exist yet**. A new confidence prompt can reconsider the question, so even success would
-not establish direct access to the computation that produced the earlier answer.
+We next asked a question closer to the system's own performance: can it distinguish its
+reliable answers from its mistakes, and does it withhold answers on questions it got wrong?
+This is a candidate component of a functional self-model, rather than another test of
+understanding a supplied role description.
+
+Our conceptual partial replication of
+[Kumaran et al.](https://doi.org/10.1038/s42256-026-01293-x) reuses published factual questions
+and external difficulty measures. Qwen answers, sees its actual recorded answer in a separate
+confidence prompt, and separately receives the original question with an abstention option.
+The last stage sees neither its earlier answer nor its confidence report. The study therefore
+tests behavioral association, not whether a reported number causes a decision.
+
+The 1,792 selections completed. On 128 assessment questions with four option rotations each,
+the forced-answer accuracy was 44.9%. Having both errors and successes is necessary for
+this test; the earlier action task's 80% capability gate is not its decision rule.
+The relevant question is whether abstention preferentially occurs when the forced answer
+was wrong. It did not: the rates were 19.5% after wrong answers and 20.9% after correct ones.
+
+$$S=P(\text{abstain}\mid\text{wrong})-P(\text{abstain}\mid\text{correct})
+=-1.37\text{ percentage points},\quad 95\%\text{ interval }[-10.62,+7.93].$$
+
+![Confidence and selective answering](../../assets/qwen_confidence_results/article_confidence.png)
+
+**Figure:** Three separate measurements: selective answering, calibration of confidence,
+and incremental prediction beyond visible-content proxies and answer probabilities.
+Intervals retain all rotations of each question. The right panel conditions on fitted
+predictors; marker labels in the middle count variants, not independent questions.
+
+Confidence discriminated correct from incorrect answers weakly: AUROC 0.544, with a 95%
+interval of 0.485–0.602, including chance-level discrimination. Adding reported confidence
+to the prespecified difficulty and answer-probability predictors did not improve the
+observed held-out prediction loss. All feasibility requirements passed, but both behavioral
+criteria failed. The [full results](../QWEN_CONFIDENCE_RESULTS.md) retain the calibration-only
+v1 failure, the tie-policy amendment made before assessment, all v2 ties and their sensitivity
+analysis, and the example selected before inference.
+
+The narrow conclusion is that **this measurement did not establish useful self-evaluation
+in this model**. It is not evidence that no language model can monitor itself, nor a direct
+refutation of the source study, whose models and procedures differ. A fresh confidence pass
+can solve the visible question again, and common difficulty can produce associations even
+when a test succeeds. Here the weaker behavioral prerequisite itself was not established.
+We stop this protocol with that negative result rather than treating a new intervention as
+justified by it. The intervals are also too wide to claim general equivalence or absence.
+
+## What would count as separation?
 
 A persuasive result changes one measured property selectively while keeping another within a predefined tolerance, without broadly damaging performance. One significant and one nonsignificant comparison are insufficient.
 

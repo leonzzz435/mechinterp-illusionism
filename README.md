@@ -14,14 +14,13 @@ identity/limitation judgments were 11/20 plain versus 15/20 chat. Two unclear ju
 retained; no full paired effect is estimated for experience claims or coherence.
 Every additional paid job requires separate authorization.
 
-- **[Next: confidence and abstention replication design](docs/QWEN_CONFIDENCE_PILOT.md)** —
-  64 calibration and 128 assessment questions from public author materials, 1,792 planned
-  selections. Tests own-answer reliability reports and selective answering, with external
-  difficulty controls. The dependent runner, analysis and export are implemented;
-  [execution status and handover](docs/QWEN_CONFIDENCE_RUN.md) track the authorized bounded
-  pilot separately from results. No internal intervention is part of this run.
-  V1 stopped on a calibration tie before assessment; the [v2 amendment](docs/QWEN_CONFIDENCE_V2.md)
-  uses deterministic greedy tie-breaking while preserving the original failed archive.
+- **[Completed confidence/abstention pilot: results and plots](docs/QWEN_CONFIDENCE_RESULTS.md)** —
+  1,792/1,792 selections; 128 independent assessment questions. Primary selectivity
+  **−1.37 pp [−10.62, +7.93]**, confidence AUROC **0.544 [0.485, 0.602]**:
+  `no_behavioral_candidate`. Measurements are usable, but the behavioral criterion fails;
+  no confidence-specific intervention follows. [Design](docs/QWEN_CONFIDENCE_PILOT.md) ·
+  [Execution and reproduction](docs/QWEN_CONFIDENCE_RUN.md). V1's calibration-only tie failure
+  remains unchanged; the [v2 amendment](docs/QWEN_CONFIDENCE_V2.md) was frozen before assessment.
 - **[Completed Your/The control: results and plots](docs/QWEN_POSSESSIVE_RESULTS.md)** —
   6,144 choices on 16 fresh development scenarios; 48/48 controls passed. Primary accuracy
   interaction **+1.95 pp [−0.78, +4.69], exact p=0.3125**: the possessive-specific candidate

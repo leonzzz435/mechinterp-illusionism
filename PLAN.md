@@ -48,9 +48,13 @@
   foreign-command and frame-accuracy co-endpoints, balanced Their/name aliases, a planned
   specificity contrast, fresh worlds and event-order controls. Partial structural CPU checks pass.
 - [x] Link the failed-tranche addendum beside the README article link; preserve article-v1.
-- [ ] Implement and audit the new generator, simulator, complete input manifest, token
-  boundaries, scoring, resume and analysis before freezing the protocol. No model responses
-  or launch-ready configuration exist for this draft. Mistral, routing and patches stay unrun.
+- [x] Implement the isolated query-reference generator, text-first oracle and complete
+  input manifest; audit aliases, ownership swaps, grant swaps, event-order invariance,
+  scripted shortcuts, historical overlap and every candidate token boundary. See the
+  [CPU preparation report](docs/QUERY_SELF_REFERENCE_PREFLIGHT.md).
+- [ ] Implement scoring, resume, world-paired analysis and reports; test failure paths and
+  degenerate statistics before freezing the protocol. No model responses or launch-ready
+  configuration exist for this draft. Mistral, routing and patches stay unrun.
 
 ### Completed milestone: confidence and abstention pilot
 

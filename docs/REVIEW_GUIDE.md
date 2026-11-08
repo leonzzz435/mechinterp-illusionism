@@ -22,8 +22,12 @@ frozen protocol. Reproduce it with `uv run --no-sync python scripts/review_owner
 same-target named aliases and balanced third-person references. Its
 [versioned JSON](../designs/query-self-reference-v1.json) is a review draft, not a third
 frozen specification or an executed study. The frame-accuracy contrast is a co-endpoint.
-The [partial structural check](../review/query-self-reference-protocol-check.json) is not
-a rendered-input/token audit. The new question does not turn the tranche's post hoc frame
+The original [partial structural check](../review/query-self-reference-protocol-check.json)
+is preserved. The later [complete CPU input audit](QUERY_SELF_REFERENCE_PREFLIGHT.md)
+adds rendered inputs, independent text-oracle/simulator checks, paired controls, shortcut
+baselines, historical overlap checks and every candidate's token boundary. It does not
+evaluate model behavior. Runtime scoring/resume and statistical implementation remain
+outstanding before freeze. The new question does not turn the tranche's post hoc frame
 contrast into an independently replicated finding.
 
 The article preserves positive findings as well as failed stronger criteria. Three disjoint

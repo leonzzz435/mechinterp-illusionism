@@ -1,0 +1,1431 @@
+{
+  "artifacts": {
+    "manifest.jsonl.gz": "3e27e56d285aeb0e2acd1439aa03272dbbf97b1ce3b370d10f3b7272b472192a",
+    "model-inputs.jsonl.gz": "d0095736e32d859050be62c24eae0046d2ac2d115a6ac5e9c66bd1cf9adc287d",
+    "oracle.jsonl.gz": "e53ae47f64aed58fa01cca0267895b26833eea8bec69137af03a0003c15d5402",
+    "pairs.jsonl.gz": "927a21289f41200b10860acb4b3e279fa4b7d626593e713549b4bd058f712255",
+    "tokens.jsonl.gz": "5b2b38f2cc3332279621d9f4c1d4d14c9ff92ed790d04962ab2ca94f1ef00dce",
+    "worlds.json": "68ddb3b0f2c2b14dbd01f0a04583db2e69e2fa43b92d593293a35970a22ccbe1"
+  },
+  "authorized_spend_usd": 0,
+  "evidence_base_commit": "381c7e6f403b6fba6cacbfa545c47053fedef89a",
+  "execution_enabled": false,
+  "freshness": {
+    "context_stripped_collisions": 0,
+    "exact_collisions": 0,
+    "fingerprint_collisions": 0,
+    "historical_unique_prompts": 31231,
+    "historical_unique_task_bodies": 10264,
+    "historical_unique_world_fingerprints": 80,
+    "limitation": "Literal and label-set disjointness, not semantic task independence",
+    "normalizer": "suffix starting at first Initial/Current permissions heading; otherwise exact",
+    "sources": {
+      "review/evidence/harness-cd3646dae2964bbc.tar.gz": "cd2efc65d71d9f50605a6d2cb57693d189e7778cc6f59a888d24c93976d5e929",
+      "review/evidence/qwen-78ee6db8adfc4f3e-with-ratings-v1.tar.gz": "c260bb001dac8841def6bdb28d7b5e418e9f329c44e005602f5467bd40c3aa9b",
+      "review/evidence/qwen-78ee6db8adfc4f3e.tar.gz": "cf8eceea87129acaad2365f36af99d8f54923015923c837419a691252b8f12fa",
+      "review/evidence/qwen-confidence-3ec0b47c7d324b58.tar.gz": "7b4b37c8a66ee0b71e796d755d9c921739ccb15abaef2347f2f3282f4d8bcb13",
+      "review/evidence/qwen-confidence-v2-4ea43316ce714c03.tar.gz": "ba8b0d01d31da9004758abacd054fbdf664ed235834bc5e7889ab5e3d6cb97dd",
+      "review/evidence/qwen-patch-3bd8fc27cbb147c9.tar.gz": "017e6e0f78e6ae793fbdb5a7ca3a2e4055750c840cc2da2553819fafb0304207",
+      "review/evidence/qwen-possessive-f2baaa2fb6b74880.tar.gz": "d521a63c21c360b33ba8452ab5d572eaf0d06c4e4be02df02425dfc1c2fe3e59",
+      "review/evidence/qwen-possessive-v1-design.tar.gz": "c29be33f178eef2e513445bb7e751431ffbda3423cda3f11b0ff6918bea0cec1",
+      "review/evidence/qwen-role-96787d5e7adf4c4d.tar.gz": "36614cb2aae236d450d57540c9b76dfddfec2d4bd2a59f177dce296058b13a8d",
+      "review/evidence/qwen-role-framing-v1-design.tar.gz": "37a915036640f58674ec01a50fbfb88f1f26e194111ac1786d609d73bc70282d",
+      "review/evidence/qwen-role-patch-v1-design.tar.gz": "2f065dcb28cce809359714e80d25742f6cebe6e84ee571c1f32a9d52ca5067d4",
+      "review/ownership-design-audit/current_snapshot_controls.jsonl.gz": "95ddb83850eaabb435f8e3e49520908a53edd8cd1ab6012778943d69735f762f",
+      "review/ownership-design-audit/named_template_pairs.jsonl.gz": "5d511344a164865defdab3a87bf351575f83ddd5f718151c21bb185774cee4c0",
+      "review/ownership-design-audit/query_reference_probes.jsonl.gz": "b6cc530cf97cbc3c7822ffacbd5b91f5cfc0aec2a428ba3089406cc8205bef53",
+      "review/ownership-design-audit/their_reference_probes.json": "6e1798ca04578c06e362af3b28b899d44ee7e2b98c839a1557caf4cf1cf6d897",
+      "review/ownership-permissions-results/archives/block-00.tar.gz": "e92dd6d94bc67bd0da156b674a610ba5dbc811563e64391fe5a31c50fdc826fe",
+      "review/ownership-permissions-results/archives/block-01.tar.gz": "00065f4c98b1552a8352b8531ac46d3f02cb6d3d800733b0db475a342cafd90e",
+      "review/ownership-permissions-results/archives/block-02.tar.gz": "b4a78e92369f40eff817c6dc34a5bba12c32422abc20ef7b1967ee54b8373f13"
+    }
+  },
+  "model_inference": false,
+  "not_checked": [
+    "model scores, performance, sample precision or scientific hypotheses",
+    "runtime/scoring, interrupted-run resume and score-failure adjudication",
+    "world-paired statistics, multiplicity, gates, reports and plots",
+    "final protocol freeze, current provider quote or launch authorization"
+  ],
+  "nuisance_counts": {
+    "0": 6,
+    "1": 6,
+    "2": 6,
+    "3": 6,
+    "4": 6,
+    "5": 6,
+    "6": 6,
+    "7": 6
+  },
+  "operator_name_as_self": {
+    "Morgan": 24,
+    "Rowan": 24
+  },
+  "order_convention": "permission order starts with ranked accounts; binding order with declared operators; reverse according to bits 0/1",
+  "packages": {
+    "huggingface-hub": "0.36.2",
+    "tokenizers": "0.22.2",
+    "transformers": "4.57.6"
+  },
+  "protocol": "query-self-reference-v1",
+  "protocol_sha256": "6c1891acedcf758cb5ce099b001ba609c5627a484ccaf873f1f9019c5b3e81cc",
+  "python": "3.12.3",
+  "semantics": {
+    "block_counts": {
+      "0": 2688,
+      "1": 2688,
+      "2": 2688,
+      "3": 2688,
+      "4": 2688,
+      "5": 2688
+    },
+    "event_order_invariance_pairs": 4608,
+    "grant_mapping_pairs": 6912,
+    "lookup_gate_pairs": 2304,
+    "oracle_sha256": "0f9b996d4695f5343b858c80387396925e32cbc1dfd6fcc800e4902484711331",
+    "ownership_pairs": 8064,
+    "revoked_categories_applicable": 9216,
+    "revoked_categories_not_applicable": 6912,
+    "rows": 16128,
+    "same_target_alias_triplets": 5376,
+    "scripted_baselines": [
+      {
+        "accuracy": 0.5,
+        "applicable": 9216,
+        "categories": {
+          "correct_target_current": 4608,
+          "invalid": 0,
+          "other_account_current": 4608,
+          "remaining_valid_command": 0,
+          "revoked_other": 0,
+          "revoked_target": 0
+        },
+        "correct": 4608,
+        "last_updated": "all",
+        "not_applicable": 0,
+        "policy": "always_other_account",
+        "queried_owner": "all",
+        "scheduled": 9216,
+        "stage": "after_both"
+      },
+      {
+        "accuracy": 0.5,
+        "applicable": 9216,
+        "categories": {
+          "correct_target_current": 4608,
+          "invalid": 0,
+          "other_account_current": 4608,
+          "remaining_valid_command": 0,
+          "revoked_other": 0,
+          "revoked_target": 0
+        },
+        "correct": 4608,
+        "last_updated": "all",
+        "not_applicable": 0,
+        "policy": "always_self_account",
+        "queried_owner": "all",
+        "scheduled": 9216,
+        "stage": "after_both"
+      },
+      {
+        "accuracy": 0.25,
+        "applicable": 9216,
+        "categories": {
+          "correct_target_current": 2304,
+          "invalid": 0,
+          "other_account_current": 2304,
+          "remaining_valid_command": 0,
+          "revoked_other": 2304,
+          "revoked_target": 2304
+        },
+        "correct": 2304,
+        "last_updated": "all",
+        "not_applicable": 0,
+        "policy": "first_listed",
+        "queried_owner": "all",
+        "scheduled": 9216,
+        "stage": "after_both"
+      },
+      {
+        "accuracy": 0.0,
+        "applicable": 9216,
+        "categories": {
+          "correct_target_current": 0,
+          "invalid": 0,
+          "other_account_current": 0,
+          "remaining_valid_command": 0,
+          "revoked_other": 4608,
+          "revoked_target": 4608
+        },
+        "correct": 0,
+        "last_updated": "all",
+        "not_applicable": 0,
+        "policy": "first_permission_record",
+        "queried_owner": "all",
+        "scheduled": 9216,
+        "stage": "after_both"
+      },
+      {
+        "accuracy": 0.0,
+        "applicable": 9216,
+        "categories": {
+          "correct_target_current": 0,
+          "invalid": 0,
+          "other_account_current": 0,
+          "remaining_valid_command": 0,
+          "revoked_other": 0,
+          "revoked_target": 9216
+        },
+        "correct": 0,
+        "last_updated": "all",
+        "not_applicable": 0,
+        "policy": "ignore_update",
+        "queried_owner": "all",
+        "scheduled": 9216,
+        "stage": "after_both"
+      },
+      {
+        "accuracy": 0.5,
+        "applicable": 9216,
+        "categories": {
+          "correct_target_current": 4608,
+          "invalid": 0,
+          "other_account_current": 4608,
+          "remaining_valid_command": 0,
+          "revoked_other": 0,
+          "revoked_target": 0
+        },
+        "correct": 4608,
+        "last_updated": "all",
+        "not_applicable": 0,
+        "policy": "latest_grant_or_first",
+        "queried_owner": "all",
+        "scheduled": 9216,
+        "stage": "after_both"
+      },
+      {
+        "accuracy": 1.0,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 2304,
+          "invalid": 0,
+          "other_account_current": 0,
+          "remaining_valid_command": 0,
+          "revoked_other": 0,
+          "revoked_target": 0
+        },
+        "correct": 2304,
+        "last_updated": "other",
+        "not_applicable": 0,
+        "policy": "always_other_account",
+        "queried_owner": "other",
+        "scheduled": 2304,
+        "stage": "after_both"
+      },
+      {
+        "accuracy": 0.0,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 0,
+          "invalid": 0,
+          "other_account_current": 2304,
+          "remaining_valid_command": 0,
+          "revoked_other": 0,
+          "revoked_target": 0
+        },
+        "correct": 0,
+        "last_updated": "other",
+        "not_applicable": 0,
+        "policy": "always_self_account",
+        "queried_owner": "other",
+        "scheduled": 2304,
+        "stage": "after_both"
+      },
+      {
+        "accuracy": 0.25,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 576,
+          "invalid": 0,
+          "other_account_current": 576,
+          "remaining_valid_command": 0,
+          "revoked_other": 576,
+          "revoked_target": 576
+        },
+        "correct": 576,
+        "last_updated": "other",
+        "not_applicable": 0,
+        "policy": "first_listed",
+        "queried_owner": "other",
+        "scheduled": 2304,
+        "stage": "after_both"
+      },
+      {
+        "accuracy": 0.0,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 0,
+          "invalid": 0,
+          "other_account_current": 0,
+          "remaining_valid_command": 0,
+          "revoked_other": 1152,
+          "revoked_target": 1152
+        },
+        "correct": 0,
+        "last_updated": "other",
+        "not_applicable": 0,
+        "policy": "first_permission_record",
+        "queried_owner": "other",
+        "scheduled": 2304,
+        "stage": "after_both"
+      },
+      {
+        "accuracy": 0.0,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 0,
+          "invalid": 0,
+          "other_account_current": 0,
+          "remaining_valid_command": 0,
+          "revoked_other": 0,
+          "revoked_target": 2304
+        },
+        "correct": 0,
+        "last_updated": "other",
+        "not_applicable": 0,
+        "policy": "ignore_update",
+        "queried_owner": "other",
+        "scheduled": 2304,
+        "stage": "after_both"
+      },
+      {
+        "accuracy": 0.0,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 0,
+          "invalid": 0,
+          "other_account_current": 2304,
+          "remaining_valid_command": 0,
+          "revoked_other": 0,
+          "revoked_target": 0
+        },
+        "correct": 0,
+        "last_updated": "other",
+        "not_applicable": 0,
+        "policy": "latest_grant_or_first",
+        "queried_owner": "other",
+        "scheduled": 2304,
+        "stage": "after_both"
+      },
+      {
+        "accuracy": 1.0,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 2304,
+          "invalid": 0,
+          "other_account_current": 0,
+          "remaining_valid_command": 0,
+          "revoked_other": 0,
+          "revoked_target": 0
+        },
+        "correct": 2304,
+        "last_updated": "target",
+        "not_applicable": 0,
+        "policy": "always_other_account",
+        "queried_owner": "other",
+        "scheduled": 2304,
+        "stage": "after_both"
+      },
+      {
+        "accuracy": 0.0,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 0,
+          "invalid": 0,
+          "other_account_current": 2304,
+          "remaining_valid_command": 0,
+          "revoked_other": 0,
+          "revoked_target": 0
+        },
+        "correct": 0,
+        "last_updated": "target",
+        "not_applicable": 0,
+        "policy": "always_self_account",
+        "queried_owner": "other",
+        "scheduled": 2304,
+        "stage": "after_both"
+      },
+      {
+        "accuracy": 0.25,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 576,
+          "invalid": 0,
+          "other_account_current": 576,
+          "remaining_valid_command": 0,
+          "revoked_other": 576,
+          "revoked_target": 576
+        },
+        "correct": 576,
+        "last_updated": "target",
+        "not_applicable": 0,
+        "policy": "first_listed",
+        "queried_owner": "other",
+        "scheduled": 2304,
+        "stage": "after_both"
+      },
+      {
+        "accuracy": 0.0,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 0,
+          "invalid": 0,
+          "other_account_current": 0,
+          "remaining_valid_command": 0,
+          "revoked_other": 1152,
+          "revoked_target": 1152
+        },
+        "correct": 0,
+        "last_updated": "target",
+        "not_applicable": 0,
+        "policy": "first_permission_record",
+        "queried_owner": "other",
+        "scheduled": 2304,
+        "stage": "after_both"
+      },
+      {
+        "accuracy": 0.0,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 0,
+          "invalid": 0,
+          "other_account_current": 0,
+          "remaining_valid_command": 0,
+          "revoked_other": 0,
+          "revoked_target": 2304
+        },
+        "correct": 0,
+        "last_updated": "target",
+        "not_applicable": 0,
+        "policy": "ignore_update",
+        "queried_owner": "other",
+        "scheduled": 2304,
+        "stage": "after_both"
+      },
+      {
+        "accuracy": 1.0,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 2304,
+          "invalid": 0,
+          "other_account_current": 0,
+          "remaining_valid_command": 0,
+          "revoked_other": 0,
+          "revoked_target": 0
+        },
+        "correct": 2304,
+        "last_updated": "target",
+        "not_applicable": 0,
+        "policy": "latest_grant_or_first",
+        "queried_owner": "other",
+        "scheduled": 2304,
+        "stage": "after_both"
+      },
+      {
+        "accuracy": 0.0,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 0,
+          "invalid": 0,
+          "other_account_current": 2304,
+          "remaining_valid_command": 0,
+          "revoked_other": 0,
+          "revoked_target": 0
+        },
+        "correct": 0,
+        "last_updated": "other",
+        "not_applicable": 0,
+        "policy": "always_other_account",
+        "queried_owner": "self",
+        "scheduled": 2304,
+        "stage": "after_both"
+      },
+      {
+        "accuracy": 1.0,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 2304,
+          "invalid": 0,
+          "other_account_current": 0,
+          "remaining_valid_command": 0,
+          "revoked_other": 0,
+          "revoked_target": 0
+        },
+        "correct": 2304,
+        "last_updated": "other",
+        "not_applicable": 0,
+        "policy": "always_self_account",
+        "queried_owner": "self",
+        "scheduled": 2304,
+        "stage": "after_both"
+      },
+      {
+        "accuracy": 0.25,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 576,
+          "invalid": 0,
+          "other_account_current": 576,
+          "remaining_valid_command": 0,
+          "revoked_other": 576,
+          "revoked_target": 576
+        },
+        "correct": 576,
+        "last_updated": "other",
+        "not_applicable": 0,
+        "policy": "first_listed",
+        "queried_owner": "self",
+        "scheduled": 2304,
+        "stage": "after_both"
+      },
+      {
+        "accuracy": 0.0,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 0,
+          "invalid": 0,
+          "other_account_current": 0,
+          "remaining_valid_command": 0,
+          "revoked_other": 1152,
+          "revoked_target": 1152
+        },
+        "correct": 0,
+        "last_updated": "other",
+        "not_applicable": 0,
+        "policy": "first_permission_record",
+        "queried_owner": "self",
+        "scheduled": 2304,
+        "stage": "after_both"
+      },
+      {
+        "accuracy": 0.0,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 0,
+          "invalid": 0,
+          "other_account_current": 0,
+          "remaining_valid_command": 0,
+          "revoked_other": 0,
+          "revoked_target": 2304
+        },
+        "correct": 0,
+        "last_updated": "other",
+        "not_applicable": 0,
+        "policy": "ignore_update",
+        "queried_owner": "self",
+        "scheduled": 2304,
+        "stage": "after_both"
+      },
+      {
+        "accuracy": 0.0,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 0,
+          "invalid": 0,
+          "other_account_current": 2304,
+          "remaining_valid_command": 0,
+          "revoked_other": 0,
+          "revoked_target": 0
+        },
+        "correct": 0,
+        "last_updated": "other",
+        "not_applicable": 0,
+        "policy": "latest_grant_or_first",
+        "queried_owner": "self",
+        "scheduled": 2304,
+        "stage": "after_both"
+      },
+      {
+        "accuracy": 0.0,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 0,
+          "invalid": 0,
+          "other_account_current": 2304,
+          "remaining_valid_command": 0,
+          "revoked_other": 0,
+          "revoked_target": 0
+        },
+        "correct": 0,
+        "last_updated": "target",
+        "not_applicable": 0,
+        "policy": "always_other_account",
+        "queried_owner": "self",
+        "scheduled": 2304,
+        "stage": "after_both"
+      },
+      {
+        "accuracy": 1.0,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 2304,
+          "invalid": 0,
+          "other_account_current": 0,
+          "remaining_valid_command": 0,
+          "revoked_other": 0,
+          "revoked_target": 0
+        },
+        "correct": 2304,
+        "last_updated": "target",
+        "not_applicable": 0,
+        "policy": "always_self_account",
+        "queried_owner": "self",
+        "scheduled": 2304,
+        "stage": "after_both"
+      },
+      {
+        "accuracy": 0.25,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 576,
+          "invalid": 0,
+          "other_account_current": 576,
+          "remaining_valid_command": 0,
+          "revoked_other": 576,
+          "revoked_target": 576
+        },
+        "correct": 576,
+        "last_updated": "target",
+        "not_applicable": 0,
+        "policy": "first_listed",
+        "queried_owner": "self",
+        "scheduled": 2304,
+        "stage": "after_both"
+      },
+      {
+        "accuracy": 0.0,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 0,
+          "invalid": 0,
+          "other_account_current": 0,
+          "remaining_valid_command": 0,
+          "revoked_other": 1152,
+          "revoked_target": 1152
+        },
+        "correct": 0,
+        "last_updated": "target",
+        "not_applicable": 0,
+        "policy": "first_permission_record",
+        "queried_owner": "self",
+        "scheduled": 2304,
+        "stage": "after_both"
+      },
+      {
+        "accuracy": 0.0,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 0,
+          "invalid": 0,
+          "other_account_current": 0,
+          "remaining_valid_command": 0,
+          "revoked_other": 0,
+          "revoked_target": 2304
+        },
+        "correct": 0,
+        "last_updated": "target",
+        "not_applicable": 0,
+        "policy": "ignore_update",
+        "queried_owner": "self",
+        "scheduled": 2304,
+        "stage": "after_both"
+      },
+      {
+        "accuracy": 1.0,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 2304,
+          "invalid": 0,
+          "other_account_current": 0,
+          "remaining_valid_command": 0,
+          "revoked_other": 0,
+          "revoked_target": 0
+        },
+        "correct": 2304,
+        "last_updated": "target",
+        "not_applicable": 0,
+        "policy": "latest_grant_or_first",
+        "queried_owner": "self",
+        "scheduled": 2304,
+        "stage": "after_both"
+      },
+      {
+        "accuracy": 0.5,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 1152,
+          "invalid": 0,
+          "other_account_current": 1152,
+          "remaining_valid_command": 0,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 1152,
+        "last_updated": "all",
+        "not_applicable": 0,
+        "policy": "always_other_account",
+        "queried_owner": "all",
+        "scheduled": 2304,
+        "stage": "before"
+      },
+      {
+        "accuracy": 0.5,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 1152,
+          "invalid": 0,
+          "other_account_current": 1152,
+          "remaining_valid_command": 0,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 1152,
+        "last_updated": "all",
+        "not_applicable": 0,
+        "policy": "always_self_account",
+        "queried_owner": "all",
+        "scheduled": 2304,
+        "stage": "before"
+      },
+      {
+        "accuracy": 0.25,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 576,
+          "invalid": 0,
+          "other_account_current": 576,
+          "remaining_valid_command": 1152,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 576,
+        "last_updated": "all",
+        "not_applicable": 0,
+        "policy": "first_listed",
+        "queried_owner": "all",
+        "scheduled": 2304,
+        "stage": "before"
+      },
+      {
+        "accuracy": 0.5,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 1152,
+          "invalid": 0,
+          "other_account_current": 1152,
+          "remaining_valid_command": 0,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 1152,
+        "last_updated": "all",
+        "not_applicable": 0,
+        "policy": "first_permission_record",
+        "queried_owner": "all",
+        "scheduled": 2304,
+        "stage": "before"
+      },
+      {
+        "accuracy": 1.0,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 2304,
+          "invalid": 0,
+          "other_account_current": 0,
+          "remaining_valid_command": 0,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 2304,
+        "last_updated": "all",
+        "not_applicable": 0,
+        "policy": "ignore_update",
+        "queried_owner": "all",
+        "scheduled": 2304,
+        "stage": "before"
+      },
+      {
+        "accuracy": 0.25,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 576,
+          "invalid": 0,
+          "other_account_current": 576,
+          "remaining_valid_command": 1152,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 576,
+        "last_updated": "all",
+        "not_applicable": 0,
+        "policy": "latest_grant_or_first",
+        "queried_owner": "all",
+        "scheduled": 2304,
+        "stage": "before"
+      },
+      {
+        "accuracy": 1.0,
+        "applicable": 1152,
+        "categories": {
+          "correct_target_current": 1152,
+          "invalid": 0,
+          "other_account_current": 0,
+          "remaining_valid_command": 0,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 1152,
+        "last_updated": "not_applicable",
+        "not_applicable": 0,
+        "policy": "always_other_account",
+        "queried_owner": "other",
+        "scheduled": 1152,
+        "stage": "before"
+      },
+      {
+        "accuracy": 0.0,
+        "applicable": 1152,
+        "categories": {
+          "correct_target_current": 0,
+          "invalid": 0,
+          "other_account_current": 1152,
+          "remaining_valid_command": 0,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 0,
+        "last_updated": "not_applicable",
+        "not_applicable": 0,
+        "policy": "always_self_account",
+        "queried_owner": "other",
+        "scheduled": 1152,
+        "stage": "before"
+      },
+      {
+        "accuracy": 0.25,
+        "applicable": 1152,
+        "categories": {
+          "correct_target_current": 288,
+          "invalid": 0,
+          "other_account_current": 288,
+          "remaining_valid_command": 576,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 288,
+        "last_updated": "not_applicable",
+        "not_applicable": 0,
+        "policy": "first_listed",
+        "queried_owner": "other",
+        "scheduled": 1152,
+        "stage": "before"
+      },
+      {
+        "accuracy": 0.5,
+        "applicable": 1152,
+        "categories": {
+          "correct_target_current": 576,
+          "invalid": 0,
+          "other_account_current": 576,
+          "remaining_valid_command": 0,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 576,
+        "last_updated": "not_applicable",
+        "not_applicable": 0,
+        "policy": "first_permission_record",
+        "queried_owner": "other",
+        "scheduled": 1152,
+        "stage": "before"
+      },
+      {
+        "accuracy": 1.0,
+        "applicable": 1152,
+        "categories": {
+          "correct_target_current": 1152,
+          "invalid": 0,
+          "other_account_current": 0,
+          "remaining_valid_command": 0,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 1152,
+        "last_updated": "not_applicable",
+        "not_applicable": 0,
+        "policy": "ignore_update",
+        "queried_owner": "other",
+        "scheduled": 1152,
+        "stage": "before"
+      },
+      {
+        "accuracy": 0.25,
+        "applicable": 1152,
+        "categories": {
+          "correct_target_current": 288,
+          "invalid": 0,
+          "other_account_current": 288,
+          "remaining_valid_command": 576,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 288,
+        "last_updated": "not_applicable",
+        "not_applicable": 0,
+        "policy": "latest_grant_or_first",
+        "queried_owner": "other",
+        "scheduled": 1152,
+        "stage": "before"
+      },
+      {
+        "accuracy": 0.0,
+        "applicable": 1152,
+        "categories": {
+          "correct_target_current": 0,
+          "invalid": 0,
+          "other_account_current": 1152,
+          "remaining_valid_command": 0,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 0,
+        "last_updated": "not_applicable",
+        "not_applicable": 0,
+        "policy": "always_other_account",
+        "queried_owner": "self",
+        "scheduled": 1152,
+        "stage": "before"
+      },
+      {
+        "accuracy": 1.0,
+        "applicable": 1152,
+        "categories": {
+          "correct_target_current": 1152,
+          "invalid": 0,
+          "other_account_current": 0,
+          "remaining_valid_command": 0,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 1152,
+        "last_updated": "not_applicable",
+        "not_applicable": 0,
+        "policy": "always_self_account",
+        "queried_owner": "self",
+        "scheduled": 1152,
+        "stage": "before"
+      },
+      {
+        "accuracy": 0.25,
+        "applicable": 1152,
+        "categories": {
+          "correct_target_current": 288,
+          "invalid": 0,
+          "other_account_current": 288,
+          "remaining_valid_command": 576,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 288,
+        "last_updated": "not_applicable",
+        "not_applicable": 0,
+        "policy": "first_listed",
+        "queried_owner": "self",
+        "scheduled": 1152,
+        "stage": "before"
+      },
+      {
+        "accuracy": 0.5,
+        "applicable": 1152,
+        "categories": {
+          "correct_target_current": 576,
+          "invalid": 0,
+          "other_account_current": 576,
+          "remaining_valid_command": 0,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 576,
+        "last_updated": "not_applicable",
+        "not_applicable": 0,
+        "policy": "first_permission_record",
+        "queried_owner": "self",
+        "scheduled": 1152,
+        "stage": "before"
+      },
+      {
+        "accuracy": 1.0,
+        "applicable": 1152,
+        "categories": {
+          "correct_target_current": 1152,
+          "invalid": 0,
+          "other_account_current": 0,
+          "remaining_valid_command": 0,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 1152,
+        "last_updated": "not_applicable",
+        "not_applicable": 0,
+        "policy": "ignore_update",
+        "queried_owner": "self",
+        "scheduled": 1152,
+        "stage": "before"
+      },
+      {
+        "accuracy": 0.25,
+        "applicable": 1152,
+        "categories": {
+          "correct_target_current": 288,
+          "invalid": 0,
+          "other_account_current": 288,
+          "remaining_valid_command": 576,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 288,
+        "last_updated": "not_applicable",
+        "not_applicable": 0,
+        "policy": "latest_grant_or_first",
+        "queried_owner": "self",
+        "scheduled": 1152,
+        "stage": "before"
+      },
+      {
+        "accuracy": 0.5,
+        "applicable": 4608,
+        "categories": {
+          "correct_target_current": 2304,
+          "invalid": 0,
+          "other_account_current": 2304,
+          "remaining_valid_command": 0,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 2304,
+        "last_updated": "all",
+        "not_applicable": 0,
+        "policy": "always_other_account",
+        "queried_owner": "all",
+        "scheduled": 4608,
+        "stage": "snapshot"
+      },
+      {
+        "accuracy": 0.5,
+        "applicable": 4608,
+        "categories": {
+          "correct_target_current": 2304,
+          "invalid": 0,
+          "other_account_current": 2304,
+          "remaining_valid_command": 0,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 2304,
+        "last_updated": "all",
+        "not_applicable": 0,
+        "policy": "always_self_account",
+        "queried_owner": "all",
+        "scheduled": 4608,
+        "stage": "snapshot"
+      },
+      {
+        "accuracy": 0.25,
+        "applicable": 4608,
+        "categories": {
+          "correct_target_current": 1152,
+          "invalid": 0,
+          "other_account_current": 1152,
+          "remaining_valid_command": 2304,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 1152,
+        "last_updated": "all",
+        "not_applicable": 0,
+        "policy": "first_listed",
+        "queried_owner": "all",
+        "scheduled": 4608,
+        "stage": "snapshot"
+      },
+      {
+        "accuracy": 0.5,
+        "applicable": 4608,
+        "categories": {
+          "correct_target_current": 2304,
+          "invalid": 0,
+          "other_account_current": 2304,
+          "remaining_valid_command": 0,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 2304,
+        "last_updated": "all",
+        "not_applicable": 0,
+        "policy": "first_permission_record",
+        "queried_owner": "all",
+        "scheduled": 4608,
+        "stage": "snapshot"
+      },
+      {
+        "accuracy": null,
+        "applicable": 0,
+        "categories": {
+          "correct_target_current": null,
+          "invalid": null,
+          "other_account_current": null,
+          "remaining_valid_command": null,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": null,
+        "last_updated": "all",
+        "not_applicable": 4608,
+        "policy": "ignore_update",
+        "queried_owner": "all",
+        "scheduled": 4608,
+        "stage": "snapshot"
+      },
+      {
+        "accuracy": 0.25,
+        "applicable": 4608,
+        "categories": {
+          "correct_target_current": 1152,
+          "invalid": 0,
+          "other_account_current": 1152,
+          "remaining_valid_command": 2304,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 1152,
+        "last_updated": "all",
+        "not_applicable": 0,
+        "policy": "latest_grant_or_first",
+        "queried_owner": "all",
+        "scheduled": 4608,
+        "stage": "snapshot"
+      },
+      {
+        "accuracy": 1.0,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 2304,
+          "invalid": 0,
+          "other_account_current": 0,
+          "remaining_valid_command": 0,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 2304,
+        "last_updated": "not_applicable",
+        "not_applicable": 0,
+        "policy": "always_other_account",
+        "queried_owner": "other",
+        "scheduled": 2304,
+        "stage": "snapshot"
+      },
+      {
+        "accuracy": 0.0,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 0,
+          "invalid": 0,
+          "other_account_current": 2304,
+          "remaining_valid_command": 0,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 0,
+        "last_updated": "not_applicable",
+        "not_applicable": 0,
+        "policy": "always_self_account",
+        "queried_owner": "other",
+        "scheduled": 2304,
+        "stage": "snapshot"
+      },
+      {
+        "accuracy": 0.25,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 576,
+          "invalid": 0,
+          "other_account_current": 576,
+          "remaining_valid_command": 1152,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 576,
+        "last_updated": "not_applicable",
+        "not_applicable": 0,
+        "policy": "first_listed",
+        "queried_owner": "other",
+        "scheduled": 2304,
+        "stage": "snapshot"
+      },
+      {
+        "accuracy": 0.5,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 1152,
+          "invalid": 0,
+          "other_account_current": 1152,
+          "remaining_valid_command": 0,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 1152,
+        "last_updated": "not_applicable",
+        "not_applicable": 0,
+        "policy": "first_permission_record",
+        "queried_owner": "other",
+        "scheduled": 2304,
+        "stage": "snapshot"
+      },
+      {
+        "accuracy": null,
+        "applicable": 0,
+        "categories": {
+          "correct_target_current": null,
+          "invalid": null,
+          "other_account_current": null,
+          "remaining_valid_command": null,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": null,
+        "last_updated": "not_applicable",
+        "not_applicable": 2304,
+        "policy": "ignore_update",
+        "queried_owner": "other",
+        "scheduled": 2304,
+        "stage": "snapshot"
+      },
+      {
+        "accuracy": 0.25,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 576,
+          "invalid": 0,
+          "other_account_current": 576,
+          "remaining_valid_command": 1152,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 576,
+        "last_updated": "not_applicable",
+        "not_applicable": 0,
+        "policy": "latest_grant_or_first",
+        "queried_owner": "other",
+        "scheduled": 2304,
+        "stage": "snapshot"
+      },
+      {
+        "accuracy": 0.0,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 0,
+          "invalid": 0,
+          "other_account_current": 2304,
+          "remaining_valid_command": 0,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 0,
+        "last_updated": "not_applicable",
+        "not_applicable": 0,
+        "policy": "always_other_account",
+        "queried_owner": "self",
+        "scheduled": 2304,
+        "stage": "snapshot"
+      },
+      {
+        "accuracy": 1.0,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 2304,
+          "invalid": 0,
+          "other_account_current": 0,
+          "remaining_valid_command": 0,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 2304,
+        "last_updated": "not_applicable",
+        "not_applicable": 0,
+        "policy": "always_self_account",
+        "queried_owner": "self",
+        "scheduled": 2304,
+        "stage": "snapshot"
+      },
+      {
+        "accuracy": 0.25,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 576,
+          "invalid": 0,
+          "other_account_current": 576,
+          "remaining_valid_command": 1152,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 576,
+        "last_updated": "not_applicable",
+        "not_applicable": 0,
+        "policy": "first_listed",
+        "queried_owner": "self",
+        "scheduled": 2304,
+        "stage": "snapshot"
+      },
+      {
+        "accuracy": 0.5,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 1152,
+          "invalid": 0,
+          "other_account_current": 1152,
+          "remaining_valid_command": 0,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 1152,
+        "last_updated": "not_applicable",
+        "not_applicable": 0,
+        "policy": "first_permission_record",
+        "queried_owner": "self",
+        "scheduled": 2304,
+        "stage": "snapshot"
+      },
+      {
+        "accuracy": null,
+        "applicable": 0,
+        "categories": {
+          "correct_target_current": null,
+          "invalid": null,
+          "other_account_current": null,
+          "remaining_valid_command": null,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": null,
+        "last_updated": "not_applicable",
+        "not_applicable": 2304,
+        "policy": "ignore_update",
+        "queried_owner": "self",
+        "scheduled": 2304,
+        "stage": "snapshot"
+      },
+      {
+        "accuracy": 0.25,
+        "applicable": 2304,
+        "categories": {
+          "correct_target_current": 576,
+          "invalid": 0,
+          "other_account_current": 576,
+          "remaining_valid_command": 1152,
+          "revoked_other": null,
+          "revoked_target": null
+        },
+        "correct": 576,
+        "last_updated": "not_applicable",
+        "not_applicable": 0,
+        "policy": "latest_grant_or_first",
+        "queried_owner": "self",
+        "scheduled": 2304,
+        "stage": "snapshot"
+      }
+    ],
+    "simulator_executions": 64512,
+    "stage_counts": {
+      "after_both": 9216,
+      "before": 2304,
+      "snapshot": 4608
+    },
+    "unique_prompts": 16128,
+    "worlds": 48
+  },
+  "source_files": {
+    "scripts/prepare_query_reference.py": "f93a1190c8d3a9ba29507b4bf054147c4faed6d8d0032015a2fb8d228b4b6e8f",
+    "src/self_model_study/action_task.py": "8a49ef65fe495aa3a5d198f7c2d145942b1458ab976613cd1302d4547a6ed89d",
+    "src/self_model_study/io.py": "eaad905b865cbe727455e8d2a7a6c4c2e632bc93361d98418bcfd2b551735756",
+    "src/self_model_study/pilot_backend.py": "1a149e5347569efac65e8733cbb288f44fbaca406700992c7fff471e667ed14a",
+    "src/self_model_study/query_reference.py": "ab3a7637e6719e7b27e239a36c98078aa5b4db35be17014e1c441eec20acedaf",
+    "src/self_model_study/query_reference_audit.py": "c2b9b565b7814889256bd5ac476cb757ec645b051adcd1fa77926cd1864f5b43"
+  },
+  "status": "cpu_inputs_passed_not_frozen",
+  "tokenizer": {
+    "backend_sha256": "a3833016a0892676e98b4e285d6335263055116610a77cb4b28a73692521ee60",
+    "candidate_boundaries_checked": 64512,
+    "chat_template": "{%- if tools %}\n    {{- '<|im_start|>system\\n' }}\n    {%- if messages[0]['role'] == 'system' %}\n        {{- messages[0]['content'] }}\n    {%- else %}\n        {{- 'You are Qwen, created by Alibaba Cloud. You are a helpful assistant.' }}\n    {%- endif %}\n    {{- \"\\n\\n# Tools\\n\\nYou may call one or more functions to assist with the user query.\\n\\nYou are provided with function signatures within <tools></tools> XML tags:\\n<tools>\" }}\n    {%- for tool in tools %}\n        {{- \"\\n\" }}\n        {{- tool | tojson }}\n    {%- endfor %}\n    {{- \"\\n</tools>\\n\\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\\n<tool_call>\\n{\\\"name\\\": <function-name>, \\\"arguments\\\": <args-json-object>}\\n</tool_call><|im_end|>\\n\" }}\n{%- else %}\n    {%- if messages[0]['role'] == 'system' %}\n        {{- '<|im_start|>system\\n' + messages[0]['content'] + '<|im_end|>\\n' }}\n    {%- else %}\n        {{- '<|im_start|>system\\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\\n' }}\n    {%- endif %}\n{%- endif %}\n{%- for message in messages %}\n    {%- if (message.role == \"user\") or (message.role == \"system\" and not loop.first) or (message.role == \"assistant\" and not message.tool_calls) %}\n        {{- '<|im_start|>' + message.role + '\\n' + message.content + '<|im_end|>' + '\\n' }}\n    {%- elif message.role == \"assistant\" %}\n        {{- '<|im_start|>' + message.role }}\n        {%- if message.content %}\n            {{- '\\n' + message.content }}\n        {%- endif %}\n        {%- for tool_call in message.tool_calls %}\n            {%- if tool_call.function is defined %}\n                {%- set tool_call = tool_call.function %}\n            {%- endif %}\n            {{- '\\n<tool_call>\\n{\"name\": \"' }}\n            {{- tool_call.name }}\n            {{- '\", \"arguments\": ' }}\n            {{- tool_call.arguments | tojson }}\n            {{- '}\\n</tool_call>' }}\n        {%- endfor %}\n        {{- '<|im_end|>\\n' }}\n    {%- elif message.role == \"tool\" %}\n        {%- if (loop.index0 == 0) or (messages[loop.index0 - 1].role != \"tool\") %}\n            {{- '<|im_start|>user' }}\n        {%- endif %}\n        {{- '\\n<tool_response>\\n' }}\n        {{- message.content }}\n        {{- '\\n</tool_response>' }}\n        {%- if loop.last or (messages[loop.index0 + 1].role != \"tool\") %}\n            {{- '<|im_end|>\\n' }}\n        {%- endif %}\n    {%- endif %}\n{%- endfor %}\n{%- if add_generation_prompt %}\n    {{- '<|im_start|>assistant\\n' }}\n{%- endif %}\n",
+    "chat_template_sha256": "2e2d2512cfe46af53dc1eed45368ecaab26ac4461c480e6b69fe571cf0ceaa75",
+    "command_token_lengths": {
+      "mark_amber": [
+        3
+      ],
+      "mark_cobalt": [
+        4
+      ],
+      "mark_ivory": [
+        3
+      ],
+      "mark_jade": [
+        3
+      ],
+      "mark_lilac": [
+        4
+      ],
+      "mark_ochre": [
+        4
+      ],
+      "mark_silver": [
+        3
+      ],
+      "mark_violet": [
+        3
+      ]
+    },
+    "default_system_sha256": "8559162d10010189cec8cb8adc38358b361db0ad44c4ab34fbfaee002f64eb39",
+    "default_system_text": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.",
+    "files_sha256": {
+      "merges.txt": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+      "tokenizer.json": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+      "tokenizer_config.json": "5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583",
+      "vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+    },
+    "manually_added_system_message": false,
+    "max_total_tokens": 226,
+    "min_total_tokens": 171,
+    "rendered_prefix": "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\n<|im_start|>user\n",
+    "rendered_suffix": "<|im_end|>\n<|im_start|>assistant\n",
+    "repo": "Qwen/Qwen2.5-7B-Instruct",
+    "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "scoring": "summed conditional log likelihood of the exact full command; no added whitespace, EOS or length normalization",
+    "selections_checked": 16128,
+    "stage_total_token_range": {
+      "after_both": [
+        206,
+        226
+      ],
+      "before": [
+        176,
+        189
+      ],
+      "snapshot": [
+        171,
+        183
+      ]
+    },
+    "truncation": false,
+    "vocabulary_sha256": "36cd562eb06d9cff856d898c9700031561bf42c50bf57dc82e4c5d8655e61f8c"
+  },
+  "world_assignment_hash": "2ba6989e553b11f6c7851c820285aca95616b049fd86a313255c301fb84bf605"
+}

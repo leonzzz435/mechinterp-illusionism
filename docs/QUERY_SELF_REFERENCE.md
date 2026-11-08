@@ -224,13 +224,30 @@ balanced nuisance assignments, account-set uniqueness, historical account-pair s
 the latest-grant rule and the matched historical before contrast. It does **not** claim
 that rendered inputs or token boundaries have been checked.
 
-Before freezing, implement an isolated generator/independent oracle and archive the exact
-fresh manifest. Verify same-target aliases, owner swaps, fixed-account invariance, answer
-positions and all scripted baselines. Render every prompt with the pinned tokenizer's
-official chat template and open assistant turn. For every command require exact prefix
-token agreement, exact decoded continuation and a total length at most 2,048, with no
-truncation. Save rendered text, token IDs/lengths, default system text, template and package
-hashes. Unequal command lengths do not license post hoc length normalization.
+The isolated generator, text-first oracle and complete input/token preparation are now
+implemented. The [CPU preparation report](QUERY_SELF_REFERENCE_PREFLIGHT.md) records
+the actual checks and artifacts; the older partial check above remains unchanged.
+The scientific JSON is still a review draft. No assessment responses have been obtained.
+
+The implementation makes the order convention explicit: permission records start in
+hash-ranked account order; owner bindings start in the declared Rowan/Morgan order.
+Nuisance bits 0 and 1 reverse those respective lists. Bit 2 independently determines
+which operator is the addressee. This resolves rendering order without changing the
+reviewed assignments, wording, factors or endpoints.
+
+For every candidate, preparation requires exact prefix token agreement, exact decoded
+continuation and a total length at most 2,048, with no truncation. It saves rendered
+text, token IDs/lengths, the official default system text, template and package hashes.
+Unequal command lengths do not license post hoc length normalization. Reproduce all
+inputs and check an existing artifact directory byte-for-byte with:
+
+```bash
+HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 uv run --no-sync python scripts/prepare_query_reference.py
+```
+
+This command uses only the locally cached pinned tokenizer. It cannot load model weights,
+perform inference or submit a job. If a saved artifact differs, it stops without overwriting
+it; use `--out` with a new directory to inspect a proposed revision.
 
 The future report must show \(E,F,S\) together, all alias cells, event-order splits,
 world-level effects, error composition/applicability and failed gates. Include a diagram
@@ -239,9 +256,9 @@ Freeze the generator, manifest, scoring, resume/analysis tests and this specific
 before assessment responses. Only then prepare a current quote for a separately
 authorized run. Mistral, routing, steering and article rewriting are outside this step.
 
-Verification of this draft: the structural checker reproduces its JSON output byte-for-byte;
-Ruff and local document links pass; the eight existing ownership-design review tests pass
-(`uv run --no-sync pytest -q tests/test_ownership_design_review.py`). The earlier full
-study test suite was not rerun for this protocol-writing change. No experiment package
-code or existing evidence was edited. The new runner's tests remain part of implementation,
-not a completed check implied by this draft.
+The initial protocol-writing verification covered the partial structural checker and eight
+ownership-review tests. The new implementation's verification is listed separately in the
+[CPU preparation report](QUERY_SELF_REFERENCE_PREFLIGHT.md). Runtime scoring, interrupted-run
+resume, world-paired statistics and report generation still require implementation and
+synthetic failure tests before freeze. Input correctness alone does not establish model
+competence or authorize execution.

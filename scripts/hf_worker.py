@@ -205,6 +205,7 @@ def main():
         "configs/qwen-ownership-permissions-01.json",
         "configs/qwen-ownership-permissions-02.json",
         "configs/qwen-ownership-recovery.json",
+        "configs/qwen-ownership-recovery-v2.json",
     }:
         raise ValueError("Unsupported worker configuration")
     expected_hash = os.environ.get("STUDY_CONFIG_SHA256")

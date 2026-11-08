@@ -25,6 +25,15 @@ GIT_URL = "https://github.com/leonzzz435/mechinterp-illusionism.git"
 FLAVOR = "l4x1"
 HARD_TIMEOUT = 7200
 CONFIGURATIONS = {
+    "configs/qwen-ownership-recovery-v2.json": {
+        "engine": "qwen-ownership-recovery",
+        "run_prefix": "qwen-ownership-recovery-v2-",
+        "receipt_name": "qwen-ownership-recovery-v2.json",
+        "blocks": 3,
+        "scored_variants": 3456,
+        "generated_texts": 0,
+        "hard_timeout_seconds": 2700,
+    },
     "configs/qwen-ownership-recovery.json": {
         "engine": "qwen-ownership-recovery",
         "run_prefix": "qwen-ownership-recovery-",

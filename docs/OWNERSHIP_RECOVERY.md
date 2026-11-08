@@ -8,9 +8,54 @@ tranche. The article remains frozen at `article-v1`.
 **Continuation launched on 2026-11-08:** after explicit approval of the additional
 $0.62 budget, [one L4 job](https://huggingface.co/jobs/zett13/6af09fc30e0338d1bb84c173)
 was submitted from commit `846e274fcef7a55f6a1fc5d9a1f82f543f93350a`. The provider
-reported `RUNNING`; startup logs showed the preserved snapshot restored and model
-weights downloading. This is a launch observation, not a completed result. The
-[launch receipt](../review/ownership-recovery-job.json) records the source and limits.
+initially reported `RUNNING`, but the job subsequently ended in **ERROR** during
+backend comparison, before any new selection. The [launch receipt](../review/ownership-recovery-job.json)
+is retained as history. The [failure audit](../review/ownership-recovery-metadata-failure.json)
+verifies all 14,976 original records remain identical; 3,456 selections are still missing.
+
+## Continuation failure: JSON metadata comparison
+
+The continuation uploaded its checkpoints successfully, then stopped with
+`ValueError: Backend/tokenizer changed across invocations`. The frozen runner compares
+the fresh Python metadata dictionary directly with a dictionary restored from JSON.
+Transformers produces integer keys in `model_config.id2label`; JSON restores these as
+strings. Consequently, an unchanged configuration fails that comparison. Reconstructing
+each of the three saved configurations with the installed `Qwen2Config` reproduces the
+type mismatch; their full JSON representations are equal. The earlier mock used only
+`{"synthetic": true}` and could not expose this bug.
+
+The failed job did not save its newly loaded metadata, so that reconstruction does not
+exclude an additional live metadata difference retrospectively. The corrected recovery
+adapter saves both complete metadata dictionaries and their comparison, normalizes fresh
+metadata through the existing JSON serializer, and still rejects every remaining
+difference. It uses the unchanged checked model loader and preserves the exact frozen
+token checks for every result. The scientific source under `src/`, original artifacts,
+article and specification remain unchanged.
+
+The regression test first reproduces the old runner's error using actual Transformers
+configuration types, then continues the same persisted journal through the adapter.
+It verifies existing records are retained without duplicates. Additional tests reject
+changed metadata and candidate tokens. All **57 affected-area tests passed in 39.76 s**;
+Ruff check/format and `git diff --check` passed. This verification used no paid inference.
+
+The prepared [v2 launch configuration](../configs/qwen-ownership-recovery-v2.json) keeps
+the same audited original snapshot and workload. It has a separate exclusive receipt;
+neither the original nor the failed continuation receipt is removed or reused. Its
+refreshed compute quote is **$0.613318**, within a proposed **additional $0.62**.
+It has **not been submitted**; the previous approval covered the failed single job.
+
+```bash
+uv run --script scripts/hf_jobs.py plan --namespace zett13 --budget-usd 0.62 \
+  --config configs/qwen-ownership-recovery-v2.json
+# After approval of the additional job:
+uv run --script scripts/hf_jobs.py submit --namespace zett13 --budget-usd 0.62 \
+  --config configs/qwen-ownership-recovery-v2.json
+```
+
+Use `.hf-jobs/qwen-ownership-recovery-v2.json` for subsequent status/fetch commands.
+The original failed continuation remains pinned at artifact revision
+`3fccbf4f06d4f05b41a3fd37aa691a15b6367401`. This is a software failure, not a new
+scientific result. No model selections were added by that job.
 
 ## What failed and what survived
 

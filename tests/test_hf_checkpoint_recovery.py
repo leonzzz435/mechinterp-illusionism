@@ -228,32 +228,40 @@ def test_recovery_pin_and_limits_are_validated(modules):
             recovery.validate_spec({**spec, key: value})
 
 
-def test_real_journal_continuation_preserves_existing_selection(modules, tmp_path):
+def test_real_journal_continuation_preserves_existing_selection(modules, monkeypatch, tmp_path):
     _, recovery = modules
+    from transformers import Qwen2Config
+
     from self_model_study import ownership
     from self_model_study.storage import read_records
 
+    config = ownership.configuration(0)
+    inputs, _ = ownership.frozen_inputs(config, ownership.build_plan(config))
+    live_info = {"synthetic": True, "model_config": Qwen2Config().to_dict()}
+
     class Fake:
         def choice(self, prompt, choices, format_name):
+            tokens = inputs[prompt]
             return {
                 "status": "ok",
+                "rendered_prompt": tokens["rendered_prompt"],
+                "prompt_token_ids": tokens["prompt_token_ids"],
                 "selected_command": choices[0],
                 "candidates": [
                     {
                         "command": c,
                         "log_likelihood": -float(i + 1),
-                        "token_ids": [i],
-                        "token_count": 1,
+                        "token_ids": tokens["continuations"][c],
+                        "token_count": len(tokens["continuations"][c]),
                     }
                     for i, c in enumerate(choices)
                 ],
             }
 
     def factory(_):
-        return Fake(), {"synthetic": True}
+        return Fake(), live_info
 
     source = tmp_path / "original"
-    config = ownership.configuration(0)
     manifest = ownership.run(config, source, max_jobs=1, backend_factory=factory)
     original = read_records(source)
     manifest["status"] = "failed"
@@ -277,15 +285,86 @@ def test_real_journal_continuation_preserves_existing_selection(modules, tmp_pat
     }
     target = tmp_path / "continuation"
     recovery.prepare_resume(source, target, expected)
-    ownership.run(config, target, max_jobs=1, backend_factory=factory)
+    # Reproduce the actual failure with Transformers metadata, not a string-only mock.
+    broken = tmp_path / "unnormalized"
+    recovery.prepare_resume(source, broken, expected)
+    with pytest.raises(ValueError, match="Backend/tokenizer changed"):
+        ownership.run(config, broken, max_jobs=1, backend_factory=factory)
+    assert read_records(broken) == original
+    monkeypatch.setattr(ownership, "checked_backend", factory)
+    ownership.run(
+        config,
+        target,
+        max_jobs=1,
+        backend_factory=lambda cfg: recovery.continuation_backend(cfg, target),
+    )
     continued = read_records(target)
     assert len(continued) == 2 and original[0] in continued
     assert len({r["id"] for r in continued}) == 2
     assert read_records(source) == original
     assert read_json(source / "manifest.json")["status"] == "failed"
+    assert read_json(target / "recovery/backend-comparison.json")["equal"]
+    assert 0 in live_info["model_config"]["id2label"]  # Live object was not mutated.
 
 
-def test_recovery_quote_is_one_job_for_only_missing_trials(modules, monkeypatch):
+def test_continuation_checks_all_metadata_and_frozen_tokens(modules, monkeypatch, tmp_path):
+    _, recovery = modules
+    from transformers import Qwen2Config
+
+    from self_model_study import ownership
+
+    config = ownership.configuration(0)
+    live = {
+        "synthetic": True,
+        "model_config": Qwen2Config().to_dict(),
+        "cuda": "fixture",
+        "gpu": "fixture",
+        "tokenizer_revision": "pinned",
+        "tokenizer_vocabulary_hash": "vocab",
+        "chat_template_hash": "template",
+        "attention": "eager",
+        "softmax_dtype": "float32",
+        "preflight_sha256": "preflight",
+        "token_inputs_hash": "inputs",
+    }
+    write_json(tmp_path / "manifest.json", {"backend_info": live})
+    # No GPU or remote files: exercise the comparison and existing token checker directly.
+    monkeypatch.setattr(ownership, "build_plan", lambda _: {})
+    tokens = {
+        "fixture": {
+            "rendered_prompt": "fixture",
+            "prompt_token_ids": [1],
+            "continuations": {"mark_test": [2]},
+        }
+    }
+    monkeypatch.setattr(ownership, "frozen_inputs", lambda *args: (tokens, {}))
+    result = {
+        "rendered_prompt": "fixture",
+        "prompt_token_ids": [1],
+        "candidates": [{"command": "mark_test", "token_ids": [2], "token_count": 1}],
+    }
+    backend = SimpleNamespace(choice=lambda *args: deepcopy(result))
+    monkeypatch.setattr(ownership, "checked_backend", lambda _: (backend, live))
+    checked, info = recovery.continuation_backend(config, tmp_path)
+    assert info == read_json(tmp_path / "manifest.json")["backend_info"]
+    assert checked.choice("fixture", ["mark_test"], "chat") == result
+    result["candidates"][0]["token_ids"] = [3]
+    with pytest.raises(ValueError, match="Candidate tokens changed"):
+        checked.choice("fixture", ["mark_test"], "chat")
+    for key in live:
+        altered = deepcopy(live)
+        altered[key] = "changed"
+        monkeypatch.setattr(ownership, "checked_backend", lambda _, value=altered: (backend, value))
+        with pytest.raises(ValueError, match="Backend/tokenizer changed"):
+            recovery.continuation_backend(config, tmp_path)
+    for altered in ({**live, "extra": None}, {k: v for k, v in live.items() if k != "gpu"}):
+        monkeypatch.setattr(ownership, "checked_backend", lambda _, value=altered: (backend, value))
+        with pytest.raises(ValueError, match="Backend/tokenizer changed"):
+            recovery.continuation_backend(config, tmp_path)
+
+
+@pytest.mark.parametrize("name", ["qwen-ownership-recovery", "qwen-ownership-recovery-v2"])
+def test_recovery_quote_is_one_job_for_only_missing_trials(modules, monkeypatch, name):
     cloud = importlib.import_module("hf_jobs")
     hardware = {"name": "l4x1", "unitLabel": "minute", "unitCostMicroUSD": 13333}
     monkeypatch.setattr(
@@ -298,14 +377,14 @@ def test_recovery_quote_is_one_job_for_only_missing_trials(modules, monkeypatch)
         ),
     )
     monkeypatch.setattr(cloud, "git", lambda *args: "" if args[0] == "status" else "a" * 40)
-    proposal = cloud.plan("zett13", "0.62", "configs/qwen-ownership-recovery.json")
+    proposal = cloud.plan("zett13", "0.62", f"configs/{name}.json")
     assert proposal["hard_timeout_seconds"] == 2700
     assert proposal["run_limit_seconds"] == 1800
     assert proposal["max_compute_usd"] == "0.613318"
     assert proposal["scored_variants"] == 3456
-    assert proposal["receipt_name"] == "qwen-ownership-recovery.json"
+    assert proposal["receipt_name"] == f"{name}.json"
     with pytest.raises(ValueError):
-        cloud.plan("zett13", "0.60", "configs/qwen-ownership-recovery.json")
+        cloud.plan("zett13", "0.60", f"configs/{name}.json")
 
 
 @pytest.mark.parametrize("stop_first", [False, True])
@@ -328,11 +407,13 @@ def test_recovery_group_runs_sequentially_and_stops_on_model_failure(
         prepared.append(expected["block_index"])
         target.mkdir()
 
-    def run(config, target, checkpoint):
+    def run(config, target, checkpoint, backend_factory):
         assert prepared == [0, 1, 2]
         index = config["block_index"]
         assert config == {**ownership.configuration(index), "max_seconds": config["max_seconds"]}
         assert 0 < config["max_seconds"] <= 1800
+        assert backend_factory.func is recovery.continuation_backend
+        assert backend_factory.keywords == {"directory": target}
         calls.append(index)
         return {
             "status": "failed" if stop_first else "complete",
@@ -355,8 +436,9 @@ def test_recovery_group_runs_sequentially_and_stops_on_model_failure(
         assert outcome["new_records"] == 3456 and outcome["original_records"] == 14976
 
 
+@pytest.mark.parametrize("name", ["qwen-ownership-recovery", "qwen-ownership-recovery-v2"])
 def test_worker_dispatches_recovery_without_requiring_single_run_manifest(
-    modules, monkeypatch, tmp_path
+    modules, monkeypatch, tmp_path, name
 ):
     worker, recovery = modules
     uploads = []
@@ -373,8 +455,8 @@ def test_worker_dispatches_recovery_without_requiring_single_run_manifest(
     )
     monkeypatch.setattr(worker.subprocess, "check_output", lambda *args, **kwargs: "fixture GPU")
     for key, value in {
-        "STUDY_CONFIG": "configs/qwen-ownership-recovery.json",
-        "STUDY_CONFIG_SHA256": file_hash("configs/qwen-ownership-recovery.json"),
+        "STUDY_CONFIG": f"configs/{name}.json",
+        "STUDY_CONFIG_SHA256": file_hash(f"configs/{name}.json"),
         "STUDY_RUN_NAME": "recovery-fixture",
         "STUDY_ARTIFACT_REPO": "example/results",
         "STUDY_COMMIT": "a" * 40,

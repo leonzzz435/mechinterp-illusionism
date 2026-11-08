@@ -1,0 +1,112 @@
+{
+  "kind": "recovery_failure_audit",
+  "checked_at_utc": "2026-11-08T16:28:14.461813+00:00",
+  "job_id": "6af09fc30e0338d1bb84c173",
+  "artifact_repo": "zett13/mechinterp-illusionism-results",
+  "artifact_revision": "3fccbf4f06d4f05b41a3fd37aa691a15b6367401",
+  "run_name": "qwen-ownership-recovery-300a643ad5de4563",
+  "worker_commit": "846e274fcef7a55f6a1fc5d9a1f82f543f93350a",
+  "error": {
+    "message": "Backend/tokenizer changed across invocations",
+    "type": "ValueError"
+  },
+  "error_sha256": "6937b4167daa0ec6883d31df346020c5b5094f12e0c9d77f2e4fa5232ae7e219",
+  "worker_log_sha256": "2ee83f40fee2b2ddc392a52d767ded6a454436a6a90eb4c1e79f10884cbcbf53",
+  "state": {
+    "blocks": [],
+    "elapsed_seconds": 119.00053417799995,
+    "new_records": 0,
+    "original_records": 14976,
+    "status": "failed"
+  },
+  "transport_events": [
+    {
+      "snapshot": "8174d632aa0589f2a551132fc4ab6c729bdb71a6691d0e9f7668731f9099a071",
+      "state": "uploaded"
+    },
+    {
+      "snapshot": "b89b8b520f86fbb6ed4ccdc939705b6086f12246910d79206c50b41d59d6fe06",
+      "state": "uploaded"
+    },
+    {
+      "snapshot": "88557fbcd9bab47a3df93cdcd0d4abe36e9d1ca1ea93167348d20cdb6c082405",
+      "state": "uploaded"
+    }
+  ],
+  "blocks": [
+    {
+      "block_index": 0,
+      "status": "failed",
+      "record_count": 4992,
+      "records_hash": "71026a7e67721937bd8042d68861437dfb818366f24627a5d565273444aaafff",
+      "matches_original_records": true,
+      "manifest_sha256": "5eab7dd4e37b11eccea6a701c1d5c3f42aed2d2a80e156c10f219affbe9d9d21",
+      "checksums_verified": true,
+      "original_manifest_sha256": "ac63ff54cfbee2721aaa1540ff67340fa00b4e9cde2f27b747c9ce2bc1e42711",
+      "cpu_reproduction": {
+        "raw_config_equal": false,
+        "json_config_equal": true,
+        "changed_fields": [
+          "id2label"
+        ],
+        "saved_id2label": {
+          "0": "LABEL_0",
+          "1": "LABEL_1"
+        },
+        "live_label_key_types": [
+          "int"
+        ]
+      }
+    },
+    {
+      "block_index": 1,
+      "status": "paused",
+      "record_count": 5376,
+      "records_hash": "584ca0c12fb1b8baefe27ec7f6187ce9fa37ee588751c877ebe81ee3d7bf6754",
+      "matches_original_records": true,
+      "manifest_sha256": "7c8134bd7bd830377d7013ad4b1d01911cb642e7788d57a5fdbe8273163bafc2",
+      "checksums_verified": false,
+      "original_manifest_sha256": "d729cc893d48ecb09a9bb8687b5104c266d128a269c23a0bad103b475e3d6527",
+      "cpu_reproduction": {
+        "raw_config_equal": false,
+        "json_config_equal": true,
+        "changed_fields": [
+          "id2label"
+        ],
+        "saved_id2label": {
+          "0": "LABEL_0",
+          "1": "LABEL_1"
+        },
+        "live_label_key_types": [
+          "int"
+        ]
+      }
+    },
+    {
+      "block_index": 2,
+      "status": "paused",
+      "record_count": 4608,
+      "records_hash": "815358a58e24d28a15562b6662a213e3d78ba7db945d8ec98e2d47f915629cf5",
+      "matches_original_records": true,
+      "manifest_sha256": "3b5f175b3f59edda1f4ee7fc9eb7aa1f4d000bbdaf1b1fe2539f972c28cff444",
+      "checksums_verified": false,
+      "original_manifest_sha256": "51f984441c2416983731a5e59d736cf47613eb65f41abdb51d908e9b8c55acf7",
+      "cpu_reproduction": {
+        "raw_config_equal": false,
+        "json_config_equal": true,
+        "changed_fields": [
+          "id2label"
+        ],
+        "saved_id2label": {
+          "0": "LABEL_0",
+          "1": "LABEL_1"
+        },
+        "live_label_key_types": [
+          "int"
+        ]
+      }
+    }
+  ],
+  "remaining_selections": 3456,
+  "interpretation": "The direct Python comparison necessarily rejects JSON-restored integer mapping keys. CPU reconstruction reproduces this difference with all three saved Qwen configs. The failed worker did not persist its newly loaded backend_info, so other live metadata differences cannot be excluded retrospectively. The corrected adapter records the complete comparison and rejects any remaining difference."
+}

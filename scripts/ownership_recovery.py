@@ -1,12 +1,48 @@
 """Audit and continue the three recorded upload failures; never rerun saved trials."""
 
 import gc
+import json
 import re
 import shutil
 import time
+from functools import partial
 from pathlib import Path
 
 from huggingface_hub import snapshot_download
+
+
+def continuation_backend(spec, directory):
+    """Compare metadata in its persisted JSON form without changing the scorer."""
+    from self_model_study import ownership
+    from self_model_study.io import canonical, read_json, write_json
+
+    inputs, _ = ownership.frozen_inputs(spec, ownership.build_plan(spec))
+    backend, live_info = ownership.checked_backend(spec)
+    # Transformers uses integer id2label keys; JSON objects necessarily use strings.
+    # Retain every field and value. Never ignore a model/tokenizer/hardware difference.
+    info = json.loads(canonical(live_info))
+    saved = read_json(Path(directory) / "manifest.json")["backend_info"]
+    changed = sorted(
+        k
+        for k in saved.keys() | info.keys()
+        if k not in saved or k not in info or saved[k] != info[k]
+    )
+    write_json(
+        Path(directory) / "recovery/backend-comparison.json",
+        {"saved": saved, "current": info, "equal": saved == info, "changed_fields": changed},
+    )
+    if saved != info:
+        raise ValueError(f"Backend/tokenizer changed across invocations: {changed}")
+
+    class CheckedChoices:
+        def choice(self, prompt, choices, format_name):
+            result = backend.choice(prompt, choices, format_name)
+            # Supplying a factory bypasses ownership.run's default live token check.
+            # Preserve that exact check here, using only the model-input fields.
+            ownership.check_output({"prompt": prompt, "choices": choices}, result, inputs)
+            return result
+
+    return CheckedChoices(), info
 
 
 def validate_spec(spec):
@@ -143,7 +179,12 @@ def run_group(spec, directory, checkpoint):
                 break
             config = {**configuration(block["block_index"]), "max_seconds": remaining}
             try:
-                result = run(config, target, checkpoint=checkpoint)
+                result = run(
+                    config,
+                    target,
+                    checkpoint=checkpoint,
+                    backend_factory=partial(continuation_backend, directory=target),
+                )
             finally:
                 export(
                     target,

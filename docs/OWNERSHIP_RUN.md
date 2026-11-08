@@ -2,8 +2,9 @@
 
 **Current status:** all three initial jobs ended in upload errors (HTTP 429), after
 14,976 technically valid selections had been persisted. Those records were recovered
-and audited. One separately authorized recovery job is now `RUNNING` to complete
-the remaining 3,456 selections, with an additional $0.62 budget. See the
+and audited. The separately authorized recovery job also ended in `ERROR`, this time
+at the metadata comparison before any new selection. All 14,976 saved records are
+unchanged; 3,456 remain missing. A tested correction and v2 launch are prepared. See the
 [incident and bounded continuation](OWNERSHIP_RECOVERY.md); the original launch
 record below is retained as history.
 

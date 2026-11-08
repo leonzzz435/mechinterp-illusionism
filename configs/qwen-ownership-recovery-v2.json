@@ -1,0 +1,41 @@
+{
+  "engine": "qwen-ownership-recovery",
+  "protocol": "ownership-replication-v1",
+  "max_seconds": 1800,
+  "hard_timeout_seconds": 2700,
+  "original_execution_commit": "23f9ea8f6ebc31e4a6f3590481b8b8099bc1c2b5",
+  "artifact_repo": "zett13/mechinterp-illusionism-results",
+  "artifact_revision": "60a71b30b5a86c1931653b20f968431118b76435",
+  "blocks": [
+    {
+      "block_index": 0,
+      "job_id": "6af08b8de6320c66fad75bf5",
+      "run_name": "qwen-ownership-00-772e95c5e31d4cdc",
+      "manifest_sha256": "ac63ff54cfbee2721aaa1540ff67340fa00b4e9cde2f27b747c9ce2bc1e42711",
+      "error_sha256": "8f0e62f65adab27cdaee5965ce98d3cf2d25c9076279635757b92d9238ee8839",
+      "records_hash": "71026a7e67721937bd8042d68861437dfb818366f24627a5d565273444aaafff",
+      "record_count": 4992,
+      "expected_jobs": 6144
+    },
+    {
+      "block_index": 1,
+      "job_id": "6af08b910e0338d1bb84bbda",
+      "run_name": "qwen-ownership-01-b9baa425c7b949f4",
+      "manifest_sha256": "d729cc893d48ecb09a9bb8687b5104c266d128a269c23a0bad103b475e3d6527",
+      "error_sha256": "f470a25d51ab4a028c086ed02b8b0bc762086708b223e8cf18391772fd3818fa",
+      "records_hash": "584ca0c12fb1b8baefe27ec7f6187ce9fa37ee588751c877ebe81ee3d7bf6754",
+      "record_count": 5376,
+      "expected_jobs": 6144
+    },
+    {
+      "block_index": 2,
+      "job_id": "6af08b94e6320c66fad75bf7",
+      "run_name": "qwen-ownership-02-56f6e50652c74c04",
+      "manifest_sha256": "51f984441c2416983731a5e59d736cf47613eb65f41abdb51d908e9b8c55acf7",
+      "error_sha256": "d1d54e4c44195bfcf5695842776b792ab962c88aa5cd40477274fdeaccf45096",
+      "records_hash": "815358a58e24d28a15562b6662a213e3d78ba7db945d8ec98e2d47f915629cf5",
+      "record_count": 4608,
+      "expected_jobs": 6144
+    }
+  ]
+}

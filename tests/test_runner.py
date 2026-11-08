@@ -137,7 +137,7 @@ def test_configs_are_loadable():
     from self_model_study.config import load_config
 
     for path in Path("configs").glob("*.json"):
-        if path.name == "qwen-ownership-recovery.json":
+        if path.name in {"qwen-ownership-recovery.json", "qwen-ownership-recovery-v2.json"}:
             import runpy
 
             from self_model_study.io import read_json

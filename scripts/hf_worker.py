@@ -65,13 +65,22 @@ def main():
         "configs/qwen-possessive-control.json",
         "configs/qwen-confidence-pilot.json",
         "configs/qwen-confidence-pilot-v2.json",
+        "configs/qwen-ownership-permissions-00.json",
+        "configs/qwen-ownership-permissions-01.json",
+        "configs/qwen-ownership-permissions-02.json",
     }:
         raise ValueError("Unsupported worker configuration")
     expected_hash = os.environ.get("STUDY_CONFIG_SHA256")
     if expected_hash and file_hash(config) != expected_hash:
         raise ValueError("Worker configuration differs from approved job plan")
     engine = read_json(config)["engine"]
-    if engine in {"qwen-confidence", "qwen-confidence-v2"}:
+    if engine == "qwen-ownership-permissions":
+        from self_model_study.ownership import run, validate_spec
+        from self_model_study.ownership_reporting import export
+
+        def load_spec(path):
+            return validate_spec(read_json(path))
+    elif engine in {"qwen-confidence", "qwen-confidence-v2"}:
         from self_model_study.confidence import build_plan, run, validate_spec
         from self_model_study.confidence_reporting import export
 

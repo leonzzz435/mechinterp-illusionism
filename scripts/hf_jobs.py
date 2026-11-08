@@ -83,6 +83,16 @@ CONFIGURATIONS = {
         "generated_texts": 0,
     },
 }
+for _ownership_block in range(3):
+    CONFIGURATIONS[f"configs/qwen-ownership-permissions-{_ownership_block:02d}.json"] = {
+        "engine": "qwen-ownership-permissions",
+        "run_prefix": f"qwen-ownership-{_ownership_block:02d}-",
+        "receipt_name": f"qwen-ownership-permissions-{_ownership_block:02d}.json",
+        "blocks": 16,
+        "scored_variants": 6144,
+        "generated_texts": 0,
+    }
+
 BOOTSTRAP = """
 uv run --no-project --with huggingface-hub==0.36.2 python - <<'PY'
 import hashlib, os, pathlib, subprocess
@@ -242,6 +252,19 @@ def plan(namespace, budget, config="configs/harness-baseline.json", resume_recei
 
 def submit(proposal, receipt, api, token):
     receipt = Path(receipt)
+    if proposal.get("engine") == "qwen-ownership-permissions":
+        guard = ROOT / ".hf-jobs/ownership-permissions-v1.json"
+        if not guard.exists():
+            raise ValueError("Use ownership_tranche.py: aggregate budget reservation required")
+        reservation = read_json(guard)
+        if (
+            reservation.get("state") != "submitting"
+            or reservation.get("commit") != proposal.get("commit")
+            or reservation.get("tranche_id") != proposal.get("tranche_id")
+            or proposal not in reservation.get("jobs", [])
+            or receipt.resolve() != (ROOT / ".hf-jobs" / proposal["receipt_name"]).resolve()
+        ):
+            raise ValueError("Ownership submission differs from reserved tranche")
     if not token:
         raise ValueError("Log in locally with hf auth login; do not put tokens in the command")
     if receipt.exists():

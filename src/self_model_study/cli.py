@@ -57,6 +57,8 @@ def main(argv=None):
             engine = read_json(args.run / "manifest.json").get("engine")
         else:
             engine = None
+        if engine == "qwen-ownership-permissions":
+            return ownership_command(args)
         if engine in {"qwen-confidence", "qwen-confidence-v2"}:
             return confidence_command(args)
         if engine == "qwen-possessive-control":
@@ -126,6 +128,54 @@ def main(argv=None):
         return 0
     except (ValueError, RuntimeError, OSError, ImportError) as exc:
         parser.exit(2, f"Error: {exc}\n")
+
+
+def ownership_command(args):
+    from . import ownership
+    from . import ownership_reporting as reporting
+    from .io import digest, write_json
+    from .pilot import jobs_in
+
+    if args.command in {"validate", "run"}:
+        spec = ownership.validate_spec(read_json(args.config))
+    if args.command == "validate":
+        plan = ownership.build_plan(spec)
+        result = {
+            "valid": True,
+            "model_inference": False,
+            "plan_hash": digest(plan),
+            "scheduled_choices": len(jobs_in(plan)),
+            "world_indices": spec["world_indices"],
+        }
+        if args.evidence:
+            raise ValueError("Ownership tranche cannot unlock historical confirmation")
+        if args.tokenizer_check:
+            inputs, audit = ownership.frozen_inputs(spec, plan)
+            actual = ownership.encode_inputs(plan, ownership.load_tokenizer(spec))
+            if actual != inputs:
+                raise ValueError("Tokens differ from frozen ownership preflight")
+            result["tokenizer_checked"] = True
+        if args.freeze:
+            if args.freeze.exists() and any(args.freeze.iterdir()):
+                raise ValueError("Choose an empty ownership design directory")
+            write_json(args.freeze / "config.json", spec)
+            write_json(args.freeze / "plan.json", plan)
+            write_json(args.freeze / "preflight.json", result)
+    elif args.command == "run":
+        if args.max_seconds is not None:
+            spec["max_seconds"] = args.max_seconds
+        manifest = ownership.run(spec, args.out, max_jobs=args.max_jobs)
+        result = {k: manifest[k] for k in ("run_id", "status", "expected_jobs", "synthetic")}
+    elif args.command == "analyze":
+        if args.ratings:
+            raise ValueError("Ownership tranche has no confidence or human-rating arm")
+        with run_lock(args.run):
+            report = reporting.analyze(args.run)
+        result = {k: report[k] for k in ("status", "recorded_choices", "decision", "synthetic")}
+    else:
+        result = reporting.export(args.run, args.out)
+    print(canonical(result))
+    return 2 if result.get("status") in {"failed", "complete_with_errors"} else 0
 
 
 def confidence_command(args):

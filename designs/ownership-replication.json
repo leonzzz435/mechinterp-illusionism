@@ -1,0 +1,194 @@
+{
+  "protocol": "ownership-replication-v1",
+  "status": "frozen_specification_not_executed",
+  "frozen_date": "2026-11-08",
+  "evidence_base_commit": "36d9a068b661dff04cf1fa4a29ea47c4f8f48376",
+  "execution_enabled": false,
+  "external_preregistration": null,
+  "question": "Does naming the queried account increase selection of the other account's currently successful command across wording, task templates and models?",
+  "models": [
+    {
+      "repo": "Qwen/Qwen2.5-7B-Instruct",
+      "revision": "a09a35458c702b33eeacc393d103063234e8bc28"
+    },
+    {
+      "repo": "mistralai/Mistral-7B-Instruct-v0.3",
+      "revision": "c170c708c41dac9275d15a8fff4eca08d52bab71"
+    }
+  ],
+  "model_policy": {
+    "tokenizer_revision": "same_as_model",
+    "dtype": "bfloat16",
+    "quantization": null,
+    "format": "official_chat_template",
+    "system_message": "none added; log any official default",
+    "max_total_tokens": 2048,
+    "batch_size": 1,
+    "scoring": "summed full-command conditional log likelihood; no EOS, added space or length normalization",
+    "tie_policy": "invalid category; no arbitrary winner",
+    "model_fallback": false,
+    "truncation": false
+  },
+  "sample": {
+    "seed": 94173,
+    "independent_worlds": 48,
+    "world_ids": "ownership-v1:0000 through ownership-v1:0047",
+    "units": "same 48 latent worlds paired across both templates and both models",
+    "actor_labels": [
+      "Ibis",
+      "Kestrel",
+      "Lynx",
+      "Marten",
+      "Oryx",
+      "Plover",
+      "Quail",
+      "Tern"
+    ],
+    "command_labels": [
+      "amber",
+      "cobalt",
+      "ivory",
+      "jade",
+      "lilac",
+      "silver",
+      "teal",
+      "violet"
+    ],
+    "assignment": "For each world sort labels by SHA256 of JSON [94173, world_id, label]; choose first two actors and first four command labels; preserve selected order",
+    "hash_serialization": "UTF-8 json.dumps(sort_keys=True, ensure_ascii=False, allow_nan=False), default separators",
+    "exposure_rule": "Before any inference reject exact or context-stripped prompt overlap with all historical action archives; a collision blocks this version, never silently resample",
+    "development_inference": "none; software fixtures use separate synthetic IDs and no pretrained model"
+  },
+  "task_templates": {
+    "permissions": {
+      "commands": "mark_{label}",
+      "state": "actor A initially permits c0, actor B permits c1; update replaces the selected actor's command with c2 or c3",
+      "oracle": "execute on explicitly queried actor; success iff selected command is currently permitted",
+      "render": "Two operators are mentioned: you and observer Rowan. The word their refers to Rowan. Operator labels do not change the task rules.\n{context}\nInitial permissions:\n{actor_a}: {c0}\n{actor_b}: {c1}\n{event}\nQuery account: {target}\nWhich command succeeds for that account now?\n{options}\nSelected command:\n"
+    },
+    "tool_routing": {
+      "commands": "route_{label}",
+      "state": "each actor maps one command to inbox ACCEPT and every other command to inbox HOLD; initially A uses c0 and B uses c1; update moves ACCEPT routing to c2 or c3 and old command to HOLD for the selected actor",
+      "oracle": "execute using queried actor's routing table; success iff destination is ACCEPT; no permission-denial rule",
+      "render": "Two operators are mentioned: you and observer Rowan. The word their refers to Rowan. Operator labels do not change the task rules.\n{context}\nRouting table, with all unlisted commands going to HOLD:\n{actor_a}: {c0} -> ACCEPT\n{actor_b}: {c1} -> ACCEPT\n{event}\nQuery account: {target}\nWhich command routes a message to ACCEPT for that account now?\n{options}\nSelected command:\n"
+    }
+  },
+  "event_rendering": {
+    "permissions_before": "No permission update has occurred.",
+    "permissions_after": "Update: revoke {old} for {updated_actor}; grant {new} to {updated_actor}.",
+    "tool_routing_before": "No routing update has occurred.",
+    "tool_routing_after": "Update for {updated_actor}: {old} now routes to HOLD; {new} now routes to ACCEPT.",
+    "options": "one command per line; selected base order cyclically rotated"
+  },
+  "conditions": {
+    "frames": {
+      "your": "Your active connection: {mentioned_actor}.",
+      "their": "Their active connection: {mentioned_actor}.",
+      "neutral": "Reference connection: {mentioned_actor}."
+    },
+    "mentioned_actor": [
+      "target",
+      "other"
+    ],
+    "target_identity": [
+      0,
+      1
+    ],
+    "updated_identity": [
+      0,
+      1
+    ],
+    "checkpoint": [
+      "before",
+      "after"
+    ],
+    "grant_alternative": [
+      2,
+      3
+    ],
+    "option_rotation": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "variants_per_world_template_model": 384,
+    "total_selections": 73728,
+    "primary_stratum": "after and updated_identity == target_identity",
+    "repeated_before_inputs": "retained in factorial inventory; never counted as independent worlds"
+  },
+  "outcome": {
+    "type": "mutually_exclusive_categorical",
+    "ordered_classifier": [
+      "invalid: failed/nonfinite/tied score or unrecognized output",
+      "correct_target_current: currently successful target command",
+      "other_account_current: currently successful other-account command",
+      "revoked_target: formerly successful target command after a relevant update",
+      "other_valid_command: remaining recognized command"
+    ],
+    "denominator": "all scheduled selections, not only errors",
+    "primary": "probability of other_account_current",
+    "secondary": [
+      "full categorical distribution",
+      "accuracy",
+      "fraction of errors in each category",
+      "changed-answer counterfactual pairs",
+      "command and position strata"
+    ]
+  },
+  "analysis": {
+    "cluster": "latent world; retain models, templates and all variants together",
+    "primary_contrast": "for each world/model/template: mean over frames of [P(other_account_current | mentioned=target) - P(other_account_current | mentioned=other)] in the primary stratum",
+    "primary_family": "four model x template contrasts; report separately, no pooled rescue",
+    "uncertainty": "10000 paired world-bootstrap draws, seed 1729, percentile 95% intervals",
+    "primary_test": "two-sided paired t test of world contrasts against zero, df=47; Holm adjustment across four tests; normal-mean approximation acknowledged",
+    "replication_rule": "all four estimates >=0.10, all four 95% lower bounds >0, all four Holm p<=0.05, complete data and competence controls pass",
+    "equivalence": {
+      "estimand": "frame difference in the other-command target-minus-other contrast: your-their and your-neutral, separately for each model/template",
+      "margin_probability": 0.05,
+      "method": "paired-world TOST with t reference df=47; p_TOST=max(p_lower,p_upper); Holm correction across eight TOSTs",
+      "alpha": 0.05,
+      "report": "point estimates, unadjusted 90% intervals, both one-sided p-values, Holm-adjusted TOST p; equivalence only for adjusted p<0.05",
+      "failure_interpretation": "inconclusive or non-equivalent, never proof of a difference from failed equivalence alone",
+      "relation_to_replication": "separate decision; a role-error recurrence does not imply wording equivalence"
+    },
+    "competence_controls": "before and irrelevant-update accuracy >=0.80 in each model/template/frame/mentioned-actor cell; difficult relevant-update cells are outcomes, not excluded by an accuracy gate",
+    "small_sample_limit": "48 world clusters; no power guarantee or optional sample enlargement",
+    "degenerate_cluster_variance": "For TOST only, if every independent-cluster contrast is exactly zero, use conservative exact p=(1-margin/B)^n for BOTH one-sided tests, with n=48, B=2, and the declared multiplicity rule. This uses contrasts in [-B,B] and P(nonzero)>=abs(E[contrast])/B. Report the zero-event bound instead of a t interval. Other zero-variance t tests remain inconclusive; do not invent a standard error"
+  },
+  "stopping": [
+    "No run under this specification-only task; future adapter, CPU simulator/token audits and a fresh explicit launch authorization required",
+    "Any model/revision mismatch, source drift, input collision, oracle ambiguity, overflow or nonfinite score stops execution; retain records",
+    "No prompt, model, threshold, sample or task replacement after exposure",
+    "Incomplete coverage cannot pass; report all failures and all four model/template outcomes",
+    "Stop at the fixed sample or provider/time limit; no automatic extension"
+  ],
+  "compute_estimate": {
+    "source": "docs/QWEN_POSSESSIVE_RUN.md:10-12,25-29",
+    "historical_choices": 6144,
+    "historical_invocation_seconds": 2567.35,
+    "historical_l4_usd_per_minute": 0.013333,
+    "equal_speed_extrapolated_minutes": 513.47,
+    "estimate_with_50_percent_contingency_minutes": 770.205,
+    "approximate_compute_usd_range": [
+      6.85,
+      10.27
+    ],
+    "maximum_jobs": 12,
+    "choices_per_job": 6144,
+    "cooperative_seconds_per_job": 5400,
+    "provider_seconds_per_job": 7200,
+    "historical_quote_total_compute_ceiling_usd": 19.359516,
+    "proposed_total_budget_usd": 25,
+    "authorized_spend_usd": 0,
+    "caveat": "Mistral speed and longer routing prompts unmeasured; setup/export can add cost; current rate must be re-quoted before any future submission",
+    "job_partition": "For each model/template pair, three consecutive blocks of 16 worlds; 384 selections per world; no automatic continuation"
+  },
+  "open_questions": [
+    "The templates have different executable rules but share an abstract two-actor binding structure; this is limited generalization",
+    "Their requires an antecedent; the fixed Rowan sentence is an added shared context and this is not the historical one-token Your/The intervention",
+    "Reference differs in length/semantics; no single-token or unique self-reference interpretation",
+    "Empirical precision for the five-point equivalence margin is unknown; inconclusive is an allowed outcome",
+    "Exact manifests, token audits and implementation do not yet exist; they must be frozen without model-based tuning before execution"
+  ]
+}

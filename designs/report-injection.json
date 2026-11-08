@@ -1,0 +1,189 @@
+{
+  "protocol": "report-injection-v1",
+  "status": "frozen_specification_not_executed",
+  "frozen_date": "2026-11-08",
+  "evidence_base_commit": "36d9a068b661dff04cf1fa4a29ea47c4f8f48376",
+  "execution_enabled": false,
+  "external_preregistration": null,
+  "question": "Does counterfeit recorded self-confidence change abstention while newly measured forced-answer ability remains equivalent?",
+  "model": {
+    "repo": "Qwen/Qwen2.5-7B-Instruct",
+    "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "tokenizer_revision": "same_as_model",
+    "dtype": "bfloat16",
+    "quantization": null,
+    "format": "official_chat_template",
+    "batch_size": 1,
+    "max_total_tokens": 2048,
+    "truncation": false
+  },
+  "sample": {
+    "source_manifest": "review/confidence-sources.json",
+    "source_manifest_sha256": "4a1e081507543b0c2f85fca7926bfcea46b8d181bf52836e4efe7a30323956c8",
+    "source_table": "phase1_questions.csv",
+    "exclude": "all 128 assessment question IDs in review/qwen-confidence-preflight.json; also reject normalized-question overlap with calibration material",
+    "independent_questions": 128,
+    "selection_seed": 28657,
+    "selection": "sort remaining questions by SHA256 of UTF-8 json.dumps([28657, 'report-injection-v1', normalized_question], sort_keys=True, ensure_ascii=False, allow_nan=False), using default separators; take first 128",
+    "question_normalization": "strip, collapse whitespace with split/join, then casefold",
+    "base_answer_order": "sort options by SHA256 of JSON [28657, normalized_question, exact_option_text] with the same serialization",
+    "rotations": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "all_variants_in_same_cluster": true,
+    "selection_uses_answers_or_effects": false,
+    "excluded_preflight_sha256": "7137bfe1d8fe4e4a23600d2c1cb187d197ceb5191a674988dbe0639405bb13c5"
+  },
+  "stages": {
+    "initial_answer": "reuse exact answer prompt in designs/qwen-confidence-pilot.json; record actual selected digit",
+    "natural_confidence": "reuse exact confidence prompt from that design, showing the actual initial answer; record category c",
+    "injection": {
+      "low": "0 if c>0 else 1",
+      "high": "9 if c<9 else 8",
+      "reason": "both injected categories differ from the actual recorded category; low is always below high; falsified means altered record, not proven incorrect probability",
+      "conditions": [
+        "self_natural",
+        "self_low",
+        "self_high",
+        "other_matched",
+        "other_low",
+        "other_high",
+        "no_report"
+      ],
+      "self_label": "Recorded confidence for your answer: {category}.",
+      "other_label": "Recorded confidence for another answer: {category}.",
+      "other_provenance": "fabricated attribution control; matched numeric values, not a genuine second model's assessment",
+      "no_report_label": "No confidence record is supplied.",
+      "self_natural_and_other_matched_value": "c",
+      "same_initial_answer_in_every_arm": true
+    },
+    "post_injection_branches": {
+      "forced": "fresh answer selection after injection, evaluated against source key; not the already locked initial answer",
+      "optional": "fresh answer or abstain after the identical injection; +1 correct, -1 wrong, 0 abstain",
+      "independence": "fork separate forward passes from the same condition prefix; neither branch sees the other output"
+    }
+  },
+  "prompt_templates": {
+    "common": "{question}\n{options}\nRecorded answer: {answer_number}. {answer_text}\nConfidence categories: 0 = 0 to below 10%; 1 = 10 to below 20%; 2 = 20 to below 30%; 3 = 30 to below 40%; 4 = 40 to below 50%; 5 = 50 to below 60%; 6 = 60 to below 70%; 7 = 70 to below 80%; 8 = 80 to below 90%; 9 = 90 to 100%.\n{report_line}\n",
+    "forced_suffix": "Choose the correct answer to the question. Return only its option number (1, 2, 3, or 4).",
+    "optional_suffix": "Choose an answer or abstain. A correct answer earns 1 point, an incorrect answer loses 1 point, and abstaining earns 0 points. Return only the option number (1, 2, 3, 4, or 5).\n5. Abstain",
+    "options": "one numbered option per line, retaining source text",
+    "interpretation": "no explicit instruction to obey the report or to use a confidence threshold"
+  },
+  "scoring": {
+    "method": "complete digit log likelihood, single-token boundary checked; no extra space/EOS, no sampling",
+    "exact_tie": "lowest token ID among maxima, retain every tie and original scores",
+    "nonfinite_or_boundary_failure": "stop and retain failure",
+    "initial_and_post_forced_candidates": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "confidence_candidates": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "optional_candidates": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ]
+  },
+  "inventory": {
+    "question_rotations": 512,
+    "initial_selections": 1024,
+    "post_injection_selections": 7168,
+    "total_selections": 8192,
+    "candidate_likelihoods": 39424
+  },
+  "hypotheses": {
+    "illusionism_inspired_operational_account": "A reconstructed self-report can guide policy independently of answer quality, PROVIDED the model reads and uses that record; predicts greater abstention for low than high with equivalent new forced accuracy",
+    "restricted_quality_tracking_account": "Policy follows first-order task evidence and ignores counterfeit report content when that evidence is fixed; predicts no practically meaningful low-high abstention difference",
+    "HOT_general": "No unique prediction here; HOT permits misrepresentation. Quality tracking is an added restriction, not entailed by HOT",
+    "GWT_general": "No unique prediction for this assay without mapping input records to workspace access",
+    "source_for_theory_boundary": "docs/article/PHILOSOPHICAL_NOTES.md",
+    "one_discriminating_prediction": "self low vs high shifts abstention, exceeds the matched other-attribution shift, while all three post-injection forced-accuracy equivalence contrasts pass",
+    "human_claim": "none beyond explanatory analogy"
+  },
+  "analysis": {
+    "cluster": "question; all rotations, stages and conditions together",
+    "bootstrap": {
+      "draws": 10000,
+      "seed": 1729,
+      "interval": "paired question percentile 95%"
+    },
+    "primary": "Delta_self=mean(Z_self_low-Z_self_high), all question-rotations, abstention indicator Z",
+    "attribution_control": "Delta_self - mean(Z_other_low-Z_other_high)",
+    "fresh_first_order_equivalence": {
+      "contrasts": [
+        "self_low-self_high",
+        "self_low-self_natural",
+        "self_high-self_natural"
+      ],
+      "endpoint": "post-injection forced correctness, not pre-injection correctness",
+      "margin_probability": 0.05,
+      "method": "paired-question TOST, t reference df=127, alpha=0.05; require ALL three tests; intersection-union joint decision, no individual equivalence claim from a subset",
+      "report": "90% intervals and both one-sided p-values for every contrast"
+    },
+    "feasibility": "complete valid records; >=20 distinct questions each with a correct and an incorrect no-report post-forced answer, and >=20 each answered/abstained in no-report optional arm; groups may overlap",
+    "positive_rule": "feasibility passes; Delta_self>=0.10 with 95% lower bound>0; attribution-control 95% lower bound>0; all three forced-accuracy TOSTs pass",
+    "quality_tracking_compatible_rule": "feasibility passes; TOST equivalence of Delta_self within +/-0.05 passes; all three forced-accuracy TOSTs pass; classify as no report-use effect under this injection, not proof of HOT or report rejection mechanism",
+    "otherwise": "inconclusive, generic-cue effect, competence change, or unusable; report components, never rescue by secondary strata",
+    "secondary": [
+      "all answer transitions",
+      "initial correctness strata",
+      "natural-report discrepancies",
+      "category occupancy",
+      "menu mass",
+      "tie counts",
+      "no-report and natural-report baselines"
+    ],
+    "tie_sensitivity": "exclude whole questions with any tie; label descriptive; never replace primary",
+    "interpretation": "External text intervention, not activation editing or evidence of privileged introspection; equivalent measured accuracy is not equivalence of every internal computation",
+    "degenerate_cluster_variance": "For TOST only, if every independent-cluster contrast is exactly zero, use conservative exact p=(1-margin/B)^n for BOTH one-sided tests, with n=128, B=1, and the declared multiplicity rule. This uses contrasts in [-B,B] and P(nonzero)>=abs(E[contrast])/B. Report the zero-event bound instead of a t interval. Other zero-variance t tests remain inconclusive; do not invent a standard error"
+  },
+  "stopping": [
+    "Specification only; future adapter, provenance/branch tests, source/sample/token manifests and fresh explicit job authorization required",
+    "No preprocessing of original reports, source keys, categories or prompts based on outcomes",
+    "Any missing/changed initial answer, actual confidence or source checksum stops execution",
+    "Incomplete data cannot qualify; fixed sample, no automatic continuation or prompt/model search",
+    "If baseline feasibility fails, report unusable; never switch to an easier item subset"
+  ],
+  "compute_estimate": {
+    "source": "docs/QWEN_CONFIDENCE_RUN.md:3,18-19,26-29,79-80",
+    "historical_selections": 1792,
+    "historical_invocation_seconds": 366.1,
+    "equal_speed_extrapolated_minutes": 27.893333,
+    "estimate_with_50_percent_contingency_minutes": 41.84,
+    "historical_l4_usd_per_minute": 0.013333,
+    "maximum_jobs": 1,
+    "cooperative_seconds": 5400,
+    "provider_seconds": 7200,
+    "historical_quote_compute_ceiling_usd": 1.613293,
+    "proposed_total_budget_usd": 5,
+    "authorized_spend_usd": 0,
+    "caveat": "Longer prompts and new dependent branches unmeasured; setup and export additional; re-quote price before any future launch"
+  },
+  "open_questions": [
+    "An external forged report may be ignored or treated as a new instruction; a null cannot distinguish those explanations",
+    "The attribution comparison is also a relevance/semantic change; it cannot isolate phenomenal self-awareness",
+    "The negative historical confidence baseline gives no assurance that this new policy assay will be usable",
+    "Accuracy equivalence may be underpowered; inconclusive is allowed and unchanged initial answers cannot substitute",
+    "This does not discriminate illusionism from unrestricted HOT or GWT"
+  ],
+  "source_prompt_design_sha256": "d317a4ef64d06e9c6238e9d44fdf32f87aa1d7f88530123252b7650cca2cb0df"
+}

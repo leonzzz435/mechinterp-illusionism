@@ -1,6 +1,31 @@
-# Review target: negative confidence baseline and completed controls
+# Review target: publication draft on a recurring role error
 
-Start with the [completed confidence/abstention results](QWEN_CONFIDENCE_RESULTS.md):
+Start with [Naming the Agent, Choosing for the Other](article/ARTICLE.md), then its
+[sentence-level claim ledger](article/CLAIMS.md). The central observation is the role gap
+after a relevant permission change; the other-account error direction has narrower evidence
+than the recurring accuracy gap. Review that distinction before evaluating the explanation.
+
+The article preserves positive findings as well as failed stronger criteria. Three disjoint
+development cohorts are not three independent confirmatory replications; the patch reuses
+the middle cohort. “Your” versus “The” was not an equivalence experiment. The
+[philosophical source notes](article/PHILOSOPHICAL_NOTES.md) distinguish a restricted
+report-use prediction from illusionism, HOT and GWT in general.
+
+Two new, locally frozen **specifications only** are separately reviewable:
+
+- [Role-binding replication](OWNERSHIP_REPLICATION.md) and [JSON](../designs/ownership-replication.json):
+  categorical errors, fresh scenarios, another template/model and prospective equivalence tests.
+- [Confidence-record injection](REPORT_INJECTION.md) and [JSON](../designs/report-injection.json):
+  abstention and fresh post-injection forced accuracy, with explicit theory assumptions.
+
+Neither has an execution adapter or new data; no inference or cloud job accompanies this
+rewrite. [Revision and verification notes](article/REVISION_NOTES.md) account for removed
+sections, retained numbers, consistency searches and unchanged protected files.
+The evidence inventory below remains available in full.
+
+## Completed confidence baseline
+
+The [completed confidence/abstention results](QWEN_CONFIDENCE_RESULTS.md) contain:
 1,792 valid selections, usable measurement groups, S −1.37 pp [−10.62, +7.93], verbal AUROC
 0.544 [0.485, 0.602], `no_behavioral_candidate`. The full analysis and all nine original
 figure files reproduce exactly. The [raw-score audit](../review/qwen-confidence-audit.json)

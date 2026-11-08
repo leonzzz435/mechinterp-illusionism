@@ -14,6 +14,11 @@ identity/limitation judgments were 11/20 plain versus 15/20 chat. Two unclear ju
 retained; no full paired effect is estimated for experience claims or coherence.
 Every additional paid job requires separate authorization.
 
+- **[Next: confidence and abstention replication design](docs/QWEN_CONFIDENCE_PILOT.md)** —
+  64 calibration and 128 assessment questions from public author materials, 1,792 planned
+  selections. Tests own-answer reliability reports and selective answering, with external
+  difficulty controls. Source/input/token checks are CPU-only; the execution adapter and
+  model results are pending. No new internal intervention or paid job has started.
 - **[Completed Your/The control: results and plots](docs/QWEN_POSSESSIVE_RESULTS.md)** —
   6,144 choices on 16 fresh development scenarios; 48/48 controls passed. Primary accuracy
   interaction **+1.95 pp [−0.78, +4.69], exact p=0.3125**: the possessive-specific candidate

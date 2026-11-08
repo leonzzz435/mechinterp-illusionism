@@ -27,6 +27,26 @@
 
 ## Decisions and blockers
 
+### Current milestone: confidence and abstention replication design
+
+The bounded wording-diagnostic branch is complete. Return to a specific candidate component
+of a functional self-model: evaluating own-answer reliability and selectively answering.
+The [new design](docs/QWEN_CONFIDENCE_PILOT.md) uses published multiple-choice questions and
+explicit external-difficulty controls. It is a conceptual partial replication, with no
+claim of privileged introspection, functional dissociation or a discovered mechanism.
+
+- [x] Inspect original paper, public author code/data and direct methodological objections.
+- [x] Pin source hashes; audit split separation, keys and covariate alignment; fix sample,
+  option rotations, prompts, scoring, primary endpoint and pilot stopping rules.
+- [x] Prepare CPU-only input/token audit, regression tests and a labeled design diagram.
+- [ ] Review measurement limits and implement the isolated dependent-stage runner, analysis,
+  calibration, export and crash recovery. Preserve historical study engines and archives.
+- [ ] Verify tiny-model scoring, error handling, statistical edge cases and question-level
+  uncertainty; prepare one concrete L4 cost/runtime proposal before requesting new funding.
+- [ ] Run only after separate authorization; report complete, negative or incomplete results.
+- [ ] Consider one fixed internal intervention only after a useful baseline and review of
+  generic-difficulty explanations. No automatic layer/model/prompt search.
+
 ### Completed milestone: bounded Qwen reference/action pilot
 
 - [x] Keep causal separation as the main question and illusionism as the philosophical motivation.
@@ -96,8 +116,8 @@ The [verified result](docs/QWEN_POSSESSIVE_RESULTS.md) is +1.95 pp [−0.78, +4.
 no possessive-specific accuracy candidate. The descriptive Your/Reference anchor is +13.67 pp;
 the large role gap also occurs with The. A positive secondary margin interaction prevents a
 zero-influence claim, but cannot rescue the primary endpoint. This ends the bounded diagnostic
-branch. The central causal-separation question is unresolved; independent external review and
-reassessment of its operationalization remain outstanding before further GPU work.
+branch. The central causal-separation question is unresolved. Reassessment now has a concrete
+confidence/abstention replication design above; independent external review remains outstanding.
 The old 40/40/100 dataset and historical pilots are preserved.
 
 The [review guide](docs/REVIEW_GUIDE.md) is the handoff for a reviewer without chat context.

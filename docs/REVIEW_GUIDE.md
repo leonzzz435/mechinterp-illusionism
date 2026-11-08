@@ -1,4 +1,15 @@
-# Review target: completed Your/The control and activation exchange
+# Review target: next measurement design and completed controls
+
+The current planning target is the [confidence/abstention replication](QWEN_CONFIDENCE_PILOT.md).
+Its [design JSON](../designs/qwen-confidence-pilot.json),
+[author-source pins](../review/confidence-sources.json) and
+[CPU preflight](../review/qwen-confidence-preflight.json) are reviewable without running Qwen.
+This is preparation, not new model evidence. Review the interpretation of fresh-pass
+self-evaluation, generic-difficulty predictors, answer revisions, grouped uncertainty and
+deviations from the source study. The execution adapter is not yet implemented; there is
+no launchable configuration or new job. This is an internal design, not an independent review.
+
+## Completed empirical evidence
 
 Start with [the Your/The results](QWEN_POSSESSIVE_RESULTS.md),
 [full report](QWEN_POSSESSIVE_FULL_REPORT.md), [frozen protocol](QWEN_POSSESSIVE_CONTROL.md)

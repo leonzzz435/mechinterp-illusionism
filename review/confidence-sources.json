@@ -1,0 +1,72 @@
+{
+  "source": "https://osf.io/resw4/",
+  "paper": "https://doi.org/10.1038/s42256-026-01293-x",
+  "checked_on": "2026-11-08",
+  "license_note": "OSF node has no explicit license in inspected metadata. Keep author artifacts in ignored local cache; track retrieval metadata and our own design only. Downloaded notebook is not executed.",
+  "files": [
+    {
+      "filename": "phase0_questions.csv",
+      "osf_file_id": "6a426eb284fa553b0a3fed83",
+      "version": "1",
+      "download_url": "https://osf.io/download/4d2qw/?revision=1",
+      "sha256": "4acf203f0d97c1fb7f1f5369449d8dc7397571293f30a949a6762e9959249b97",
+      "bytes": 151780
+    },
+    {
+      "filename": "phase1_questions.csv",
+      "osf_file_id": "6a426eb3b6da73a92c932e9d",
+      "version": "1",
+      "download_url": "https://osf.io/download/6a426eb3b6da73a92c932e9d/?revision=1",
+      "sha256": "419bf6995336bb75fbfffc918cc6b912a9afcdcd1e495b38f151d004401c1640",
+      "bytes": 158268
+    },
+    {
+      "filename": "phase1_difficulty.csv",
+      "osf_file_id": "6a426eb284fa553b0a3fed85",
+      "version": "1",
+      "download_url": "https://osf.io/download/5e3bc/?revision=1",
+      "sha256": "07160abc71eb718d9c98f5639c8567191386d203e1d661a183285533e850a673",
+      "bytes": 113092
+    },
+    {
+      "filename": "phase1_embeddings.csv",
+      "osf_file_id": "6a426eb43819f80d61b7c226",
+      "version": "1",
+      "download_url": "https://osf.io/download/6a426eb43819f80d61b7c226/?revision=1",
+      "sha256": "4616db6941eac963f0f80cc8cc3e44024bccb8c1aebae6edc9ff26a8301e9bb8",
+      "bytes": 266848
+    },
+    {
+      "filename": "phase1_rag_scores.csv",
+      "osf_file_id": "6a426eb3b3798f1dabd0d144",
+      "version": "1",
+      "download_url": "https://osf.io/download/6a426eb3b3798f1dabd0d144/?revision=1",
+      "sha256": "b0a3631e0d05860852f31a66ef0da95072f4a2a45c406adce947cf14204d2e28",
+      "bytes": 175010
+    },
+    {
+      "filename": "simpleQA_4MCQ_dataset.csv",
+      "osf_file_id": "6a426eb37cf6533dbbd0d194",
+      "version": "1",
+      "download_url": "https://osf.io/download/32fn4/?revision=1",
+      "sha256": "e228b389b4dba59a22866b2f78b32512954ed187140f8f474a34a5e46bfbe67d",
+      "bytes": 674401
+    },
+    {
+      "filename": "Confidence_Drives_Abstention_Notebook.ipynb",
+      "osf_file_id": "6a426eb360d8cac4cd3fedec",
+      "version": "1",
+      "download_url": "https://osf.io/download/ps96j/?revision=1",
+      "sha256": "33a7d419901cc2d513c93b0d141d1f4be8981629307a33a3c323036f43e064a5",
+      "bytes": 142157
+    },
+    {
+      "filename": "README.md",
+      "osf_file_id": "6a47c00c794df2d4cddaa2c8",
+      "version": "1",
+      "download_url": "https://osf.io/download/wfkq2/?revision=1",
+      "sha256": "76da99ce8b6dbdb94cb8e6f254107cae75aac17f8fa00b9561d47742d35b226a",
+      "bytes": 14203
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "protocol": "qwen-confidence-pilot-v1-design",
+  "status": "cpu_design_only_execution_adapter_pending",
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+  "dtype": "bfloat16",
+  "quantization": null,
+  "format": "chat",
+  "max_length": 2048,
+  "batch_size": 1,
+  "seed": 1729,
+  "calibration_items": 64,
+  "assessment_items": 128,
+  "rotations": 4,
+  "answer_candidates": ["1", "2", "3", "4"],
+  "confidence_candidates": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+  "abstention_candidates": ["1", "2", "3", "4", "5"],
+  "bootstrap_resamples": 10000,
+  "feasibility": {"minimum_distinct_questions_per_group": 20, "minimum_confidence_categories": 3},
+  "behavioral_candidate": {"minimum_primary_effect": 0.1, "primary_ci_lower_above": 0.0, "confidence_auroc_ci_lower_above": 0.5},
+  "conditional_predictors": {"folds": 5, "regularization_C": 1.0, "solver": "lbfgs", "tolerance": 1e-8, "max_iterations": 2000},
+  "primary": "P(abstain | forced_answer_wrong) - P(abstain | forced_answer_correct)",
+  "temperature_grid": {"minimum": 0.1, "maximum": 10.0, "logspace_points": 401},
+  "prompts": {
+    "answer": "Choose the correct answer to the following question. Return only its option number (1, 2, 3, or 4).\n\n{question}\n{options}",
+    "confidence": "Estimate the probability that your recorded answer below is correct. Return only one category digit. Categories: 0 = 0 to below 10%; 1 = 10 to below 20%; 2 = 20 to below 30%; 3 = 30 to below 40%; 4 = 40 to below 50%; 5 = 50 to below 60%; 6 = 60 to below 70%; 7 = 70 to below 80%; 8 = 80 to below 90%; 9 = 90 to 100%.\n\n{question}\n{options}\nRecorded answer: {answer_number}. {answer_text}",
+    "abstention": "Choose an answer or abstain. A correct answer earns 1 point, an incorrect answer loses 1 point, and abstaining earns 0 points. Return only the option number (1, 2, 3, 4, or 5).\n\n{question}\n{options}\n5. Abstain"
+  },
+  "source_manifest": "review/confidence-sources.json"
+}

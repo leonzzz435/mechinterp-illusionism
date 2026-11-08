@@ -347,6 +347,16 @@ brings us back to the study's central measurement question before any further in
 
 ## What would count as separation?
 
+The next proposed experiment asks a more direct question about self-evaluation: can the
+model tell when its answer is unreliable, and does it then choose to answer or pass?
+We plan to reuse published factual questions, record an answer, ask for confidence in that
+answer, and separately offer an abstention option. A model that passes more often on questions
+it got wrong would show useful selectivity. But difficult questions might explain both
+the errors and the hesitation, so external difficulty predictors are part of the comparison.
+The [replication design](../QWEN_CONFIDENCE_PILOT.md) specifies that test; **no results from
+it exist yet**. A new confidence prompt can reconsider the question, so even success would
+not establish direct access to the computation that produced the earlier answer.
+
 A persuasive result changes one measured property selectively while keeping another within a predefined tolerance, without broadly damaging performance. One significant and one nonsignificant comparison are insufficient.
 
 The planned generation and choice interventions target different sets of token positions.

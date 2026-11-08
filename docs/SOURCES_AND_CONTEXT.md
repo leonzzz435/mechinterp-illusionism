@@ -83,6 +83,27 @@ Selective effects could constrain accounts of these behaviors; stronger philosop
 need an additional argument. A compelling article can make that distinction explicit while
 showing the mathematics, counterexamples and results in full.
 
-## Standardized evaluation
+## Confidence/abstention replication foundation — checked 2026-11-08
+
+The [bounded next design](QWEN_CONFIDENCE_PILOT.md) follows
+[Kumaran et al., Causal evidence that language models use confidence to drive behaviour](https://doi.org/10.1038/s42256-026-01293-x)
+and its [public OSF materials](https://osf.io/resw4/). We reuse their question files, not
+their inference services or downloaded executable notebook. File versions and hashes are
+in the [source manifest](../review/confidence-sources.json). This is a partial replication
+with explicit adaptations, not an original discovery of confidence-guided behavior.
+
+[Moran and Whiting, LLMs Show No Signs Of Individuated Metacognition](https://arxiv.org/abs/2605.24299v1)
+is a preprint criticizing self-evaluation claims that are explained by shared item difficulty.
+It motivates external difficulty and content predictors; those controls cannot exhaust all
+input-based explanations. The existing Singh et al. critique remains relevant: a fresh
+confidence prompt can evaluate a visible answer without accessing an earlier hidden state.
+
+[Kadavath et al., Language Models (Mostly) Know What They Know](https://arxiv.org/abs/2207.05221)
+provides earlier precedent for evaluating models' judgments of answer correctness.
+Prediction, reported confidence and behavior must remain distinct measurements. Even a
+positive baseline would justify reviewing one causal experiment, not claiming consciousness
+or transferring an AI result directly to human illusionism.
+
+## Standardized evaluation implementation
 
 The revised baseline uses [EleutherAI's Language Model Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness), pinned to Python package `lm-eval==0.4.13`. The [task guide](https://github.com/EleutherAI/lm-evaluation-harness/blob/main/docs/new_task_guide.md) describes full-continuation likelihood scoring, target delimiters and fixed few-shot examples. The implementation is exercised against the installed pinned package, not assumed compatible from current online documentation alone. Custom tasks remain our responsibility; using a standard evaluator does not validate the self-model construct.

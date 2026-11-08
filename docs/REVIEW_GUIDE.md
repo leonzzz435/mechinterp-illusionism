@@ -1,7 +1,7 @@
 # Review target: publication draft on a recurring role error
 
 Start with [Naming the Agent, Choosing for the Other](article/ARTICLE.md), then its
-[sentence-level claim ledger](article/CLAIMS.md). The central observation is the role gap
+[paragraph-level claim ledger](article/CLAIMS.md). The central observation is the role gap
 after a relevant permission change; the other-account error direction has narrower evidence
 than the recurring accuracy gap. Review that distinction before evaluating the explanation.
 

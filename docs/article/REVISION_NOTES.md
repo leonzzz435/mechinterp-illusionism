@@ -287,3 +287,126 @@ Documentation/specification checks also passed:
 The lightweight checks are consistency checks, not evidence that an unimplemented protocol
 will run correctly or have adequate statistical power. No scientific result report or
 historical evidence file was rewritten to match the new narrative.
+
+---
+
+# Publication polish, round three: record selection, reading order and count coverage
+
+Base: `3401a81`; date: 2026-11-08. No new model inference, tokenizer execution or paid job.
+Earlier revision records above remain unchanged.
+
+Article word count: **2,885 before → 3,167 after**, using the same counting rule as round two
+(exclude comments, link destinations, images, fenced commands and display equations;
+include headings, prose, captions and tables). Source whitespace counts: 3,152 → 3,432.
+The opening scene and title remain unchanged.
+
+## Changed blocks and stable IDs
+
+- **P24:** adds exactly three sentences from the existing error-count JSON: the two
+  Reference error compositions, then the scenario error range and strict-majority count.
+  Post hoc status and the absence of a new confidence interval or decision remain explicit.
+- **P33/P35:** introduces the descriptive Your/Reference contrast (+13.67 percentage points,
+  positive in 15/16 scenarios) before the primary Your/The result, positive in 4/16.
+  These values were already reported in `docs/QWEN_POSSESSIVE_RESULTS.md:77-98`.
+  **The reading order changes, not the numerical results, thresholds or primary contrast.**
+  The Reference comparison does not become an alternative route to passing the primary test.
+- **P36:** follows that reordered comparison with its content verbatim, including the
+  positive secondary margin and its limitations. No secondary statistic was recalculated.
+- **P41a (added):** names the target/updated-record coincidence and distinguishes a possible
+  anchoring explanation from the simplest named-record lookup rule, which fails the example.
+  The suffix preserves all existing P01–P57 identifiers; the ledger now covers 58 blocks.
+- **P42/P43:** brings the stable competing record and the Your/other ceiling together,
+  preserves the fixed queried target, and narrows what zero revoked-command errors rule out.
+- **P16, P22, P37 and P38:** byte-identical. All other unlisted article blocks remain unchanged.
+- **Ledger:** updates the complete changed blocks, their sources and all affected line links;
+  it labels the proposed mechanism as a hypothesis, not a measured internal computation.
+- **Replication prose:** appends one explicitly supplementary paragraph proposing a secondary
+  after-update 2×2 of mentioned versus updated account, holding the queried target fixed and
+  retaining categorical error direction and the all-choice denominator. The frozen design
+  already balances these combinations. The primary endpoint and normative JSON do not change.
+- **Review guide:** replaces “sentence-level claim ledger” with “paragraph-level claim ledger”.
+
+## Existing counts, their denominator and uncertainty
+
+The source remains `review/qwen-possessive-error-count.json`, unchanged:
+`cells.reference/target` gives **38/46** foreign-current-command errors and
+`cells.reference/other` gives **7/11**. For the dispersion sentence, sum errors and
+`other_actor_command` across **all six frame/relation conditions within each scenario**
+in `per_scenario`, restricted by the saved population to after target-relevant updates.
+The resulting error range is **2–28 per scenario**; **12/16** scenarios have a strict
+foreign-command majority **among errors**, not among all selections. Ties are not majorities.
+This is a descriptive reduction of the existing JSON, not a new subgroup hypothesis test,
+confidence interval, independent sample or alteration of any saved result.
+
+Reproduce the permitted reduction from the repository root:
+
+```bash
+uv run --no-sync python - <<'PY'
+import json
+from pathlib import Path
+data = json.loads(Path('review/qwen-possessive-error-count.json').read_text())
+for key in ('reference/target', 'reference/other'):
+    cell = data['cells'][key]
+    print(key, cell['other_actor_command'], '/', cell['errors'])
+counts = [
+    (sum(c['errors'] for c in cells.values()),
+     sum(c['other_actor_command'] for c in cells.values()))
+    for cells in data['per_scenario'].values()
+]
+print('error range', min(e for e, f in counts), max(e for e, f in counts))
+print('strict majority', sum(2*f > e for e, f in counts), '/', len(counts))
+PY
+```
+
+## Where the requested interpretation needed qualification
+
+The code defines relevance as `target == event["actor"]`
+(`src/self_model_study/action_task.py:138`); the context swap preserves the named query
+(`src/self_model_study/role_control.py:97-118`). Thus target-named and changed-account-named
+coincide in the primary stratum. That confounding is now explicit.
+However, the proposed rule “read the named account's current permission” predicts
+`mark_violet` when Birch is named. The recorded example instead selects **`mark_amber`**
+for Cedar in that condition (`docs/QWEN_ROLE_RESULTS.md:81-97`). The rule predicts the
+opposite direction, so the article cannot state that it explains the observed reversal.
+A broader context-dependent record-selection mechanism remains an open hypothesis.
+Zero revoked-target errors only weakens the specific account “retain the target as subject,
+ignore its update”; it does not identify or exclude other record-selection mechanisms.
+
+The unchanged record is a structurally simpler lookup, but mentioning it does not change
+which account the question asks about. P42 therefore connects structural ease with the
+ceiling limitation without claiming that the observed easier cell asks an unchanged-target
+question or that either fact establishes the mechanism.
+
+## Stored-token verification for the wording caveat
+
+The immutable archive `review/evidence/qwen-possessive-f2baaa2fb6b74880.tar.gz`, SHA256
+`d521a63c21c360b33ba8452ab5d572eaf0d06c4e4be02df02425dfc1c2fe3e59`, retains actual token IDs
+in `run/records.jsonl`. Pairing by `job.row.scene_id` and `job.row.relation`, the saved
+`result.prompt_token_ids` are exactly one token shorter for Reference than for both
+Your and The in every matched triple. This checks stored lengths; it performs no new
+tokenization or model inference. `docs/QWEN_POSSESSIVE_RESULTS.md:49-51,94-98` supplies
+the distinction between the controlled Your/The substitution and the bundled Reference
+contrast. The caveat does not attribute the result to length or to any particular word.
+
+## Round-three verification
+
+Full suite, with local thread limits and offline Hugging Face mode:
+
+```bash
+OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 \
+HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 uv run --no-sync pytest -q
+# 172 passed in 574.23s (0:09:34)
+```
+
+The unchanged `scripts/review_possessive_evidence.py` passes against the original archive.
+The unchanged `scripts/count_possessive_errors.py`, redirected to a temporary file, reproduces
+`review/qwen-possessive-error-count.json` byte-for-byte. Neither command rewrites the evidence.
+
+Documentation checks pass: all 58 block texts exactly match their ledger entries, local
+links and section anchors resolve, and every cited source line range exists. Comparison with
+the base confirms that only P24, P33, P35, P42 and P43 changed, with P41a added; all prior
+numeric occurrences survive. P16, P22, P36, P37 and P38 remain byte-identical. SHA256 checks
+confirm all 388 other tracked files are unchanged, including `designs/`, `review/evidence/`,
+the original error-count JSON, audits, preflights, existing result reports, scripts and `src/`.
+The original revision history and replication prose are preserved before the appended
+supplements. `git diff --check` passes. Only the five requested documentation files change.

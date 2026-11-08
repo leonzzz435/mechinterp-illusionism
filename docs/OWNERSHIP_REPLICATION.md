@@ -110,3 +110,14 @@ change to this specification needs a new version and an explanation before expos
 Precision for the equivalence margin is unknown; an inconclusive result is allowed.
 
 JSON SHA256: `d1024e5384ad233be1c41d6cb248c0bd92a2615ea1ac7b9553d88a571358d996`.
+
+**Supplementary analysis proposal — not a change to the frozen endpoint.** The primary
+“target-relevant update” stratum retains the same coincidence: the queried account is the
+updated account, so naming the target also names the changed record. As a secondary analysis,
+cross the mentioned account (target / other) with the updated account (target / other) in
+an after-update 2×2, holding the queried target fixed. The frozen balancing already includes
+these combinations; this proposal adds an explicit reading of them, with categorical error
+direction as the outcome and the full distribution and all-choice denominator retained.
+It would distinguish naming an updated record from naming the target; it would not by itself
+identify an internal mechanism. This is an unexecuted supplement, not a new primary test:
+the normative JSON, primary stratum, thresholds and decision rules remain unchanged.

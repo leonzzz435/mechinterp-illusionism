@@ -137,6 +137,12 @@ def test_configs_are_loadable():
     from self_model_study.config import load_config
 
     for path in Path("configs").glob("*.json"):
+        if path.name in {f"qwen-query-reference-{i:02d}.json" for i in range(6)}:
+            from self_model_study.io import read_json
+            from self_model_study.query_reference_runtime import validate_spec
+
+            assert validate_spec(read_json(path))["engine"] == "qwen-query-reference"
+            continue
         if path.name in {"qwen-ownership-recovery.json", "qwen-ownership-recovery-v2.json"}:
             import runpy
 

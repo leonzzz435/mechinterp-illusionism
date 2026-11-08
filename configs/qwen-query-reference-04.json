@@ -1,0 +1,34 @@
+{
+  "engine": "qwen-query-reference",
+  "protocol": "query-self-reference-v1",
+  "design_sha256": "6c1891acedcf758cb5ce099b001ba609c5627a484ccaf873f1f9019c5b3e81cc",
+  "block_index": 4,
+  "world_indices": [
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39
+  ],
+  "model": {
+    "repo": "Qwen/Qwen2.5-7B-Instruct",
+    "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "tokenizer_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "dtype": "bfloat16",
+    "quantization": null,
+    "format": "official_chat_template",
+    "system_message": "none manually added; archive exact official defaults",
+    "batch_size": 1,
+    "max_total_tokens": 2048,
+    "truncation": false,
+    "model_fallback": false,
+    "score": "summed conditional log likelihood of the exact full command; no added whitespace, EOS or length normalization"
+  },
+  "batch_size": 1,
+  "generation": {},
+  "harness_version": "0.4.13",
+  "max_seconds": 5400
+}

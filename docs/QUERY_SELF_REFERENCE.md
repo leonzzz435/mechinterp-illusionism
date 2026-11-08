@@ -1,4 +1,4 @@
-# Query-bound self-reference: protocol v1 draft
+# Query-bound self-reference: protocol v1
 
 **Decision:** pursue query-bound self-reference from the original pilot. The question is
 whether asking for **your active connection** changes account selection relative to
@@ -6,12 +6,15 @@ naming **that same connection**, with matched third-person aliases as controls.
 The named-query context-line branch is closed as a follow-up priority. Named questions
 remain necessary controls here; they are not a second experiment on context-line wording.
 
-This is `query-self-reference-v1`, a **review draft, not a frozen or executable protocol**.
-The [JSON specification](../designs/query-self-reference-v1.json) records the proposed
-question, prompts, directions, sample, controls and decision rules against evidence commit
-`381c7e6`. No inference, job submission, paid allocation or article revision is authorized
-by this document. A completed input/token preflight and source freeze must precede any
-assessment responses. Previous specifications and their failed decisions remain intact.
+This is `query-self-reference-v1`. The unchanged
+[original JSON](../designs/query-self-reference-v1.json) records the question, prompts,
+directions, sample, controls and decision rules against evidence commit `381c7e6`.
+Its historical draft metadata is preserved. The separate
+[freeze record](../designs/query-self-reference-v1.freeze.json) now seals that scientific
+content, the prepared inputs and tested execution code. The
+[execution runbook](QUERY_SELF_REFERENCE_RUNBOOK.md) documents commands, eligibility
+details and remaining launch steps. No pretrained assessment, paid allocation or article
+revision is implied by this software freeze. Previous failed decisions remain intact.
 
 ## Why this question, and what the evidence does not establish
 
@@ -227,7 +230,8 @@ that rendered inputs or token boundaries have been checked.
 The isolated generator, text-first oracle and complete input/token preparation are now
 implemented. The [CPU preparation report](QUERY_SELF_REFERENCE_PREFLIGHT.md) records
 the actual checks and artifacts; the older partial check above remains unchanged.
-The scientific JSON is still a review draft. No assessment responses have been obtained.
+The scientific JSON remains byte-identical to the reviewed draft; the separate freeze
+record governs execution. No assessment responses have been obtained.
 
 The implementation makes the order convention explicit: permission records start in
 hash-ranked account order; owner bindings start in the declared Rowan/Morgan order.
@@ -259,6 +263,8 @@ authorized run. Mistral, routing, steering and article rewriting are outside thi
 The initial protocol-writing verification covered the partial structural checker and eight
 ownership-review tests. The new implementation's verification is listed separately in the
 [CPU preparation report](QUERY_SELF_REFERENCE_PREFLIGHT.md). Runtime scoring, interrupted-run
-resume, world-paired statistics and report generation still require implementation and
-synthetic failure tests before freeze. Input correctness alone does not establish model
-competence or authorize execution.
+resume, world-paired statistics, report generation and synthetic failure tests are now
+complete in the
+[execution handover](QUERY_SELF_REFERENCE_RUNBOOK.md); see the
+[verification record](../review/query-self-reference-execution-check.json).
+Input correctness alone does not establish model competence or authorize paid execution.

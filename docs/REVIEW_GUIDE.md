@@ -20,14 +20,17 @@ frozen protocol. Reproduce it with `uv run --no-sync python scripts/review_owner
 
 **Selected next question:** [query-bound self-reference](QUERY_SELF_REFERENCE.md), with
 same-target named aliases and balanced third-person references. Its
-[versioned JSON](../designs/query-self-reference-v1.json) is a review draft, not a third
-frozen specification or an executed study. The frame-accuracy contrast is a co-endpoint.
+[versioned JSON](../designs/query-self-reference-v1.json) is preserved from the review draft.
+The separate [freeze record](../designs/query-self-reference-v1.freeze.json) seals its
+scientific content, prepared inputs and tested execution. It is not an executed study.
+The frame-accuracy contrast is a co-endpoint.
 The original [partial structural check](../review/query-self-reference-protocol-check.json)
 is preserved. The later [complete CPU input audit](QUERY_SELF_REFERENCE_PREFLIGHT.md)
 adds rendered inputs, independent text-oracle/simulator checks, paired controls, shortcut
 baselines, historical overlap checks and every candidate's token boundary. It does not
-evaluate model behavior. Runtime scoring/resume and statistical implementation remain
-outstanding before freeze. The new question does not turn the tranche's post hoc frame
+evaluate model behavior. The [execution runbook](QUERY_SELF_REFERENCE_RUNBOOK.md) now
+covers scoring, resumption, statistics, exports and the HF selection path. The new question
+does not turn the tranche's post hoc frame
 contrast into an independently replicated finding.
 
 The article preserves positive findings as well as failed stronger criteria. Three disjoint

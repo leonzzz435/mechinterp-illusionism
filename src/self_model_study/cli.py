@@ -38,6 +38,16 @@ def main(argv=None):
     )
     analysis.add_argument("run", type=Path)
     analysis.add_argument("--ratings", type=Path, help="Completed combined blind-rating CSV")
+    analysis.add_argument(
+        "--additional-runs",
+        nargs="*",
+        type=Path,
+        default=[],
+        help="Query-reference only: further disjoint blocks of the fixed sample",
+    )
+    analysis.add_argument(
+        "--out", type=Path, help="Query-reference only: new directory for a combined report"
+    )
     export = commands.add_parser(
         "export", help="Render reports/figures and package an auditable archive"
     )
@@ -57,6 +67,10 @@ def main(argv=None):
             engine = read_json(args.run / "manifest.json").get("engine")
         else:
             engine = None
+        if engine == "qwen-query-reference":
+            return query_reference_command(args)
+        if args.command == "analyze" and (args.additional_runs or args.out):
+            raise ValueError("Combined block analysis is only available for query-reference")
         if engine == "qwen-ownership-permissions":
             return ownership_command(args)
         if engine in {"qwen-confidence", "qwen-confidence-v2"}:
@@ -128,6 +142,65 @@ def main(argv=None):
         return 0
     except (ValueError, RuntimeError, OSError, ImportError) as exc:
         parser.exit(2, f"Error: {exc}\n")
+
+
+def query_reference_command(args):
+    from . import query_reference_reporting as reporting
+    from . import query_reference_runtime as runtime
+    from .io import digest
+    from .pilot import jobs_in
+
+    if args.command in {"validate", "run"}:
+        spec = runtime.validate_spec(read_json(args.config))
+    if args.command == "validate":
+        if args.evidence:
+            raise ValueError("Query-reference does not unlock historical confirmation")
+        plan = runtime.build_plan(spec)
+        runtime.verify_inputs()
+        if args.freeze:
+            runtime.freeze(args.freeze)
+        if runtime.FREEZE.exists():
+            runtime.verify_freeze()
+        result = {
+            "valid": True,
+            "model_inference": False,
+            "plan_hash": digest(plan),
+            "scheduled_choices": len(jobs_in(plan)),
+            "block_index": spec["block_index"],
+            "frozen": runtime.FREEZE.exists(),
+        }
+        if args.tokenizer_check:
+            from transformers import AutoTokenizer
+
+            tokenizer = AutoTokenizer.from_pretrained(
+                spec["model"]["repo"],
+                revision=spec["model"]["tokenizer_revision"],
+                trust_remote_code=False,
+                local_files_only=True,
+            )
+            tokens = {r["id"]: r for r in runtime.jsonl(runtime.PREFLIGHT / "tokens.jsonl.gz")}
+            runtime.check_tokenizer(tokenizer, jobs_in(plan), tokens)
+            result["tokenizer_checked"] = True
+    elif args.command == "run":
+        if args.max_seconds is not None:
+            spec["max_seconds"] = args.max_seconds
+        manifest = runtime.run(spec, args.out, max_jobs=args.max_jobs)
+        result = {k: manifest[k] for k in ("run_id", "status", "expected_jobs", "synthetic")}
+    elif args.command == "analyze":
+        if args.ratings:
+            raise ValueError("No human-rating arm in query-reference")
+        if args.additional_runs or args.out:
+            if not args.out:
+                raise ValueError("Combined query-reference report requires --out")
+            report = reporting.analyze_blocks([args.run, *args.additional_runs], args.out)
+        else:
+            with run_lock(args.run):
+                report = reporting.analyze(args.run)
+        result = {k: report[k] for k in ("status", "recorded_choices", "decision", "synthetic")}
+    else:
+        result = reporting.export(args.run, args.out)
+    print(canonical(result))
+    return 2 if result.get("status") in {"failed", "complete_with_errors"} else 0
 
 
 def ownership_command(args):

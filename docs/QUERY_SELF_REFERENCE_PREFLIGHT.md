@@ -1,5 +1,9 @@
 # Query-bound self-reference: CPU preparation
 
+**Later status:** the [execution handover](QUERY_SELF_REFERENCE_RUNBOOK.md) now completes
+the runtime, analysis and freeze work that was still outstanding at this input-audit
+milestone. The inputs and audit artifacts described below are unchanged.
+
 **Input preparation passed; the protocol remains a draft and no model responses exist.**
 This is a software and input audit of [query-self-reference-v1](QUERY_SELF_REFERENCE.md),
 not a competence result or a new empirical finding. The scientific

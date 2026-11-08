@@ -168,6 +168,7 @@ def restore_checkpoint(resume, repo, output, directory, expected_engine="qwen-pi
             "qwen-possessive-control",
             "qwen-confidence",
             "qwen-confidence-v2",
+            "qwen-query-reference",
         }
         or manifest.get("engine") != expected_engine
         or manifest["status"] == "failed"
@@ -206,13 +207,20 @@ def main():
         "configs/qwen-ownership-permissions-02.json",
         "configs/qwen-ownership-recovery.json",
         "configs/qwen-ownership-recovery-v2.json",
+        *{f"configs/qwen-query-reference-{i:02d}.json" for i in range(6)},
     }:
         raise ValueError("Unsupported worker configuration")
     expected_hash = os.environ.get("STUDY_CONFIG_SHA256")
     if expected_hash and file_hash(config) != expected_hash:
         raise ValueError("Worker configuration differs from approved job plan")
     engine = read_json(config)["engine"]
-    if engine == "qwen-ownership-recovery":
+    if engine == "qwen-query-reference":
+        from self_model_study.query_reference_reporting import export
+        from self_model_study.query_reference_runtime import run, validate_spec
+
+        def load_spec(path):
+            return validate_spec(read_json(path))
+    elif engine == "qwen-ownership-recovery":
         from ownership_recovery import run_group as run
         from ownership_recovery import validate_spec
 

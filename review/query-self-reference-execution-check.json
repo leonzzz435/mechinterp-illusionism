@@ -1,0 +1,97 @@
+{
+  "protocol": "query-self-reference-v1",
+  "status": "execution_verified_no_pretrained_assessment",
+  "verified_at_utc": "2026-11-08T19:52:53.420341+00:00",
+  "baseline_commit": "452ac502a1420507e957277951e9eb750de8e09a",
+  "pretrained_model_inference": false,
+  "assessment_inference": false,
+  "software_only_random_tiny_qwen_forward": true,
+  "cloud_plan_created": false,
+  "cloud_job_submitted": false,
+  "authorized_spend_usd": 0,
+  "freeze_sha256": "cf765ec2e9246fc9b3b09b4ebea9db8a1aad47772ce15119c75557fe42e8b7a4",
+  "scientific_spec_sha256": "6c1891acedcf758cb5ce099b001ba609c5627a484ccaf873f1f9019c5b3e81cc",
+  "input_audit_sha256": "d79be1b10a712d44e5764190ec55dd6546413900af52c85d3790b596573a0f4e",
+  "source_inventory_sha256": "5b694f907519b994848bcf9aa3becaf1233afef43a8af4c8e0092a1ee90b2b88",
+  "configuration_registry_test_sha256": "2d3842db3e7e062bf4c9fae02fe9fda697a571df7cb32899a8a29b2e0e236c5a",
+  "sample": {
+    "worlds": 48,
+    "blocks": 6,
+    "choices_per_block": 2688,
+    "choices_total": 16128
+  },
+  "verification": {
+    "input_and_execution_tests": {
+      "passed": 43,
+      "seconds": 55.27
+    },
+    "execution_and_hf_integration_tests": {
+      "command": "uv run --no-sync pytest -q tests/test_query_reference_execution.py tests/test_hf_jobs.py tests/test_hf_checkpoint_recovery.py tests/test_ownership_cloud.py",
+      "passed": 70,
+      "seconds": 64.69
+    },
+    "full_suite": {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 uv run --no-sync pytest -q",
+      "passed": 253,
+      "failed": 1,
+      "seconds": 659.62,
+      "failure": "tests/test_runner.py::test_configs_are_loadable",
+      "cause": "The all-configuration test registry had not yet routed the six new files to their dedicated validator.",
+      "fix": "Added the dedicated validator branch to that test; production source remained unchanged."
+    },
+    "corrected_test_rerun": {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 uv run --no-sync pytest -q tests/test_runner.py::test_configs_are_loadable",
+      "passed": 1,
+      "failed": 0,
+      "seconds": 0.23
+    },
+    "combined_result": "All 254 collected tests verified passing across the full run and the targeted correction rerun; not represented as a second all-green full-suite run.",
+    "earlier_discarded_attempt": "An earlier full-suite attempt overlapped source edits. The source-drift guard correctly rejected resume; interrupting that attempt also interrupted a synthetic runner fixture. The stable full-suite run and correction above supersede it.",
+    "cached_pinned_tokenizer": {
+      "command": "HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 uv run --no-sync self-study validate configs/qwen-query-reference-00.json --tokenizer-check",
+      "passed": true,
+      "choices_checked": 2688,
+      "candidate_boundaries_checked": 10752,
+      "weights_loaded": false
+    },
+    "native_likelihood": "Independent full-sequence log-softmax comparison passed on a tiny randomly initialized Qwen and a software-only prompt; no pretrained assessment prompts evaluated.",
+    "ruff": "All modified and new Python files, including tests/test_runner.py, passed.",
+    "historical_evidence": {
+      "command": "uv run --no-sync python scripts/review_evidence.py",
+      "checksums_verified": 95,
+      "saved_choices_recomputed": 768,
+      "passed": true
+    },
+    "protected_inputs": "Original scientific JSON, all seven prepared input files and historical evidence unchanged.",
+    "article": "git diff --exit-code article-v1 -- docs/article passed; article remains unchanged.",
+    "diff_check": "git diff --check passed.",
+    "frozen_blocks": {
+      "passed": true,
+      "disjoint_choices_total": 16128,
+      "choices_per_block": 2688,
+      "plan_sha256": {
+        "0": "eabc0a40aa3157648555f373aaa5aa71f5e6185739d2f3df966001a3db7b7faf",
+        "1": "7cb178d297f2826db26966ff4dd2209920fe77821aa452caf73c8390d1fdc6a0",
+        "2": "58b0ceadb82bfa2e3b3ea84c00fe5dff17595470a9d3dac5495f04a115ec8a1c",
+        "3": "8b8e38bf784727b4e8dba26cb2499219f9f3d9b3ff6aedd9595540623dcc3467",
+        "4": "98002d5fc2881daab47b8bb338e501f1559298716041aab0ed90231f5666e7a1",
+        "5": "60fae92ed9f2001a57435eca547562fbf0b27a055c59709092cf6c779ea73d9c"
+      }
+    },
+    "after_freeze_cli_and_registry": {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 uv run --no-sync pytest -q tests/test_query_reference_execution.py::test_cli_validation_and_config_constraints tests/test_runner.py::test_configs_are_loadable",
+      "passed": 2,
+      "seconds": 2.4
+    },
+    "local_document_links": {
+      "passed": true,
+      "documents_checked": 5
+    }
+  },
+  "limits": [
+    "CPU software verification and prepared inputs do not establish model competence or a scientific effect.",
+    "No current cloud quote or paid launch was created; one selected block requires a concrete budget and launch authorization.",
+    "All missing and invalid selections remain visible; incomplete or invalid samples cannot qualify for inference.",
+    "Synthetic fixture outputs and plots are test artifacts, not research observations."
+  ]
+}

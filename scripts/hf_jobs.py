@@ -111,6 +111,16 @@ for _ownership_block in range(3):
         "generated_texts": 0,
     }
 
+for _query_block in range(6):
+    CONFIGURATIONS[f"configs/qwen-query-reference-{_query_block:02d}.json"] = {
+        "engine": "qwen-query-reference",
+        "run_prefix": f"qwen-query-{_query_block:02d}-",
+        "receipt_name": f"qwen-query-reference-{_query_block:02d}.json",
+        "blocks": 8,
+        "scored_variants": 2688,
+        "generated_texts": 0,
+    }
+
 BOOTSTRAP = """
 uv run --no-project --with huggingface-hub==0.36.2 python - <<'PY'
 import hashlib, os, pathlib, subprocess
@@ -199,6 +209,11 @@ def config_details(config):
     details = CONFIGURATIONS[path.relative_to(ROOT).as_posix()]
     if spec["engine"] != details["engine"]:
         raise ValueError("Configuration engine differs from the selected protocol")
+    if spec["engine"] == "qwen-query-reference":
+        from self_model_study.query_reference_runtime import validate_spec, verify_freeze
+
+        validate_spec(spec)
+        verify_freeze()
     return {
         "config": path.relative_to(ROOT).as_posix(),
         "config_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
@@ -222,6 +237,7 @@ def resume_details(receipt, proposal, api):
         "qwen-possessive-control",
         "qwen-confidence",
         "qwen-confidence-v2",
+        "qwen-query-reference",
     } or not re.fullmatch(
         re.escape(selected["run_prefix"]) + r"[0-9a-f]{16}", previous.get("run_name", "")
     ):

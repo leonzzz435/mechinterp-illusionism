@@ -52,9 +52,12 @@
   input manifest; audit aliases, ownership swaps, grant swaps, event-order invariance,
   scripted shortcuts, historical overlap and every candidate token boundary. See the
   [CPU preparation report](docs/QUERY_SELF_REFERENCE_PREFLIGHT.md).
-- [ ] Implement scoring, resume, world-paired analysis and reports; test failure paths and
-  degenerate statistics before freezing the protocol. No model responses or launch-ready
-  configuration exist for this draft. Mistral, routing and patches stay unrun.
+- [x] Implement scoring, resume, world-paired analysis, reports and explicit HF block selection;
+  test failure paths and degenerate statistics. Freeze the unchanged scientific inputs and
+  execution source. See the [runbook](docs/QUERY_SELF_REFERENCE_RUNBOOK.md).
+- [ ] Obtain a current quote and separate launch authorization for one bounded query-reference
+  block, then inspect execution integrity before further invocations. No pretrained responses
+  exist for this protocol. Mistral, routing and patches stay unrun.
 
 ### Completed milestone: confidence and abstention pilot
 

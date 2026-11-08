@@ -5,7 +5,16 @@ evaluation had already produced most of the scheduled records. This is an infras
 failure, not a failed scientific endpoint. No conclusion is drawn from the incomplete
 tranche. The article remains frozen at `article-v1`.
 
-**Continuation launched on 2026-11-08:** after explicit approval of the additional
+**Current continuation:** after renewed explicit approval of at most $0.62,
+[the corrected v2 job](https://huggingface.co/jobs/zett13/6af0a3cee6320c66fad766af)
+was submitted on 2026-11-08 from commit `341fa5b7bd085d9b19013e4e8648d945437f0e3a`.
+The provider reports `RUNNING`; the [v2 launch receipt](../review/ownership-recovery-v2-job.json)
+records the source and cost bound. The uploaded backend comparison confirms complete
+metadata equality, and worker logs show execution passed the previous failure point
+and reached new scoring after skipping all 4,992 saved records in block 00.
+Completion has not yet been established.
+
+**Previous continuation, launched on 2026-11-08:** after explicit approval of the additional
 $0.62 budget, [one L4 job](https://huggingface.co/jobs/zett13/6af09fc30e0338d1bb84c173)
 was submitted from commit `846e274fcef7a55f6a1fc5d9a1f82f543f93350a`. The provider
 initially reported `RUNNING`, but the job subsequently ended in **ERROR** during
@@ -38,16 +47,16 @@ It verifies existing records are retained without duplicates. Additional tests r
 changed metadata and candidate tokens. All **57 affected-area tests passed in 39.76 s**;
 Ruff check/format and `git diff --check` passed. This verification used no paid inference.
 
-The prepared [v2 launch configuration](../configs/qwen-ownership-recovery-v2.json) keeps
+The [v2 launch configuration](../configs/qwen-ownership-recovery-v2.json) keeps
 the same audited original snapshot and workload. It has a separate exclusive receipt;
 neither the original nor the failed continuation receipt is removed or reused. Its
-refreshed compute quote is **$0.613318**, within a proposed **additional $0.62**.
-It has **not been submitted**; the previous approval covered the failed single job.
+refreshed compute quote is **$0.613318**, within the newly approved **additional $0.62**.
+The job has been submitted; the commands below document that launch and must not be rerun.
 
 ```bash
 uv run --script scripts/hf_jobs.py plan --namespace zett13 --budget-usd 0.62 \
   --config configs/qwen-ownership-recovery-v2.json
-# After approval of the additional job:
+# Submitted after approval of the additional job:
 uv run --script scripts/hf_jobs.py submit --namespace zett13 --budget-usd 0.62 \
   --config configs/qwen-ownership-recovery-v2.json
 ```

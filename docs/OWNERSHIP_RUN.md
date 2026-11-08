@@ -4,7 +4,10 @@
 14,976 technically valid selections had been persisted. Those records were recovered
 and audited. The separately authorized recovery job also ended in `ERROR`, this time
 at the metadata comparison before any new selection. All 14,976 saved records are
-unchanged; 3,456 remain missing. A tested correction and v2 launch are prepared. See the
+unchanged; 3,456 remained missing at the restart. The corrected, separately approved
+[v2 job](https://huggingface.co/jobs/zett13/6af0a3cee6320c66fad766af) is now `RUNNING`.
+Its uploaded backend comparison passes, and execution has moved beyond the previous
+failure point into new scoring. Completion has not yet been established. See the
 [incident and bounded continuation](OWNERSHIP_RECOVERY.md); the original launch
 record below is retained as history.
 

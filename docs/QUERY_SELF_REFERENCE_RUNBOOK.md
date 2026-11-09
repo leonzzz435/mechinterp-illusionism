@@ -1,7 +1,9 @@
 # Query-bound self-reference: frozen execution and handover
 
+**Execution update:** [Block 00 is complete](QUERY_REFERENCE_BLOCK00_RESULTS.md), with 2,688 valid selections in eight of 48 worlds. The study remains incomplete; the pre-run freeze and its verification records below remain unchanged.
+
 The generator, scorer integration, resumable execution, analysis and report exporter
-are implemented. **No pretrained-model assessment has run.** The original
+are implemented. **At the software freeze, no pretrained-model assessment had run.** The original
 [scientific JSON](../designs/query-self-reference-v1.json) and
 [CPU input audit](../review/query-self-reference-preflight/audit.json) remain unchanged.
 The separate [freeze record](../designs/query-self-reference-v1.freeze.json) seals their
@@ -154,9 +156,9 @@ does not submit the remaining five. The worker uses the same checkpoint uploader
 private artifact repository as the existing studies. Cooperative runtime is 90 minutes;
 the current starter's provider limit is two hours. These are limits, not a new price quote.
 
-The next operational step is a current quote for **one selected block** against an
-explicit launch budget, followed by review of that concrete plan and separate launch
-authorization. No quote, reservation, cloud job or spend is created by this implementation.
+The first selected block has now completed, as documented in the execution update above.
+Further blocks require their own current quote and explicit launch budget. This runbook
+and the original software freeze do not allocate further spend.
 An old completed job's budget is not reused. The fixed sample stays 48 worlds even if
 execution is scheduled across multiple separately budgeted invocations.
 

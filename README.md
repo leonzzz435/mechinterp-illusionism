@@ -56,7 +56,9 @@ Every additional paid job requires separate authorization.
   established as a general replicated finding.
 - [Next question: query-bound self-reference](docs/QUERY_SELF_REFERENCE.md) —
   frozen scientific inputs and tested [execution handover](docs/QUERY_SELF_REFERENCE_RUNBOOK.md);
-  [CPU input/token audit](docs/QUERY_SELF_REFERENCE_PREFLIGHT.md), no pretrained assessment yet.
+  [CPU input/token audit](docs/QUERY_SELF_REFERENCE_PREFLIGHT.md).
+  [First block results](docs/QUERY_REFERENCE_BLOCK00_RESULTS.md): 2,688 valid selections,
+  eight of 48 worlds; descriptive differences with weak operator-name controls, no final decision.
 - [Sources and claim boundaries](docs/SOURCES_AND_CONTEXT.md)
 - [Implementation and empirical milestones](PLAN.md)
 - [Software verification and remaining empirical checks](docs/VERIFICATION.md)

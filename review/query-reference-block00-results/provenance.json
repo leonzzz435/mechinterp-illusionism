@@ -1,0 +1,22 @@
+{
+  "job_id": "6af0d6f80e0338d1bb84d99f",
+  "job_url": "https://huggingface.co/jobs/zett13/6af0d6f80e0338d1bb84d99f",
+  "run_name": "qwen-query-00-4edce03e18d645e7",
+  "commit": "59061cacf191f737689997b1bb327e75accc71fa",
+  "config": "configs/qwen-query-reference-00.json",
+  "config_sha256": "84f47ae8d44dbcdc5ea3b2d234fceabb4f13c30ccf683f5374173a30a171e6a1",
+  "flavor": "l4x1",
+  "source_revision": "dbccbef2ebde63973516cc6bf03b64839bf91cc5",
+  "source_sha256": "6a054b6eac4e7b535ea6136ca18af38eab97455c31548926cb58b43a50d36d4f",
+  "image": "ghcr.io/astral-sh/uv@sha256:dae7418c9d6661dbc821d99094a3f14fbc000e1c20646a921ee0535dc4c7aef7",
+  "approved_budget_usd": "5",
+  "max_compute_usd": "1.613293",
+  "hard_timeout_seconds": 7200,
+  "job_stage": "COMPLETED",
+  "artifact_revision": "daab13b041a662e9b68d64d80e58644ac644b350",
+  "artifact_repo": "zett13/mechinterp-illusionism-results",
+  "archive_file": "qwen-query-00-4edce03e18d645e7.tar.gz",
+  "archive_sha256": "6f2da16ae4d121a9434acbab493dfbeff2c8fa2e5f7b017e7ff90c80f4ba86e7",
+  "scope": "Block 00 only; eight of the frozen 48 worlds. Other blocks unrun.",
+  "new_model_inference_in_review": false
+}

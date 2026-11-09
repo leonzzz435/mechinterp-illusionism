@@ -1,5 +1,7 @@
 # Review target: publication draft on a recurring role error
 
+**Execution update:** [Block 00 is complete](QUERY_REFERENCE_BLOCK00_RESULTS.md), with 2,688 valid selections in eight of 48 worlds. The study remains incomplete; the pre-run freeze and its verification records below remain unchanged.
+
 Start with [Naming the Agent, Choosing for the Other](article/ARTICLE.md), then its
 [paragraph-level claim ledger](article/CLAIMS.md). The central observation is the role gap
 after a relevant permission change; the other-account error direction has narrower evidence

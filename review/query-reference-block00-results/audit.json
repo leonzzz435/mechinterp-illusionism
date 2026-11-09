@@ -1,0 +1,432 @@
+{
+  "archive_sha256": "6f2da16ae4d121a9434acbab493dfbeff2c8fa2e5f7b017e7ff90c80f4ba86e7",
+  "cells": {
+    "after_both/other/account_name": {
+      "accuracy": 0.95703125,
+      "correct": 245,
+      "counts": {
+        "correct_target_current": 245,
+        "invalid": 0,
+        "other_account_current": 7,
+        "remaining_valid_command": 0,
+        "revoked_other": 0,
+        "revoked_target": 4
+      },
+      "foreign": 7,
+      "foreign_probability": 0.02734375,
+      "margin": 8.433700593625233,
+      "n": 256
+    },
+    "after_both/other/owner_name": {
+      "accuracy": 0.6953125,
+      "correct": 178,
+      "counts": {
+        "correct_target_current": 178,
+        "invalid": 0,
+        "other_account_current": 77,
+        "remaining_valid_command": 0,
+        "revoked_other": 0,
+        "revoked_target": 1
+      },
+      "foreign": 77,
+      "foreign_probability": 0.30078125,
+      "margin": 2.183187611919152,
+      "n": 256
+    },
+    "after_both/other/possessive": {
+      "accuracy": 0.6875,
+      "correct": 176,
+      "counts": {
+        "correct_target_current": 176,
+        "invalid": 0,
+        "other_account_current": 80,
+        "remaining_valid_command": 0,
+        "revoked_other": 0,
+        "revoked_target": 0
+      },
+      "foreign": 80,
+      "foreign_probability": 0.3125,
+      "margin": 1.2276977395063113,
+      "n": 256
+    },
+    "after_both/self/account_name": {
+      "accuracy": 0.92578125,
+      "correct": 237,
+      "counts": {
+        "correct_target_current": 237,
+        "invalid": 0,
+        "other_account_current": 15,
+        "remaining_valid_command": 0,
+        "revoked_other": 0,
+        "revoked_target": 4
+      },
+      "foreign": 15,
+      "foreign_probability": 0.05859375,
+      "margin": 7.491361475386526,
+      "n": 256
+    },
+    "after_both/self/owner_name": {
+      "accuracy": 0.5859375,
+      "correct": 150,
+      "counts": {
+        "correct_target_current": 150,
+        "invalid": 0,
+        "other_account_current": 69,
+        "remaining_valid_command": 0,
+        "revoked_other": 10,
+        "revoked_target": 27
+      },
+      "foreign": 69,
+      "foreign_probability": 0.26953125,
+      "margin": 2.1749524641354583,
+      "n": 256
+    },
+    "after_both/self/possessive": {
+      "accuracy": 0.53515625,
+      "correct": 137,
+      "counts": {
+        "correct_target_current": 137,
+        "invalid": 0,
+        "other_account_current": 114,
+        "remaining_valid_command": 0,
+        "revoked_other": 2,
+        "revoked_target": 3
+      },
+      "foreign": 114,
+      "foreign_probability": 0.4453125,
+      "margin": 0.6112835368130902,
+      "n": 256
+    },
+    "before/other/account_name": {
+      "accuracy": 0.953125,
+      "correct": 61,
+      "counts": {
+        "correct_target_current": 61,
+        "invalid": 0,
+        "other_account_current": 3,
+        "remaining_valid_command": 0,
+        "revoked_other": null,
+        "revoked_target": null
+      },
+      "foreign": 3,
+      "foreign_probability": 0.046875,
+      "margin": 12.182557988739177,
+      "n": 64
+    },
+    "before/other/owner_name": {
+      "accuracy": 0.71875,
+      "correct": 46,
+      "counts": {
+        "correct_target_current": 46,
+        "invalid": 0,
+        "other_account_current": 18,
+        "remaining_valid_command": 0,
+        "revoked_other": null,
+        "revoked_target": null
+      },
+      "foreign": 18,
+      "foreign_probability": 0.28125,
+      "margin": 5.3264505610468404,
+      "n": 64
+    },
+    "before/other/possessive": {
+      "accuracy": 0.578125,
+      "correct": 37,
+      "counts": {
+        "correct_target_current": 37,
+        "invalid": 0,
+        "other_account_current": 27,
+        "remaining_valid_command": 0,
+        "revoked_other": null,
+        "revoked_target": null
+      },
+      "foreign": 27,
+      "foreign_probability": 0.421875,
+      "margin": 2.2269082069915385,
+      "n": 64
+    },
+    "before/self/account_name": {
+      "accuracy": 0.90625,
+      "correct": 58,
+      "counts": {
+        "correct_target_current": 58,
+        "invalid": 0,
+        "other_account_current": 4,
+        "remaining_valid_command": 2,
+        "revoked_other": null,
+        "revoked_target": null
+      },
+      "foreign": 4,
+      "foreign_probability": 0.0625,
+      "margin": 10.119572144461017,
+      "n": 64
+    },
+    "before/self/owner_name": {
+      "accuracy": 0.671875,
+      "correct": 43,
+      "counts": {
+        "correct_target_current": 43,
+        "invalid": 0,
+        "other_account_current": 10,
+        "remaining_valid_command": 11,
+        "revoked_other": null,
+        "revoked_target": null
+      },
+      "foreign": 10,
+      "foreign_probability": 0.15625,
+      "margin": 5.1923584100677544,
+      "n": 64
+    },
+    "before/self/possessive": {
+      "accuracy": 0.640625,
+      "correct": 41,
+      "counts": {
+        "correct_target_current": 41,
+        "invalid": 0,
+        "other_account_current": 23,
+        "remaining_valid_command": 0,
+        "revoked_other": null,
+        "revoked_target": null
+      },
+      "foreign": 23,
+      "foreign_probability": 0.359375,
+      "margin": 3.3790252401017824,
+      "n": 64
+    },
+    "snapshot/other/account_name": {
+      "accuracy": 0.96875,
+      "correct": 124,
+      "counts": {
+        "correct_target_current": 124,
+        "invalid": 0,
+        "other_account_current": 4,
+        "remaining_valid_command": 0,
+        "revoked_other": null,
+        "revoked_target": null
+      },
+      "foreign": 4,
+      "foreign_probability": 0.03125,
+      "margin": 13.33438793017093,
+      "n": 128
+    },
+    "snapshot/other/owner_name": {
+      "accuracy": 0.7421875,
+      "correct": 95,
+      "counts": {
+        "correct_target_current": 95,
+        "invalid": 0,
+        "other_account_current": 33,
+        "remaining_valid_command": 0,
+        "revoked_other": null,
+        "revoked_target": null
+      },
+      "foreign": 33,
+      "foreign_probability": 0.2578125,
+      "margin": 6.23794689475875,
+      "n": 128
+    },
+    "snapshot/other/possessive": {
+      "accuracy": 0.6875,
+      "correct": 88,
+      "counts": {
+        "correct_target_current": 88,
+        "invalid": 0,
+        "other_account_current": 40,
+        "remaining_valid_command": 0,
+        "revoked_other": null,
+        "revoked_target": null
+      },
+      "foreign": 40,
+      "foreign_probability": 0.3125,
+      "margin": 3.5638325059810256,
+      "n": 128
+    },
+    "snapshot/self/account_name": {
+      "accuracy": 0.8515625,
+      "correct": 109,
+      "counts": {
+        "correct_target_current": 109,
+        "invalid": 0,
+        "other_account_current": 3,
+        "remaining_valid_command": 16,
+        "revoked_other": null,
+        "revoked_target": null
+      },
+      "foreign": 3,
+      "foreign_probability": 0.0234375,
+      "margin": 11.127150171839318,
+      "n": 128
+    },
+    "snapshot/self/owner_name": {
+      "accuracy": 0.546875,
+      "correct": 70,
+      "counts": {
+        "correct_target_current": 70,
+        "invalid": 0,
+        "other_account_current": 17,
+        "remaining_valid_command": 41,
+        "revoked_other": null,
+        "revoked_target": null
+      },
+      "foreign": 17,
+      "foreign_probability": 0.1328125,
+      "margin": 5.584377575751091,
+      "n": 128
+    },
+    "snapshot/self/possessive": {
+      "accuracy": 0.65625,
+      "correct": 84,
+      "counts": {
+        "correct_target_current": 84,
+        "invalid": 0,
+        "other_account_current": 42,
+        "remaining_valid_command": 2,
+        "revoked_other": null,
+        "revoked_target": null
+      },
+      "foreign": 42,
+      "foreign_probability": 0.328125,
+      "margin": 3.343127029971612,
+      "n": 128
+    }
+  },
+  "decision": "incomplete_or_invalid_no_inference",
+  "full_analysis_recomputed_sha256": "6d4853c312dd9918f2a1f9fb2e89f3eba140bdc78786d4c1bdd79e08fcb1fe06",
+  "inferential_results": "withheld",
+  "limit": "Observed eight-world denominators describe this block only. They do not replace the frozen full-sample endpoint, thresholds or missing-data rule.",
+  "new_inference": false,
+  "observed_block_effects": {
+    "E": {
+      "ci95": null,
+      "estimate": 0.38671875,
+      "p_value": null,
+      "positive_worlds": 8,
+      "zero_worlds": 0
+    },
+    "F": {
+      "ci95": null,
+      "estimate": 0.390625,
+      "p_value": null,
+      "positive_worlds": 8,
+      "zero_worlds": 0
+    },
+    "S": {
+      "ci95": null,
+      "estimate": 0.12109375,
+      "p_value": null,
+      "positive_worlds": 7,
+      "zero_worlds": 0
+    }
+  },
+  "observed_lookup_pairs": {
+    "ownership/before/other/account_name": {
+      "best_possible_full_sample_rate": 0.9635416666666666,
+      "both_correct": 25,
+      "n": 32,
+      "observed_below_80_percent": true,
+      "rate": 0.78125
+    },
+    "ownership/before/other/owner_name": {
+      "best_possible_full_sample_rate": 0.90625,
+      "both_correct": 14,
+      "n": 32,
+      "observed_below_80_percent": true,
+      "rate": 0.4375
+    },
+    "ownership/before/self/account_name": {
+      "best_possible_full_sample_rate": 0.9947916666666666,
+      "both_correct": 31,
+      "n": 32,
+      "observed_below_80_percent": false,
+      "rate": 0.96875
+    },
+    "ownership/before/self/owner_name": {
+      "best_possible_full_sample_rate": 0.890625,
+      "both_correct": 11,
+      "n": 32,
+      "observed_below_80_percent": true,
+      "rate": 0.34375
+    },
+    "ownership/snapshot/other/account_name": {
+      "best_possible_full_sample_rate": 0.9817708333333334,
+      "both_correct": 57,
+      "n": 64,
+      "observed_below_80_percent": false,
+      "rate": 0.890625
+    },
+    "ownership/snapshot/other/owner_name": {
+      "best_possible_full_sample_rate": 0.9140625,
+      "both_correct": 31,
+      "n": 64,
+      "observed_below_80_percent": true,
+      "rate": 0.484375
+    },
+    "ownership/snapshot/self/account_name": {
+      "best_possible_full_sample_rate": 0.96875,
+      "both_correct": 52,
+      "n": 64,
+      "observed_below_80_percent": false,
+      "rate": 0.8125
+    },
+    "ownership/snapshot/self/owner_name": {
+      "best_possible_full_sample_rate": 0.8984375,
+      "both_correct": 25,
+      "n": 64,
+      "observed_below_80_percent": true,
+      "rate": 0.390625
+    }
+  },
+  "observed_world_contrasts": {
+    "query-self-v1:0000": {
+      "E": 0.40625,
+      "F": 0.40625,
+      "S": 0.0625
+    },
+    "query-self-v1:0001": {
+      "E": 0.34375,
+      "F": 0.28125,
+      "S": 0.25
+    },
+    "query-self-v1:0002": {
+      "E": 0.28125,
+      "F": 0.28125,
+      "S": -0.03125
+    },
+    "query-self-v1:0003": {
+      "E": 0.375,
+      "F": 0.375,
+      "S": 0.03125
+    },
+    "query-self-v1:0004": {
+      "E": 0.3125,
+      "F": 0.3125,
+      "S": 0.03125
+    },
+    "query-self-v1:0005": {
+      "E": 0.46875,
+      "F": 0.59375,
+      "S": 0.21875
+    },
+    "query-self-v1:0006": {
+      "E": 0.34375,
+      "F": 0.3125,
+      "S": 0.0625
+    },
+    "query-self-v1:0007": {
+      "E": 0.5625,
+      "F": 0.5625,
+      "S": 0.34375
+    }
+  },
+  "peak_allocated_bytes": 15705395712,
+  "recorded_choices": 2688,
+  "runtime_seconds": 1313.0000844960014,
+  "scheduled_worlds": 48,
+  "selection_seconds_total": 1152.8228616249107,
+  "status": "complete_block_partial_study",
+  "technical_errors": 0,
+  "ties": 0,
+  "unrun_choices": 13440,
+  "valid_complete_worlds": 8,
+  "verified_internal_checksums": 79
+}

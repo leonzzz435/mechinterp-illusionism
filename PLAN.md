@@ -55,9 +55,11 @@
 - [x] Implement scoring, resume, world-paired analysis, reports and explicit HF block selection;
   test failure paths and degenerate statistics. Freeze the unchanged scientific inputs and
   execution source. See the [runbook](docs/QUERY_SELF_REFERENCE_RUNBOOK.md).
-- [ ] Obtain a current quote and separate launch authorization for one bounded query-reference
-  block, then inspect execution integrity before further invocations. No pretrained responses
-  exist for this protocol. Mistral, routing and patches stay unrun.
+- [x] Run and audit query-reference block 00: 2,688 valid selections in eight worlds;
+  [interim report](docs/QUERY_REFERENCE_BLOCK00_RESULTS.md). No final inference; controls remain concerns.
+- [ ] Complete the remaining five blocks unchanged after separate budgeting. Keep execution
+  at `59061ca`; interim evidence lives on `results/query-reference-block-00`.
+  Mistral, routing and patches stay unrun.
 
 ### Completed milestone: confidence and abstention pilot
 

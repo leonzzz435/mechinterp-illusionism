@@ -1,0 +1,22 @@
+{
+  "new_inference": false,
+  "archive_verified": true,
+  "full_sample_analysis_reproduced_exactly": true,
+  "test_command": "uv run --no-sync pytest -q tests/test_query_block_review.py",
+  "tests_passed": 3,
+  "test_seconds": 7.05,
+  "ruff": "passed",
+  "deterministic_artifact_sha256": {
+    "audit.json": "aef8a6323d9ecbaaceba384436275b5fbb699ed959f2f16144b26d6d22dafe20",
+    "observed-report.md": "70a9038c7117d23c986edebc65f888b402f3a48a5aa84a30fc73fe2f2f5ce97e",
+    "observed-accuracy.svg": "54943e05eed0c2dd9cfe9f803698d8646c2fa6d3e69e80709d90f0c90b49a9ca",
+    "observed-accuracy.pdf": "60afc32ba3de85dcf2cc126589b71951722765b9a914ecdbdd7bac1d3f5063b2",
+    "observed-accuracy.png": "72b54f7a9483619d8bc37bbce4e6ece82aa0c91966df6c8bd4a3f004077a0499"
+  },
+  "local_document_links": "passed",
+  "execution_freeze": "unchanged and valid",
+  "article_v1": "unchanged",
+  "execution_commit": "59061cacf191f737689997b1bb327e75accc71fa",
+  "results_branch": "results/query-reference-block-00",
+  "additional_jobs_submitted": false
+}

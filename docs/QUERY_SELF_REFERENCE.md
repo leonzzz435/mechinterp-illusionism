@@ -1,5 +1,7 @@
 # Query-bound self-reference: protocol v1
 
+**Execution update:** [Block 00 is complete](QUERY_REFERENCE_BLOCK00_RESULTS.md), with 2,688 valid selections in eight of 48 worlds. The study remains incomplete; the pre-run freeze and its verification records below remain unchanged.
+
 **Decision:** pursue query-bound self-reference from the original pilot. The question is
 whether asking for **your active connection** changes account selection relative to
 naming **that same connection**, with matched third-person aliases as controls.
@@ -231,7 +233,8 @@ The isolated generator, text-first oracle and complete input/token preparation a
 implemented. The [CPU preparation report](QUERY_SELF_REFERENCE_PREFLIGHT.md) records
 the actual checks and artifacts; the older partial check above remains unchanged.
 The scientific JSON remains byte-identical to the reviewed draft; the separate freeze
-record governs execution. No assessment responses have been obtained.
+record governs execution. The first block now has observed responses, linked above;
+the complete fixed sample remains unrun.
 
 The implementation makes the order convention explicit: permission records start in
 hash-ranked account order; owner bindings start in the declared Rowan/Morgan order.

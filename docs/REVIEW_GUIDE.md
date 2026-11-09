@@ -6,10 +6,16 @@ The [separate retrospective sensitivity addendum](QUERY_REFERENCE_SENSITIVITY_AD
 reports exploratory uncertainty after whole-world exclusion and both tied assignments.
 It preserves the original analysis and article, and does not turn failed lookup controls into success.
 
-Start with [Naming the Agent, Choosing for the Other](article/ARTICLE.md), then its
-[paragraph-level claim ledger](article/CLAIMS.md). The central observation is the role gap
-after a relevant permission change; the other-account error direction has narrower evidence
-than the recurring accuracy gap. Review that distinction before evaluating the explanation.
+Start with [Article v2: The Right Command for the Wrong Account](article-v2/ARTICLE.md),
+its [paragraph ledger](article-v2/CLAIMS.md) and [technical appendix](article-v2/METHODS.md).
+It centers the completed query-reference comparison, keeps the failed lookup controls
+visible, and separates original counts from retrospective inference. The new
+[stage/shortcut report](../review/query-reference-stages/report.md) includes every form,
+both owners, presentation-specific baselines, and event-order splits.
+
+The earlier [Naming the Agent, Choosing for the Other](article/ARTICLE.md) and its
+[ledger](article/CLAIMS.md) remain frozen at `article-v1`; they describe the historical
+context-line experiments. Read their subsequent addenda before interpreting generalization.
 
 **New evidence after the article freeze:** the [completed Qwen/permissions tranche](QWEN_OWNERSHIP_RESULTS.md)
 contains 18,432 choices on 48 fresh worlds. The categorical primary contrast is −0.39 pp
@@ -24,11 +30,13 @@ scripted shortcut results. It distinguishes the pilot's query-bound self view fr
 the later named-query cohorts. Its proposed endpoints and gates do not amend the
 frozen protocol. Reproduce it with `uv run --no-sync python scripts/review_ownership_design.py`.
 
-**Selected next question:** [query-bound self-reference](QUERY_SELF_REFERENCE.md), with
+**Completed query-reference question:** [query-bound self-reference](QUERY_SELF_REFERENCE.md), with
 same-target named aliases and balanced third-person references. Its
 [versioned JSON](../designs/query-self-reference-v1.json) is preserved from the review draft.
 The separate [freeze record](../designs/query-self-reference-v1.freeze.json) seals its
-scientific content, prepared inputs and tested execution. It is not an executed study.
+scientific content, prepared inputs and tested execution. All six blocks have since
+completed; see the [combined results](QUERY_REFERENCE_RESULTS.md), followed by the
+retrospective supplements. The preflight alone is not behavioral evidence.
 The frame-accuracy contrast is a co-endpoint.
 The original [partial structural check](../review/query-self-reference-protocol-check.json)
 is preserved. The later [complete CPU input audit](QUERY_SELF_REFERENCE_PREFLIGHT.md)

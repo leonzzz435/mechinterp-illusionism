@@ -1,0 +1,110 @@
+{
+  "archive_sha256": [
+    "6f2da16ae4d121a9434acbab493dfbeff2c8fa2e5f7b017e7ff90c80f4ba86e7",
+    "d09c79e9db4954188920b51c9dddd9f005a7423cad92e82ac6fdfb71437c6989",
+    "27b794b128d3978e37d7c9da0fcd534479a3672d8ee3c0303fffbc14f95773ad",
+    "2a534e189469d647e4c5a6dfe649e8eb782f1759a601a3236684b28d8f7d1274",
+    "be7a5fed556d731e0de3b07895fb71060247e4150b70bec51b7d8dd0c3674605",
+    "a2eabe16cc93816fd558fead6fb4e2a39ec226a48ff54d8869ebf78df441d42e"
+  ],
+  "article_v1_same_count_convention": 3530,
+  "article_word_count": 2576,
+  "artifact_sha256": {
+    "review/query-reference-stages/analysis.json": "12d845d4f485da6022c5160479f7fa6bc223438fbb40efd9ccdd3b6a3de16052",
+    "review/query-reference-stages/example.md": "3dace35474ae990bd9b185777b25c52d29442e3288fe9cab4578aef4c790dc55",
+    "review/query-reference-stages/history_contrasts.pdf": "1fcb1154afd163704650c9128a58247c50ff5a88b5ca7af255fbbcb0db4b2cbe",
+    "review/query-reference-stages/history_contrasts.png": "26b54e92efd7621039cb353a3818f7eb9faaa1c9b9a8cfb74880c779abd99375",
+    "review/query-reference-stages/history_contrasts.svg": "37f8fa0fb64a9410e84e6d71cb2456dd9b174e1aefb5493eb818d553825aaedd",
+    "review/query-reference-stages/report.md": "8024c499482ae0b3e0b4937045321f23c85d85fc07518cd9fe78a2a165f00218",
+    "review/query-reference-stages/stage_accuracy.pdf": "0591aa33ff0971d8763dc91f017f32d2a29675fa4daeaf0df52a57facf729653",
+    "review/query-reference-stages/stage_accuracy.png": "492f0c5ebc59001bc28c8fb29895ec86a5bc9c855b76f59bf5cd545a6c42519e",
+    "review/query-reference-stages/stage_accuracy.svg": "c0d36993ba8e94b7ce8d8960fcc1bdf0dcffd6ca731d17aeee66548dedfe9112",
+    "review/query-reference-stages/task_example.pdf": "ff550c16974664ebd33e11d8ce567cfe8bfe3c9c4b822325c44a083148261ba0",
+    "review/query-reference-stages/task_example.png": "f1e4cc5213b7889b121ed25c2dd3962844dc1504b0ace242235feada256e27ad",
+    "review/query-reference-stages/task_example.svg": "0a58b2d1c5facbf31e663a5e2b290bce549e4e200833e3a69597cbb9261a437d"
+  },
+  "base_commit": "e994b249042d96ab96cc8159c5e5b39a9ba2c8fb",
+  "deterministic_exports": "All JSON/Markdown/SVG/PDF/PNG exports byte-identical across repeated writes in tests",
+  "external_sources_checked": [
+    {
+      "date": "2026-11-09",
+      "section": "What is illusionism?",
+      "url": "https://www.keithfrankish.com/illusionism/"
+    },
+    {
+      "date": "2026-11-09",
+      "url": "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/tree/a09a35458c702b33eeacc393d103063234e8bc28"
+    }
+  ],
+  "ledger_coverage": "all 35 block IDs matched exactly",
+  "local_links_checked": 196,
+  "new_cloud_spend": false,
+  "new_model_inference": false,
+  "original_analysis_sha256": "eccaf6f8ec3524a415b7d7de089087aac64750537e2b58dd0478b2952aabeb09",
+  "original_result_reports_unchanged": [
+    "docs/QUERY_REFERENCE_BLOCK00_RESULTS.md",
+    "docs/QUERY_REFERENCE_RESULTS.md",
+    "docs/QWEN_CONFIDENCE_FULL_REPORT.md",
+    "docs/QWEN_CONFIDENCE_RESULTS.md",
+    "docs/QWEN_OWNERSHIP_RESULTS.md",
+    "docs/QWEN_POSSESSIVE_FULL_REPORT.md",
+    "docs/QWEN_POSSESSIVE_RESULTS.md",
+    "docs/QWEN_RESULTS.md",
+    "docs/QWEN_ROLE_PATCH_FULL_REPORT.md",
+    "docs/QWEN_ROLE_PATCH_RESULTS.md",
+    "docs/QWEN_ROLE_RESULTS.md"
+  ],
+  "paragraph_blocks": 35,
+  "plots": "All three PNGs visually inspected; readable labels and limitations",
+  "protected_checks": [
+    {
+      "base": "e994b24",
+      "paths": [
+        "src",
+        "designs",
+        "review/evidence",
+        "review/query-reference-results",
+        "review/query-reference-sensitivity",
+        "docs/article",
+        "scripts/analyze_query_sensitivity.py",
+        "docs/QUERY_REFERENCE_V2_AMENDMENT.md",
+        "docs/QUERY_REFERENCE_SENSITIVITY_ADDENDUM.md"
+      ],
+      "unchanged": true
+    },
+    {
+      "base": "article-v1",
+      "paths": [
+        "docs/article"
+      ],
+      "unchanged": true
+    }
+  ],
+  "scientific_limits": "Post hoc paired-world intervals; no equivalence or new significance tests; failed lookup controls and frozen v1 invalidity unchanged; no mechanism or human-illusionism conclusion",
+  "source_checks": "All 18 article cell percentages, two before/snapshot possessive CIs, four order-stratum percentages independently checked against exported JSON; source hashes match",
+  "source_sha256": {
+    "docs/article-v2/ARTICLE.md": "2236a0c25354461ef712622529237f99106f2cfaf4b464b8d79af70ce7abee18",
+    "docs/article-v2/CLAIMS.md": "0542b636d3bd4e5795320e87d6033605e5e9d0a1daffd28c0aef4955baeb5587",
+    "docs/article-v2/METHODS.md": "1af0485c2cef40ae0a54bf73d19291bb323e172a824c494bdad9b182fa29608b",
+    "docs/article-v2/REVISION_NOTES.md": "c3416a50e757da3ffd2c4fc1fddc3a759a1c5eb1b73a1c7f4095f23e0bee540c",
+    "scripts/analyze_query_stages.py": "badfb0f25c4a87ee9cceba58375ad6df3f45b047befd089ccb70cea556331d4c",
+    "tests/test_query_stages.py": "c65ec1f497c6cf35851d21ade4e917238eee15cf62fded6f6e431a066361714b"
+  },
+  "static_checks": "Ruff check, Ruff format check, git diff --check",
+  "status": "verified_offline_supplement_no_new_experimental_decision",
+  "test_scope": "Focused affected query path; historical full suite not rerun",
+  "tests": [
+    {
+      "command": "HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 <existing-venv>/bin/python -m pytest -q tests/test_query_reference.py tests/test_query_reference_execution.py tests/test_query_block_review.py tests/test_query_sensitivity.py tests/test_query_stages.py",
+      "passed": 75,
+      "seconds": 90.81
+    },
+    {
+      "command": "HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 <existing-venv>/bin/python -m pytest -q tests/test_query_stages.py",
+      "passed": 9,
+      "reason": "Final report table and SVG whitespace normalization after broader run",
+      "seconds": 14.0
+    }
+  ],
+  "word_count_convention": "Whitespace-separated visible text including headings/table/equation tokens, excluding HTML markers and Markdown link destinations"
+}

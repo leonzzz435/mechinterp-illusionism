@@ -70,6 +70,16 @@
   exclude the whole tied world, resolve the exact tie using the unique stored greedy
   flag, and show the other tied assignment. Preserve v1, all failed gates and article-v1.
 
+- [x] Complete the [CPU stage/shortcut audit](review/query-reference-stages/report.md):
+  match final-state snapshots against printed histories, retain all forms and both owners,
+  scope the 25%/50% scripted baseline, and show both update orders. All new intervals
+  remain retrospective; no lookup gate or original decision changes.
+- [x] Write a separate [article-v2 draft](docs/article-v2/ARTICLE.md), centered on
+  query-reference behavior with a full example, three reproducible figures, mathematical
+  appendix and paragraph ledger. Preserve article-v1 and original evidence.
+- [ ] External methodological/readability review and publication of article-v2. No new
+  model, routing task, patch or gate-repair design was launched for this writing milestone.
+
 ### Completed milestone: confidence and abstention pilot
 
 The bounded wording-diagnostic branch is complete. Return to a specific candidate component

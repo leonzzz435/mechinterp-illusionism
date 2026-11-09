@@ -4,7 +4,13 @@ Can a language model's self-referential language and its use of a contextual sel
 
 We distinguish **self-language**, **functional self-models**, and **phenomenal consciousness**. The experiments address the first two; they do not settle the third.
 
-**Status:** the first Blackwell runs passed technical checks but failed the functional-task baseline. The revised four-shot development baseline also failed its capability gates, using pinned EleutherAI `lm-evaluation-harness` on HF Jobs. Cloud execution and result retrieval work; large intervention sweeps remain stopped. No functional dissociation or consciousness claim is established.
+**Latest reading:** [Article v2 — The Right Command for the Wrong Account](docs/article-v2/ARTICLE.md)
+puts the completed 48-world query-reference study at the center, including failed lookup
+controls, retrospective tie/stage analyses and update-order dependence.
+[CPU stage report](review/query-reference-stages/report.md) · [Methods](docs/article-v2/METHODS.md) ·
+[Claim ledger](docs/article-v2/CLAIMS.md). This is a new evidence draft; `article-v1` stays frozen.
+
+**Historical pilot status:** the first Blackwell runs passed technical checks but failed the functional-task baseline. The revised four-shot development baseline also failed its capability gates, using pinned EleutherAI `lm-evaluation-harness` on HF Jobs. Cloud execution and result retrieval work; large intervention sweeps remain stopped. No functional dissociation or consciousness claim is established.
 
 The **Qwen pilot completed all 160 texts and 3,072 action choices**. Overall action accuracy
 was 91.47% plain / 91.86% chat, but **both formats failed the prespecified capability screen**
@@ -56,7 +62,7 @@ Every additional paid job requires separate authorization.
   established as a general replicated finding.
   The later [query-reference sensitivity addendum](docs/QUERY_REFERENCE_SENSITIVITY_ADDENDUM.md)
   reports exploratory 47/48-world analyses with failed lookup controls; the article stays frozen.
-- [Next question: query-bound self-reference](docs/QUERY_SELF_REFERENCE.md) —
+- [Completed question: query-bound self-reference](docs/QUERY_SELF_REFERENCE.md) —
   frozen scientific inputs and tested [execution handover](docs/QUERY_SELF_REFERENCE_RUNBOOK.md);
   [CPU input/token audit](docs/QUERY_SELF_REFERENCE_PREFLIGHT.md).
   [First block results](docs/QUERY_REFERENCE_BLOCK00_RESULTS.md): 2,688 valid selections,

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="784.8pt" height="280.558125pt" viewBox="0 0 784.8 280.558125" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 280.558125 
+L 784.8 280.558125 
+L 784.8 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="text_1">
+    <g id="patch_2">
+     <path d="M 35.072312 167.840859 
+L 179.631687 167.840859 
+Q 187.631687 167.840859 187.631687 159.840859 
+L 187.631687 135.835391 
+Q 187.631687 127.835391 179.631687 127.835391 
+L 35.072312 127.835391 
+Q 27.072312 127.835391 27.072312 135.835391 
+L 27.072312 159.840859 
+Q 27.072312 167.840859 35.072312 167.840859 
+z
+" style="fill: #e8f1f8; stroke: #396080; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(38.518406 144.434805)">Two explicit owner bindings</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(35.072312 156.437539)">Your / their / owner / account</text>
+   </g>
+   <g id="text_2">
+    <g id="patch_3">
+     <path d="M 302.643656 167.840859 
+L 466.748344 167.840859 
+Q 474.748344 167.840859 474.748344 159.840859 
+L 474.748344 135.835391 
+Q 474.748344 127.835391 466.748344 127.835391 
+L 302.643656 127.835391 
+Q 294.643656 127.835391 294.643656 135.835391 
+L 294.643656 159.840859 
+Q 294.643656 167.840859 302.643656 167.840859 
+z
+" style="fill: #e8f1f8; stroke: #396080; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(311.224125 144.434805)">Same target and permissions</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(302.643656 156.437539)">Before / snapshot / both updates</text>
+   </g>
+   <g id="text_3">
+    <g id="patch_4">
+     <path d="M 592.8025 167.840859 
+L 731.2775 167.840859 
+Q 739.2775 167.840859 739.2775 159.840859 
+L 739.2775 135.835391 
+Q 739.2775 127.835391 731.2775 127.835391 
+L 592.8025 127.835391 
+Q 584.8025 127.835391 584.8025 135.835391 
+L 584.8025 159.840859 
+Q 584.8025 167.840859 592.8025 167.840859 
+z
+" style="fill: #e8f1f8; stroke: #396080; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(597.373594 144.434805)">Four full-command scores</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(592.8025 156.437539)">Execute selected command</text>
+   </g>
+   <g id="patch_5">
+    <path d="M 217.205943 147.838125 
+Q 242.170976 147.838125 264.89994 147.838125 
+" style="fill: none; stroke: #000000; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 260.89994 145.838125 
+L 264.89994 147.838125 
+L 260.89994 149.838125 
+" style="fill: none; stroke: #000000; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 502.253473 147.838125 
+Q 531.07161 147.838125 557.65368 147.838125 
+" style="fill: none; stroke: #000000; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 553.65368 145.838125 
+L 557.65368 147.838125 
+L 553.65368 149.838125 
+" style="fill: none; stroke: #000000; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="392.4" y="16.318125" transform="rotate(-0 392.4 16.318125)">Fixed query-reference experiment — no internal intervention</text>
+   </g>
+  </g>
+ </g>
+</svg>

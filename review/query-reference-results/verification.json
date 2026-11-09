@@ -1,0 +1,182 @@
+{
+  "analysis_sha256": "eccaf6f8ec3524a415b7d7de089087aac64750537e2b58dd0478b2952aabeb09",
+  "blocks": [
+    {
+      "archive": "../query-reference-block00-results/qwen-query-00-4edce03e18d645e7.tar.gz",
+      "archive_sha256": "6f2da16ae4d121a9434acbab493dfbeff2c8fa2e5f7b017e7ff90c80f4ba86e7",
+      "block": 0,
+      "execution_commit": "59061cacf191f737689997b1bb327e75accc71fa",
+      "fetch": {
+        "artifact_revision": "daab13b041a662e9b68d64d80e58644ac644b350",
+        "directory": ".hf-jobs/downloads/qwen-query-00-4edce03e18d645e7",
+        "export_verified": true,
+        "report": ".hf-jobs/downloads/qwen-query-00-4edce03e18d645e7/run/report.md"
+      },
+      "job_id": "6af0d6f80e0338d1bb84d99f",
+      "job_url": "https://huggingface.co/jobs/zett13/6af0d6f80e0338d1bb84d99f",
+      "manifest_status": "complete",
+      "provider_stage": "COMPLETED",
+      "record_status_counts": {
+        "ok": 2688
+      },
+      "records": 2688,
+      "run_name": "qwen-query-00-4edce03e18d645e7",
+      "runtime_seconds": 1313.0000844960014,
+      "verified_internal_checksums": 79
+    },
+    {
+      "archive": "qwen-query-01-3e8146c179334aed.tar.gz",
+      "archive_sha256": "d09c79e9db4954188920b51c9dddd9f005a7423cad92e82ac6fdfb71437c6989",
+      "block": 1,
+      "execution_commit": "59061cacf191f737689997b1bb327e75accc71fa",
+      "fetch": {
+        "artifact_revision": "5ba4c27932374206cc208295097ffa4431382309",
+        "directory": ".hf-jobs/downloads/qwen-query-01-3e8146c179334aed",
+        "export_verified": true,
+        "report": ".hf-jobs/downloads/qwen-query-01-3e8146c179334aed/run/report.md"
+      },
+      "job_id": "6af19f62ab34849891a7c549",
+      "job_url": "https://huggingface.co/jobs/zett13/6af19f62ab34849891a7c549",
+      "manifest_status": "complete_with_errors",
+      "provider_stage": "ERROR",
+      "record_status_counts": {
+        "ok": 2687,
+        "tie": 1
+      },
+      "records": 2688,
+      "run_name": "qwen-query-01-3e8146c179334aed",
+      "runtime_seconds": 1257.022438528,
+      "verified_internal_checksums": 79
+    },
+    {
+      "archive": "qwen-query-02-35f38f414794405a.tar.gz",
+      "archive_sha256": "27b794b128d3978e37d7c9da0fcd534479a3672d8ee3c0303fffbc14f95773ad",
+      "block": 2,
+      "execution_commit": "59061cacf191f737689997b1bb327e75accc71fa",
+      "fetch": {
+        "artifact_revision": "5ba4c27932374206cc208295097ffa4431382309",
+        "directory": ".hf-jobs/downloads/qwen-query-02-35f38f414794405a",
+        "export_verified": true,
+        "report": ".hf-jobs/downloads/qwen-query-02-35f38f414794405a/run/report.md"
+      },
+      "job_id": "6af19f669737d9a9e08c37b3",
+      "job_url": "https://huggingface.co/jobs/zett13/6af19f669737d9a9e08c37b3",
+      "manifest_status": "complete",
+      "provider_stage": "COMPLETED",
+      "record_status_counts": {
+        "ok": 2688
+      },
+      "records": 2688,
+      "run_name": "qwen-query-02-35f38f414794405a",
+      "runtime_seconds": 1235.2435612569998,
+      "verified_internal_checksums": 79
+    },
+    {
+      "archive": "qwen-query-03-66fe986cf6bf4755.tar.gz",
+      "archive_sha256": "2a534e189469d647e4c5a6dfe649e8eb782f1759a601a3236684b28d8f7d1274",
+      "block": 3,
+      "execution_commit": "59061cacf191f737689997b1bb327e75accc71fa",
+      "fetch": {
+        "artifact_revision": "5ba4c27932374206cc208295097ffa4431382309",
+        "directory": ".hf-jobs/downloads/qwen-query-03-66fe986cf6bf4755",
+        "export_verified": true,
+        "report": ".hf-jobs/downloads/qwen-query-03-66fe986cf6bf4755/run/report.md"
+      },
+      "job_id": "6af19f6b9737d9a9e08c37b8",
+      "job_url": "https://huggingface.co/jobs/zett13/6af19f6b9737d9a9e08c37b8",
+      "manifest_status": "complete",
+      "provider_stage": "COMPLETED",
+      "record_status_counts": {
+        "ok": 2688
+      },
+      "records": 2688,
+      "run_name": "qwen-query-03-66fe986cf6bf4755",
+      "runtime_seconds": 1232.478657025,
+      "verified_internal_checksums": 79
+    },
+    {
+      "archive": "qwen-query-04-9979bdcdc3b54eb2.tar.gz",
+      "archive_sha256": "be7a5fed556d731e0de3b07895fb71060247e4150b70bec51b7d8dd0c3674605",
+      "block": 4,
+      "execution_commit": "59061cacf191f737689997b1bb327e75accc71fa",
+      "fetch": {
+        "artifact_revision": "5ba4c27932374206cc208295097ffa4431382309",
+        "directory": ".hf-jobs/downloads/qwen-query-04-9979bdcdc3b54eb2",
+        "export_verified": true,
+        "report": ".hf-jobs/downloads/qwen-query-04-9979bdcdc3b54eb2/run/report.md"
+      },
+      "job_id": "6af19f6eab34849891a7c54e",
+      "job_url": "https://huggingface.co/jobs/zett13/6af19f6eab34849891a7c54e",
+      "manifest_status": "complete",
+      "provider_stage": "COMPLETED",
+      "record_status_counts": {
+        "ok": 2688
+      },
+      "records": 2688,
+      "run_name": "qwen-query-04-9979bdcdc3b54eb2",
+      "runtime_seconds": 1268.8961850280011,
+      "verified_internal_checksums": 79
+    },
+    {
+      "archive": "qwen-query-05-8a4e517e46f84899.tar.gz",
+      "archive_sha256": "a2eabe16cc93816fd558fead6fb4e2a39ec226a48ff54d8869ebf78df441d42e",
+      "block": 5,
+      "execution_commit": "59061cacf191f737689997b1bb327e75accc71fa",
+      "fetch": {
+        "artifact_revision": "5ba4c27932374206cc208295097ffa4431382309",
+        "directory": ".hf-jobs/downloads/qwen-query-05-8a4e517e46f84899",
+        "export_verified": true,
+        "report": ".hf-jobs/downloads/qwen-query-05-8a4e517e46f84899/run/report.md"
+      },
+      "job_id": "6af19f72ab34849891a7c552",
+      "job_url": "https://huggingface.co/jobs/zett13/6af19f72ab34849891a7c552",
+      "manifest_status": "complete",
+      "provider_stage": "COMPLETED",
+      "record_status_counts": {
+        "ok": 2688
+      },
+      "records": 2688,
+      "run_name": "qwen-query-05-8a4e517e46f84899",
+      "runtime_seconds": 1246.2815950640002,
+      "verified_internal_checksums": 79
+    }
+  ],
+  "checked_at_utc": "2026-11-09T13:01:55.232780+00:00",
+  "coverage_complete": true,
+  "decision": "incomplete_or_invalid_no_inference",
+  "document_links_checked": true,
+  "document_tables_checked": true,
+  "frozen_source_and_article_unchanged": true,
+  "generated_artifact_sha256": {
+    "analysis.json": "eccaf6f8ec3524a415b7d7de089087aac64750537e2b58dd0478b2952aabeb09",
+    "examples.md": "37ff328eeaedb4cd2b6a3493eaa2a303284199321f52cadbf9d691c91fc6cb05",
+    "figures/alias_performance.pdf": "9546fb9c489546366431374cc4840d90c65a67b29bd529e1b584586f374774b4",
+    "figures/alias_performance.png": "2a5a7511f6f4073ebf7c9fe79a11c8e17fd17a0c85edd1e5db91933a4da2f398",
+    "figures/alias_performance.svg": "f1673aee057c580f35eb697e9605610c476f60ce85e5096127b9447973bde5a2",
+    "figures/design.pdf": "65fd4fa2175dafb31270b396703ad224d106df64380d8269259614eae29d5997",
+    "figures/design.png": "3ae5b44904407ffe64f160125efc811e4a24e7e716f49c44a8f335ca347b4b80",
+    "figures/design.svg": "255c9d891903fbde5feb0f01c2e4e87c0b1841216c820141ec99dcaa6a634709",
+    "figures/lookup_controls.pdf": "e97e1c670dfe145a4ebd696748c420b304f538cb5667236475d85b4c4efc87f6",
+    "figures/lookup_controls.png": "c02c8ac3e92c0cf34db8e87c20e4eabc06f08590f64e8fd0bd37ba439509a767",
+    "figures/lookup_controls.svg": "924ac46e09d2b984bde69747675ed9938b4725f11d430f9b3681f649a605dc5f",
+    "figures/primary.pdf": "b210657c0a24880ea9dc6b9dc63a9654048c7e66e64f762c691914a57884a272",
+    "figures/primary.png": "ab2aba01e41b8bb9c736b7dd1569ec45639c1eca7be7696282752f588844a590",
+    "figures/primary.svg": "d0633e35da48f604523a6162730b0de2824e15bbdb5d2476268d848da3ca72a0",
+    "figures/world_contrasts.pdf": "eb397e23689d19b82901dc7fa15f20c25bfc53194a55bc3122035fdcc82971fb",
+    "figures/world_contrasts.png": "ab3df8d357fce0d832383bdf2db41456bbdb24c0e86666c0e1a8a34b3a257a76",
+    "figures/world_contrasts.svg": "aade0fd3771e2265980df3f5ca708b08659e1222efa7e1f85144a120b5a2b7b6",
+    "invalid-records.json": "f6e9feaaf0b039e89962530b1f20364c7cb1f83e3004bb7fac4cf7368ceb28c6",
+    "report.md": "d88683a9e96db28b7b49bd1184e8a20f93291b51d72ae59ca97e8e64f192b0f3"
+  },
+  "inference_eligible": false,
+  "log_sha256": "c1f08601a7807dd40629f80e65cb2a5521c5b760ca85d23a0b2470a3cc3ca8d0",
+  "lookup_numerical_pass": false,
+  "missing": 0,
+  "new_jobs_submitted": false,
+  "new_model_inference": false,
+  "ties": 1,
+  "total_records": 16128,
+  "valid_complete_worlds": 47,
+  "valid_records": 16127,
+  "verification": "All six archives and internal file checksums verified; frozen analyzer validated records, token boundaries, simulators and common execution provenance before merging."
+}

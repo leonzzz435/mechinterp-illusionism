@@ -61,8 +61,10 @@
   including complete-sample estimates with failed lookup controls; preserve all frozen rules.
 - [x] Submit the remaining five blocks under the explicit 10 USD aggregate approval;
   [job links, cost bound and retrieval handover](docs/QUERY_REFERENCE_CONTINUATION.md).
-- [ ] Retrieve, verify and combine all six blocks after completion. Keep execution
-  at `59061ca`; interim evidence lives on `results/query-reference-block-00`.
+- [x] Retrieve, verify and combine all six blocks: 16,128 recorded selections, one tie,
+  no missing data. [Combined results](docs/QUERY_REFERENCE_RESULTS.md): inference withheld;
+  lookup thresholds also fail. Keep execution at `59061ca`; evidence lives on
+  `results/query-reference-block-00`.
   Mistral, routing and patches stay unrun.
 
 ### Completed milestone: confidence and abstention pilot

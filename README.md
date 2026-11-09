@@ -61,8 +61,9 @@ Every additional paid job requires separate authorization.
   eight of 48 worlds; descriptive differences with weak operator-name controls, no final decision.
   [Reporting commitment before block 01](docs/QUERY_REFERENCE_INTERPRETATION_PLAN.md):
   retain estimates and uncertainty if lookup gates fail, without claiming a passing candidate.
-  [Remaining five blocks submitted](docs/QUERY_REFERENCE_CONTINUATION.md) under a
-  10 USD aggregate approval; submission does not yet supply a complete-study result.
+  [All six blocks retrieved and combined](docs/QUERY_REFERENCE_RESULTS.md):
+  16,128 recorded selections, one exact tie, no missing data; frozen inference is
+  withheld and lookup controls also miss their thresholds.
 - [Sources and claim boundaries](docs/SOURCES_AND_CONTEXT.md)
 - [Implementation and empirical milestones](PLAN.md)
 - [Software verification and remaining empirical checks](docs/VERIFICATION.md)

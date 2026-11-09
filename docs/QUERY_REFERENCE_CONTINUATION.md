@@ -1,5 +1,10 @@
 # Remaining query-reference blocks: authorized and submitted
 
+**Completion update, 2026-11-09:** All jobs have ended and all selections are saved.
+Block 01 has one exact score tie and provider status `ERROR`; blocks 02–05 completed
+successfully. See the [combined results and verification](QUERY_REFERENCE_RESULTS.md).
+The launch record below preserves the earlier submission-time snapshot.
+
 On 2026-11-09 the user approved **10 USD total** for the five remaining jobs, blocks
 01–05. All five requests were accepted. They cover 40 worlds and 13,440 selections;
 together with completed block 00 this is the frozen 48-world / 16,128-selection sample.

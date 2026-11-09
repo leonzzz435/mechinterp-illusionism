@@ -54,6 +54,8 @@ Every additional paid job requires separate authorization.
   the fresh-world Qwen/permissions tranche did not confirm its prespecified contrast
   and failed its irrelevant-update competence controls. The historical effect is not
   established as a general replicated finding.
+  The later [query-reference sensitivity addendum](docs/QUERY_REFERENCE_SENSITIVITY_ADDENDUM.md)
+  reports exploratory 47/48-world analyses with failed lookup controls; the article stays frozen.
 - [Next question: query-bound self-reference](docs/QUERY_SELF_REFERENCE.md) —
   frozen scientific inputs and tested [execution handover](docs/QUERY_SELF_REFERENCE_RUNBOOK.md);
   [CPU input/token audit](docs/QUERY_SELF_REFERENCE_PREFLIGHT.md).
@@ -64,6 +66,8 @@ Every additional paid job requires separate authorization.
   [All six blocks retrieved and combined](docs/QUERY_REFERENCE_RESULTS.md):
   16,128 recorded selections, one exact tie, no missing data; frozen inference is
   withheld and lookup controls also miss their thresholds.
+  A separate CPU-only sensitivity amendment retains the original result and resolves
+  the tie only in derived analyses, with explicit post hoc intervals and tests.
 - [Sources and claim boundaries](docs/SOURCES_AND_CONTEXT.md)
 - [Implementation and empirical milestones](PLAN.md)
 - [Software verification and remaining empirical checks](docs/VERIFICATION.md)

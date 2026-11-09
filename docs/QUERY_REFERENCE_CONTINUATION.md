@@ -5,6 +5,11 @@ Block 01 has one exact score tie and provider status `ERROR`; blocks 02–05 com
 successfully. See the [combined results and verification](QUERY_REFERENCE_RESULTS.md).
 The launch record below preserves the earlier submission-time snapshot.
 
+Block 01 recorded and exported all 2,688 cases. The worker intentionally returns exit
+code 2 for `complete_with_errors`; **do not resubmit to recover supposedly missing data**.
+The [retrospective CPU sensitivity addendum](QUERY_REFERENCE_SENSITIVITY_ADDENDUM.md)
+uses those saved scores, preserves v1 and leaves the lookup controls failed.
+
 On 2026-11-09 the user approved **10 USD total** for the five remaining jobs, blocks
 01–05. All five requests were accepted. They cover 40 worlds and 13,440 selections;
 together with completed block 00 this is the frozen 48-world / 16,128-selection sample.

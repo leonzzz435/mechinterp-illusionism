@@ -66,6 +66,9 @@
   lookup thresholds also fail. Keep execution at `59061ca`; evidence lives on
   `results/query-reference-block-00`.
   Mistral, routing and patches stay unrun.
+- [x] Add [retrospective CPU sensitivities](docs/QUERY_REFERENCE_SENSITIVITY_ADDENDUM.md):
+  exclude the whole tied world, resolve the exact tie using the unique stored greedy
+  flag, and show the other tied assignment. Preserve v1, all failed gates and article-v1.
 
 ### Completed milestone: confidence and abstention pilot
 

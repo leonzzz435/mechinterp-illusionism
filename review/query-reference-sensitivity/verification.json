@@ -1,0 +1,58 @@
+{
+  "article": "unchanged from article-v1",
+  "artifact_sha256": {
+    "analysis.json": "410dffd904ba7a64352b6f970106c97a50df590fa1c19bd977a3397ce1685f35",
+    "report.md": "96eaf22caf62f2a254231fcdd2660b2fd95204c4228f8c03237e7c4c0a72ed33",
+    "sensitivity.pdf": "1c67df954cddd88d6d77584d2030cb664b980abe5de084187caddf51a724c20b",
+    "sensitivity.png": "b5051cf455a83e73a4dc7fcf09f949c6777c43fc7252db51fe9eeb129a72f420",
+    "sensitivity.svg": "c802d22f725c5c5b128b96ee8c8a746abd9488984baa17bf6e300dfbaf86c6e5"
+  },
+  "checked_at_utc": "2026-11-09T13:52:52.624628+00:00",
+  "code_sha256": {
+    "docs/QUERY_REFERENCE_V2_AMENDMENT.md": "294d157904607767a246a686455d6e841479307f15063c6aee163cee23fbad3e",
+    "scripts/analyze_query_sensitivity.py": "0d508040f710571a9fe75225cda99f11986a24bbb8c26d76c91ca8dfdde2f7b1",
+    "tests/test_query_sensitivity.py": "be0dd8193c8c72b8916ec5ac7f755772560496aa0041b694a20cf98fdc17617e"
+  },
+  "derived_v2_decision": "lookup_gate_failed",
+  "deterministic_exports": "Tests compare two JSON/report/SVG/PDF/PNG exports byte for byte.",
+  "environment": {
+    "lm-eval": "0.4.13",
+    "matplotlib": "3.11.2",
+    "numpy": "1.26.4",
+    "python": "3.12.3",
+    "scipy": "1.17.1"
+  },
+  "frozen_execution_source": "unchanged from 59061ca",
+  "frozen_v1_decision": "incomplete_or_invalid_no_inference",
+  "frozen_v1_evidence": "byte-identical to ec753a5",
+  "full_test_command": "HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 uv run --no-sync pytest -q .hf-jobs/query-reference-block00-review/tests",
+  "full_tests_passed": 277,
+  "full_tests_seconds": 675.52,
+  "input_checks": "Six pinned archives; all 474 internal checksums; frozen combined analysis reproduced exactly.",
+  "limits": "After full outcome inspection; Holm within E/F/S per variant only. No retrospective amendment can become a preregistered result.",
+  "mathematical_checks": [
+    "47-world t tests versus scipy.stats.ttest_1samp",
+    "Independent resampling via Generator.choice",
+    "48-world statistics versus frozen primary_tests",
+    "Both tied assignments differ by 1/1536 in E/F/S",
+    "Whole-world exclusion removes all 336 variants",
+    "Gate cell/pair outcomes unchanged by either tie assignment"
+  ],
+  "native_greedy_source": {
+    "meaning": "All candidate tokens match per-token argmax along the scored continuation; no EOS or free-generation result.",
+    "package": "lm-eval",
+    "sha256": "56d215b8f713d7579f9c7b58a9b8771b09c88e0e4fb8d1b6dd9068033b614b80",
+    "source_file": "lm_eval/models/huggingface.py",
+    "version": "0.4.13"
+  },
+  "new_cloud_spend_usd": 0,
+  "new_gpu_jobs": false,
+  "new_model_inference": false,
+  "new_test_command": "HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 uv run --no-sync pytest -q .hf-jobs/query-reference-block00-review/tests/test_query_sensitivity.py",
+  "new_tests_passed": 16,
+  "new_tests_seconds": 16.81,
+  "rendered_figure": "PNG visually inspected; labels and uncertainty visible.",
+  "ruff_check_and_format": "passed",
+  "status": "verified_retrospective_exploratory_supplement",
+  "test_working_directory": "/home/zett/projects/mechinterp-illusionism"
+}

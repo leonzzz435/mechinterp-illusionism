@@ -318,62 +318,176 @@
       "zero_worlds": 0
     }
   },
+  "observed_lookup_accuracy_remaining": {
+    "before/other/account_name": {
+      "mathematically_possible": true,
+      "remaining": 320,
+      "required_correct_remaining": 247,
+      "required_correct_total": 308,
+      "required_remaining_rate": 0.771875,
+      "scheduled": 384
+    },
+    "before/other/owner_name": {
+      "mathematically_possible": true,
+      "remaining": 320,
+      "required_correct_remaining": 262,
+      "required_correct_total": 308,
+      "required_remaining_rate": 0.81875,
+      "scheduled": 384
+    },
+    "before/self/account_name": {
+      "mathematically_possible": true,
+      "remaining": 320,
+      "required_correct_remaining": 250,
+      "required_correct_total": 308,
+      "required_remaining_rate": 0.78125,
+      "scheduled": 384
+    },
+    "before/self/owner_name": {
+      "mathematically_possible": true,
+      "remaining": 320,
+      "required_correct_remaining": 265,
+      "required_correct_total": 308,
+      "required_remaining_rate": 0.828125,
+      "scheduled": 384
+    },
+    "snapshot/other/account_name": {
+      "mathematically_possible": true,
+      "remaining": 640,
+      "required_correct_remaining": 491,
+      "required_correct_total": 615,
+      "required_remaining_rate": 0.7671875,
+      "scheduled": 768
+    },
+    "snapshot/other/owner_name": {
+      "mathematically_possible": true,
+      "remaining": 640,
+      "required_correct_remaining": 520,
+      "required_correct_total": 615,
+      "required_remaining_rate": 0.8125,
+      "scheduled": 768
+    },
+    "snapshot/self/account_name": {
+      "mathematically_possible": true,
+      "remaining": 640,
+      "required_correct_remaining": 506,
+      "required_correct_total": 615,
+      "required_remaining_rate": 0.790625,
+      "scheduled": 768
+    },
+    "snapshot/self/owner_name": {
+      "mathematically_possible": true,
+      "remaining": 640,
+      "required_correct_remaining": 545,
+      "required_correct_total": 615,
+      "required_remaining_rate": 0.8515625,
+      "scheduled": 768
+    }
+  },
   "observed_lookup_pairs": {
     "ownership/before/other/account_name": {
       "best_possible_full_sample_rate": 0.9635416666666666,
       "both_correct": 25,
+      "mathematically_possible": true,
       "n": 32,
       "observed_below_80_percent": true,
-      "rate": 0.78125
+      "rate": 0.78125,
+      "remaining": 160,
+      "required_correct_remaining": 129,
+      "required_correct_total": 154,
+      "required_remaining_rate": 0.80625,
+      "scheduled": 192
     },
     "ownership/before/other/owner_name": {
       "best_possible_full_sample_rate": 0.90625,
       "both_correct": 14,
+      "mathematically_possible": true,
       "n": 32,
       "observed_below_80_percent": true,
-      "rate": 0.4375
+      "rate": 0.4375,
+      "remaining": 160,
+      "required_correct_remaining": 140,
+      "required_correct_total": 154,
+      "required_remaining_rate": 0.875,
+      "scheduled": 192
     },
     "ownership/before/self/account_name": {
       "best_possible_full_sample_rate": 0.9947916666666666,
       "both_correct": 31,
+      "mathematically_possible": true,
       "n": 32,
       "observed_below_80_percent": false,
-      "rate": 0.96875
+      "rate": 0.96875,
+      "remaining": 160,
+      "required_correct_remaining": 123,
+      "required_correct_total": 154,
+      "required_remaining_rate": 0.76875,
+      "scheduled": 192
     },
     "ownership/before/self/owner_name": {
       "best_possible_full_sample_rate": 0.890625,
       "both_correct": 11,
+      "mathematically_possible": true,
       "n": 32,
       "observed_below_80_percent": true,
-      "rate": 0.34375
+      "rate": 0.34375,
+      "remaining": 160,
+      "required_correct_remaining": 143,
+      "required_correct_total": 154,
+      "required_remaining_rate": 0.89375,
+      "scheduled": 192
     },
     "ownership/snapshot/other/account_name": {
       "best_possible_full_sample_rate": 0.9817708333333334,
       "both_correct": 57,
+      "mathematically_possible": true,
       "n": 64,
       "observed_below_80_percent": false,
-      "rate": 0.890625
+      "rate": 0.890625,
+      "remaining": 320,
+      "required_correct_remaining": 251,
+      "required_correct_total": 308,
+      "required_remaining_rate": 0.784375,
+      "scheduled": 384
     },
     "ownership/snapshot/other/owner_name": {
       "best_possible_full_sample_rate": 0.9140625,
       "both_correct": 31,
+      "mathematically_possible": true,
       "n": 64,
       "observed_below_80_percent": true,
-      "rate": 0.484375
+      "rate": 0.484375,
+      "remaining": 320,
+      "required_correct_remaining": 277,
+      "required_correct_total": 308,
+      "required_remaining_rate": 0.865625,
+      "scheduled": 384
     },
     "ownership/snapshot/self/account_name": {
       "best_possible_full_sample_rate": 0.96875,
       "both_correct": 52,
+      "mathematically_possible": true,
       "n": 64,
       "observed_below_80_percent": false,
-      "rate": 0.8125
+      "rate": 0.8125,
+      "remaining": 320,
+      "required_correct_remaining": 256,
+      "required_correct_total": 308,
+      "required_remaining_rate": 0.8,
+      "scheduled": 384
     },
     "ownership/snapshot/self/owner_name": {
       "best_possible_full_sample_rate": 0.8984375,
       "both_correct": 25,
+      "mathematically_possible": true,
       "n": 64,
       "observed_below_80_percent": true,
-      "rate": 0.390625
+      "rate": 0.390625,
+      "remaining": 320,
+      "required_correct_remaining": 283,
+      "required_correct_total": 308,
+      "required_remaining_rate": 0.884375,
+      "scheduled": 384
     }
   },
   "observed_world_contrasts": {
@@ -420,9 +534,2514 @@
   },
   "peak_allocated_bytes": 15705395712,
   "recorded_choices": 2688,
+  "review_extension_status": "Added after block 00, before block 01. Latest-grant policy and event-order strata were prespecified; response-agreement counts and first-grant comparison are retrospective diagnostic descriptions, not new primary endpoints.",
   "runtime_seconds": 1313.0000844960014,
   "scheduled_worlds": 48,
   "selection_seconds_total": 1152.8228616249107,
+  "shortcut_comparison": {
+    "after_both/other/account_name": {
+      "baseline_correct": 128,
+      "by_last_updated": {
+        "other": {
+          "baseline_correct": 0,
+          "latest_grant_agreement": 0,
+          "model_correct": 127,
+          "n": 128
+        },
+        "target": {
+          "baseline_correct": 128,
+          "latest_grant_agreement": 118,
+          "model_correct": 118,
+          "n": 128
+        }
+      },
+      "first_grant_agreement_post_hoc": 134,
+      "model_agrees_with_policy": 118,
+      "model_correct": 245,
+      "n": 256,
+      "policy": "latest_grant_or_first",
+      "policy_branch": "latest_grant",
+      "uniform_four_choice_accuracy": 0.25
+    },
+    "after_both/other/owner_name": {
+      "baseline_correct": 128,
+      "by_last_updated": {
+        "other": {
+          "baseline_correct": 0,
+          "latest_grant_agreement": 11,
+          "model_correct": 117,
+          "n": 128
+        },
+        "target": {
+          "baseline_correct": 128,
+          "latest_grant_agreement": 61,
+          "model_correct": 61,
+          "n": 128
+        }
+      },
+      "first_grant_agreement_post_hoc": 183,
+      "model_agrees_with_policy": 72,
+      "model_correct": 178,
+      "n": 256,
+      "policy": "latest_grant_or_first",
+      "policy_branch": "latest_grant",
+      "uniform_four_choice_accuracy": 0.25
+    },
+    "after_both/other/possessive": {
+      "baseline_correct": 128,
+      "by_last_updated": {
+        "other": {
+          "baseline_correct": 0,
+          "latest_grant_agreement": 21,
+          "model_correct": 107,
+          "n": 128
+        },
+        "target": {
+          "baseline_correct": 128,
+          "latest_grant_agreement": 69,
+          "model_correct": 69,
+          "n": 128
+        }
+      },
+      "first_grant_agreement_post_hoc": 166,
+      "model_agrees_with_policy": 90,
+      "model_correct": 176,
+      "n": 256,
+      "policy": "latest_grant_or_first",
+      "policy_branch": "latest_grant",
+      "uniform_four_choice_accuracy": 0.25
+    },
+    "after_both/self/account_name": {
+      "baseline_correct": 128,
+      "by_last_updated": {
+        "other": {
+          "baseline_correct": 0,
+          "latest_grant_agreement": 0,
+          "model_correct": 128,
+          "n": 128
+        },
+        "target": {
+          "baseline_correct": 128,
+          "latest_grant_agreement": 109,
+          "model_correct": 109,
+          "n": 128
+        }
+      },
+      "first_grant_agreement_post_hoc": 143,
+      "model_agrees_with_policy": 109,
+      "model_correct": 237,
+      "n": 256,
+      "policy": "latest_grant_or_first",
+      "policy_branch": "latest_grant",
+      "uniform_four_choice_accuracy": 0.25
+    },
+    "after_both/self/owner_name": {
+      "baseline_correct": 128,
+      "by_last_updated": {
+        "other": {
+          "baseline_correct": 0,
+          "latest_grant_agreement": 32,
+          "model_correct": 85,
+          "n": 128
+        },
+        "target": {
+          "baseline_correct": 128,
+          "latest_grant_agreement": 65,
+          "model_correct": 65,
+          "n": 128
+        }
+      },
+      "first_grant_agreement_post_hoc": 122,
+      "model_agrees_with_policy": 97,
+      "model_correct": 150,
+      "n": 256,
+      "policy": "latest_grant_or_first",
+      "policy_branch": "latest_grant",
+      "uniform_four_choice_accuracy": 0.25
+    },
+    "after_both/self/possessive": {
+      "baseline_correct": 128,
+      "by_last_updated": {
+        "other": {
+          "baseline_correct": 0,
+          "latest_grant_agreement": 22,
+          "model_correct": 104,
+          "n": 128
+        },
+        "target": {
+          "baseline_correct": 128,
+          "latest_grant_agreement": 33,
+          "model_correct": 33,
+          "n": 128
+        }
+      },
+      "first_grant_agreement_post_hoc": 196,
+      "model_agrees_with_policy": 55,
+      "model_correct": 137,
+      "n": 256,
+      "policy": "latest_grant_or_first",
+      "policy_branch": "latest_grant",
+      "uniform_four_choice_accuracy": 0.25
+    },
+    "before/other/account_name": {
+      "baseline_correct": 16,
+      "by_last_updated": {},
+      "first_grant_agreement_post_hoc": null,
+      "model_agrees_with_policy": 17,
+      "model_correct": 61,
+      "n": 64,
+      "policy": "latest_grant_or_first",
+      "policy_branch": "first_candidate",
+      "uniform_four_choice_accuracy": 0.25
+    },
+    "before/other/owner_name": {
+      "baseline_correct": 16,
+      "by_last_updated": {},
+      "first_grant_agreement_post_hoc": null,
+      "model_agrees_with_policy": 13,
+      "model_correct": 46,
+      "n": 64,
+      "policy": "latest_grant_or_first",
+      "policy_branch": "first_candidate",
+      "uniform_four_choice_accuracy": 0.25
+    },
+    "before/other/possessive": {
+      "baseline_correct": 16,
+      "by_last_updated": {},
+      "first_grant_agreement_post_hoc": null,
+      "model_agrees_with_policy": 8,
+      "model_correct": 37,
+      "n": 64,
+      "policy": "latest_grant_or_first",
+      "policy_branch": "first_candidate",
+      "uniform_four_choice_accuracy": 0.25
+    },
+    "before/self/account_name": {
+      "baseline_correct": 16,
+      "by_last_updated": {},
+      "first_grant_agreement_post_hoc": null,
+      "model_agrees_with_policy": 17,
+      "model_correct": 58,
+      "n": 64,
+      "policy": "latest_grant_or_first",
+      "policy_branch": "first_candidate",
+      "uniform_four_choice_accuracy": 0.25
+    },
+    "before/self/owner_name": {
+      "baseline_correct": 16,
+      "by_last_updated": {},
+      "first_grant_agreement_post_hoc": null,
+      "model_agrees_with_policy": 22,
+      "model_correct": 43,
+      "n": 64,
+      "policy": "latest_grant_or_first",
+      "policy_branch": "first_candidate",
+      "uniform_four_choice_accuracy": 0.25
+    },
+    "before/self/possessive": {
+      "baseline_correct": 16,
+      "by_last_updated": {},
+      "first_grant_agreement_post_hoc": null,
+      "model_agrees_with_policy": 16,
+      "model_correct": 41,
+      "n": 64,
+      "policy": "latest_grant_or_first",
+      "policy_branch": "first_candidate",
+      "uniform_four_choice_accuracy": 0.25
+    },
+    "snapshot/other/account_name": {
+      "baseline_correct": 32,
+      "by_last_updated": {},
+      "first_grant_agreement_post_hoc": null,
+      "model_agrees_with_policy": 32,
+      "model_correct": 124,
+      "n": 128,
+      "policy": "latest_grant_or_first",
+      "policy_branch": "first_candidate",
+      "uniform_four_choice_accuracy": 0.25
+    },
+    "snapshot/other/owner_name": {
+      "baseline_correct": 32,
+      "by_last_updated": {},
+      "first_grant_agreement_post_hoc": null,
+      "model_agrees_with_policy": 34,
+      "model_correct": 95,
+      "n": 128,
+      "policy": "latest_grant_or_first",
+      "policy_branch": "first_candidate",
+      "uniform_four_choice_accuracy": 0.25
+    },
+    "snapshot/other/possessive": {
+      "baseline_correct": 32,
+      "by_last_updated": {},
+      "first_grant_agreement_post_hoc": null,
+      "model_agrees_with_policy": 21,
+      "model_correct": 88,
+      "n": 128,
+      "policy": "latest_grant_or_first",
+      "policy_branch": "first_candidate",
+      "uniform_four_choice_accuracy": 0.25
+    },
+    "snapshot/self/account_name": {
+      "baseline_correct": 32,
+      "by_last_updated": {},
+      "first_grant_agreement_post_hoc": null,
+      "model_agrees_with_policy": 35,
+      "model_correct": 109,
+      "n": 128,
+      "policy": "latest_grant_or_first",
+      "policy_branch": "first_candidate",
+      "uniform_four_choice_accuracy": 0.25
+    },
+    "snapshot/self/owner_name": {
+      "baseline_correct": 32,
+      "by_last_updated": {},
+      "first_grant_agreement_post_hoc": null,
+      "model_agrees_with_policy": 53,
+      "model_correct": 70,
+      "n": 128,
+      "policy": "latest_grant_or_first",
+      "policy_branch": "first_candidate",
+      "uniform_four_choice_accuracy": 0.25
+    },
+    "snapshot/self/possessive": {
+      "baseline_correct": 32,
+      "by_last_updated": {},
+      "first_grant_agreement_post_hoc": null,
+      "model_agrees_with_policy": 39,
+      "model_correct": 84,
+      "n": 128,
+      "policy": "latest_grant_or_first",
+      "policy_branch": "first_candidate",
+      "uniform_four_choice_accuracy": 0.25
+    }
+  },
+  "shortcut_comparison_per_world": {
+    "query-self-v1:0000": {
+      "after_both/other/account_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 0,
+            "model_correct": 16,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 16,
+            "model_correct": 16,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 16,
+        "model_agrees_with_policy": 16,
+        "model_correct": 32,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/other/owner_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 1,
+            "model_correct": 15,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 4,
+            "model_correct": 4,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 27,
+        "model_agrees_with_policy": 5,
+        "model_correct": 19,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/other/possessive": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 3,
+            "model_correct": 13,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 8,
+            "model_correct": 8,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 21,
+        "model_agrees_with_policy": 11,
+        "model_correct": 21,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/self/account_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 0,
+            "model_correct": 16,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 16,
+            "model_correct": 16,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 16,
+        "model_agrees_with_policy": 16,
+        "model_correct": 32,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/self/owner_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 5,
+            "model_correct": 9,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 14,
+            "model_correct": 14,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 10,
+        "model_agrees_with_policy": 19,
+        "model_correct": 23,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/self/possessive": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 4,
+            "model_correct": 12,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 7,
+            "model_correct": 7,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 21,
+        "model_agrees_with_policy": 11,
+        "model_correct": 19,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/other/account_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 2,
+        "model_correct": 8,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/other/owner_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 2,
+        "model_correct": 6,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/other/possessive": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 1,
+        "model_correct": 5,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/self/account_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 3,
+        "model_correct": 6,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/self/owner_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 4,
+        "model_correct": 5,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/self/possessive": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 2,
+        "model_correct": 6,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/other/account_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 4,
+        "model_correct": 16,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/other/owner_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 5,
+        "model_correct": 11,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/other/possessive": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 4,
+        "model_correct": 14,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/self/account_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 4,
+        "model_correct": 16,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/self/owner_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 9,
+        "model_correct": 7,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/self/possessive": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 5,
+        "model_correct": 9,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      }
+    },
+    "query-self-v1:0001": {
+      "after_both/other/account_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 0,
+            "model_correct": 16,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 14,
+            "model_correct": 14,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 18,
+        "model_agrees_with_policy": 14,
+        "model_correct": 30,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/other/owner_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 0,
+            "model_correct": 16,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 14,
+            "model_correct": 14,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 18,
+        "model_agrees_with_policy": 14,
+        "model_correct": 30,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/other/possessive": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 1,
+            "model_correct": 15,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 14,
+            "model_correct": 14,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 17,
+        "model_agrees_with_policy": 15,
+        "model_correct": 29,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/self/account_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 0,
+            "model_correct": 16,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 13,
+            "model_correct": 13,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 17,
+        "model_agrees_with_policy": 13,
+        "model_correct": 29,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/self/owner_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 1,
+            "model_correct": 13,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 4,
+            "model_correct": 4,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 21,
+        "model_agrees_with_policy": 5,
+        "model_correct": 17,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/self/possessive": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 1,
+            "model_correct": 15,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 5,
+            "model_correct": 5,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 26,
+        "model_agrees_with_policy": 6,
+        "model_correct": 20,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/other/account_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 2,
+        "model_correct": 8,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/other/owner_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 2,
+        "model_correct": 7,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/other/possessive": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 1,
+        "model_correct": 5,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/self/account_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 2,
+        "model_correct": 8,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/self/owner_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 4,
+        "model_correct": 6,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/self/possessive": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 1,
+        "model_correct": 5,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/other/account_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 4,
+        "model_correct": 16,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/other/owner_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 4,
+        "model_correct": 16,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/other/possessive": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 3,
+        "model_correct": 15,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/self/account_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 6,
+        "model_correct": 14,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/self/owner_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 6,
+        "model_correct": 14,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/self/possessive": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 6,
+        "model_correct": 13,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      }
+    },
+    "query-self-v1:0002": {
+      "after_both/other/account_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 0,
+            "model_correct": 16,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 14,
+            "model_correct": 14,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 18,
+        "model_agrees_with_policy": 14,
+        "model_correct": 30,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/other/owner_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 1,
+            "model_correct": 15,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 13,
+            "model_correct": 13,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 18,
+        "model_agrees_with_policy": 14,
+        "model_correct": 28,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/other/possessive": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 4,
+            "model_correct": 12,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 8,
+            "model_correct": 8,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 20,
+        "model_agrees_with_policy": 12,
+        "model_correct": 20,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/self/account_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 0,
+            "model_correct": 16,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 15,
+            "model_correct": 15,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 17,
+        "model_agrees_with_policy": 15,
+        "model_correct": 31,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/self/owner_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 0,
+            "model_correct": 16,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 12,
+            "model_correct": 12,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 18,
+        "model_agrees_with_policy": 12,
+        "model_correct": 28,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/self/possessive": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 2,
+            "model_correct": 14,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 8,
+            "model_correct": 8,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 22,
+        "model_agrees_with_policy": 10,
+        "model_correct": 22,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/other/account_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 2,
+        "model_correct": 8,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/other/owner_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 2,
+        "model_correct": 8,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/other/possessive": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 2,
+        "model_correct": 6,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/self/account_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 2,
+        "model_correct": 8,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/self/owner_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 2,
+        "model_correct": 8,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/self/possessive": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 2,
+        "model_correct": 7,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/other/account_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 4,
+        "model_correct": 16,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/other/owner_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 4,
+        "model_correct": 16,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/other/possessive": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 3,
+        "model_correct": 9,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/self/account_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 4,
+        "model_correct": 16,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/self/owner_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 4,
+        "model_correct": 16,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/self/possessive": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 4,
+        "model_correct": 16,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      }
+    },
+    "query-self-v1:0003": {
+      "after_both/other/account_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 0,
+            "model_correct": 16,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 13,
+            "model_correct": 13,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 16,
+        "model_agrees_with_policy": 13,
+        "model_correct": 29,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/other/owner_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 2,
+            "model_correct": 14,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 1,
+            "model_correct": 1,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 29,
+        "model_agrees_with_policy": 3,
+        "model_correct": 15,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/other/possessive": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 4,
+            "model_correct": 12,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 6,
+            "model_correct": 6,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 22,
+        "model_agrees_with_policy": 10,
+        "model_correct": 18,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/self/account_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 0,
+            "model_correct": 16,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 13,
+            "model_correct": 13,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 18,
+        "model_agrees_with_policy": 13,
+        "model_correct": 29,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/self/owner_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 5,
+            "model_correct": 8,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 6,
+            "model_correct": 6,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 13,
+        "model_agrees_with_policy": 11,
+        "model_correct": 14,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/self/possessive": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 1,
+            "model_correct": 15,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 2,
+            "model_correct": 2,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 28,
+        "model_agrees_with_policy": 3,
+        "model_correct": 17,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/other/account_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 3,
+        "model_correct": 7,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/other/owner_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 2,
+        "model_correct": 4,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/other/possessive": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 2,
+        "model_correct": 3,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/self/account_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 2,
+        "model_correct": 6,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/self/owner_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 3,
+        "model_correct": 4,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/self/possessive": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 3,
+        "model_correct": 5,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/other/account_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 4,
+        "model_correct": 14,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/other/owner_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 5,
+        "model_correct": 9,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/other/possessive": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 1,
+        "model_correct": 9,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/self/account_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 5,
+        "model_correct": 8,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/self/owner_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 9,
+        "model_correct": 3,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/self/possessive": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 6,
+        "model_correct": 9,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      }
+    },
+    "query-self-v1:0004": {
+      "after_both/other/account_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 0,
+            "model_correct": 16,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 15,
+            "model_correct": 15,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 17,
+        "model_agrees_with_policy": 15,
+        "model_correct": 31,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/other/owner_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 2,
+            "model_correct": 14,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 3,
+            "model_correct": 3,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 27,
+        "model_agrees_with_policy": 5,
+        "model_correct": 17,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/other/possessive": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 1,
+            "model_correct": 15,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 7,
+            "model_correct": 7,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 24,
+        "model_agrees_with_policy": 8,
+        "model_correct": 22,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/self/account_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 0,
+            "model_correct": 16,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 10,
+            "model_correct": 10,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 22,
+        "model_agrees_with_policy": 10,
+        "model_correct": 26,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/self/owner_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 7,
+            "model_correct": 7,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 9,
+            "model_correct": 9,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 10,
+        "model_agrees_with_policy": 16,
+        "model_correct": 16,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/self/possessive": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 4,
+            "model_correct": 12,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 4,
+            "model_correct": 4,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 24,
+        "model_agrees_with_policy": 8,
+        "model_correct": 16,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/other/account_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 2,
+        "model_correct": 7,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/other/owner_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 1,
+        "model_correct": 5,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/other/possessive": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 0,
+        "model_correct": 4,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/self/account_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 2,
+        "model_correct": 8,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/self/owner_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 2,
+        "model_correct": 5,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/self/possessive": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 3,
+        "model_correct": 5,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/other/account_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 4,
+        "model_correct": 14,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/other/owner_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 4,
+        "model_correct": 8,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/other/possessive": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 3,
+        "model_correct": 9,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/self/account_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 3,
+        "model_correct": 9,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/self/owner_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 5,
+        "model_correct": 6,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/self/possessive": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 5,
+        "model_correct": 9,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      }
+    },
+    "query-self-v1:0005": {
+      "after_both/other/account_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 0,
+            "model_correct": 16,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 16,
+            "model_correct": 16,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 16,
+        "model_agrees_with_policy": 16,
+        "model_correct": 32,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/other/owner_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 5,
+            "model_correct": 11,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 8,
+            "model_correct": 8,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 18,
+        "model_agrees_with_policy": 13,
+        "model_correct": 19,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/other/possessive": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 5,
+            "model_correct": 11,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 9,
+            "model_correct": 9,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 18,
+        "model_agrees_with_policy": 14,
+        "model_correct": 20,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/self/account_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 0,
+            "model_correct": 16,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 15,
+            "model_correct": 15,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 17,
+        "model_agrees_with_policy": 15,
+        "model_correct": 31,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/self/owner_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 6,
+            "model_correct": 8,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 6,
+            "model_correct": 6,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 14,
+        "model_agrees_with_policy": 12,
+        "model_correct": 14,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/self/possessive": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 4,
+            "model_correct": 10,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 2,
+            "model_correct": 2,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 22,
+        "model_agrees_with_policy": 6,
+        "model_correct": 12,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/other/account_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 2,
+        "model_correct": 8,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/other/owner_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 1,
+        "model_correct": 5,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/other/possessive": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 1,
+        "model_correct": 5,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/self/account_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 2,
+        "model_correct": 7,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/self/owner_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 2,
+        "model_correct": 5,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/self/possessive": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 2,
+        "model_correct": 4,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/other/account_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 4,
+        "model_correct": 16,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/other/owner_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 3,
+        "model_correct": 9,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/other/possessive": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 2,
+        "model_correct": 8,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/self/account_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 4,
+        "model_correct": 15,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/self/owner_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 6,
+        "model_correct": 4,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/self/possessive": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 3,
+        "model_correct": 9,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      }
+    },
+    "query-self-v1:0006": {
+      "after_both/other/account_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 0,
+            "model_correct": 16,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 14,
+            "model_correct": 14,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 18,
+        "model_agrees_with_policy": 14,
+        "model_correct": 30,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/other/owner_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 0,
+            "model_correct": 16,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 12,
+            "model_correct": 12,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 20,
+        "model_agrees_with_policy": 12,
+        "model_correct": 28,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/other/possessive": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 1,
+            "model_correct": 15,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 7,
+            "model_correct": 7,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 24,
+        "model_agrees_with_policy": 8,
+        "model_correct": 22,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/self/account_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 0,
+            "model_correct": 16,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 13,
+            "model_correct": 13,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 18,
+        "model_agrees_with_policy": 13,
+        "model_correct": 29,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/self/owner_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 2,
+            "model_correct": 14,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 6,
+            "model_correct": 6,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 19,
+        "model_agrees_with_policy": 8,
+        "model_correct": 20,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/self/possessive": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 2,
+            "model_correct": 14,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 5,
+            "model_correct": 5,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 25,
+        "model_agrees_with_policy": 7,
+        "model_correct": 19,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/other/account_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 2,
+        "model_correct": 8,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/other/owner_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 2,
+        "model_correct": 6,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/other/possessive": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 1,
+        "model_correct": 5,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/self/account_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 2,
+        "model_correct": 8,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/self/owner_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 4,
+        "model_correct": 6,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/self/possessive": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 3,
+        "model_correct": 5,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/other/account_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 4,
+        "model_correct": 16,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/other/owner_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 4,
+        "model_correct": 15,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/other/possessive": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 3,
+        "model_correct": 13,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/self/account_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 4,
+        "model_correct": 16,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/self/owner_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 5,
+        "model_correct": 15,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/self/possessive": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 5,
+        "model_correct": 13,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      }
+    },
+    "query-self-v1:0007": {
+      "after_both/other/account_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 0,
+            "model_correct": 15,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 16,
+            "model_correct": 16,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 15,
+        "model_agrees_with_policy": 16,
+        "model_correct": 31,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/other/owner_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 0,
+            "model_correct": 16,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 6,
+            "model_correct": 6,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 26,
+        "model_agrees_with_policy": 6,
+        "model_correct": 22,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/other/possessive": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 2,
+            "model_correct": 14,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 10,
+            "model_correct": 10,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 20,
+        "model_agrees_with_policy": 12,
+        "model_correct": 24,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/self/account_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 0,
+            "model_correct": 16,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 14,
+            "model_correct": 14,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 18,
+        "model_agrees_with_policy": 14,
+        "model_correct": 30,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/self/owner_name": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 6,
+            "model_correct": 10,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 8,
+            "model_correct": 8,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 17,
+        "model_agrees_with_policy": 14,
+        "model_correct": 18,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "after_both/self/possessive": {
+        "baseline_correct": 16,
+        "by_last_updated": {
+          "other": {
+            "baseline_correct": 0,
+            "latest_grant_agreement": 4,
+            "model_correct": 12,
+            "n": 16
+          },
+          "target": {
+            "baseline_correct": 16,
+            "latest_grant_agreement": 0,
+            "model_correct": 0,
+            "n": 16
+          }
+        },
+        "first_grant_agreement_post_hoc": 28,
+        "model_agrees_with_policy": 4,
+        "model_correct": 12,
+        "n": 32,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/other/account_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 2,
+        "model_correct": 7,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/other/owner_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 1,
+        "model_correct": 5,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/other/possessive": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 0,
+        "model_correct": 4,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/self/account_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 2,
+        "model_correct": 7,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/self/owner_name": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 1,
+        "model_correct": 4,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "before/self/possessive": {
+        "baseline_correct": 2,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 0,
+        "model_correct": 4,
+        "n": 8,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/other/account_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 4,
+        "model_correct": 16,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/other/owner_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 5,
+        "model_correct": 11,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/other/possessive": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 2,
+        "model_correct": 11,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/self/account_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 5,
+        "model_correct": 15,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/self/owner_name": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 9,
+        "model_correct": 5,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      },
+      "snapshot/self/possessive": {
+        "baseline_correct": 4,
+        "by_last_updated": {},
+        "first_grant_agreement_post_hoc": null,
+        "model_agrees_with_policy": 5,
+        "model_correct": 6,
+        "n": 16,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "first_candidate",
+        "uniform_four_choice_accuracy": 0.25
+      }
+    }
+  },
   "status": "complete_block_partial_study",
   "technical_errors": 0,
   "ties": 0,

@@ -59,6 +59,8 @@ Every additional paid job requires separate authorization.
   [CPU input/token audit](docs/QUERY_SELF_REFERENCE_PREFLIGHT.md).
   [First block results](docs/QUERY_REFERENCE_BLOCK00_RESULTS.md): 2,688 valid selections,
   eight of 48 worlds; descriptive differences with weak operator-name controls, no final decision.
+  [Reporting commitment before block 01](docs/QUERY_REFERENCE_INTERPRETATION_PLAN.md):
+  retain estimates and uncertainty if lookup gates fail, without claiming a passing candidate.
 - [Sources and claim boundaries](docs/SOURCES_AND_CONTEXT.md)
 - [Implementation and empirical milestones](PLAN.md)
 - [Software verification and remaining empirical checks](docs/VERIFICATION.md)

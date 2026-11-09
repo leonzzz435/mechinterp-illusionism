@@ -43,6 +43,33 @@ intervals or p-values. They are not a replacement for the 48-world primary analy
 The figure is also available as [SVG](../review/query-reference-block00-results/observed-accuracy.svg)
 and [PDF](../review/query-reference-block00-results/observed-accuracy.pdf).
 
+## The 50% shortcut does not describe the model's choices
+
+The declared policy “select the latest grant” is correct in **128/256 = 50%** of each
+of the six primary owner/form cells. This is a task-specific shortcut baseline;
+uniform guessing over the four commands is 25%. The following comparison is counted
+directly from the archived decisions. Agreement counts were added retrospectively after
+block 00; the policy and the last-updated-account strata were already prespecified.
+
+| Owner / query form | Latest-grant baseline correct | Model agrees with latest grant | Model correct if target updated last | Model correct if other updated last |
+|---|---:|---:|---:|---:|
+| self / possessive | 128/256 | **55/256 = 21.48%** | **33/128 = 25.78%** | **104/128 = 81.25%** |
+| self / operator name | 128/256 | 97/256 = 37.89% | 65/128 = 50.78% | 85/128 = 66.41% |
+| self / account name | 128/256 | 109/256 = 42.58% | 109/128 = 85.16% | 128/128 = 100.00% |
+| other / possessive | 128/256 | 90/256 = 35.16% | 69/128 = 53.91% | 107/128 = 83.59% |
+| other / operator name | 128/256 | 72/256 = 28.12% | 61/128 = 47.66% | 117/128 = 91.41% |
+| other / account name | 128/256 | 118/256 = 46.09% | 118/128 = 92.19% | 127/128 = 99.22% |
+
+The model's 53.52% accuracy on self/possessive therefore does **not** establish collapse
+to the latest-grant rule. That rule would be correct on every target-last case and
+wrong on every other-last case; the model shows the opposite accuracy ordering.
+In a further, explicitly **post hoc** comparison it selects the first of the two
+granted commands in **196/256 = 76.56%** of self/possessive cases. This describes a
+preference in these responses; it does not identify a unique internal policy or causal
+mechanism. All six cells and per-world counts, including the exceptions, remain in the
+audit. No equivalence test against 50% or confidence interval has been performed on
+these eight worlds. Similar aggregate accuracies alone cannot establish policy agreement.
+
 ## The controls constrain the interpretation
 
 The account-name comparison alone would make the possessive effect look more specific
@@ -51,6 +78,19 @@ operator-name question, “your” costs **5.08 pp** after both updates; the lar
 is chiefly against naming the account directly. For the other operator, the analogous
 possessive-versus-operator-name difference is **0.78 pp**. These are descriptive alias
 comparisons already represented in the frozen secondary analyses, not additional tests.
+
+The ranking is not monotonic across all checkpoints: in the self/snapshot condition,
+possessive accuracy is **65.62%**, above the operator-name accuracy of **54.69%**.
+Nor does the arithmetic decomposition F = 26.95 + 12.11 pp identify a “pure alias”
+mechanism and a separate “self” mechanism. S is a template-specific interaction,
+whose seven positive world signs do not establish a confirmed specificity effect.
+
+The self/operator-name primary cell has **106 errors**, not 151: 69 foreign-current,
+27 revoked-target and 10 revoked-other. Thus foreign-current choices are **65.09%**
+of its errors; the two revoked categories together are **34.91%**, and only the
+revoked-target category (**25.47%**) is the old command of the queried account.
+By comparison, foreign-current choices account for **95.80%** of self/possessive errors.
+These are different output distributions, not evidence of two identified internal defects.
 
 Before any update, the own operator-name control reaches **43/64 = 67.19%**. In the
 history-free current snapshot it reaches **70/128 = 54.69%**. All four operator-name
@@ -70,6 +110,29 @@ The frozen gates apply to the full sample. Poor rates in this first block neithe
 nor formally fail those gates. They do not make eventual passage mathematically
 impossible: the audit explicitly reports upper bounds if every remaining pair were
 correct. No threshold or prompt has been changed in response to this block.
+
+The required recovery is substantial. At the unchanged integer threshold, the four
+operator-name paired controls require the following rates in the remaining 40 worlds:
+
+| Paired lookup control | Observed fully correct | Required in remaining pairs | Required remaining rate | Best possible final rate |
+|---|---:|---:|---:|---:|
+| before / self / operator name | 11/32 | 143/160 | 89.38% | 89.06% |
+| before / other / operator name | 14/32 | 140/160 | 87.50% | 90.62% |
+| snapshot / self / operator name | 25/64 | 283/320 | 88.44% | 89.84% |
+| snapshot / other / operator name | 31/64 | 277/320 | 86.56% | 91.41% |
+| before / other / account name | 25/32 | 129/160 | 80.62% | 96.35% |
+
+The remaining-rate and final-rate columns have different denominators. For example,
+143/160 is the needed future accuracy, while 171/192 is the best possible full-sample
+accuracy given 11 already correct pairs. Final thresholds require at least 154/192 or
+308/384 correct pairs. These calculations express the recovery needed, not its probability.
+The gate is at serious practical risk, but there is no prespecified interim futility test.
+
+The 80% lookup requirement applies to **before and snapshot**, not the primary
+after-both cell used for the 58.59% versus 53.52% comparison. Its purpose is to require
+explicit operator-to-account lookup before attributing an additional difficulty to the
+possessive query. The failure of that control is informative; it does not establish
+that the threshold was miscalibrated or justify removing the control after observing it.
 
 ## Two denominators, kept separate
 
@@ -94,13 +157,18 @@ outcomes against the text oracle. Recomputing the frozen full-sample analysis fr
 records reproduces its digest exactly. Ownership pairs are recounted from the archived
 preflight pair inventory. No model inference is performed during this review.
 The [verification record](../review/query-reference-block00-results/verification.json)
-records three passing review tests and byte-identical regeneration of the audit,
+records seven passing review tests and byte-identical regeneration of the audit,
 descriptive report and SVG/PDF/PNG figure.
 
 ```bash
 uv run --no-sync python scripts/review_query_block.py
 uv run --no-sync pytest -q tests/test_query_block_review.py
 ```
+
+The [reporting plan before block 01](QUERY_REFERENCE_INTERPRETATION_PLAN.md) fixes how
+estimates, intervals and failed controls will be presented without relabeling a failed
+candidate rule as success. This clarification was written after block 00; it is not a
+new preregistration. The frozen specification already requires separate E/F/S reporting.
 
 The operational next step is to complete the remaining five blocks under the unchanged
 protocol, if separately budgeted. This first block supplies no reason to alter prompts,

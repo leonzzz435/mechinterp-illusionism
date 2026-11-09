@@ -3,12 +3,12 @@
   "archive_verified": true,
   "full_sample_analysis_reproduced_exactly": true,
   "test_command": "uv run --no-sync pytest -q tests/test_query_block_review.py",
-  "tests_passed": 3,
-  "test_seconds": 7.05,
+  "tests_passed": 7,
+  "test_seconds": 7.76,
   "ruff": "passed",
   "deterministic_artifact_sha256": {
-    "audit.json": "aef8a6323d9ecbaaceba384436275b5fbb699ed959f2f16144b26d6d22dafe20",
-    "observed-report.md": "70a9038c7117d23c986edebc65f888b402f3a48a5aa84a30fc73fe2f2f5ce97e",
+    "audit.json": "f9495080c3002dc872d48fa887104efc1bda226bd3cb52e9c76652ce8a3b64fb",
+    "observed-report.md": "ff2fd08cacdcfdf4a0d4135c6980ace5b07d214d4baacf96133ef2243e40efc8",
     "observed-accuracy.svg": "54943e05eed0c2dd9cfe9f803698d8646c2fa6d3e69e80709d90f0c90b49a9ca",
     "observed-accuracy.pdf": "60afc32ba3de85dcf2cc126589b71951722765b9a914ecdbdd7bac1d3f5063b2",
     "observed-accuracy.png": "72b54f7a9483619d8bc37bbce4e6ece82aa0c91966df6c8bd4a3f004077a0499"
@@ -18,5 +18,10 @@
   "article_v1": "unchanged",
   "execution_commit": "59061cacf191f737689997b1bb327e75accc71fa",
   "results_branch": "results/query-reference-block-00",
-  "additional_jobs_submitted": false
+  "additional_jobs_submitted": false,
+  "original_evidence_commit": "ee31f6736efb4dbb3866c90e222a0f2676386e27",
+  "review_extension": "After block 00, before block 01; shortcut agreement and integer gate-recovery counts added offline.",
+  "gate_failure_statistics_guard": "Pure 48-value mathematical fixture: estimates and intervals remain available while lookup_gate_failed prevents candidate success.",
+  "original_fixed_sample_exports": "unchanged",
+  "interpretation_plan": "docs/QUERY_REFERENCE_INTERPRETATION_PLAN.md"
 }

@@ -25,6 +25,19 @@ The archived fixed-sample report retains 13,440 unrun cases as administrative mi
 | snapshot/self/owner_name | 70/128 | 54.69% | 17/128 |
 | snapshot/self/possessive | 84/128 | 65.62% | 42/128 |
 
+## Shortcut comparison after both updates
+
+The declared latest-grant policy is exactly 50% correct in each primary cell. Uniform guessing over four commands is 25%. Similar accuracy does not imply the same choices or statistical equivalence. Accuracy by the last updated account was prespecified; agreement and the first-grant comparator were added retrospectively after block 00. No new test or mechanism claim is made.
+
+| Owner / form | Latest-grant baseline | Model correct | Agrees with latest grant | Agrees with first grant (post hoc) | Correct: target updated last | Correct: other updated last |
+|---|---:|---:|---:|---:|---:|---:|
+| other/account_name | 128/256 | 245/256 | 118/256 | 134/256 | 118/128 | 127/128 |
+| other/owner_name | 128/256 | 178/256 | 72/256 | 183/256 | 61/128 | 117/128 |
+| other/possessive | 128/256 | 176/256 | 90/256 | 166/256 | 69/128 | 107/128 |
+| self/account_name | 128/256 | 237/256 | 109/256 | 143/256 | 109/128 | 128/128 |
+| self/owner_name | 128/256 | 150/256 | 97/256 | 122/256 | 65/128 | 85/128 |
+| self/possessive | 128/256 | 137/256 | 55/256 | 196/256 | 33/128 | 104/128 |
+
 ## Descriptive contrasts after both updates
 
 Same prespecified formulas, averaged over the observed eight worlds only. These are interim descriptions, not the full-sample primary estimates.
@@ -50,16 +63,16 @@ Same prespecified formulas, averaged over the observed eight worlds only. These 
 
 The 80% threshold belongs to the full sample. Below-threshold observed block rates are concerns, not a final failed-study decision. The last column is an algebraic upper bound if every unrun pair were correct, not a prediction.
 
-| Control | Both correct / observed pairs | Rate | Best possible full sample |
-|---|---:|---:|---:|
-| ownership/before/other/account_name | 25/32 | 78.12% | 96.35% |
-| ownership/before/other/owner_name | 14/32 | 43.75% | 90.62% |
-| ownership/before/self/account_name | 31/32 | 96.88% | 99.48% |
-| ownership/before/self/owner_name | 11/32 | 34.38% | 89.06% |
-| ownership/snapshot/other/account_name | 57/64 | 89.06% | 98.18% |
-| ownership/snapshot/other/owner_name | 31/64 | 48.44% | 91.41% |
-| ownership/snapshot/self/account_name | 52/64 | 81.25% | 96.88% |
-| ownership/snapshot/self/owner_name | 25/64 | 39.06% | 89.84% |
+| Control | Both correct / observed pairs | Rate | Required correct in remainder | Required remainder rate | Best possible full sample |
+|---|---:|---:|---:|---:|---:|
+| ownership/before/other/account_name | 25/32 | 78.12% | 129/160 | 80.62% | 96.35% |
+| ownership/before/other/owner_name | 14/32 | 43.75% | 140/160 | 87.50% | 90.62% |
+| ownership/before/self/account_name | 31/32 | 96.88% | 123/160 | 76.88% | 99.48% |
+| ownership/before/self/owner_name | 11/32 | 34.38% | 143/160 | 89.38% | 89.06% |
+| ownership/snapshot/other/account_name | 57/64 | 89.06% | 251/320 | 78.44% | 98.18% |
+| ownership/snapshot/other/owner_name | 31/64 | 48.44% | 277/320 | 86.56% | 91.41% |
+| ownership/snapshot/self/account_name | 52/64 | 81.25% | 256/320 | 80.00% | 96.88% |
+| ownership/snapshot/self/owner_name | 25/64 | 39.06% | 283/320 | 88.44% | 89.84% |
 
 ## Categorical outcomes after both updates
 

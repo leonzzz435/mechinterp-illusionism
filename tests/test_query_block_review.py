@@ -50,3 +50,55 @@ def test_changed_archive_rejected_before_reading_records(reviewer, tmp_path):
     corrupted.write_bytes(b"not the pinned evidence archive")
     with pytest.raises(ValueError, match="Archive hash changed"):
         reviewer.audit(corrupted)
+
+
+def test_accuracy_near_half_does_not_imply_latest_grant_policy(reviewed):
+    for key, cell in reviewed["shortcut_comparison"].items():
+        expected = 0.5 if key.startswith("after_both/") else 0.25
+        assert cell["baseline_correct"] / cell["n"] == expected
+    cell = reviewed["shortcut_comparison"]["after_both/self/possessive"]
+    assert cell["model_correct"] == 137
+    assert cell["model_agrees_with_policy"] == 55
+    assert cell["first_grant_agreement_post_hoc"] == 196
+    assert cell["by_last_updated"]["target"]["model_correct"] == 33
+    assert cell["by_last_updated"]["other"]["model_correct"] == 104
+    for world in reviewed["shortcut_comparison_per_world"].values():
+        for key, c in world.items():
+            if key.startswith("after_both/"):
+                assert c["baseline_correct"] * 2 == c["n"]
+
+
+def test_gate_remainder_uses_integer_threshold_and_separate_denominators(reviewer):
+    before = reviewer.gate_remainder(11, 32, 192)
+    assert before["required_correct_total"] == 154
+    assert before["required_correct_remaining"] == 143
+    assert before["remaining"] == 160
+    assert before["required_remaining_rate"] == 143 / 160
+    snapshot = reviewer.gate_remainder(31, 64, 384)
+    assert snapshot["required_correct_total"] == 308
+    assert snapshot["required_correct_remaining"] == 277
+    assert snapshot["required_remaining_rate"] == 277 / 320
+
+
+def test_error_types_do_not_identify_internal_mechanisms(reviewed):
+    cell = reviewed["cells"]["after_both/self/owner_name"]
+    assert cell["n"] - cell["correct"] == 106
+    assert cell["foreign"] == 69
+    assert cell["counts"]["revoked_target"] == 27
+    assert cell["counts"]["revoked_other"] == 10
+    assert (
+        reviewed["cells"]["snapshot/self/possessive"]["accuracy"]
+        > reviewed["cells"]["snapshot/self/owner_name"]["accuracy"]
+    )
+
+
+def test_full_sample_statistics_do_not_override_failed_lookup_gate():
+    from self_model_study.query_reference_analysis import decision, primary_tests
+
+    # Pure mathematical fixture, not additional or extrapolated model responses.
+    vectors = {name: [0.1 + i / 1000 for i in range(48)] for name in ("E", "F", "S")}
+    primary = primary_tests(vectors, eligible=True)
+    for effect in primary.values():
+        assert effect["ci95"] is not None and effect["raw_p"] is not None
+        assert effect["qualifies"]
+    assert decision(primary, eligible=True, gates=False, synthetic=False) == "lookup_gate_failed"

@@ -57,6 +57,8 @@
   execution source. See the [runbook](docs/QUERY_SELF_REFERENCE_RUNBOOK.md).
 - [x] Run and audit query-reference block 00: 2,688 valid selections in eight worlds;
   [interim report](docs/QUERY_REFERENCE_BLOCK00_RESULTS.md). No final inference; controls remain concerns.
+- [x] Recount shortcut agreement and fix the [reporting commitment before block 01](docs/QUERY_REFERENCE_INTERPRETATION_PLAN.md),
+  including complete-sample estimates with failed lookup controls; preserve all frozen rules.
 - [ ] Complete the remaining five blocks unchanged after separate budgeting. Keep execution
   at `59061ca`; interim evidence lives on `results/query-reference-block-00`.
   Mistral, routing and patches stay unrun.

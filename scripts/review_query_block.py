@@ -19,6 +19,7 @@ from self_model_study.query_reference_audit import (  # noqa: E402
     CATEGORIES,
     classify_choice,
     parse_input,
+    scripted_choices,
 )
 from self_model_study.query_reference_runtime import (  # noqa: E402
     PREFLIGHT,
@@ -33,6 +34,50 @@ OUT = ROOT / "review/query-reference-block00-results"
 def require(condition, message):
     if not condition:
         raise ValueError(message)
+
+
+def gate_remainder(correct, observed, scheduled):
+    """Integer arithmetic at the unchanged >= 4/5 threshold, not a forecast."""
+    remaining = scheduled - observed
+    required_total = (4 * scheduled + 4) // 5
+    required_remaining = max(0, required_total - correct)
+    return {
+        "scheduled": scheduled,
+        "remaining": remaining,
+        "required_correct_total": required_total,
+        "required_correct_remaining": required_remaining,
+        "required_remaining_rate": required_remaining / remaining if remaining else None,
+        "mathematically_possible": required_remaining <= remaining,
+    }
+
+
+def baseline_comparison(observations):
+    """Compare decisions, not just aggregate accuracies; no inferential test."""
+    primary = observations[0]["latest_grant_agreement"] is not None
+    n = len(observations)
+    result = {
+        "n": n,
+        "policy": "latest_grant_or_first",
+        "policy_branch": "latest_grant" if primary else "first_candidate",
+        "baseline_correct": sum(o["baseline_correct"] for o in observations),
+        "model_correct": sum(o["correct"] for o in observations),
+        "model_agrees_with_policy": sum(o["policy_agreement"] for o in observations),
+        "uniform_four_choice_accuracy": 0.25,
+        "first_grant_agreement_post_hoc": (
+            sum(o["first_grant_agreement"] for o in observations) if primary else None
+        ),
+        "by_last_updated": {},
+    }
+    if primary:
+        for last in ("target", "other"):
+            subset = [o for o in observations if o["last_updated"] == last]
+            result["by_last_updated"][last] = {
+                "n": len(subset),
+                "baseline_correct": sum(o["baseline_correct"] for o in subset),
+                "model_correct": sum(o["correct"] for o in subset),
+                "latest_grant_agreement": sum(o["latest_grant_agreement"] for o in subset),
+            }
+    return result
 
 
 def unpack_verified(archive, directory):
@@ -106,6 +151,19 @@ def audit(archive):
             "category": category,
             "margin": scores[parsed["expected_command"]] - scores[parsed["foreign_command"]],
         }
+        policy = scripted_choices(parsed)["latest_grant_or_first"]
+        events = parsed["events"]
+        obs.update(
+            baseline_correct=policy == parsed["expected_command"],
+            policy_agreement=winners[0] == policy,
+            latest_grant_agreement=(winners[0] == events[-1]["grant"] if events else None),
+            first_grant_agreement=(winners[0] == events[0]["grant"] if events else None),
+            last_updated=(
+                ("target" if events[-1]["actor"] == parsed["target"] else "other")
+                if events
+                else None
+            ),
+        )
         key = "/".join((row["stage"], row["queried_owner"], row["query_form"]))
         groups[key].append(obs)
         world_groups[row["world_id"], key].append(obs)
@@ -193,6 +251,7 @@ def audit(archive):
             "rate": sum(values) / len(values),
             "observed_below_80_percent": sum(values) / len(values) < 0.8,
             "best_possible_full_sample_rate": (sum(values) + total - len(values)) / total,
+            **gate_remainder(sum(values), len(values), total),
         }
     require(len(pairs) == 8, "Incomplete paired gate inventory")
     return {
@@ -216,6 +275,25 @@ def audit(archive):
         "observed_world_contrasts": effects,
         "observed_block_effects": observed,
         "observed_lookup_pairs": pairs,
+        "observed_lookup_accuracy_remaining": {
+            key: gate_remainder(c["correct"], c["n"], full["cells"][key]["scheduled"])
+            for key, c in cells.items()
+            if key.split("/")[0] in {"before", "snapshot"} and not key.endswith("possessive")
+        },
+        "shortcut_comparison": {key: baseline_comparison(v) for key, v in sorted(groups.items())},
+        "shortcut_comparison_per_world": {
+            sid: {
+                key: baseline_comparison(v)
+                for (world, key), v in sorted(world_groups.items())
+                if world == sid
+            }
+            for sid in worlds
+        },
+        "review_extension_status": (
+            "Added after block 00, before block 01. Latest-grant policy and event-order "
+            "strata were prespecified; response-agreement counts and first-grant comparison "
+            "are retrospective diagnostic descriptions, not new primary endpoints."
+        ),
         "limit": "Observed eight-world denominators describe this block only. They do not "
         "replace the frozen full-sample endpoint, thresholds or missing-data rule.",
     }
@@ -252,6 +330,31 @@ def outputs(result, destination):
         )
     lines += [
         "",
+        "## Shortcut comparison after both updates",
+        "",
+        "The declared latest-grant policy is exactly 50% correct in each primary cell. "
+        "Uniform guessing over four commands is 25%. Similar accuracy does not imply "
+        "the same choices or statistical equivalence. Accuracy by the last updated "
+        "account was prespecified; agreement and the first-grant comparator were added "
+        "retrospectively after block 00. No new test or mechanism claim is made.",
+        "",
+        "| Owner / form | Latest-grant baseline | Model correct | Agrees with latest grant | "
+        "Agrees with first grant (post hoc) | Correct: target updated last | "
+        "Correct: other updated last |",
+        "|---|---:|---:|---:|---:|---:|---:|",
+    ]
+    for key, c in result["shortcut_comparison"].items():
+        if not key.startswith("after_both/"):
+            continue
+        target, other = (c["by_last_updated"][k] for k in ("target", "other"))
+        lines.append(
+            f"| {key.removeprefix('after_both/')} | {c['baseline_correct']}/{c['n']} | "
+            f"{c['model_correct']}/{c['n']} | {c['model_agrees_with_policy']}/{c['n']} | "
+            f"{c['first_grant_agreement_post_hoc']}/{c['n']} | "
+            f"{target['model_correct']}/{target['n']} | {other['model_correct']}/{other['n']} |"
+        )
+    lines += [
+        "",
         "## Descriptive contrasts after both updates",
         "",
         "Same prespecified formulas, averaged over the observed eight worlds only. "
@@ -276,12 +379,15 @@ def outputs(result, destination):
         "block rates are concerns, not a final failed-study decision. The last column "
         "is an algebraic upper bound if every unrun pair were correct, not a prediction.",
         "",
-        "| Control | Both correct / observed pairs | Rate | Best possible full sample |",
-        "|---|---:|---:|---:|",
+        "| Control | Both correct / observed pairs | Rate | Required correct in remainder | "
+        "Required remainder rate | Best possible full sample |",
+        "|---|---:|---:|---:|---:|---:|",
     ]
     for key, c in result["observed_lookup_pairs"].items():
         lines.append(
             f"| {key} | {c['both_correct']}/{c['n']} | {100 * c['rate']:.2f}% | "
+            f"{c['required_correct_remaining']}/{c['remaining']} | "
+            f"{100 * c['required_remaining_rate']:.2f}% | "
             f"{100 * c['best_possible_full_sample_rate']:.2f}% |"
         )
     lines += [

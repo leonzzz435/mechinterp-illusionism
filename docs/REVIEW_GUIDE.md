@@ -1,4 +1,4 @@
-# Review target: publication draft on a recurring role error
+# Review target: article-v2 repository release
 
 **Execution update:** [All six blocks are retrieved and combined](QUERY_REFERENCE_RESULTS.md): 16,128 recorded selections, one exact tie, no missing cases. The frozen analysis remains ineligible for inference; lookup controls also miss their thresholds. The pre-run freeze and its verification records below remain unchanged.
 
@@ -7,11 +7,14 @@ reports exploratory uncertainty after whole-world exclusion and both tied assign
 It preserves the original analysis and article, and does not turn failed lookup controls into success.
 
 Start with [Article v2: The Right Command for the Wrong Account](article-v2/ARTICLE.md),
+frozen at the annotated `article-v2` tag on `main`,
 its [paragraph ledger](article-v2/CLAIMS.md) and [technical appendix](article-v2/METHODS.md).
 It centers the completed query-reference comparison, keeps the failed lookup controls
 visible, and separates original counts from retrospective inference. The new
 [stage/shortcut report](../review/query-reference-stages/report.md) includes every form,
-both owners, presentation-specific baselines, and event-order splits.
+both owners, presentation-specific baselines, and event-order splits. The user-provided
+source/readability review is incorporated; independent external scientific peer review
+remains unverified and is not claimed by this release.
 
 The earlier [Naming the Agent, Choosing for the Other](article/ARTICLE.md) and its
 [ledger](article/CLAIMS.md) remain frozen at `article-v1`; they describe the historical

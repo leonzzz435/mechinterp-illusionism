@@ -2,7 +2,7 @@
 
 *How query wording and printed update history changed one language model’s choices.*
 
-**Article v2 — evidence draft, 9 November 2026.** This is a new account of the completed query-reference study, not a revision of the [frozen article-v1](../article/ARTICLE.md). The original experiment failed its decision rule. Retrospective analyses below describe the behavior without changing that result.
+**Article v2 — repository edition, 9 November 2026; frozen at `article-v2`.** This is a new account of the completed query-reference study, not a revision of the [frozen article-v1](../article/ARTICLE.md). The original experiment failed its decision rule. Retrospective analyses below describe the behavior without changing that result.
 <!-- V00 -->
 
 ## A request that points to the wrong account
@@ -84,7 +84,7 @@ The table and plot retain the frozen counts. Each cell has 384 before, 768 snaps
 The own-versus-other possessive difference is small in the first two columns. That does **not** establish equality: the exploratory paired-world interval is **[−3.65, +4.69] pp** before and **[−4.04, +7.43] pp** for the snapshot. No equivalence criterion was passed. The direct account-name questions also show an own-account disadvantage before any updates, so a general claim that “self only becomes difficult after an update” would be false.
 <!-- V18 -->
 
-The tighter comparison is snapshot against printed history, because the final permissions match. In the 48-world tie sensitivity, own-account possessive accuracy drops **11.91 pp [8.66, 15.17]** when the history is printed. Other-account possessive accuracy changes by **+0.85 pp [−3.12, +4.69]**. Subtracting the two changes gives **−12.76 pp [−17.90, −7.55]**. The own-account history change is negative in **37 of 48 worlds**, positive in **8** and zero in **3** in this tie sensitivity. Whole-world exclusion gives the same direction for the own-minus-other contrast, **−13.30 pp [−18.48, −8.18]**. These are post hoc comparisons, with nominal intervals and no new candidate decision.
+The tighter comparison is snapshot against printed history, because the final permissions match. In the 48-world tie sensitivity, own-account possessive accuracy changes by **−11.91 pp [−15.17, −8.66]** when the history is printed. Other-account possessive accuracy changes by **+0.85 pp [−3.12, +4.69]**. Subtracting the two changes gives **−12.76 pp [−17.90, −7.55]**. The own-account history change is negative in **37 of 48 worlds**, positive in **8** and zero in **3** in this tie sensitivity. Whole-world exclusion gives the same direction for the own-minus-other contrast, **−13.30 pp [−18.48, −8.18]**. These are post hoc comparisons, with nominal intervals and no new candidate decision.
 <!-- V19 -->
 
 ![Exploratory changes from final-state snapshot to printed history](../../review/query-reference-stages/history_contrasts.png)

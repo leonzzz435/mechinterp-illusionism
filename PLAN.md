@@ -23,11 +23,12 @@
 - [ ] Primary contrasts frozen and held-out confirmation run complete.
 - [ ] Independent blinded ratings collected and agreement assessed.
 - [ ] Conditional follow-ups: combined interventions, circuit tracing, independent replication.
-- [ ] Final article written from verified evidence, reviewed and shared.
+- [x] Article-v2 written from verified evidence, user-provided source/readability review
+  incorporated, and released in the repository with annotated tag `article-v2`.
 
 ## Decisions and blockers
 
-### Latest completed tranche: fresh-world Qwen / permissions
+### Completed Qwen permission studies and article release
 
 - [x] Freeze `article-v1` and preserve its article, ledger and both specifications.
 - [x] Execute the authorized Qwen/permissions cell on 48 fresh worlds; recover upload
@@ -63,8 +64,8 @@
   [job links, cost bound and retrieval handover](docs/QUERY_REFERENCE_CONTINUATION.md).
 - [x] Retrieve, verify and combine all six blocks: 16,128 recorded selections, one tie,
   no missing data. [Combined results](docs/QUERY_REFERENCE_RESULTS.md): inference withheld;
-  lookup thresholds also fail. Keep execution at `59061ca`; evidence lives on
-  `results/query-reference-block-00`.
+  lookup thresholds also fail. Historical execution is pinned by `query-self-reference-v1`
+  at `59061ca`; the completed result branch is integrated into `main` for the article release.
   Mistral, routing and patches stay unrun.
 - [x] Add [retrospective CPU sensitivities](docs/QUERY_REFERENCE_SENSITIVITY_ADDENDUM.md):
   exclude the whole tied world, resolve the exact tie using the unique stored greedy
@@ -74,11 +75,15 @@
   match final-state snapshots against printed histories, retain all forms and both owners,
   scope the 25%/50% scripted baseline, and show both update orders. All new intervals
   remain retrospective; no lookup gate or original decision changes.
-- [x] Write a separate [article-v2 draft](docs/article-v2/ARTICLE.md), centered on
+- [x] Write a separate [article-v2](docs/article-v2/ARTICLE.md), centered on
   query-reference behavior with a full example, three reproducible figures, mathematical
   appendix and paragraph ledger. Preserve article-v1 and original evidence.
-- [ ] External methodological/readability review and publication of article-v2. No new
-  model, routing task, patch or gate-repair design was launched for this writing milestone.
+- [x] Incorporate the user-provided source and readability reviews, including order-specific
+  error counts, verified world signs and the signed interval convention.
+- [x] Integrate the completed results and current README into `main`; publish the repository
+  edition with annotated tag `article-v2`. Preserve all earlier experiment/tag snapshots.
+- [ ] Independent external scientific peer review remains unverified; it is separate from
+  this repository release. No new model, routing task, patch or gate-repair run was launched.
 
 ### Completed milestone: confidence and abstention pilot
 

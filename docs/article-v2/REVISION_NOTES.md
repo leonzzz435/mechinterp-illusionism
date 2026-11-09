@@ -65,8 +65,8 @@ This is software/evidence verification, not external scientific peer review. The
 277-test historical suite was not rerun for this isolated offline addition.
 
 The title is **The Right Command for the Wrong Account**. It describes the measured output
-category without claiming a mechanism. Article-v2 remains a reviewable draft; no new
-publication tag or publication action was performed.
+category without claiming a mechanism. At the initial delivery, article-v2 was a reviewable
+draft without a publication tag. The repository release below supersedes that status.
 
 
 ## Final focused pass — order, error direction and signs
@@ -106,3 +106,31 @@ records current checks and document hashes. The earlier verification record rema
 historical initial-delivery record. Article-v1, model code, designs, original reports,
 archives, stage/sensitivity outputs and all three figures remain unchanged. No new GPU
 work, thresholds, confidence intervals, model or experimental design.
+
+
+## Repository release — article-v2
+
+The user accepted the content after source and arithmetic review and requested the final
+interval convention, main README, completed release milestone and annotated tag. V19 now
+uses **changes by −11.91 pp [−15.17, −8.66]**, matching the signed convention of the other
+changes in that paragraph. No estimate, confidence interval endpoint or decision changes;
+only the representation of the drop changes. V00 identifies the repository edition.
+The ledger records both changes; all block IDs remain stable.
+
+The apparent top-level README problem was branch visibility: `main` was still at the
+pre-assessment execution commit `59061ca`, while the results branch contained all six blocks
+and article-v2. The completed results and final article are integrated into `main` by
+fast-forward, so the actual repository entry page links to v2 and reports the completed
+study. The original execution remains pinned by the existing `query-self-reference-v1`
+tag; `article-v1` and its files remain unchanged.
+
+The release milestone is complete for this repository edition, frozen by the annotated
+`article-v2` tag and pushed with `main`. User-provided source/readability review is recorded
+as completed; independent external scientific peer review is not established by the
+conversation and remains a distinct, unchecked item. No public-site or journal publication
+is claimed. Earlier “draft/no tag” statements in these notes describe previous deliveries.
+
+[Release verification](../../review/article-v2-release-verification.json) records the final
+text hashes, signed-interval check, unchanged evidence and links. Existing verification
+records retain their historical hashes. This final step performs no model inference,
+statistical reanalysis, paid job or experimental redesign.

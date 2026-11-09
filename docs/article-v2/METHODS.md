@@ -168,4 +168,6 @@ uv run --no-sync pytest -q tests/test_query_stages.py tests/test_query_sensitivi
 The original [verification record](../../review/query-reference-stages/verification.json) and
 [final-pass verification](../../review/query-reference-order-errors/verification.json) record
 executed checks, hashes, word-count convention and unchanged historical evidence. This
-article is a new draft, not an external peer review or a new publication of a confirmed mechanism.
+article is a versioned repository release. Independent external scientific peer review
+is not recorded, and the release does not establish a confirmed mechanism. See the
+[release verification](../../review/article-v2-release-verification.json) for the final text hashes.

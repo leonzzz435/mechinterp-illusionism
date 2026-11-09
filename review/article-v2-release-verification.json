@@ -1,0 +1,73 @@
+{
+  "article_word_count": 2824,
+  "base_commit": "e1480335948f1211f049ae7f15cbcfb3f1ac242b",
+  "changed_article_blocks": [
+    "V00",
+    "V19"
+  ],
+  "independent_external_scientific_peer_review": "not established, remains separately unchecked",
+  "ledger_coverage": "35 blocks, IDs stable",
+  "local_links_checked": 204,
+  "new_cloud_spend": false,
+  "new_model_inference": false,
+  "new_statistical_analysis": false,
+  "preserved_tag_objects_and_commits": {
+    "article-v1": "54451d4f9678a38eafc5715ade0cf5c59991eded",
+    "article-v1^{}": "2345ea463d58683e81df7d86b304e22a3eef7a6c",
+    "query-self-reference-v1": "d7fc1931d66c63e428b9a164bbed6d68ae2fc0de",
+    "query-self-reference-v1^{}": "59061cacf191f737689997b1bb327e75accc71fa"
+  },
+  "previous_main_commit": "59061cacf191f737689997b1bb327e75accc71fa",
+  "release_scope": "Versioned repository edition; no public-site or journal publication claimed",
+  "release_tag": "article-v2",
+  "signed_interval_checked": "changes by **\u221211.91 pp [\u221215.17, \u22128.66]**",
+  "source_and_readability_review": "User-provided review incorporated; completion requested by user",
+  "source_branch": "results/query-reference-block-00",
+  "source_ci95": [
+    -0.15169270833333334,
+    -0.08658854166666667
+  ],
+  "source_estimate": -0.119140625,
+  "source_sha256": {
+    "PLAN.md": "a6519e897083f92865bfd71f602eeb56aa42b6a8704480fb2142de3b7d10721b",
+    "README.md": "6e235405a2f5941b1074bfca33c9a5668bf76e5ab3f59d29f3996f201c1ca87e",
+    "docs/REVIEW_GUIDE.md": "3aaf8bc6f77af045a4b44ff092fa8a7052cee6ac868aa13934e5ef64384a4c86",
+    "docs/article-v2/ARTICLE.md": "1379bd5a78ecc6f069ace17863f284f77f14c1027f30bc3996e414d65f4c55d2",
+    "docs/article-v2/CLAIMS.md": "da4cc3672b98ad60c61b35043e2b88233b30a582efcebf96b9ff1cd116fbb166",
+    "docs/article-v2/METHODS.md": "befef2e82e5c4bfa2524bb923a14e62d453c56b95c85e0350faf8ba9dd1dd4aa",
+    "docs/article-v2/REVISION_NOTES.md": "397b112814aadca99ddc53ea4cc39bdfeab3dd99779dd1497a5cb94efd951878"
+  },
+  "target_branch": "main",
+  "tests": "Documentation-only release; no pytest rerun. Most recent relevant count/stage/sensitivity suite:31 passed, retained in review/query-reference-order-errors/verification.json. No scientific or test code changes since that run.",
+  "unchanged_evidence_and_code": [
+    "src",
+    "designs",
+    "configs",
+    "review/evidence",
+    "review/query-reference-results",
+    "review/query-reference-block00-results",
+    "review/query-reference-sensitivity",
+    "review/query-reference-stages",
+    "review/query-reference-order-errors",
+    "scripts",
+    "tests",
+    "docs/article",
+    "assets"
+  ],
+  "unchanged_original_result_reports": [
+    "docs/QUERY_REFERENCE_BLOCK00_RESULTS.md",
+    "docs/QUERY_REFERENCE_RESULTS.md",
+    "docs/QWEN_CONFIDENCE_FULL_REPORT.md",
+    "docs/QWEN_CONFIDENCE_RESULTS.md",
+    "docs/QWEN_OWNERSHIP_RESULTS.md",
+    "docs/QWEN_POSSESSIVE_FULL_REPORT.md",
+    "docs/QWEN_POSSESSIVE_RESULTS.md",
+    "docs/QWEN_RESULTS.md",
+    "docs/QWEN_ROLE_PATCH_FULL_REPORT.md",
+    "docs/QWEN_ROLE_PATCH_RESULTS.md",
+    "docs/QWEN_ROLE_RESULTS.md"
+  ],
+  "validation": "Signed interval checked against immutable stored JSON; only V00/V19 article blocks changed; all new/local navigation links exist; source/runtime/config/frozen design unchanged; whitespace check",
+  "verification_scope": "Content verification before creating annotated article-v2 tag; tag binds this manifest and all listed content",
+  "word_count_convention": "Visible whitespace-separated words including headings/equations/tables, excluding HTML markers and Markdown link destinations"
+}

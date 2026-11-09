@@ -4,11 +4,14 @@ Can a language model's self-referential language and its use of a contextual sel
 
 We distinguish **self-language**, **functional self-models**, and **phenomenal consciousness**. The experiments address the first two; they do not settle the third.
 
-**Latest reading:** [Article v2 — The Right Command for the Wrong Account](docs/article-v2/ARTICLE.md)
+**Latest article:** [Article v2 — The Right Command for the Wrong Account](docs/article-v2/ARTICLE.md)
+([frozen `article-v2` edition](https://github.com/leonzzz435/mechinterp-illusionism/blob/article-v2/docs/article-v2/ARTICLE.md))
 puts the completed 48-world query-reference study at the center, including failed lookup
 controls, retrospective tie/stage analyses and update-order dependence.
 [CPU stage report](review/query-reference-stages/report.md) · [Methods](docs/article-v2/METHODS.md) ·
-[Claim ledger](docs/article-v2/CLAIMS.md). This is a new evidence draft; `article-v1` stays frozen.
+[Claim ledger](docs/article-v2/CLAIMS.md). The repository release incorporates the user-provided
+source and readability review; independent external scientific peer review is not recorded.
+The historical `article-v1` stays frozen.
 
 **Historical pilot status:** the first Blackwell runs passed technical checks but failed the functional-task baseline. The revised four-shot development baseline also failed its capability gates, using pinned EleutherAI `lm-evaluation-harness` on HF Jobs. Cloud execution and result retrieval work; large intervention sweeps remain stopped. No functional dissociation or consciousness claim is established.
 
@@ -55,7 +58,7 @@ Every additional paid job requires separate authorization.
 
 - [Protocol and mathematics](docs/PROTOCOL.md)
 - [Two-machine runbook](docs/RUNBOOK.md)
-- [English article draft — frozen at article-v1](docs/article/ARTICLE.md) —
+- [Historical article — frozen at article-v1](docs/article/ARTICLE.md) —
   dated observations; read the [later replication addendum](docs/QWEN_OWNERSHIP_RESULTS.md):
   the fresh-world Qwen/permissions tranche did not confirm its prespecified contrast
   and failed its irrelevant-update competence controls. The historical effect is not

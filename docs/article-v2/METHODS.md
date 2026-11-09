@@ -11,6 +11,9 @@ Model and tokenizer: `Qwen/Qwen2.5-7B-Instruct`, revision
 `a09a35458c702b33eeacc393d103063234e8bc28`; BF16, official chat format and summed
 full-command conditional log-likelihood, without length normalization or added whitespace/EOS.
 The [runbook](../QUERY_SELF_REFERENCE_RUNBOOK.md) and six archives preserve exact inputs.
+The open weights and bounded compute cost made the study feasible. Operator aliases,
+ownership assignments, command mappings, menu positions and update order are counterbalanced;
+account and command labels vary across worlds according to the frozen design.
 
 For a prompt $x$ and a complete candidate command with tokens $c_1,\ldots,c_m$,
 
@@ -193,4 +196,19 @@ is not recorded, and the release does not establish a confirmed mechanism. See t
 [release verification](../../review/article-v2-release-verification.json) for the tagged edition’s
 text hashes. The subsequent editorial revision has its own
 [verification record](../../review/article-v2-editorial/verification.json); it leaves that tag,
-all original evidence and the statistical decisions intact.
+all original evidence and the statistical decisions intact. The later prose-only pass has
+a separate [verification record](../../review/article-v2-editorial/prose-verification.json).
+
+
+## Earlier experiments and interpretive scope
+
+Earlier experiments asked a different question: a context line named an “active” or “reference” connection while the question named its target directly. A role-framing control passed its candidate rule, but an internal activation exchange failed its bidirectional-transfer rule. Replacing “Your” with “The” did not pass the later possessive-specific accuracy criterion. A fresh-world extension failed its primary contrast and competence controls. Those experiments explain the route to this question. They are not replications of the present query-bound task. [Role control](../QWEN_ROLE_RESULTS.md), [patch](../QWEN_ROLE_PATCH_RESULTS.md), [wording](../QWEN_POSSESSIVE_RESULTS.md), [fresh worlds](../QWEN_OWNERSHIP_RESULTS.md).
+<!-- V28 -->
+
+A separate confidence-and-abstention assay also failed its behavioral candidate rule. It neither explained the permission errors nor ruled out every form of self-monitoring. The current experiment performs no activation patching, feature ablation or vector steering. It measures choices under controlled input changes. Moving the article’s focus to those choices changes the narrative emphasis, not the status of the earlier results. Different contrasts cannot be ranked scientifically by dividing their percentage-point estimates. [Confidence results](../QWEN_CONFIDENCE_RESULTS.md).
+<!-- V29 -->
+
+The diagrams show task relations rather than discovered neural circuitry. Error categories
+classify selected commands, not neural computations: different mixtures could arise from a
+single process under different inputs. The historical context-line alternatives concern a
+different task and do not identify a mechanism in the present query-bound experiment.

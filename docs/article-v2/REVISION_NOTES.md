@@ -195,3 +195,39 @@ are brought forward. The report-use prediction remains conditional and separate 
 the permission results and a claim about human experience. Readability was assessed by
 reading the revised narrative and inspecting the graphic, not by treating passing software
 tests as an audience test or an external scientific review.
+
+## Prose pass — remove scaffolding, keep the evidence
+
+The follow-up review called for rearrangement and shortening rather than another design
+or analysis. The opening now names the operators, connections and commands directly;
+the small table and its introduction are gone. The explicit-name counterexample follows
+the wrong selection immediately. The callout says **select**, not **act**, and the incident
+paragraph supplies context without claiming it caused the project to begin.
+
+The peak comparison keeps 95.18%, 60.16% and 35.03 pp. Operator-name and other-owner values
+move intact from V11 to V45 in the control section. Sample information is shortened and
+placed before that comparison. The practical implications precede the consolidated
+philosophical section; the conclusion precedes the version footer. V28/V29 move verbatim
+to the methods appendix so the earlier experiments remain accessible without interrupting
+the ending. Repeated scope warnings are consolidated; the original failed gates, tie,
+retrospective intervals and philosophical boundaries remain explicit.
+
+V41 now states a candidate updating/ownership-association failure and its conditional
+history-versus-snapshot prediction. V44 adds lexical, token-length and menu-position
+preference as an alternative. The existing runbook records unequal command token lengths
+and unnormalized scoring. Counterbalancing changes which command or slot is foreign,
+but does not settle interactions with prompt wording. No amber/ochre preference is claimed
+and no new lexical count or model run was performed.
+
+Word count: **3,645 → 2,685**, under the existing visible-word convention. The title and
+all empirical values remain unchanged. V00–V43 are retained across article and methods;
+V44/V45 cover the added hypothesis and relocated controls. The
+[prose verification](../../review/article-v2-editorial/prose-verification.json) records
+numeric comparisons, ledger coverage, links, hashes and preserved tags. All result files,
+figures, designs, scripts and tests are untouched. This documentation-only pass did not
+rerun pytest; the preceding relevant suite remains recorded as 31 passed in 37.09s.
+
+The chronology objection was handled without substituting another unsupported causal
+claim: the archive's insertion date does not establish when the notebook was composed.
+The new lexical explanation is a question for the existing evidence, not a new finding.
+The previous editorial verification remains a historical record of its own text version.

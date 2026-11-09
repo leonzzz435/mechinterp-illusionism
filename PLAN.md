@@ -59,7 +59,9 @@
   [interim report](docs/QUERY_REFERENCE_BLOCK00_RESULTS.md). No final inference; controls remain concerns.
 - [x] Recount shortcut agreement and fix the [reporting commitment before block 01](docs/QUERY_REFERENCE_INTERPRETATION_PLAN.md),
   including complete-sample estimates with failed lookup controls; preserve all frozen rules.
-- [ ] Complete the remaining five blocks unchanged after separate budgeting. Keep execution
+- [x] Submit the remaining five blocks under the explicit 10 USD aggregate approval;
+  [job links, cost bound and retrieval handover](docs/QUERY_REFERENCE_CONTINUATION.md).
+- [ ] Retrieve, verify and combine all six blocks after completion. Keep execution
   at `59061ca`; interim evidence lives on `results/query-reference-block-00`.
   Mistral, routing and patches stay unrun.
 

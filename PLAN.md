@@ -82,6 +82,9 @@
   error counts, verified world signs and the signed interval convention.
 - [x] Integrate the completed results and current README into `main`; publish the repository
   edition with annotated tag `article-v2`. Preserve all earlier experiment/tag snapshots.
+- [x] Apply the subsequent editorial review: staged opening, author byline, standalone
+  comparison figure, competing explanations and an explicit conditional philosophical bridge.
+  Preserve the annotated `article-v2` edition, all numbers and original decisions.
 - [ ] Independent external scientific peer review remains unverified; it is separate from
   this repository release. No new model, routing task, patch or gate-repair run was launched.
 

@@ -1,4 +1,4 @@
-# Review target: article-v2 repository release
+# Review target: article-v2 editorial reading version
 
 **Execution update:** [All six blocks are retrieved and combined](QUERY_REFERENCE_RESULTS.md): 16,128 recorded selections, one exact tie, no missing cases. The frozen analysis remains ineligible for inference; lookup controls also miss their thresholds. The pre-run freeze and its verification records below remain unchanged.
 
@@ -7,7 +7,7 @@ reports exploratory uncertainty after whole-world exclusion and both tied assign
 It preserves the original analysis and article, and does not turn failed lookup controls into success.
 
 Start with [Article v2: The Right Command for the Wrong Account](article-v2/ARTICLE.md),
-frozen at the annotated `article-v2` tag on `main`,
+the current reading version based on the unchanged annotated `article-v2` edition,
 its [paragraph ledger](article-v2/CLAIMS.md) and [technical appendix](article-v2/METHODS.md).
 It centers the completed query-reference comparison, keeps the failed lookup controls
 visible, and separates original counts from retrospective inference. The new

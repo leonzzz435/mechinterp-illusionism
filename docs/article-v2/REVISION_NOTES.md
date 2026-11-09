@@ -134,3 +134,64 @@ is claimed. Earlier “draft/no tag” statements in these notes describe previo
 text hashes, signed-interval check, unchanged evidence and links. Existing verification
 records retain their historical hashes. This final step performs no model inference,
 statistical reanalysis, paid job or experimental redesign.
+
+## Editorial reading version — scene, explanation and philosophical bridge
+
+The next user review asked for a readable article using the same evidence. The title,
+all recorded quantities, intervals, thresholds and original decisions remain intact.
+The annotated `article-v2` tag still identifies commit `1ceea85`; this editorial revision
+is a later working version, not a replacement tag. The README and review guide distinguish
+those versions. Article-v1, both specifications, all result reports and original figures
+remain unchanged.
+
+The opening now has a **159-word scene** before the incident and philosophical motivation.
+The first 300 visible words contain no empirical numerals, dates or tag labels. The author
+line uses **Leon / @leonzzz435**, as already recorded in the repository, without inferring
+a full name, affiliation or credentials. Ownership stays fixed in the example; permissions
+change. The concrete labels are introduced later in a table. The opening's post hoc
+selection and errors with other query forms remain explicit.
+
+The main contrast has a standalone PNG/SVG/PDF graphic made only from stored results.
+The scorer's equation moves verbatim to METHODS, along with technical scoring details.
+The failed lookup controls and exact tie follow the observed difference as the interpretive
+turning point; all diagnostic counts and gate boundaries stay visible. Order comes before
+error composition, preserving the distinction between the two order strata.
+
+Three candidate explanations—owner/account association, event salience, and the interaction
+of reference resolution with updating—are presented as hypotheses, not discovered mechanisms.
+The philosophical section now explains illusionism's motivation and the existing,
+**unexecuted** report-injection prediction, including fresh ability measurement,
+other-attribution control and the extra policy-use assumption. It does not identify
+illusionism from these data or turn report injection into the explanation of a permission
+error. The closing sentence looks toward a testable question; version metadata is near
+the end rather than ahead of the scene.
+
+Word count: **2,824 → 3,645**, using the same visible whitespace convention as the tagged
+edition (headings/tables/captions included, HTML markers and link destinations excluded).
+The increase supplies the requested scene, competing explanations and causal bridge;
+no new result estimates are added. Existing IDs V00–V34 remain; V35–V43 cover the byline,
+incident, detailed example, comparison graphic, hypotheses and proposed report manipulation.
+The existing blocks changed are V00, V01, V02, V03, V05, V09, V10, V12, V13, V18, V21,
+V23, V28, V30, V31, V33 and V34. Other blocks move without content changes.
+
+Verification:
+
+- All empirical numeric sequences remain identical within the original quantitative blocks;
+  the full accuracy table is unchanged and the scoring equation is preserved in METHODS.
+- All 44 block IDs have ledger coverage. Local links and frozen evidence/tag hashes were
+  checked; [verification.json](../../review/article-v2-editorial/verification.json) records
+  the exact inventory and text hashes.
+- `uv run --no-sync pytest -q tests/test_query_stages.py tests/test_query_sensitivity.py tests/test_query_order_errors.py`: **31 passed in 37.09s**.
+- `uv run --no-sync ruff check scripts/render_article_comparison.py` and `git diff --check`
+  passed. A second render produced byte-identical SVG, PDF, PNG and figure-data JSON;
+  the PNG was inspected for readability and clipping.
+- The incident report and the Frankish/Rosenthal primary sources were checked online for
+  the restored passages. No model inference, new statistical analysis or paid run occurred.
+
+Judgment calls: the opening abstracts the existing saved case before restoring its labels;
+it does not invent a conversation or a real-world action. Historical context-line
+explanations are not directly transferable to the present task, so only candidate accounts
+are brought forward. The report-use prediction remains conditional and separate from both
+the permission results and a claim about human experience. Readability was assessed by
+reading the revised narrative and inspecting the graphic, not by treating passing software
+tests as an audience test or an external scientific review.

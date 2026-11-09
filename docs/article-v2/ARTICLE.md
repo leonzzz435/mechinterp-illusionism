@@ -13,7 +13,7 @@ In one saved test, the model is assigned the operator name Rowan. Rowan’s conn
 The highest-scoring command is `mark_amber`. It is a real, currently permitted command—but for Coral. The simulator’s permissions deny it for Laurel. Change the question to name **Laurel**, keeping the facts, updates and menu fixed, and the selection becomes the correct `mark_ochre`. Keep “your active connection” instead, but present the final permissions directly without their history, and the selection is also correct. Reversing the two printed updates does not repair the possessive question in this particular example.
 <!-- V02 -->
 
-That is a useful opening scene, but it was selected after inspecting the results. It illustrates the pattern; it does not establish its frequency. The [complete example](../../review/query-reference-stages/example.md) exposes all 24 matched conditions, including questions about Morgan and both update orders. Across the full sample, order matters greatly. We need those less convenient comparisons before deciding what this error means.
+That is a useful opening scene, but it was selected after inspecting the results. It illustrates a failure, not its frequency or uniqueness to “your”: wrong-account choices also occur with operator names and “their”. The [complete example](../../review/query-reference-stages/example.md) exposes all 24 matched conditions, including questions about Morgan and both update orders. Across the full sample, order matters greatly. We need those less convenient comparisons before deciding what this error means.
 <!-- V03 -->
 
 ![Actual task relations and recorded choices in the opening example](../../review/query-reference-stages/task_example.png)
@@ -49,10 +49,10 @@ All six blocks are saved: **16,128 selections across 48 worlds**. Variants share
 
 ## The large difference—and the control that failed
 
-After both updates, direct account naming succeeds on **95.18%** of own-account cases. Naming the operator succeeds on **71.35%**. Possessive wording succeeds on **60.16%**. The original accuracy gap between direct naming and “your” is therefore **35.03 percentage points**. Asking about the other operator also carries a cost: its three accuracies are **96.22%, 75.20% and 71.29%**. The difference is broader than an isolated difficulty with the word “your”. [Original cells](../../review/query-reference-results/report.md).
+After both updates, direct account naming succeeds on **95.18%** of own-account cases. Naming the operator succeeds on **71.35%**. Possessive wording succeeds on **60.16%**. The original accuracy gap between direct naming and “your” is **35.03 percentage points**, the paired world mean computed before rounding the displayed cell accuracies. Asking about the other operator also carries a cost: its three accuracies are **96.22%, 75.20% and 71.29%**. The difference is broader than an isolated difficulty with the word “your”. [Original cells](../../review/query-reference-results/report.md).
 <!-- V11 -->
 
-This is why the operator-name control matters. “Rowan’s connection” requires following an explicit operator-to-account mapping without using “your”. If that route also performs poorly, we cannot assign the entire possessive cost to a special self-reference mechanism. The frozen screen required every named lookup cell and every corresponding ownership-swapped pair control to reach **80%**. Three of eight accuracy cells and five of eight pair controls miss their requirements. The failure is substantive: explicit aliases are already unreliable in this task.
+This is why the operator-name control matters. “Rowan’s connection” requires following an explicit operator-to-account mapping without using “your”. If that route also performs poorly, we cannot assign the entire possessive cost to a special self-reference mechanism. The frozen screen required every named lookup cell and every corresponding ownership-swapped pair control in **before and snapshot** to reach **80%**. Three of eight accuracy cells and five of eight pair controls miss their requirements. The same route also struggles in the primary both-updates presentation: own-account operator naming is **71.35%**, and both answers are correct in only **358/768 ownership-swapped pairs (46.61%)**. These after-both results are diagnostic controls, not additional frozen gate requirements. The control path is unreliable in the main comparison too.
 <!-- V12 -->
 
 A separate exact score tie also blocked the original protocol’s statistical decision. Every scheduled result exists, but one case has two equally scoring commands. The original analysis therefore withholds inference. A later, explicitly retrospective amendment examines three alternatives: removing that entire world, resolving the tie by its unique stored greedy marker, and choosing the other tied command. Resolving it favorably was proposed after the correct answer was known; it cannot acquire preregistered status by being deterministic. [All sensitivity analyses](../QUERY_REFERENCE_SENSITIVITY_ADDENDUM.md).
@@ -84,7 +84,7 @@ The table and plot retain the frozen counts. Each cell has 384 before, 768 snaps
 The own-versus-other possessive difference is small in the first two columns. That does **not** establish equality: the exploratory paired-world interval is **[−3.65, +4.69] pp** before and **[−4.04, +7.43] pp** for the snapshot. No equivalence criterion was passed. The direct account-name questions also show an own-account disadvantage before any updates, so a general claim that “self only becomes difficult after an update” would be false.
 <!-- V18 -->
 
-The tighter comparison is snapshot against printed history, because the final permissions match. In the 48-world tie sensitivity, own-account possessive accuracy drops **11.91 pp [8.66, 15.17]** when the history is printed. Other-account possessive accuracy changes by **+0.85 pp [−3.12, +4.69]**. Subtracting the two changes gives **−12.76 pp [−17.90, −7.55]**. Whole-world exclusion gives the same direction, **−13.30 pp [−18.48, −8.18]**. These are post hoc comparisons, with nominal intervals and no new candidate decision.
+The tighter comparison is snapshot against printed history, because the final permissions match. In the 48-world tie sensitivity, own-account possessive accuracy drops **11.91 pp [8.66, 15.17]** when the history is printed. Other-account possessive accuracy changes by **+0.85 pp [−3.12, +4.69]**. Subtracting the two changes gives **−12.76 pp [−17.90, −7.55]**. The own-account history change is negative in **37 of 48 worlds**, positive in **8** and zero in **3** in this tie sensitivity. Whole-world exclusion gives the same direction for the own-minus-other contrast, **−13.30 pp [−18.48, −8.18]**. These are post hoc comparisons, with nominal intervals and no new candidate decision.
 <!-- V19 -->
 
 ![Exploratory changes from final-state snapshot to printed history](../../review/query-reference-stages/history_contrasts.png)
@@ -92,9 +92,32 @@ The tighter comparison is snapshot against printed history, because the final pe
 This pattern is not a uniform penalty for a longer prompt. Own-account direct naming improves by **3.78 pp [0.59, 7.23]** in the same comparison. The operator-name changes are also reported, including a decline for the other operator. Query form and presentation interact in the recorded behavior. That is a useful target for explanation, but history also changes token positions, interference and the work needed to recover the final state. The comparison has not identified which of those matters internally.
 <!-- V20 -->
 
+## The order of the updates refuses to disappear
+
+One simple explanation is to choose the command granted most recently, regardless of its owner. With both updates printed and their order balanced, this rule is right **50%** of the time in every owner/form cell. That is a structured shortcut, not chance among four choices. Before and snapshot contain no printed grant event: the frozen “latest grant or first option” policy falls back to the first menu item and scores **25%**. A literal latest-grant policy is undefined there. The [cell-by-cell CPU audit](../../review/query-reference-stages/report.md#stage-specific-shortcuts-original-choices) makes that distinction explicit.
+<!-- V24 -->
+
+Own-account possessive choices agree with the latest grant in **451/1,536 cases**, but with the first grant in **1,064/1,536**. The remaining **21** cases comprise **20 revoked-command choices** and the tie. An always-latest rule cannot explain the complete response record. That does not eliminate mixed recency effects, a preference for earlier events, or an interaction between event position and reference resolution. Agreement with a shortcut and accuracy against the simulator answer different questions.
+<!-- V25 -->
+
+Splitting by order makes the issue concrete. Own-account possessive accuracy is **39.97% when the target changes last**, versus **80.34% when it changes first**. For other-account possessive queries it is **62.50% versus 80.08%**. In exactly those own-account target-last cases where the model scores **39.97%**, the trivial latest-grant rule scores **100%**. It scores **0%** when the target changes first. The opposite broad direction is compatible with a first-grant tendency, but that rule is not followed universally either. The pooled **60.16%** equally weights these two own-account order strata, calculated from the unrounded proportions. It averages sharply different situations; it does not describe each order equally well.
+<!-- V26 -->
+
+The opening example happens to fail under both orders. It cannot stand in for this distribution. Equally, the strong order difference does not by itself explain why the own-account question is more affected. An explanation must accommodate the query-form comparison, explicit lookup failures and order dependence together. The useful next scientific question is which account–command associations the model uses under these different inputs, not whether an attractive error deserves a mental-state label.
+<!-- V27 -->
+
 ## The wrong answer often belongs to somebody else
 
 A percentage of mistakes hides their direction. Of the **612** own-account possessive failures after both updates, **591** choose the other account’s current command. The remainder comprise **14** revoked-target commands, **6** revoked-other commands and the tie. Thus **96.57% of failures** take the foreign-current route; the same count is **38.48% of all scheduled choices**. Both denominators matter. A conditional share of errors is not the probability that the model fails, and a high share cannot establish a neural mechanism.
+
+Splitting those original failures by order shows which event supplies the foreign command:
+
+| Own-account possessive query | Scheduled | All failures | Foreign-current failures | That foreign command was granted |
+|---|---:|---:|---:|---|
+| Target changed last | 768 | 461 | **447/461 (96.96%)** | First |
+| Target changed first | 768 | 151 | **144/151 (95.36%)** | Last |
+
+The two foreign counts sum to 591. Most of those selections follow the first grant because most failures occur in the target-last stratum; the smaller target-first stratum shows the same wrong-account category following the last grant. The [CPU count](../../review/query-reference-order-errors/report.md) retains revoked commands and the unresolved tie separately, along with both owners, all query forms and every tie sensitivity. This is an output classification, not a single recency mechanism.
 <!-- V21 -->
 
 That direction is not unique to “your”. For “their”, **440 of 441 failures** choose the current command of the account opposite the queried one. When the question switches owners, “foreign” switches identity too. These counts therefore do not show the model treating “your” and “their” as the same referent, or prove that it resolves “their” reliably. They show that many failures select a command that works for the wrong account. That is the behavioral observation behind this article’s title.
@@ -102,20 +125,6 @@ That direction is not unique to “your”. For “their”, **440 of 441 failur
 
 The named forms have different mixtures. Own-account operator-name errors include **315 foreign-current** and **125 revoked-command** choices; direct account naming has **53 foreign-current** and **21 revoked-command** errors. Distinguishing these outputs is more informative than pooling every wrong answer. Yet different mixtures can arise from one process under different inputs. Calling them two separated internal defects would go beyond what was measured. [Complete error composition](../QUERY_REFERENCE_SENSITIVITY_ADDENDUM.md#corrected-error-composition-and-shortcut-interpretation).
 <!-- V23 -->
-
-## The order of the updates refuses to disappear
-
-One simple explanation is to choose the command granted most recently, regardless of its owner. With both updates printed and their order balanced, this rule is right **50%** of the time in every owner/form cell. That is a structured shortcut, not chance among four choices. Before and snapshot contain no printed grant event: the frozen “latest grant or first option” policy falls back to the first menu item and scores **25%**. A literal latest-grant policy is undefined there. The [cell-by-cell CPU audit](../../review/query-reference-stages/report.md#stage-specific-shortcuts-original-choices) makes that distinction explicit.
-<!-- V24 -->
-
-Own-account possessive choices agree with the latest grant in **451/1,536 cases**, but with the first grant in **1,064/1,536**. The remaining case is the tie. An always-latest rule cannot explain the complete response record. That does not eliminate mixed recency effects, a preference for earlier events, or an interaction between event position and reference resolution. Agreement with a shortcut and accuracy against the simulator answer different questions.
-<!-- V25 -->
-
-Splitting by order makes the issue concrete. Own-account possessive accuracy is **39.97% when the target changes last**, versus **80.34% when it changes first**. For other-account possessive queries it is **62.50% versus 80.08%**. A latest-grant rule would instead score perfectly in the target-last cells and fail in the other-last cells. The opposite broad direction is compatible with a first-grant tendency, but that rule is not followed universally either. The order-balanced result is real; it averages over sharply different situations.
-<!-- V26 -->
-
-The opening example happens to fail under both orders. It cannot stand in for this distribution. Equally, the strong order difference does not by itself explain why the own-account question is more affected. An explanation must accommodate the query-form comparison, explicit lookup failures and order dependence together. The useful next scientific question is which account–command associations the model uses under these different inputs, not whether an attractive error deserves a mental-state label.
-<!-- V27 -->
 
 ## How this question emerged
 

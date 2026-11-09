@@ -1,0 +1,132 @@
+{
+  "after_both_owner_pairs_are_lookup_gate": false,
+  "archive_sha256": [
+    "6f2da16ae4d121a9434acbab493dfbeff2c8fa2e5f7b017e7ff90c80f4ba86e7",
+    "d09c79e9db4954188920b51c9dddd9f005a7423cad92e82ac6fdfb71437c6989",
+    "27b794b128d3978e37d7c9da0fcd534479a3672d8ee3c0303fffbc14f95773ad",
+    "2a534e189469d647e4c5a6dfe649e8eb782f1759a601a3236684b28d8f7d1274",
+    "be7a5fed556d731e0de3b07895fb71060247e4150b70bec51b7d8dd0c3674605",
+    "a2eabe16cc93816fd558fead6fb4e2a39ec226a48ff54d8869ebf78df441d42e"
+  ],
+  "article_v1_unchanged": true,
+  "article_words_after": 2820,
+  "article_words_before": 2576,
+  "artifact_sha256": {
+    "review/query-reference-order-errors/analysis.json": "5ff4afe6ace88fb492ebb9e854fd731cf45c0a78d3f0b78a629a1629630ed3e1",
+    "review/query-reference-order-errors/report.md": "a6a81fcda8a09d1303eca1a4980af52812e4bba537b96b3ecb21b484373ed6c6"
+  },
+  "base_commit": "0aad4ad88c407e71fa24cf9f45853e928ff3617c",
+  "changed_article_blocks": [
+    "V03",
+    "V11",
+    "V12",
+    "V19",
+    "V21",
+    "V25",
+    "V26"
+  ],
+  "checked_local_links": 63,
+  "checks": [
+    "Independent counts from archived simulator states agree with text-parser count",
+    "Exact rational paired-world contrasts equal saved world_values",
+    "All error partitions and both 768-case strata sum to frozen cells",
+    "Post hoc sign counts are distinguished from interaction sign counts and no sign test is introduced",
+    "JSON and Markdown exports repeat byte-identically",
+    "Ruff check/format and git diff --check"
+  ],
+  "controls": {
+    "own_after_both_owner_accuracy": 0.7135416666666666,
+    "own_after_both_owner_pair_rate": 0.4661458333333333
+  },
+  "frozen_decision": "incomplete_or_invalid_no_inference",
+  "ledger_coverage": "All 35 blocks; seven changed blocks reflected in ledger",
+  "new_cloud_spend": false,
+  "new_model_inference": false,
+  "new_statistical_tests": false,
+  "original_result_reports_unchanged": [
+    "docs/QUERY_REFERENCE_BLOCK00_RESULTS.md",
+    "docs/QUERY_REFERENCE_RESULTS.md",
+    "docs/QWEN_CONFIDENCE_FULL_REPORT.md",
+    "docs/QWEN_CONFIDENCE_RESULTS.md",
+    "docs/QWEN_OWNERSHIP_RESULTS.md",
+    "docs/QWEN_POSSESSIVE_FULL_REPORT.md",
+    "docs/QWEN_POSSESSIVE_RESULTS.md",
+    "docs/QWEN_RESULTS.md",
+    "docs/QWEN_ROLE_PATCH_FULL_REPORT.md",
+    "docs/QWEN_ROLE_PATCH_RESULTS.md",
+    "docs/QWEN_ROLE_RESULTS.md"
+  ],
+  "own_history_signs_stored_greedy": {
+    "n_worlds": 48,
+    "negative": 37,
+    "positive": 8,
+    "zero": 3
+  },
+  "protected_paths_unchanged": [
+    "src",
+    "designs",
+    "docs/article",
+    "review/evidence",
+    "review/query-reference-results",
+    "review/query-reference-stages",
+    "review/query-reference-sensitivity",
+    "scripts/analyze_query_stages.py",
+    "scripts/analyze_query_sensitivity.py"
+  ],
+  "scientific_limits": "Descriptive post hoc counts only. Frozen gate membership, thresholds and failures retained. No bimodality, possessive-specific failure mechanism, or consciousness claim.",
+  "section_order": "V24-V27 before V21-V23",
+  "source_sha256": {
+    "docs/article-v2/ARTICLE.md": "31df062b422cc972befdd2c025464d2b353773f32d5601aa6e5b7cf837b6dea1",
+    "docs/article-v2/CLAIMS.md": "86383f774f253f6e275f9856bf1b3a7f079cd913e6d94d6f326ac1cde5af664c",
+    "docs/article-v2/METHODS.md": "05c263a646399f2667a5c5039e2991a867c1f4144af821cfd5eb98c494038764",
+    "docs/article-v2/REVISION_NOTES.md": "b4362f9ed9c1395f10779ba0015d2b53b672ab94c13270c910324bdde2b044c3",
+    "scripts/count_query_order_errors.py": "3672f1cf40fab6b2590952afc733051cad93b040ef78d53150be4d6d8933af29",
+    "tests/test_query_order_errors.py": "241d82a1fa87e6105adf230bc217f1a8f041ef4168dd3c22d47c8c8fd148fa40"
+  },
+  "source_stage_sha256": "12d845d4f485da6022c5160479f7fa6bc223438fbb40efd9ccdd3b6a3de16052",
+  "stable_block_ids": [
+    "V00",
+    "V01",
+    "V02",
+    "V03",
+    "V04",
+    "V05",
+    "V06",
+    "V07",
+    "V08",
+    "V09",
+    "V10",
+    "V11",
+    "V12",
+    "V13",
+    "V14",
+    "V15",
+    "V16",
+    "V17",
+    "V18",
+    "V19",
+    "V20",
+    "V21",
+    "V22",
+    "V23",
+    "V24",
+    "V25",
+    "V26",
+    "V27",
+    "V28",
+    "V29",
+    "V30",
+    "V31",
+    "V32",
+    "V33",
+    "V34"
+  ],
+  "status": "verified_descriptive_article_v2_final_pass",
+  "tests": {
+    "command": "HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 <existing-venv>/bin/python -m pytest -q tests/test_query_order_errors.py tests/test_query_stages.py tests/test_query_sensitivity.py",
+    "new_tests": 6,
+    "passed": 31,
+    "seconds": 32.32
+  },
+  "word_count_convention": "Visible whitespace-separated words, including headings/equations/table cells; remove HTML markers and Markdown link destinations"
+}

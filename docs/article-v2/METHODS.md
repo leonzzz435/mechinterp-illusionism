@@ -88,6 +88,28 @@ only. Three lookup accuracy cells and five ownership-pair cells still fail. The 
 result remains `incomplete_or_invalid_no_inference`; the derived tie analysis remains
 `lookup_gate_failed`. Neither is relabeled a successful specificity candidate.
 
+## Descriptive order/error and sign counts
+
+The [CPU count](../../review/query-reference-order-errors/report.md) rereads the six original
+archives and preserves the stage-analysis JSON. It splits every owner/form cell by which
+account changes last, including all revoked-command and invalid selections. In the frozen
+own-possessive records, target-last has 447 foreign-current errors among 461 failures;
+target-first has 144 among 151. Each order contains 768 cases. A foreign-current choice is
+necessarily the first grant in target-last and the latest grant in target-first.
+
+For each world, the count recomputes the own-possessive history change and the
+own-minus-other interaction with exact rational arithmetic, checks them against saved
+`world_values`, and counts signs without a tolerance. The stored-greedy 48-world own-history
+change has 37 negative, 8 positive and 3 zero values; the interaction has 34, 8 and 6.
+Frozen own-history signs are 37, 7 and 4; all four analysis views appear together. These are
+descriptive distributions, not new sign tests or alternative candidate rules.
+
+After-both operator-name accuracy is 1096/1536=71.35%, with 358/768 fully correct ownership
+pairs=46.61%. These illustrate weakness in the primary presentation, but the frozen lookup
+gates apply only to before/snapshot. They must not be added to the gate inventory after
+inspection. The paired mean F uses unrounded accuracies; likewise, the original 60.16%
+own-possessive accuracy equally weights 307/768 and 617/768, not a rounded intermediate result.
+
 ## The correct baseline depends on the presentation
 
 A literal latest-grant policy is undefined before and in a snapshot. The frozen
@@ -139,9 +161,11 @@ From the results branch/worktree with the existing locked environment:
 
 ```bash
 uv run --no-sync python scripts/analyze_query_stages.py
-uv run --no-sync pytest -q tests/test_query_stages.py tests/test_query_sensitivity.py
+uv run --no-sync python scripts/count_query_order_errors.py
+uv run --no-sync pytest -q tests/test_query_stages.py tests/test_query_sensitivity.py tests/test_query_order_errors.py
 ```
 
-The [verification record](../../review/query-reference-stages/verification.json) records
+The original [verification record](../../review/query-reference-stages/verification.json) and
+[final-pass verification](../../review/query-reference-order-errors/verification.json) record
 executed checks, hashes, word-count convention and unchanged historical evidence. This
 article is a new draft, not an external peer review or a new publication of a confirmed mechanism.

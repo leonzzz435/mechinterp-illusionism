@@ -54,7 +54,7 @@ contains artifact hashes, paragraph/links checks and the exact word count. The c
 counts visible whitespace-separated words, including headings, equations and table cells,
 after removing HTML markers and link destinations. The frozen v1 is 3,530 under this same
 convention; earlier quoted word counts used other conventions and are not silently reused.
-V2 has **2,576 words** and 35 ledger-covered blocks; each can contain connected prose plus its table/equation.
+The initial v2 delivery (`0aad4ad`) had **2,576 words** and 35 ledger-covered blocks; each can contain connected prose plus its table/equation.
 
 Checks executed: 75 query-related tests, covering the original input generator, execution,
 block review and sensitivity/stage analyses, passed. After the final report-table addition and SVG whitespace normalization,
@@ -67,3 +67,42 @@ This is software/evidence verification, not external scientific peer review. The
 The title is **The Right Command for the Wrong Account**. It describes the measured output
 category without claiming a mechanism. Article-v2 remains a reviewable draft; no new
 publication tag or publication action was performed.
+
+
+## Final focused pass — order, error direction and signs
+
+The final pass changes V03, V11, V12, V19, V21, V25 and V26. V24–V27 now precede
+V21–V23, putting order dependence before pooled error composition. Block IDs remain stable;
+35 blocks remain covered by the ledger. The main article now has **2,820 words**, versus
+2,576 at initial delivery, under the same visible-whitespace convention.
+
+- V03 makes clear immediately that wrong-account choices also occur with named operators
+  and “their”; the selected scene is not evidence of a possessive-specific failure mode.
+- V11 explains that 35.03 pp is computed before rounding the displayed accuracies.
+- V12 adds 71.35% own operator-name accuracy and 358/768=46.61% fully correct ownership
+  pairs after both updates. These are diagnostics, not additional frozen 80% gate cells.
+- V19 uses the verified stored-greedy own-history sign count: 37 negative, 8 positive, 3 zero.
+  The review's 38/7/3 does not reproduce. The own-minus-other interaction is a different
+  contrast, with 34 negative, 8 positive, 6 zero. The separate report retains all four views;
+  frozen own-history counts are 37/7/4. No sign test or new decision was added.
+- V26 explicitly compares the model's 39.97% with the latest-grant rule's 100% in the same
+  target-last cases, and identifies 60.16% as the equally weighted mean of unrounded order
+  proportions. Two distinct cell means do not establish a bimodal world distribution.
+- V21 adds the original error split: 447/461 foreign-current failures when the target
+  changes last (the foreign command was granted first), versus 144/151 when it changes
+  first (the foreign command was granted last). Each stratum contains 768 choices;
+  the totals remain 591/612. All owners/forms and tie views are exported, including
+  revoked categories and the raw tie.
+- V25 fixes an additional accounting error in our initial prose: 451 latest-grant choices
+  plus 1,064 first-grant choices leave 21 cases, comprising 20 revoked choices and 1 tie.
+
+New CPU script: `scripts/count_query_order_errors.py`. It verifies the unchanged pinned
+stage JSON and original archives, reconstructs per-world signs with exact fractions and
+cross-checks every saved contrast value. Its tests independently count response categories
+from archived simulator states and verify the partition, tie handling and reproducible export.
+
+[Final-pass verification](../../review/query-reference-order-errors/verification.json)
+records current checks and document hashes. The earlier verification record remains the
+historical initial-delivery record. Article-v1, model code, designs, original reports,
+archives, stage/sensitivity outputs and all three figures remain unchanged. No new GPU
+work, thresholds, confidence intervals, model or experimental design.

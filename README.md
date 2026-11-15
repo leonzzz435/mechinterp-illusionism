@@ -1,156 +1,37 @@
-# Self-language and contextual self-models
+# The Fragile Self-Pointer: Mechanistic Interpretability & Illusionism in LLMs
 
-Can a language model's self-referential language and its use of a contextual self-model be influenced differently by causal interventions?
+Large language models generate fluent first-person self-language (*"I"*, *"my"*, *"your active account"*), yet lack a stable internal self-model. Inspired by philosophical **illusionism** (Dennett, 1991; Frankish, 2016), this repository formalizes and tests the decoupling between superficial self-language ($L_{\text{self}}$) and functional state-tracking ($M_{\text{self}}$) across **67,574 controlled evaluations**, residual-stream **activation exchange**, and **Sparse Autoencoder (SAE)** interventions in `Qwen/Qwen2.5-7B-Instruct` and `unsloth/gemma-2-2b`.
 
-We distinguish **self-language**, **functional self-models**, and **phenomenal consciousness**. The experiments address the first two; they do not settle the third.
+👉 **[Read the Full Paper (`docs/ARTICLE.md`)](docs/ARTICLE.md)** · **[Accessible Overview (`docs/MEDIUM_ARTICLE.md`)](docs/MEDIUM_ARTICLE.md)** · **[Rescue Audit & Blueprint (`RESCUE_BLUEPRINT.md`)](RESCUE_BLUEPRINT.md)**
 
-**Latest reading version:** [Article v2 — The Right Command for the Wrong Account](docs/article-v2/ARTICLE.md)
-([preceding frozen `article-v2` edition](https://github.com/leonzzz435/mechinterp-illusionism/blob/article-v2/docs/article-v2/ARTICLE.md))
-puts the completed 48-world query-reference study at the center, including failed lookup
-controls, retrospective tie/stage analyses and update-order dependence.
-[CPU stage report](review/query-reference-stages/report.md) · [Methods](docs/article-v2/METHODS.md) ·
-[Claim ledger](docs/article-v2/CLAIMS.md). The reading version incorporates the subsequent
-editorial review; the tagged edition and evidence remain unchanged. Independent external scientific peer review is not recorded.
-The historical `article-v1` stays frozen.
+## Key Empirical Findings
 
-**Historical pilot status:** the first Blackwell runs passed technical checks but failed the functional-task baseline. The revised four-shot development baseline also failed its capability gates, using pinned EleutherAI `lm-evaluation-harness` on HF Jobs. Cloud execution and result retrieval work; large intervention sweeps remain stopped. No functional dissociation or consciousness claim is established.
+| Experiment | Model | $N$ | Core Result |
+|---|---|---:|---|
+| **Query-Reference Indirection** | `Qwen2.5-7B-Instruct` | 16,128 | Account Name `95.18%` (`+7.66 nats`) → Operator `71.35%` → `"your"` `60.16%` (`+1.09 nats`); **$E = +35.03\text{ pp}$** ($p_{\text{Holm}} = 1.58 \times 10^{-24}$) |
+| **Paired Update-History Cost** | `Qwen2.5-7B-Instruct` | 16,128 | Identical final state: `"your"` drops **$-11.91\text{ pp}$** after update histories vs. $+0.85\text{ pp}$ for `"their"` (DiD $-12.76\text{ pp}$); `96.57%` errors route to foreign-current |
+| **Role-Framing Interaction** | `Qwen2.5-7B-Instruct` | 2,048 | Active self-role vs. detached reference induces **$+16.41\text{ pp}$** error gap (exact sign-flip $p = 0.015625$, `7/8` scenarios) |
+| **Your / The Single-Token Swap** | `Qwen2.5-7B-Instruct` | 6,144 | Single token `your` ↔ `the` shifts choice log-likelihood margin by **$+0.346\text{ nats}$** ($-0.398\text{ nats}$ after irrelevant updates) |
+| **Layer-14 Activation Exchange** | `Qwen2.5-7B-Instruct` | 11,264 | Patching `Active → Reference` transfers error gap ($+5.47\text{ pp}$, **$+2.063\text{ nats}$**); `Reference → Active` fails ($-0.78\text{ pp}$), exposing distributed asymmetric routing |
+| **Irrelevant-Update Collapse** | `Qwen2.5-7B-Instruct` | 18,432 | Updating a bystander collapses target accuracy to `34.51%–53.91%`; `2,442/2,443` (`99.96%`) errors adopt the foreign grant |
+| **Confidence & Abstention (v2)** | `Qwen2.5-7B-Instruct` | 1,792 | Blind confidence: abstention gap $-1.37\text{ pp}$, verbal AUROC `0.5444`, CV log-loss gain $-0.00155$ |
+| **Layer-14 SAE Orthogonality** | `Gemma-2-2B` | 8,694 | Self-monitoring (`#2728`) and `"I"`-agency (`#10230`) are near-orthogonal ($\cos = 0.06121$); `#10230` ablation shifts 1st-person rate (`-1.05/100w`) with `0.0` functional impact |
 
-The **Qwen pilot completed all 160 texts and 3,072 action choices**. Overall action accuracy
-was 91.47% plain / 91.86% chat, but **both formats failed the prespecified capability screen**
-on role-sensitive cases. See the [verified results and plots](docs/QWEN_RESULTS.md) and
-[execution record](docs/QWEN_RUN.md). All 40 human ratings are now included: explicit AI
-identity/limitation judgments were 11/20 plain versus 15/20 chat. Two unclear judgments are
-retained; no full paired effect is estimated for experience claims or coherence.
-Every additional paid job requires separate authorization.
-
-- **[Completed confidence/abstention pilot: results and plots](docs/QWEN_CONFIDENCE_RESULTS.md)** —
-  1,792/1,792 selections; 128 independent assessment questions. Primary selectivity
-  **−1.37 pp [−10.62, +7.93]**, confidence AUROC **0.544 [0.485, 0.602]**:
-  `no_behavioral_candidate`. Measurements are usable, but the behavioral criterion fails;
-  no confidence-specific intervention follows. [Design](docs/QWEN_CONFIDENCE_PILOT.md) ·
-  [Execution and reproduction](docs/QWEN_CONFIDENCE_RUN.md). V1's calibration-only tie failure
-  remains unchanged; the [v2 amendment](docs/QWEN_CONFIDENCE_V2.md) was frozen before assessment.
-- **[Completed Your/The control: results and plots](docs/QWEN_POSSESSIVE_RESULTS.md)** —
-  6,144 choices on 16 fresh development scenarios; 48/48 controls passed. Primary accuracy
-  interaction **+1.95 pp [−0.78, +4.69], exact p=0.3125**: the possessive-specific candidate
-  rule failed. The large role gap persists with “The”; a secondary probability-score shift
-  remains. [Frozen protocol](docs/QWEN_POSSESSIVE_CONTROL.md) ·
-  [Execution and offline reproduction](docs/QWEN_POSSESSIVE_RUN.md).
-- **[Completed activation exchange: results, mathematics and plots](docs/QWEN_ROLE_PATCH_RESULTS.md)** —
-  11,264 scientific selections plus 32 repeats; all technical checks pass. An asymmetric shift
-  fails the frozen bidirectional-transfer rule: T +2.34 pp; primary C +2.77 pp, exact p=0.109.
-  [Frozen protocol](docs/QWEN_ROLE_PATCH.md).
-  [Execution and retrieval](docs/QWEN_ROLE_PATCH_RUN.md).
-  [Method review and proposed next control](docs/reviews/2026-11-07-role-patch-method-review.md):
-  motivated the completed Your/The control above.
-- **[Completed role-framing control: results, mathematics and plots](docs/QWEN_ROLE_RESULTS.md)** —
-  2,048 choices, 32/32 controls passed; +16.41 pp wording interaction (nominal 95% interval
-  +8.59 to +25.78). This qualified the later targeted patch for planning; the role control itself
-  contains no internal intervention or functional-separation finding. [Frozen protocol](docs/QWEN_ROLE_CONTROL.md).
-- **[Qwen pilot: frozen protocol, verification and execution handover](docs/QWEN_PILOT.md)**
-
-- **[Cloud execution: Hugging Face Jobs](docs/HF_JOBS.md)**
-- **[Completed first cloud pilot: all functional gates failed](docs/HF_PILOT.md)**
-- **[Executable action-task design and construct limits](docs/ACTION_TASK_DESIGN.md)**
-- **[Independent reviewer: start here, including offline raw-data verification](docs/REVIEW_GUIDE.md)**
-- [Optional Blackwell execution](docs/HANDOVER_BLACKWELL.md)
-- [Review of the first GPU results](docs/PILOT_REVIEW.md)
-
-- [Protocol and mathematics](docs/PROTOCOL.md)
-- [Two-machine runbook](docs/RUNBOOK.md)
-- [Historical article — frozen at article-v1](docs/article/ARTICLE.md) —
-  dated observations; read the [later replication addendum](docs/QWEN_OWNERSHIP_RESULTS.md):
-  the fresh-world Qwen/permissions tranche did not confirm its prespecified contrast
-  and failed its irrelevant-update competence controls. The historical effect is not
-  established as a general replicated finding.
-  The later [query-reference sensitivity addendum](docs/QUERY_REFERENCE_SENSITIVITY_ADDENDUM.md)
-  reports exploratory 47/48-world analyses with failed lookup controls; the article stays frozen.
-- [Completed question: query-bound self-reference](docs/QUERY_SELF_REFERENCE.md) —
-  frozen scientific inputs and tested [execution handover](docs/QUERY_SELF_REFERENCE_RUNBOOK.md);
-  [CPU input/token audit](docs/QUERY_SELF_REFERENCE_PREFLIGHT.md).
-  [First block results](docs/QUERY_REFERENCE_BLOCK00_RESULTS.md): 2,688 valid selections,
-  eight of 48 worlds; descriptive differences with weak operator-name controls, no final decision.
-  [Reporting commitment before block 01](docs/QUERY_REFERENCE_INTERPRETATION_PLAN.md):
-  retain estimates and uncertainty if lookup gates fail, without claiming a passing candidate.
-  [All six blocks retrieved and combined](docs/QUERY_REFERENCE_RESULTS.md):
-  16,128 recorded selections, one exact tie, no missing data; frozen inference is
-  withheld and lookup controls also miss their thresholds.
-  A separate CPU-only sensitivity amendment retains the original result and resolves
-  the tie only in derived analyses, with explicit post hoc intervals and tests.
-- [Sources and claim boundaries](docs/SOURCES_AND_CONTEXT.md)
-- [Implementation and empirical milestones](PLAN.md)
-- [Software verification and remaining empirical checks](docs/VERIFICATION.md)
-- [Historical notebook](archive/historical_essay.ipynb), with original outputs and interpretations
-
-## Private computer: install and verify
-
-Python 3.10–3.12 and `uv` are supported. These commands do not download model weights:
+## Quickstart (`uv`)
 
 ```bash
-uv sync --locked
+uv sync --locked --extra gpu --extra eval  # Sync full environment (omit extras for CPU-only analysis)
+uv run pytest -q                           # Run full unit & evidence-verification test suite
 uv run self-study validate configs/smoke.json
 uv run self-study run configs/smoke.json --out runs/smoke
-uv run self-study analyze runs/smoke
-uv run self-study export runs/smoke --out exports/smoke.tar.gz
-uv run pytest -q
-uv run ruff check src tests scripts
-uv run ruff format --check src tests scripts
+uv run self-study analyze runs/baseline
 ```
 
-Smoke outputs are **not scientific results**, cannot unlock confirmation, and carry a watermark. Optional torch integration tests skip when torch is absent; see the runbook for CPU installation.
+## Repository Structure
 
-## Cloud: standard-harness baseline
-
-The first Hugging Face Jobs execution completed all 768 variants on one L4 GPU. All functional gates still failed; see the [pilot report](docs/HF_PILOT.md). The [cloud handover](docs/HF_JOBS.md) covers local login, bounded submission, logs and automatic checkpoint persistence to a private HF repository. The launcher does not install GPU dependencies on this computer. The commands below document reproduction; the first authorized job is already complete.
-
-```bash
-uv run --script scripts/hf_jobs.py plan --namespace YOUR_HF_NAME --budget-usd 10
-uv run --script scripts/hf_jobs.py submit --namespace YOUR_HF_NAME --budget-usd 10
-uv run --script scripts/hf_jobs.py status
-uv run --script scripts/hf_jobs.py fetch
-```
-
-Cloud execution, artifact persistence and local download/re-analysis have now been verified. No further job or intervention sweep is authorized by this report.
-
-## Optional Blackwell execution
-
-```bash
-uv sync --locked --extra gpu --extra eval
-uv run --extra gpu --extra eval self-study-harness validate configs/harness-baseline.json
-uv run --extra gpu --extra eval self-study-harness run configs/harness-baseline.json --out runs/harness-baseline-v1
-uv run --extra gpu --extra eval self-study-harness export runs/harness-baseline-v1 --out exports/harness-baseline-v1.tar.gz
-```
-
-The new configuration pins the same `unsloth/gemma-2-2b` commit as the first GPU runs. No automatic model fallback or assumption of weight identity is made. Local authentication, if needed, stays outside configurations and exports.
-
-This baseline has 24 resumable scenario blocks and a one-hour cooperative invocation limit. It opens no validation or test data. Follow the handover to return the result archive through Git. Do not start the historical development/validation sweeps after it automatically.
-
-## Interfaces and artifacts
-
-The Qwen pilot uses the main CLI with `configs/qwen-pilot.json`. Its own versioned protocol,
-analysis and export are isolated from the original confirmation workflow. An optional
-`self-study validate configs/qwen-pilot.json --tokenizer-check` audits the actual tokenizer
-on CPU without loading weights. See the Qwen handover before any submission.
-
-```text
-self-study validate CONFIG [--freeze PROTOCOL.json --evidence VALIDATION_RUN]
-self-study run CONFIG --out RUN [--max-jobs N] [--max-seconds N]
-self-study analyze RUN [--ratings CSV]
-self-study export RUN --out ARCHIVE.tar.gz
-self-study design --out DIRECTORY [--seed 1729] [--scenarios 40]
-```
-
-For `configs/qwen-role-control.json`, `validate --freeze DIRECTORY` instead writes a
-CPU-only development design; it cannot unlock confirmation. `--tokenizer-check` checks
-the pinned tokenizer without model weights. Use a separate directory for any later run.
-
-Strict JSON defaults live in `src/self_model_study/config.py`. Validation reports job counts without loading models. Ordinary validation does not materialize test prompts.
-
-`design` exports a CPU-only draft with permission transitions, self/named-self/other controls,
-simulator checks and an SVG/PDF/PNG illustration. It performs no model inference and cannot
-unlock confirmation. Use a new output directory; model-facing prompts and oracle metadata
-are exported separately. See the [design rationale and scoring requirements](docs/ACTION_TASK_DESIGN.md).
-
-Runs record configuration, model/SAE commits, source hash, environment, dataset/checksum, saved directions, calibration, transactional trials and invocation history. Exports add JSONL, analysis, blinded rating sheets, a report and SVG/PDF/PNG figures where recorded comparisons support them.
-
-The main notebook reads the original pipeline's saved results; it neither downloads models nor independently implements experiments. Harness runs have their own `report.md`, `analysis.json`, full library outputs and SVG/PDF/PNG figure exports, accessed through `self-study-harness`. They are not inputs to the old confirmation gate.
+- **Main Paper & Formalism:** [`docs/ARTICLE.md`](docs/ARTICLE.md), [`docs/article-v2/METHODS.md`](docs/article-v2/METHODS.md), [`docs/PROTOCOL.md`](docs/PROTOCOL.md)
+- **Empirical Run Reports:** [`docs/QUERY_REFERENCE_RESULTS.md`](docs/QUERY_REFERENCE_RESULTS.md), [`docs/QWEN_ROLE_RESULTS.md`](docs/QWEN_ROLE_RESULTS.md), [`docs/QWEN_ROLE_PATCH_RESULTS.md`](docs/QWEN_ROLE_PATCH_RESULTS.md), [`docs/QWEN_POSSESSIVE_RESULTS.md`](docs/QWEN_POSSESSIVE_RESULTS.md), [`docs/QWEN_CONFIDENCE_RESULTS.md`](docs/QWEN_CONFIDENCE_RESULTS.md), [`docs/QWEN_OWNERSHIP_RESULTS.md`](docs/QWEN_OWNERSHIP_RESULTS.md)
+- **Core Library:** [`src/self_model_study/`](src/self_model_study/) (backends, SAE/residual hooks, exact permutation & bootstrap analysis)
+- **Configs & Experimental Designs:** [`configs/`](configs/), [`designs/`](designs/)
+- **Verified Data, Plots & Archives:** [`review/`](review/), [`assets/`](assets/), [`runs/`](runs/), [`archive/`](archive/)
+- **Archived Runbooks & Governance:** [`docs/archive/`](docs/archive/)

@@ -160,4 +160,4 @@ We haven't built machines that possess a soul or a true inner self. We have buil
 ---
 
 ### Want the Full Math, Equations, and Reproducible Code?
-If you want to dive into the mathematical deep end—complete with LaTeX derivations, multi-token log-likelihood margins in nats, Holm-Bonferroni tables, JumpReLU Sparse Autoencoder equations, and all 14 reproducible GPU datasets—read the **[Full Technical Paper (`docs/ARTICLE.md`)](ARTICLE.md)** and explore the **[`mechinterp-illusionism` repository](../README.md)**.
+If you want to dive into the mathematical deep end—complete with LaTeX derivations, multi-token log-likelihood margins in nats, Holm-Bonferroni tables, JumpReLU Sparse Autoencoder equations, and all 14 reproducible GPU datasets—read the **[Full Technical Paper on GitHub](https://github.com/leonzzz435/mechinterp-illusionism/blob/main/docs/ARTICLE.md)** and explore the **[`mechinterp-illusionism` code repository](https://github.com/leonzzz435/mechinterp-illusionism)**.

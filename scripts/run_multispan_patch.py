@@ -293,12 +293,17 @@ def main():
 
     results = {"clean": clean_summary, "sweep": []}
     all_records = list(clean_records)
-    span_slices = {
-        "header_end": [4],
-        "header_span": list(range(0, 5)),
-        "query_span": list(range(5, 14)),
-        "joint_span": list(range(0, 14)),
-    }
+
+    def pair_slice(spans, span_name):
+        h_len = len(spans["active"]["header_span"])
+        j_len = len(spans["active"]["joint_span"])
+        if span_name == "header_end":
+            return [h_len - 1]
+        if span_name == "header_span":
+            return list(range(0, h_len))
+        if span_name == "query_span":
+            return list(range(h_len, j_len))
+        return list(range(0, j_len))
 
     for layer in layers:
         if layer == 13:
@@ -306,10 +311,10 @@ def main():
         else:
             span_names = ["header_span", "query_span", "joint_span"]
         for span_name in span_names:
-            sl = span_slices[span_name]
             cond_name = f"L{layer}_{span_name}"
             cond_records = []
             for p in pair_cache:
+                sl = pair_slice(p["spans"], span_name)
                 with patch_positions(
                     model, layer, p["spans"]["reference"][span_name], p["cap_a"][layer][sl]
                 ):
@@ -369,7 +374,8 @@ def main():
         cond_records = []
         cond_name = f"L13_joint_rand_{k}"
         for p in pair_cache:
-            u = torch.randn((14, model.config.hidden_size), generator=rng, dtype=torch.float32)
+            j_len = len(p["spans"]["active"]["joint_span"])
+            u = torch.randn((j_len, model.config.hidden_size), generator=rng, dtype=torch.float32)
             u = u / u.norm(dim=-1, keepdim=True)
             with patch_positions(
                 model, 13, p["spans"]["reference"]["joint_span"],

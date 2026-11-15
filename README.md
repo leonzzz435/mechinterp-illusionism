@@ -1,8 +1,19 @@
 # The Fragile Self-Pointer: Mechanistic Interpretability & Illusionism in LLMs
 
-Large language models generate fluent first-person self-language (*"I"*, *"my"*, *"your active account"*), yet lack a stable internal self-model. Inspired by philosophical **illusionism** (Dennett, 1991; Frankish, 2016), this repository formalizes and tests the decoupling between superficial self-language ($L_{\text{self}}$) and functional state-tracking ($M_{\text{self}}$) across **11 core runs (67,574 controlled evaluations)** and **3 follow-up scaling and circuit sweeps (10,752+ trials)**, residual-stream **activation exchange**, and **Sparse Autoencoder (SAE)** interventions in `Qwen/Qwen2.5-7B/14B/32B-Instruct` and `unsloth/gemma-2-2b`.
+[![Tests](https://img.shields.io/badge/pytest-292%20passed-brightgreen)](tests/)
+[![Evaluations](https://img.shields.io/badge/evaluations-92%2C700%2B-blue)](docs/ARTICLE.md)
+[![Models](https://img.shields.io/badge/models-Qwen2.5%20%7C%20Gemma--2-orange)](configs/)
+[![Python](https://img.shields.io/badge/python-3.12%2B-3776AB)](pyproject.toml)
+[![Managed with uv](https://img.shields.io/badge/uv-reproducible-purple)](uv.lock)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-👉 **[Read the Full Paper (`docs/ARTICLE.md`)](docs/ARTICLE.md)** · **[Accessible Overview (`docs/MEDIUM_ARTICLE.md`)](docs/MEDIUM_ARTICLE.md)**
+Large language models generate fluent first-person self-language (*"I"*, *"my"*, *"your active account"*), yet lack a stable internal self-model. Inspired by philosophical **illusionism** (Dennett, 1991; Frankish, 2016), this repository formalizes and tests the decoupling between superficial self-language ($L_{\text{self}}$) and functional state-tracking ($M_{\text{self}}$) across **14 experimental runs and over 92,700 controlled evaluations** (`67,574` core decisions plus `25,000+` follow-up scaling, multi-span patching, and 28-layer probe evaluations), residual-stream **activation exchange**, and **Sparse Autoencoder (SAE)** interventions in `Qwen/Qwen2.5-7B/14B/32B-Instruct` and `unsloth/gemma-2-2b`.
+
+> **Where to start:**
+> - **For Engineers & Product Builders:** Read the accessible essay [**Your AI Has No "Self"—Just a Fragile User Interface**](https://medium.com/@leon_zajchowski/your-ai-has-no-self-just-a-fragile-user-interface-365dad5daf8c) (or [`docs/MEDIUM_ARTICLE.md`](docs/MEDIUM_ARTICLE.md)).
+> - **For ML Researchers:** Read the full mathematical paper with LaTeX derivations and Holm-Bonferroni tables in [**`docs/ARTICLE.md`**](docs/ARTICLE.md).
+
+![Multi-Span and Multi-Layer Causal Patching Circuit](assets/followup/qwen_multispan_circuit.png)
 
 ## Key Empirical Findings
 

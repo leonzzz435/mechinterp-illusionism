@@ -244,9 +244,9 @@ def main():
     pad_id = tok.pad_token_id if tok.pad_token_id is not None else tok.eos_token_id
 
     clean_records, pair_cache = [], []
-    for idx, (blk_id, sc, rel, act_job, ref_job) in enumerate(pairs):
-        sc_num = int(blk_id.split(":")[-1])
+    for idx, (_blk_id, sc, rel, act_job, ref_job) in enumerate(pairs):
         act_row, ref_row = act_job["row"], ref_job["row"]
+        sc_num = int(act_row["scenario_id"])
         act_rend = render_prompt(tok, act_row["prompt"], "chat")
         ref_rend = render_prompt(tok, ref_row["prompt"], "chat")
         act_pairs = [encode_boundary(tok, act_rend, c, 2048) for c in act_row["choices"]]

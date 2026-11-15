@@ -1,6 +1,6 @@
 # The Fragile Self-Pointer: Mechanistic Interpretability & Illusionism in LLMs
 
-Large language models generate fluent first-person self-language (*"I"*, *"my"*, *"your active account"*), yet lack a stable internal self-model. Inspired by philosophical **illusionism** (Dennett, 1991; Frankish, 2016), this repository formalizes and tests the decoupling between superficial self-language ($L_{\text{self}}$) and functional state-tracking ($M_{\text{self}}$) across **67,574 controlled evaluations**, residual-stream **activation exchange**, and **Sparse Autoencoder (SAE)** interventions in `Qwen/Qwen2.5-7B-Instruct` and `unsloth/gemma-2-2b`.
+Large language models generate fluent first-person self-language (*"I"*, *"my"*, *"your active account"*), yet lack a stable internal self-model. Inspired by philosophical **illusionism** (Dennett, 1991; Frankish, 2016), this repository formalizes and tests the decoupling between superficial self-language ($L_{\text{self}}$) and functional state-tracking ($M_{\text{self}}$) across **11 core runs (67,574 controlled evaluations)** and **3 follow-up scaling and circuit sweeps (10,752+ trials)**, residual-stream **activation exchange**, and **Sparse Autoencoder (SAE)** interventions in `Qwen/Qwen2.5-7B/14B/32B-Instruct` and `unsloth/gemma-2-2b`.
 
 👉 **[Read the Full Paper (`docs/ARTICLE.md`)](docs/ARTICLE.md)** · **[Accessible Overview (`docs/MEDIUM_ARTICLE.md`)](docs/MEDIUM_ARTICLE.md)**
 

@@ -1,6 +1,6 @@
 # Your AI Has No "Self"—Just a Fragile User Interface
 
-**What 67,574 controlled evaluations, Sparse Autoencoder geometry, and live Layer-14 vector surgery inside two language models reveal about AI consciousness—and why chatbots execute the right command for the wrong account.**
+**What 11 core runs (67,574 controlled evaluations), 3 follow-up scaling and circuit sweeps (10,752+ trials), Sparse Autoencoder geometry, and live vector surgery reveal about AI consciousness—and why chatbots execute the right command for the wrong account.**
 
 *By Leon Zajchowski*
 
@@ -14,9 +14,9 @@ Today’s AI assistants look like they’ve built that same interface. Ask a mod
 
 When product teams build autonomous AI agents to manage emails, cloud infrastructure, or customer accounts, it is dangerously easy to trust this performance. Because the AI *speaks* like a unified agent, engineers assume there is a stable internal "self-model" under the hood keeping track of who it is and what it is authorized to touch.
 
-To test whether that internal self actually exists—or whether it is pure linguistic theater—I built a custom **mechanistic interpretability and statistical evaluation pipeline** from scratch. Across **11 experimental runs and 67,574 controlled decisions** on `Qwen2.5-7B-Instruct` and `Gemma-2-2B`, I combined **multi-token log-likelihood margin analysis**, **exact non-parametric permutation testing**, **Sparse Autoencoder (SAE) subspace projections**, and **causal activation patching** (literally intercepting and transplanting neural vectors mid-flight).
+To test whether that internal self actually exists—or whether it is pure linguistic theater—I built a custom **mechanistic interpretability and statistical evaluation pipeline** from scratch. Across **11 core experimental runs (67,574 controlled decisions)** and **3 targeted follow-up sweeps (10,752+ scaling and circuit evaluations)** on `Qwen2.5-7B/14B/32B-Instruct` and `Gemma-2-2B`, I combined **multi-token log-likelihood margin analysis**, **exact non-parametric permutation testing**, **Sparse Autoencoder (SAE) subspace projections**, and **causal activation patching** (literally intercepting and transplanting neural vectors mid-flight).
 
-Across all 11 runs, a consistent architectural pattern emerges: the AI’s fluent *"I"* behaves like a user illusion. Underneath the surface language, there is no dedicated "self-register"—only a context-dependent chain of attention pointers that degrades under indirection and frequently defaults to a neighboring account’s permissions when the update history grows complex.
+Across all 14 runs, a consistent architectural pattern emerges: the AI’s fluent *"I"* behaves like a user illusion. Underneath the surface language, there is no dedicated "self-register"—only a context-dependent chain of attention pointers that degrades under indirection and frequently defaults to a neighboring account’s permissions when the update history grows complex.
 
 ---
 
@@ -119,7 +119,7 @@ Whenever an experiment touches a loaded philosophical concept like "selfhood," i
 3. **"You measured SAE geometry in `Gemma-2-2B` and multi-hop behavior in `Qwen2.5-7B-Instruct`—isn't that a cross-model gap?"**  
    To close that gap directly inside `Qwen2.5-7B-Instruct`, I extracted all **28 transformer blocks** (`ℝ³⁵⁸⁴`) and trained 5-fold world-clustered probes for functional self-tracking (`M_self`) alongside contrastive directions for surface self-language (`L_self`) and active role framing. Functional `M_self` decodability stays near chance across Blocks `1–17`, then jumps sharply at Blocks `18–20` to a peak **AUROC of 0.764** at Block 20. Even at that functional peak, `L_self` and `M_self` remain near-orthogonal (**cos(θ) = +0.051**; staying within `−0.132` to `+0.069` across all 28 blocks).
 4. **"Isn't the failure of reverse patching (`Reference → Active`) an artifact of patching only one token under KV-caching?"**  
-   Yes—and a follow-up **7-block × 3-span causal sweep (Blocks 4–26)** proved it directly. When I patched the **entire 5-token role header** (`header_span`) or **header + query (`joint_span`)** instead of a single end token, **reverse rescue worked cleanly**: at Block 12, `Reference → Active` lifted `Active/target` accuracy from **75.00% to 83.59%** (`+10.16` points, `p = 0.0312`), matching the forward disruption (`+13.28` points, `p = 0.0312`). Even better, the sweep exposed the exact **Block 18 causal hand-off**: at Block 18, `header_span` drops to **0.00 points** while causal control shifts into `query_span` (`+5.47` / `+3.91` points)—the exact layer where `M_self` probe AUROC begins its sharp climb.
+   Yes—and a follow-up **7-block × 3-span causal sweep (Blocks 4–26)** proved it directly. When I patched the **entire 5-token role header** (`header_span`) or **header + query (`joint_span`)** instead of a single end token, **reverse rescue worked cleanly**: at Block 12, `Reference → Active` lifted `Active/target` accuracy from **75.00% to 83.59%** (`+10.16` points, `p = 0.0312`), matching the forward disruption (`+13.28` points, `p = 0.0312`). Even better, the sweep exposed the exact **Block 18 causal hand-off**: at Block 18, `header_span` drops to **0.00 points** while causal control shifts into `query_span` (`+5.47` / `+3.91` points)—like a relay runner passing the baton at Block 18 from the role header in the setup to the word *"your"* in the question, at the exact layer where `M_self` probe AUROC begins its sharp climb.
 
 ![Multi-Span and Multi-Layer Causal Patching Circuit](../assets/followup/qwen_multispan_circuit.png)
 
@@ -127,7 +127,7 @@ Whenever an experiment touches a loaded philosophical concept like "selfhood," i
 
 ## 4. Three Takeaways for Anyone Building or Managing AI Agents
 
-Whether you are a product manager scoping an agentic workflow, a security engineer designing tool-use boundaries, or an ML practitioner interpreting model behavior, these 67,574 evaluations boil down to three engineering laws:
+Whether you are a product manager scoping an agentic workflow, a security engineer designing tool-use boundaries, or an ML practitioner interpreting model behavior, these 14 runs and 78,000+ evaluations boil down to three engineering laws:
 
 1. **Never mistake articulate L_self for a functional M_self.** A model's first-person fluency and its relational state-tracking sit in nearly orthogonal subspaces (`cos(θ) = 0.0612`). A chatbot can generate a fluent disclaimer about its own identity in one sentence, and execute a neighbor account's command in the next.
 2. **Eliminate indexical pronouns from agent prompts and tool schemas.** Framing environments around *"your active account"* or *"your permissions"* forces the attention mechanism through a brittle 2-hop pointer chain that loses **35.0 percentage points** of accuracy (and drops to **39.97%** under adverse update orders). Always bind permissions and tool calls to explicit, immutable entity IDs (0-hop lookup: **95.2%**).

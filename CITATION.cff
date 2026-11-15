@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this codebase, benchmark designs, or empirical findings in your work, please cite it as below."
+authors:
+  - family-names: "Zajchowski"
+    given-names: "Leon"
+title: "The User Illusion in Transformers: Mechanistic Dissociation Between Surface Self-Language and Functional Self-Tracking"
+version: 1.0.0
+date-released: 2026-11-15
+url: "https://github.com/leonzzz435/mechinterp-illusionism"

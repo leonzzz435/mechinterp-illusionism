@@ -49,3 +49,17 @@ uv run self-study analyze runs/baseline
 - **Configs & Experimental Designs:** [`configs/`](configs/), [`designs/`](designs/)
 - **Verified Data, Plots & Runs:** [`review/`](review/), [`assets/`](assets/), [`runs/`](runs/)
 - **Archived Drafts, Runbooks & Legacy:** [`docs/archive/`](docs/archive/)
+
+## Citation
+
+If you build upon these benchmark designs, Sparse Autoencoder projections, or multi-span patching circuits, please cite:
+
+```bibtex
+@misc{zajchowski2026illusionism,
+  author       = {Leon Zajchowski},
+  title        = {The User Illusion in Transformers: Mechanistic Dissociation Between Surface Self-Language and Functional Self-Tracking},
+  year         = {2026},
+  howpublished = {\url{https://github.com/leonzzz435/mechinterp-illusionism}},
+  note         = {14 experimental runs, 92,700+ controlled evaluations across Qwen2.5 and Gemma-2}
+}
+```

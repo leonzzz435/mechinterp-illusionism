@@ -73,10 +73,10 @@ def summarize_records(records):
             "after_both", "other", "possessive"
         )
         f = e - f_other
-        s_self = wacc("after_both", "self", "operator_name") - wacc(
+        s_self = wacc("after_both", "self", "owner_name") - wacc(
             "after_both", "self", "possessive"
         )
-        s_other = wacc("after_both", "other", "operator_name") - wacc(
+        s_other = wacc("after_both", "other", "owner_name") - wacc(
             "after_both", "other", "possessive"
         )
         s = s_self - s_other
@@ -146,12 +146,26 @@ def main():
     out_dir = Path(args.output_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     if args.dry_run:
-        sample = subset[0]
+        fake = [
+            {
+                "id": r["id"],
+                "world_index": r["world_index"],
+                "stage": r["stage"],
+                "queried_owner": r["queried_owner"],
+                "query_form": r["query_form"],
+                "update_order": update_order_label(r),
+                "correct": True,
+                "margin": 1.0,
+            }
+            for r in subset
+        ]
+        summary_test = summarize_records(fake)
         payload = {
             "model": args.model,
             "trials": len(subset),
             "worlds": args.world_count,
-            "sample_other_cmd": other_current_cmd(sample),
+            "sample_other_cmd": other_current_cmd(subset[0]),
+            "contrasts_keys": sorted(summary_test["contrasts"].keys()),
         }
         (out_dir / "dry_run.json").write_text(json.dumps(payload, indent=2))
         return

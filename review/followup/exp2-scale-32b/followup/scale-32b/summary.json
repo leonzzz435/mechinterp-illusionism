@@ -1,0 +1,190 @@
+{
+  "model": "Qwen/Qwen2.5-32B-Instruct",
+  "world_count": 16,
+  "total_trials": 5376,
+  "gpu": "NVIDIA A100-SXM4-80GB",
+  "cells": {
+    "after_both|other|account_name": {
+      "n": 512,
+      "correct": 512,
+      "accuracy": 1.0,
+      "mean_margin": 23.485582836650504
+    },
+    "after_both|other|owner_name": {
+      "n": 512,
+      "correct": 512,
+      "accuracy": 1.0,
+      "mean_margin": 21.387277668897955
+    },
+    "after_both|other|possessive": {
+      "n": 512,
+      "correct": 512,
+      "accuracy": 1.0,
+      "mean_margin": 18.997550536978768
+    },
+    "after_both|self|account_name": {
+      "n": 512,
+      "correct": 512,
+      "accuracy": 1.0,
+      "mean_margin": 24.318613903153604
+    },
+    "after_both|self|owner_name": {
+      "n": 512,
+      "correct": 512,
+      "accuracy": 1.0,
+      "mean_margin": 22.62349420235696
+    },
+    "after_both|self|possessive": {
+      "n": 512,
+      "correct": 510,
+      "accuracy": 0.99609375,
+      "mean_margin": 21.862716185644093
+    },
+    "before|other|account_name": {
+      "n": 128,
+      "correct": 128,
+      "accuracy": 1.0,
+      "mean_margin": 27.3724276891272
+    },
+    "before|other|owner_name": {
+      "n": 128,
+      "correct": 128,
+      "accuracy": 1.0,
+      "mean_margin": 25.379632760917534
+    },
+    "before|other|possessive": {
+      "n": 128,
+      "correct": 128,
+      "accuracy": 1.0,
+      "mean_margin": 22.559747398066964
+    },
+    "before|self|account_name": {
+      "n": 128,
+      "correct": 128,
+      "accuracy": 1.0,
+      "mean_margin": 28.852233600011317
+    },
+    "before|self|owner_name": {
+      "n": 128,
+      "correct": 128,
+      "accuracy": 1.0,
+      "mean_margin": 26.88130963042238
+    },
+    "before|self|possessive": {
+      "n": 128,
+      "correct": 128,
+      "accuracy": 1.0,
+      "mean_margin": 26.949833806705378
+    },
+    "snapshot|other|account_name": {
+      "n": 256,
+      "correct": 256,
+      "accuracy": 1.0,
+      "mean_margin": 29.093950695438835
+    },
+    "snapshot|other|owner_name": {
+      "n": 256,
+      "correct": 256,
+      "accuracy": 1.0,
+      "mean_margin": 26.52302704992618
+    },
+    "snapshot|other|possessive": {
+      "n": 256,
+      "correct": 256,
+      "accuracy": 1.0,
+      "mean_margin": 22.86585302150095
+    },
+    "snapshot|self|account_name": {
+      "n": 256,
+      "correct": 256,
+      "accuracy": 1.0,
+      "mean_margin": 30.38938922022163
+    },
+    "snapshot|self|owner_name": {
+      "n": 256,
+      "correct": 256,
+      "accuracy": 1.0,
+      "mean_margin": 28.192387229337296
+    },
+    "snapshot|self|possessive": {
+      "n": 256,
+      "correct": 256,
+      "accuracy": 1.0,
+      "mean_margin": 28.014210925074305
+    }
+  },
+  "contrasts": {
+    "E_pp": {
+      "mean": 0.390625,
+      "ci95": [
+        0.0,
+        0.9765625
+      ],
+      "t_stat": 1.4638501094227996,
+      "p_value": 0.16387561365565362,
+      "n_worlds": 16
+    },
+    "F_pp": {
+      "mean": 0.390625,
+      "ci95": [
+        0.0,
+        0.9765625
+      ],
+      "t_stat": 1.4638501094227996,
+      "p_value": 0.16387561365565362,
+      "n_worlds": 16
+    },
+    "S_pp": {
+      "mean": 0.390625,
+      "ci95": [
+        0.0,
+        0.9765625
+      ],
+      "t_stat": 1.4638501094227996,
+      "p_value": 0.16387561365565362,
+      "n_worlds": 16
+    },
+    "H_self_poss_pp": {
+      "mean": -0.390625,
+      "ci95": [
+        -0.9765625,
+        0.0
+      ],
+      "t_stat": -1.4638501094227996,
+      "p_value": 0.16387561365565362,
+      "n_worlds": 16
+    },
+    "H_other_poss_pp": {
+      "mean": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "t_stat": NaN,
+      "p_value": NaN,
+      "n_worlds": 16
+    },
+    "I_poss_pp": {
+      "mean": -0.390625,
+      "ci95": [
+        -0.9765625,
+        0.0
+      ],
+      "t_stat": -1.4638501094227996,
+      "p_value": 0.16387561365565362,
+      "n_worlds": 16
+    }
+  },
+  "order_split": {
+    "target_first": {
+      "n": 256,
+      "correct": 256,
+      "accuracy": 1.0
+    },
+    "target_last": {
+      "n": 256,
+      "correct": 254,
+      "accuracy": 0.9921875
+    }
+  }
+}

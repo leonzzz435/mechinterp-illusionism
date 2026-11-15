@@ -54,5 +54,5 @@
   "rendered_figure": "PNG visually inspected; labels and uncertainty visible.",
   "ruff_check_and_format": "passed",
   "status": "verified_retrospective_exploratory_supplement",
-  "test_working_directory": "/home/zett/projects/mechinterp-illusionism"
+  "test_working_directory": "."
 }

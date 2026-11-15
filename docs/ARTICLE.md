@@ -409,7 +409,7 @@ $$\Pi_{\text{2-feat}}(v_{\text{dense}}) = 1 - \left\| v_{\text{dense}} - D (D^\t
 
 [^2]: On `Gemma-2-2B`, baseline functional state-tracking across Ownership (`48.52%`), Access (`46.09%`), and Capability (`32.03%`) sits near chance under dynamic updates. Our 4-shot `lm-eval` continuation harness pilot on HF L4 (`review/evidence/harness-cd3646dae2964bbc.tar.gz`, $N = 768$) confirmed that this is a genuine model capacity bound rather than a single-token scoring artifact (`43.36%` Ownership, `50.78%` Access, `41.41%` Capability; counterfactual pair consistency $\widehat C \in [2.34\%, 7.03\%]$), motivating the transition to `Qwen2.5-7B-Instruct` for multi-hop state-tracking experiments.
 
-![Historical Logit-Lens Unembedding Projection of SAE Features #2728 and #10230](../archive/historical_unembedding.png)
+![Historical Logit-Lens Unembedding Projection of SAE Features #2728 and #10230](../assets/historical_unembedding.png)
 
 ![Language vs. Functional Performance Under SAE Steering and Ablation](../runs/feasibility/export/figures/language_vs_performance.png)
 

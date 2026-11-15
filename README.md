@@ -32,9 +32,9 @@ uv run self-study analyze runs/baseline
 
 ## Repository Structure
 
-- **Main Paper & Formalism:** [`docs/ARTICLE.md`](docs/ARTICLE.md), [`docs/article-v2/METHODS.md`](docs/article-v2/METHODS.md), [`docs/PROTOCOL.md`](docs/PROTOCOL.md)
-- **Empirical Run Reports:** [`docs/QUERY_REFERENCE_RESULTS.md`](docs/QUERY_REFERENCE_RESULTS.md), [`docs/QWEN_ROLE_RESULTS.md`](docs/QWEN_ROLE_RESULTS.md), [`docs/QWEN_ROLE_PATCH_RESULTS.md`](docs/QWEN_ROLE_PATCH_RESULTS.md), [`docs/QWEN_POSSESSIVE_RESULTS.md`](docs/QWEN_POSSESSIVE_RESULTS.md), [`docs/QWEN_CONFIDENCE_RESULTS.md`](docs/QWEN_CONFIDENCE_RESULTS.md), [`docs/QWEN_OWNERSHIP_RESULTS.md`](docs/QWEN_OWNERSHIP_RESULTS.md)
+- **Main Paper & Formalism:** [`docs/ARTICLE.md`](docs/ARTICLE.md), [`docs/METHODS.md`](docs/METHODS.md), [`docs/PROTOCOL.md`](docs/PROTOCOL.md)
+- **Empirical Run Reports:** [`docs/reports/QUERY_REFERENCE_RESULTS.md`](docs/reports/QUERY_REFERENCE_RESULTS.md), [`docs/reports/QWEN_ROLE_RESULTS.md`](docs/reports/QWEN_ROLE_RESULTS.md), [`docs/reports/QWEN_ROLE_PATCH_RESULTS.md`](docs/reports/QWEN_ROLE_PATCH_RESULTS.md), [`docs/reports/QWEN_POSSESSIVE_RESULTS.md`](docs/reports/QWEN_POSSESSIVE_RESULTS.md), [`docs/reports/QWEN_CONFIDENCE_RESULTS.md`](docs/reports/QWEN_CONFIDENCE_RESULTS.md), [`docs/reports/QWEN_OWNERSHIP_RESULTS.md`](docs/reports/QWEN_OWNERSHIP_RESULTS.md)
 - **Core Library:** [`src/self_model_study/`](src/self_model_study/) (backends, SAE/residual hooks, exact permutation & bootstrap analysis)
 - **Configs & Experimental Designs:** [`configs/`](configs/), [`designs/`](designs/)
-- **Verified Data, Plots & Archives:** [`review/`](review/), [`assets/`](assets/), [`runs/`](runs/), [`archive/`](archive/)
-- **Archived Runbooks & Governance:** [`docs/archive/`](docs/archive/)
+- **Verified Data, Plots & Runs:** [`review/`](review/), [`assets/`](assets/), [`runs/`](runs/)
+- **Archived Drafts, Runbooks & Legacy:** [`docs/archive/`](docs/archive/)

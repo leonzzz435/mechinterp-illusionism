@@ -303,7 +303,7 @@ def analyze():
         "new_cloud_spend": False,
         "original_analysis_sha256": ANALYSIS_SHA,
         "archive_sha256": list(ARCHIVE_SHAS),
-        "amendment_sha256": file_hash(ROOT / "docs/QUERY_REFERENCE_V2_AMENDMENT.md"),
+        "amendment_sha256": file_hash(ROOT / "docs/reports/QUERY_REFERENCE_V2_AMENDMENT.md"),
         "frozen_v1_decision": original["decision"],
         "frozen_v1_valid_worlds": original["valid_complete_worlds"],
         "frozen_v1_primary": original["primary"],

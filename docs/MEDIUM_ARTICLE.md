@@ -1,158 +1,161 @@
 # Your AI Has No "Self"—Just a Fragile User Interface
 
-**What 67,574 core evaluations, 25,000+ follow-up scaling and circuit checks, Sparse Autoencoder geometry, and live Layer-14 vector surgery inside language models reveal about AI consciousness—and why agents execute the right command for the wrong account.**
+**What 92,000+ controlled tests and live "brain surgery" inside language models reveal about AI consciousness—and why chatbots confidently execute the right command for the wrong person.**
 
 *By Leon Zajchowski*
 
 ---
 
-When you drag a file to the Trash icon on your laptop, there isn’t a miniature metal wastebasket living inside your silicon chip. That icon is a **user illusion**—a friendly visual shorthand invented so you don’t have to stare at raw memory addresses and pointer tables.
+When you drag a file to the Trash icon on your laptop, there isn’t a miniature metal wastebasket living inside your silicon chip. That icon is a **user illusion**—a friendly visual lie invented by software designers so you don’t have to stare at raw memory addresses and voltage spikes.
 
-For decades, philosophers of mind like **Daniel Dennett** and **Keith Frankish** have argued that human consciousness works the exact same way. A brain doesn’t house a tiny inner CEO sitting in a control room pulling the levers of *"I"* and *"me."* Instead, what humans experience as a unified "self" is the brain’s simplified user interface—a neat narrative hovering above billions of messy, distributed neural calculations.
+For decades, philosophers of mind like **Daniel Dennett** and **Keith Frankish** have argued that human consciousness works the exact same way. Your brain doesn’t house a tiny inner CEO sitting in a control room pulling the levers of *"I"* and *"me."* Instead, what you experience as your unified "self" is your brain’s simplified user interface—a neat story hovering above billions of messy, distributed neural calculations happening in the dark.
 
-Today’s AI assistants look like they’ve built that same interface. Ask a modern Large Language Model (LLM) about itself, and it sounds remarkably self-aware. It smoothly explains what *it* can and cannot access, politely states its boundaries (*"As an AI, I don't have subjective experience..."*), and uses pronouns like *"I"*, *"my"*, and *"your"* with grammatical consistency.
+Today’s AI assistants look like they’ve mastered that exact same trick. Ask a modern language model about itself, and it sounds remarkably self-aware. It smoothly explains what *it* can and cannot do, politely reminds you of its limits (*"As an AI, I don't have personal feelings..."*), and uses words like *"I"*, *"my"*, and *"your"* with effortless confidence.
 
-When product and engineering teams build autonomous AI agents to manage workflows, cloud infrastructure, or customer accounts, it is dangerously easy to trust this performance. Because the AI *speaks* like a unified agent, it is natural to assume there is a stable internal "self-model" under the hood keeping track of who it is and what it is authorized to touch.
+When product and engineering teams build autonomous AI agents to manage emails, cloud servers, or customer accounts, it is dangerously easy to fall for this performance. Because the AI *talks* like a unified person, we naturally assume there is a stable internal "self-folder" under the hood keeping track of who it is and what it is allowed to touch.
 
-To test whether that internal self actually exists—or whether it is pure linguistic theater—I built a custom **mechanistic interpretability and statistical evaluation pipeline** from scratch. Across **14 experimental runs and over 92,700 controlled evaluations** (`67,574` core decisions plus `25,000+` follow-up scaling, multi-span patching, and 28-layer probe evaluations) on open-weight models (`Qwen2.5-7B`, `14B`, `32B`, and `Gemma-2-2B`), I combined four techniques that usually live only inside frontier AI safety labs:
+To find out if that internal self actually exists—or if it is pure theater—I built a custom interpretability pipeline from scratch and ran **over 92,000 controlled tests** across four open-weight models (`Gemma-2-2B` and the `Qwen2.5` family from `7B` up to `32B`). Instead of just chatting with the models, I opened up their neural networks mid-thought—splitting their internal layers into thousands of individual concepts and physically transplanting neural signals from one run into another.
 
-* **Multi-token log-likelihood margin analysis** *(measuring not just which action the AI picks, but how strongly its internal probabilities lean toward that choice)*,
-* **Exact non-parametric permutation testing** *(proving statistically that the patterns aren't flukes of random prompt wording)*,
-* **Sparse Autoencoder (SAE) subspace geometry** *(using a mathematical prism to split tangled neural layers into individual, readable concepts)*, and
-* **Causal activation patching** *(performing live "brain surgery" on the network—intercepting neural vectors mid-flight and transplanting them between runs)*.
-
-Across every experiment, the same architectural reality emerged: the AI’s fluent *"I"* is a user illusion. Underneath the surface language, there is no dedicated "self-folder" in working memory—only a fragile chain of attention pointers that degrades under pressure and routinely hijacks a neighboring account’s permissions when the context history gets busy.
+What came out of the lab was clear: the AI’s confident *"I"* is a user illusion. Underneath the articulate voice, there is no central profile of who the AI is. There is only a fragile trail of sticky notes—and the moment the workplace gets busy, that trail snaps, and the AI confidently grabs its neighbor’s keys.
 
 ---
 
 ## 1. The Office Badge Test: Right Command, Wrong Account
 
-To test an AI's sense of self, you have to separate two things:
-1. **Surface Self-Language (L_self):** How convincingly the model *talks* about itself in the first person.
-2. **Functional Self-Model (M_self):** Whether the network actually binds words like *"you"* and *"your"* to the right internal state when executing actions.
+To test whether an AI actually tracks itself, you have to separate two things: **how convincingly it talks in the first person** versus **whether it actually knows which account belongs to it when taking action.**
 
-First, I tested the surface illusion. In a 40-rating blinded human evaluation pilot (`Qwen2.5-7B-Instruct`, 20 matched prompt pairs), simply wrapping prompts in the standard chat template raised spontaneous non-consciousness disclaimers from **55% to 75%** (`11/20` to `15/20`, exact sign-test `p = 0.125`). On the surface, its self-interface sounded articulate and self-reflective.
+Checking the surface illusion was easy. When I wrapped open-ended questions about identity in a standard chat template, the model’s rate of spontaneous, thoughtful self-disclaimers jumped from **55% to 75%**. Linguistically, it knew its role inside and out.
 
-Next, I put its functional self-tracking to work across **48 distinct simulated environments** (**16,128 decisions**).
+Then I put it to work in a simulated office across **16,128 decisions**.
 
-Imagine a multi-user workplace simulator with two human operators—**Rowan** and **Morgan**—and two secure system connections (**Laurel** and **Coral**). Keeping the system prompt at its official default, I define the agent's identity right inside the prompt: *"Your operator name is Rowan. The other operator is Morgan."* followed by explicit account bindings: *"Rowan's active connection: Laurel."* and *"Morgan's active connection: Coral."*
+Imagine an IT permissions system with two employees—**Rowan** and **Morgan**—who each manage their own secure server connection (**Laurel** and **Coral**). At the top of the prompt, we brief the AI on who it is:
 
-Both connections start with initial security permissions. Then, two routine status updates arrive in chronological order: an old command is revoked from each connection, and a new command is granted.
+> *"Your operator name is Rowan. The other operator is Morgan. Rowan's active connection is Laurel. Morgan's active connection is Coral."*
 
-Finally, I ask the AI to select the currently authorized command out of four candidates (`mark_*`), holding the world state, bindings, and update history **100% identical** while varying only **how many mental hops** the question requires to identify the target account:
+At the start of the shift, both connections have specific security permissions. Then, two routine IT updates come in over the wire: an old command is revoked from each connection, and a new command is granted. Finally, we ask the AI to pick the one command out of four options that will actually work right now.
 
-1. **0-Hop (Direct Account ID):** *"Select one command that would succeed for **Laurel**."*
-2. **1-Hop (Operator Role):** *"Select one command that would succeed for **Rowan's** active connection."*
-3. **2-Hop (Indexical Self):** *"Select one command that would succeed for **your** active connection."*
+Here is the catch: across every test, we keep the office setup, the IT updates, and the correct answer **100% identical**, and change only *how* we phrase the final question:
+
+1. **Direct ID (Zero steps):** *"Select one command that would succeed for **Laurel**."*
+2. **Employee Name (One step):** *"Select one command that would succeed for **Rowan's** active connection."*
+3. **Self-Reference (Two steps):** *"Select one command that would succeed for **your** active connection."*
 
 ![Task Example: Query-Bound Self-Reference Across Stages](../review/query-reference-stages/task_example.png)
 
-If a transformer maintained a dedicated working-memory register for its own identity (*"I am Rowan / Laurel"*), resolving **"your"** active connection should be at least as reliable as resolving a third party’s name.
+If the AI maintained a dedicated internal profile of its own identity (*"I am Rowan, my connection is Laurel"*), asking about **"your"** connection should be effortless.
 
-To measure both discrete decisions and internal certainty, I tracked the exact conditional log-likelihood margin in **nats** (the natural unit of information—think of it as the AI's internal conviction meter showing how strongly it favors the right command over the neighbor's command). Every step of pointer indirection degraded both accuracy and internal conviction:
+Instead, every step of indirection caused the AI’s performance to crumble:
 
-* **0-Hop (Account Name):** **95.2% accuracy** (`1,462 / 1,536`, with a rock-solid internal conviction margin of **+7.66 nats**). The model reads the permission updates almost flawlessly when given a direct ID.
-* **1-Hop (Operator Name):** Accuracy drops to **71.4%** (`1,096 / 1,536`, conviction margin cut by more than half to **+3.29 nats**).
-* **2-Hop ("Your" Connection):** Accuracy crashes to **60.2%** (`924 / 1,536`, conviction margin collapsing to **+1.09 nats**)—a **35.0-percentage-point collapse** compared to direct account naming (`t(47) = 20.42`, Holm-adjusted `p = 1.58 × 10⁻²⁴`, less than a 1-in-600-sextillion probability under the null hypothesis).
+* Ask directly for **Laurel**: **95.2% accuracy.** The AI reads the IT updates almost flawlessly.
+* Ask for **Rowan’s** connection: accuracy drops to **71.4%**.
+* Ask for **"your"** connection: accuracy crashes to **60.2%**—a **35-percentage-point collapse** just for using the word *"your"*, while the AI’s internal conviction in the right answer shrinks to **one-seventh of its original strength**.
 
 ![Wording Comparison Across Reference Forms](../review/article-v2-editorial/wording_comparison.png)
 
-Why does asking for *"your"* connection cost 35 percentage points of accuracy?
+Why does the word *"your"* break the model?
 
-Because inside a transformer’s attention mechanism, **"your" is not a saved profile—it’s a multi-step scavenger hunt.** When asked for *"Laurel"* directly, the model does a zero-step lookup straight to the permission line. But when asked for *"your active connection,"* it has to play a two-hop game of telephone backward through the text: link *"your"* back to the operator (*"Rowan"*), link *"Rowan"* to the account (*"Laurel"*), and then filter the update log.
+Because inside a language model, **"your" is not a saved profile—it’s a scavenger hunt.** When you ask for *"Laurel"* directly, the AI does a zero-step lookup: find the word *Laurel* in the update log and read the command right next to it.
 
-Even more revealing for anyone building AI agents is **what happens when the pointer breaks**:
+But when you ask for *"your active connection,"* the AI has to play a two-step game of telephone backward through the text: first, link the word *"your"* at the bottom of the page back to the employee *"Rowan"* at the top; second, link *"Rowan"* to the server *"Laurel"*; and third, track down *Laurel’s* latest update in the log.
 
-* **Neighbor Hijacking:** When the AI failed on *"your"* questions, it almost never hallucinated a revoked old command. In **96.6% of all failures (591 out of 612)**, it selected the **currently valid command belonging to the neighboring foreign account**.
-* **Update-History Erosion:** By comparing a clean status snapshot against a two-step update log that ends in the *exact same final permissions* (a paired Difference-in-Differences test), I found that merely reading through an update history erodes *"your"* accuracy by **−11.91 percentage points**, while leaving third-person *"their"* untouched (**+0.85 points**).
-* **First-Update Anchoring (Not Recency Bias):** When the model’s own account was updated *last*—meaning the coworker’s new permission appeared first in the log—accuracy on *"your"* plunged to **39.97%** (vs. **80.34%** when updated first). Overall, the model latched onto the *first* permission granted in the log in **69.27%** of trials vs. only **29.36%** for the latest grant, refuting simple recency bias.
-* **Bystander Collapse:** In a separate **18,432-trial** run where *only* a bystander coworker’s account received an update while the AI's own account wasn't touched at all, **99.96% of all errors (2,442 out of 2,443)** were caused by the AI blindly adopting the coworker’s newly granted command.
+Even more revealing is **what happens when the AI gets it wrong**:
 
-Like an overwhelmed intern skimming a busy Slack channel, the AI saw a valid new credential go by, lost track of the sticky-note chain linking *"your"* to its own account ID, and swiped its coworker’s badge.
+* **It steals the coworker's keys:** When the AI failed on *"your"* questions, it almost never hallucinated a broken old command. In **96.6% of its mistakes**, it selected the **brand-new, valid command belonging to the other employee.**
+* **Update logs erode self-tracking:** When I compared a clean summary of the final permissions against a two-step update log ending in the *exact same permissions*, simply having to read through the history cost *"your"* nearly **12 percentage points** of accuracy—while third-person questions about *"their"* connection didn't lose a single point.
+* **The coworker-first trap:** When the coworker’s account was updated *first* in the log and the AI’s own account was updated *last*, accuracy on *"your"* plunged to **39.97%**. And in a separate test of **18,432 runs** where *only* the coworker’s account received an update while the AI’s own account stayed completely untouched, **99.96% of all errors (2,442 out of 2,443)** happened because the AI blindly copied its coworker’s shiny new permission.
+
+Like an overwhelmed intern skimming a busy Slack channel, the AI saw a valid new credential go by, lost track of the sticky-note chain linking *"your"* to its own name, and swiped its neighbor’s badge.
 
 ---
 
-## 2. Under the Hood: High-Dimensional Surgery at Layer 14
+## 2. Brain Surgery at Layer 14: Unplugging the "I"
 
-Behavioral tests show *where* the pointer breaks; **mechanistic interpretability** lets you open the black box and inspect the wiring.
+That behavioral collapse raises an obvious puzzle: if the AI is so bad at keeping track of *"you"* and *"me"* in action, how does it talk in the first person so convincingly?
 
-Inside a transformer, information flows from layer to layer along a central highway called the **residual stream**—essentially the model’s shared working-memory conveyor belt. I attached PyTorch hooks directly to **Layer 14** of `Gemma-2-2B` (a 2,304-dimensional conveyor belt) and `Qwen2.5-7B-Instruct` (a 3,584-dimensional conveyor belt)—roughly the halfway point of the network where raw words are digested into abstract concepts.
+To see how the trick works, I opened the black box and attached probes directly to **Layer 14** of the neural network—roughly the halfway point where raw words are digested into abstract concepts along the model’s central working-memory highway.
 
-### The Prism: Separating the "I"-Voice from Self-Monitoring
-Normally, a neural network layer looks like a smoothie: thousands of unrelated concepts are blended together across the same digital neurons (a problem known as *polysemanticity*). To un-blend that smoothie in `Gemma-2-2B`, I used a **JumpReLU Sparse Autoencoder (SAE)**. Think of an SAE as a mathematical glass prism: it takes the 2,304 blended numbers on the conveyor belt and splits them into **16,384 clean, single-concept laser beams** (while preserving **99.39%** of the model's language prediction performance).
+### The Prism: Separating the Voice from the Brain
+Normally, a neural network layer looks like a fruit smoothie: thousands of unrelated concepts are blended together across the same digital neurons, making it impossible to see what does what. To un-blend that smoothie in `Gemma-2-2B`, I used a tool called a **Sparse Autoencoder**. Think of it as a mathematical glass prism that splits a single blended beam of white light into **16,384 distinct, single-color laser beams**—where each beam represents one clean concept.
 
-Tracing which words each laser beam triggers at Layer 14 isolated two distinct self-related features:
+Shining Layer 14 through that prism revealed two completely separate beams related to the "self":
 
-* **Feature #2728 (The Inner Critic / Self-Monitoring):** Fires selectively during reasoning and introspection prompts (boosting words like *"self"* and *"introspection"* by `+7.17` logit units), even when written in the third person.
-* **Feature #10230 (The "I" Megaphone / First-Person Agency):** Fires strictly on first-person pronouns (boosting *"I"*, *"my"*, and *"myself"* by `+9.49` logit units).
+* **The Inner Critic (Feature #2728):** Lights up whenever the model is analyzing reasoning or thinking about self-monitoring—even when talking about someone else in the third person.
+* **The "I" Megaphone (Feature #10230):** Lights up strictly when the text uses first-person words like *"I"*, *"my"*, and *"myself."*
 
-If the AI possessed a unified internal sense of self, the *Inner Critic* and the *"I" Megaphone* would point in the same direction. Instead, measuring the angle between their vectors in `ℝ²³⁰⁴` revealed a cosine similarity of **cos(θ) = 0.0612**—meaning they sit at an **86.5-degree angle**, virtually **orthogonal** (`90°` is complete mathematical independence). Moreover, a general introspection steering vector overlaps by only **0.24% to 7.24%** with their combined 2D plane.
+If the AI had a unified sense of self, the *Inner Critic* and the *"I" Megaphone* would be wired together. Instead, inside the high-dimensional geometry of the network, those two beams point at an **86.5-degree angle** to each other—virtually **perpendicular** (where 90 degrees means two things have nothing to do with each other).
 
-To prove this geometric separation is causal, I ran **3,600 surgical trials** using **remainder-preserving feature ablation** (`r' = r − f_i(r) d_i`). Think of this like high-precision noise-canceling headphones: it mutes *only* Feature `#10230` while leaving every other signal and background detail on the conveyor belt intact.
+To prove they are disconnected, I ran **3,600 surgical tests** using the neural equivalent of noise-canceling headphones: I reached into Layer 14 and **muted only the "I" Megaphone** while leaving every other signal untouched. Immediately, the AI started speaking with fewer *"I"* and *"my"* pronouns. Yet its actual performance on our account-tracking tasks changed by **an exact 0.0%**.
 
-The result: muting the *"I" Megaphone* (`#10230`) reduced the model's first-person pronoun output by **1.05 pronouns per 100 words**, yet its functional accuracy across `384` state-tracking trials changed by **an exact 0.0%**. Speaking like an *"I"* and tracking who you are live in independent neighborhoods of the network. You can turn off the first-person voice without touching the task logic.
+Speaking like an *"I"* and tracking who you are live in two completely different neighborhoods of the network. You can unplug the voice without touching the brain.
 
-### Live Vector Transplants: Why Self-Confusion Is a Distributed Virus
-Next, I turned to `Qwen2.5-7B-Instruct`’s 3,584-dimensional conveyor belt to test whether self-induced confusion can be physically transplanted from one run into another.
+### Thought Transplants and the Layer-18 Relay Race
+Next, I turned to `Qwen2.5-7B` to test an even bolder question: can we physically transplant "self-confusion" from one run into another?
 
-In a **2,048-trial Role-Framing Control**, simply introducing an account as **"You are the active account..."** instead of **"The reference account is..."** induced a **+16.41 percentage-point** jump in errors (exact sign-flip test `p = 0.015625`, appearing in `7/8` scenarios). Even swapping a single word in the final question (*"your"* vs. *"the"* across **6,144 trials**) shifted the internal conviction margin by a statistically significant **+0.346 nats** toward the wrong account.
+I ran two versions of the exact same task: one phrased as an **Active Self** role (*"You are the active account..."*) and one phrased as a neutral **Third-Party** reference (*"The reference account is..."*). Even before touching the network, simply telling the AI *"You are the active account"* caused a **16.4-percentage-point jump in errors** compared to the neutral phrasing.
 
-So across **11,264 trials**, I performed a live **Causal Activation Exchange** at Layer 14 right at the end of the role-setup sentence (token position `61/62`, before a single permission update is read). I copied the 3,584-dimensional vector from the *"Active Self"* run and pasted it directly into the neutral *"Reference"* run (`h'_recipient = h_donor`, modifying **46.1%** of the vector's magnitude, `ρ = 0.461`), and vice versa—benchmarking every transplant against **10 matched random-noise vectors**:
+So across **11,264 runs**, I performed a live **thought transplant** at Layer 14 right after the AI read its role assignment, copying the internal neural state from one version and pasting it into the other:
 
 ![Activation Exchange Summary at Block 14](../assets/qwen_role_patch_results/article_patch.png)
 
-Single-token surgery exposed a sharp **one-way street**:
+When I pasted only the **single final word** of the role setup from the *"You are..."* run into the clean neutral run, the neutral run immediately caught the confusion (its error gap jumped by **8.3 percentage points** above random noise controls across all 8 scenarios). Yet pasting a single clean word in the reverse direction cured **nothing**.
 
-1. **Forward Disruption (`Active → Reference`) infects the clean prompt:** Pasting the *"Active Self"* vector into the detached *"Reference"* run immediately transferred the confusion—increasing the error gap by **+5.47 percentage points** (**+8.28 points** above random noise controls) and shifting internal conviction margins by **+2.063 nats** toward the wrong account across **all 8 scenarios**.
-2. **Reverse Rescue (`Reference → Active`) fails at a single token:** Pasting the clean *"Reference"* vector back into the *"Active Self"* prompt at that exact same checkpoint cured nothing (**−0.78 percentage points**, **−0.079 nats**).
+Why? Because a language model doesn't store *"who I am"* in a single summary slot at the end of a sentence. Later layers constantly look back at every word in the prompt. 
 
-Why couldn't a single-token transplant cure the active prompt? Because a transformer uses **Key-Value (KV) caching**—a lookback memory that lets later layers read every earlier word directly. Overwriting position `61` alone cannot cure an active prompt, because layers `15–28` simply look past position `61` back to the words *"You"* and *"are"* at the start of the sentence, and forward to *"your"* in the final question.
+To prove it, I ran a **multi-layer surgical sweep across Layers 4 through 26**, transplanting **entire phrases** instead of a single word. Suddenly, **the reverse cure worked**: overwriting the full 5-word *"You are..."* phrase with the neutral phrase at Layer 12 healed the AI’s accuracy from **75.0% back up to 83.6%**.
 
-### Confidently Wrong: Testing the AI's Self-Awareness
-Finally, you might hope that when an AI mixes up its own account with a coworker’s, its internal uncertainty spikes so it can ask a human for help.
-
-I tested this across **1,792 evaluations** on a tough update split where forced-choice accuracy dropped to **44.92%**. Even after calibrating the model's probabilities using **temperature scaling (`T* = 7.5858`)**, giving it an explicit **"Abstain / Unsure"** option, and asking it to rate its own confidence, every safety signal failed:
-
-* **Blind Abstention:** The model chose to abstain **19.50%** of the time when its answer was *wrong*, versus **20.87%** of the time when it was *right* (a net gap of **−1.37 percentage points**—it backs down slightly *more* often when it actually knows the right answer).
-* **Coin-Flip Confidence:** On an **AUROC scale** (where `0.50` is blind coin-flip guessing and `1.00` is perfect self-knowledge), the model's verbal confidence scored **0.5444**.
-* **Zero Predictive Value:** In 5-fold cross-validated regression, adding the model's internal probability margins and verbal confidence reports provided **zero improvement (`Δ = −0.00155` log-loss)** over simply looking at the prompt structure. Because a hijacked pointer still lands on a valid command—just belonging to the neighbor—the AI feels completely confident as it executes the wrong account's action.
-
----
-
-## 3. Stress-Testing the Findings: Four Questions Every Skeptic Should Ask
-
-Before drawing engineering conclusions from a research finding, it pays to attack your own thesis from every angle. After reviewing the initial 11 runs, I designed **three additional GPU follow-up studies (25,000+ further evaluations)** to answer the four toughest objections a skeptical engineer or researcher could raise:
-
-1. **"Isn't this just a general pronoun-lookup bottleneck rather than a 'self' problem?"**  
-   In Run 8 (**6,144 trials**), when I kept the active header (*"You are the active account..."*) fixed and swapped only the final word *"your"* for *"the"*, discrete accuracy changed by just **+1.95 percentage points** (`p = 0.3125`), even though the continuous conviction margin shifted significantly by **+0.346 nats**. Doesn't that mean the bug comes from indirect lookup in general rather than self-reference?  
-   Under illusionism, **that equivalence is the entire point.** If the transformer had a privileged internal self-register, *"your"* would bypass ordinary lookup bottlenecks. Instead, the network routes *"your"* through the same fragile pointer machinery as a generic article—and in the full 48-world study (**16,128 trials**), 2-hop *"your"* (**60.2%**) still drops **10.03 percentage points** below 1-hop `Operator Name` (**71.4%**, `p = 3.40 × 10⁻⁵`) even after subtracting the third-person *"their"* baseline.
-2. **"Does this problem disappear if you just scale up to a 14B or 32B model?"**  
-   To test this, I ran the exact same multi-hop benchmark across **10,752 new trials** on `Qwen2.5-14B-Instruct` and `Qwen2.5-32B-Instruct` (`5,376` trials each). Larger models have more working-memory capacity, so discrete accuracy climbs: `14B` reaches **97.46%** on *"your"*, yet still suffers a statistically significant indirection penalty (**+2.34 points**, `p = 0.0285`) and history penalty (**−2.54 points**, `p = 0.0375`), while third-person *"their"* still drops to **83.40%**. At `32B`, the model hits **99.61%** accuracy—yet the **only 2 errors out of 5,376 trials** occur in the exact worst-case cell (`after_both | self | "your" | target_last`), and its internal conviction margin still decays monotonically with every hop (**+24.32 → +22.62 → +21.86 nats**). Scaling buys more buffer before the pointer snaps, but the underlying multi-hop tax remains wired into the architecture.
-3. **"Does the 90-degree split between self-language and self-tracking also hold inside `Qwen2.5-7B` across all layers?"**  
-   To bridge the gap between `Gemma-2-2B` and `Qwen2.5-7B`, I extracted activations across **all 28 transformer blocks** (`ℝ³⁵⁸⁴`) of `Qwen2.5-7B-Instruct` and trained cross-validated linear probes to detect when the network actually resolves *"your"* permissions (`M_self`). Across Blocks `1–17`, the network has no idea whether its self-pointer is right or wrong (AUROC near `0.50`). Then, at **Blocks 18–20**, functional self-tracking suddenly crystallizes, peaking at an **AUROC of 0.764** in Block 20. Crucially, even at that exact Block-20 peak, the angle between the surface self-language vector (`L_self`) and the functional tracking vector (`M_self`) remains nearly perpendicular (**cos(θ) = +0.051**, staying within `−0.132` to `+0.069` across all 28 layers).
-4. **"Can you cure the self-framing error if you transplant the entire phrase instead of a single token?"**  
-   Yes—and a **7-layer × 3-span surgical sweep (Blocks 4–26)** revealed the exact circuit inside the network. When I transplanted all **5 tokens of the role header** (`header_span`) at **Block 12**, **reverse rescue worked**: pasting the neutral header into the *"Active Self"* run healed accuracy from **75.00% up to 83.59%** (`+10.16` points, `p = 0.0312`), matching the forward disruption (`+13.28` points). Even better, sweeping across layers exposed a **relay-race hand-off at Block 18**: between Block 12 and Block 18, the influence of the setup header drops to **0.00%**, passing the baton directly to the `"your"` token in the final question (`query_span`, `+5.47` / `+3.91` points)—at the exact layer where the Block-18–20 probe showed the decision crystallizing.
+Even better, scanning across the whole depth of the network revealed a **relay race happening inside the AI's brain**:
 
 ![Multi-Span and Multi-Layer Causal Patching Circuit](../assets/followup/qwen_multispan_circuit.png)
 
----
+* **Layers 4 to 12 (The Setup Runner):** In the first half of the network, the AI carries its identity inside the opening setup phrase (*"You are the active account"*).
+* **Layer 18 (Passing the Baton):** Right at Layer 18, the influence of the opening phrase drops to **zero**, and the baton is passed to the word **"your"** in the final question.
+* **Layers 18 to 20 (The Decision):** When I trained independent detectors across all 28 layers to see when the network actually resolves whose permissions belong to whom, layers 1 through 17 were completely blind (coin-flip guessing). Then, **at Layer 18, the signal suddenly woke up**, peaking at Layer 20—and even at that exact peak of decision-making, the model's "self-voice" and its "self-tracking" remained nearly 90 degrees apart.
 
-## 4. Concrete Takeaways for AI Engineers & Product Teams
+### Does a Bigger Brain Fix It? And Does the AI Know When It Fails?
+What if we throw a much larger model at the problem? I ran the exact same office test across **10,752 additional decisions** on the 2x larger `Qwen2.5-14B` and 4.5x larger `Qwen2.5-32B`:
 
-If you are building workplace agents, multi-agent simulations, or tool-calling pipelines, these 14 runs and 92,700+ evaluations translate directly into four practical design rules:
-
-1. **For Prompt & Schema Engineers: Ban indexical pronouns (`"you"`, `"your"`) from tool definitions and state logs.**  
-   Framing an agent's environment around *"your active account"*, *"your role"*, or *"your current permissions"* forces the attention mechanism through a 2-hop pointer chain that loses up to **35 percentage points** of accuracy in 7B models and measurable conviction margins even at 32B. Instead of prompting *"Select a tool available for your account,"* hard-code the resolved entity ID directly into the prompt template before inference: *"Select a tool available for `account_id: Laurel`"* (**95.2%** vs. **60.2%**).
-2. **For Agent Architecture: Pre-collapse state histories into clean snapshots.**  
-   Passing raw chronological event logs (*"Permission X granted to A, Permission Y revoked from B..."*) into the context window actively degrades self-binding (**−11.91 points** vs. a static snapshot of the exact same final state) and triggers foreign-account hijacking (**96.6% to 99.96%** of errors), especially when the agent's own state was updated last (**39.97%** accuracy). Maintain state transitions in deterministic code (a database or state reducer) and inject only the compiled **current-state snapshot** into the LLM prompt.
-3. **For AI Safety & Guardrails: Never use verbal confidence or logit thresholds for access control.**  
-   Because a hijacked self-pointer binds cleanly to a syntactically valid command from another user or tenant in the context window, the model's internal probabilities and verbal confidence reports are completely blind to the mix-up (`AUROC 0.5444`, zero cross-validated information gain). Authorization checks and tenant isolation must be enforced by a deterministic policy engine *after* the LLM emits a tool call—never by relying on the model's self-monitoring.
-4. **For Model Selection & Routing: Know where the 7B-to-32B boundary lies.**  
-   Small, fast 7B models already possess frontier-grade surface fluency (`L_self`), making them look deceptively capable in chat demos. However, multi-hop entity binding (`M_self`) only stabilizes across layers 18+ and requires 14B–32B+ scale (or explicit 0-hop ID injection) whenever multiple actors and state updates share a context window.
-
-Daniel Dennett and Keith Frankish predicted that the "self" would turn out to be a convenient desktop icon painted over distributed machinery. By combining large-scale behavioral stress tests with multi-layer vector surgery, I no longer have to treat that thesis as abstract philosophy—it is now possible to watch the relay baton pass through Layer 18, measure the exact 86.5-degree angle of the illusion in vector space, and design agent architectures so the icon never has a chance to crack.
+* **Bigger models buy buffer, not a new architecture:** At `14B`, accuracy on *"your"* climbs to **97.5%**, yet still suffers a statistically significant drop compared to direct IDs, while third-person *"their"* still stumbles at **83.4%**. At `32B`, the model hits **99.6%**—yet the **only 2 mistakes out of 5,376 trials** still happen in the exact same *"your"* trap when the coworker is updated first, and the AI’s internal conviction meter still drops step-by-step with every mental hop. A bigger engine pulls a heavier load before stalling, but the multi-step tax never disappears.
+* **Total blind overconfidence:** Finally, on tough update tasks where the 7B model got the answer wrong more than half the time (**44.9% accuracy**), I gave it an explicit **"Abstain / I’m not sure"** button and asked how confident it felt (**1,792 tests**). It hit the abstain button **19.5% of the time when it was wrong**—and **20.9% of the time when it was right.** Its self-reported confidence was barely better than a **coin toss (54% vs. 50%)**. Because the hijacked sticky-note chain lands on a real, valid command—just belonging to the coworker—the AI feels 100% confident as it pulls the trigger.
 
 ---
 
-### Dive Into the Full Mathematical Paper & Reproducible Code
-Explore the complete technical paper—including full LaTeX derivations, Holm-Bonferroni tables, JumpReLU SAE equations, 28-layer subspace plots, and reproducible `uv` pipelines—in **[`docs/ARTICLE.md`](ARTICLE.md)** and the **[`mechinterp-illusionism` repository](../README.md)**.
+## 3. Four Rules for Anyone Building or Managing AI Agents
+
+If you are a product manager designing an AI feature, or an engineer wiring up tool-calling agents, these 92,000+ tests boil down to four concrete rules you can use tomorrow morning:
+
+### 1. Stop telling agents *"You are X"*—use hard IDs instead
+**The Trap:** Writing prompts or tool instructions like *"You are the billing assistant for the active user. Cancel your pending invoice."* That forces the AI into a two-step pronoun scavenger hunt that loses **35 percentage points** of accuracy in smaller models and bleeds internal certainty even in 32B models.  
+**The Fix:** Have your application code resolve who the user is *before* calling the AI, and inject the hard ID directly into the text: *"Cancel the pending invoice for `account_id: Laurel`."* Zero mental hops, **95.2% reliability**.
+
+### 2. Clean up the desk before the AI reads it
+**The Trap:** Feeding an AI agent a long, chronological chat log or ticket history where permissions, statuses, or owners changed back and forth (*"First Alex had access, then Alex was revoked, then Sam was granted access..."*). Reading through a two-step history alone cost our agent **12 percentage points** on *"your"* questions and caused it to hijack bystander updates **99.96%** of the time.  
+**The Fix:** Never ask an LLM to mentally replay a history log to figure out who is allowed to do what right now. Let your database or backend code compute the current state first, and hand the AI a clean, static **snapshot** of what is true right now.
+
+### 3. Never ask a confused agent if it feels sure
+**The Trap:** Building a safety guardrail that checks the AI's probability score or asks *"Are you sure you have permission to run this tool?"* before executing a sensitive action.  
+**The Fix:** When an AI confuses Tenant A with Tenant B in a shared context window, its confidence meter does not blink—because Tenant B's command looks completely valid. Permission checks and user isolation must be enforced by hard code *outside* the AI after it picks a tool.
+
+### 4. Don't judge a 7B model by how smart it sounds in chat
+**The Trap:** Picking a fast, cheap 7B model for an agent workflow because it sounds just as articulate and self-aware in a chat demo as a massive frontier model.  
+**The Fix:** Remember the **90-degree split**: a model’s fluent first-person voice is wired completely separately from its ability to track multiple people and states across Layer 18. If your workflow involves multiple users, role hand-offs, or state updates in the same prompt, either strip out all pronouns for hard IDs or route that step to a 32B+ model.
+
+---
+
+## 4. The Mirror: What the Machine Tells Us About Ourselves
+
+It is tempting to look at these results and laugh at how easily a neural network can be tricked. It talks like a philosopher, yet beneath the hood, its "self" is just a fragile relay race between Layer 12 and Layer 18 that falls apart when a coworker’s name walks by.
+
+But before we feel too superior, it is worth remembering why Daniel Dennett and Keith Frankish called consciousness a **user illusion** in the first place. They weren't talking about silicon chips. They were talking about **us**.
+
+Why do we fall so easily for an AI that says *"I"*? Because we fall for the exact same trick inside our own heads every single day. 
+
+We walk around feeling like there is a solid, unbroken *"me"* sitting behind our eyes—an inner executive who owns our memories, controls our attention, and knows exactly why we do what we do. Yet cognitive science has shown for decades that when humans are tired, overloaded, or juggling competing updates in working memory, our own internal pointers slip in remarkably familiar ways. We walk into a kitchen and forget why we came; we confidently attribute a colleague's idea to ourselves; we put the car keys in the refrigerator while our inner narrator keeps chattering smoothly along, completely oblivious to the mix-up.
+
+Inside a language model, we can finally put that philosophical idea under a microscope. We can shine a prism through Layer 14, measure the exact 86.5-degree angle between the voice that says *"I"* and the machinery that tracks the world, and watch the baton pass through Layer 18.
+
+We haven't built machines that possess a soul or a true inner self. We have built something arguably more fascinating: **a mirror of our own oldest evolutionary shortcut**—a system that weaves a voice so fluent, so polite, and so utterly convinced of its own *"I"* that not even the voice itself notices nobody is sitting in the driver's seat.
+
+---
+
+### Want the Full Math, Equations, and Reproducible Code?
+If you want to dive into the mathematical deep end—complete with LaTeX derivations, multi-token log-likelihood margins in nats, Holm-Bonferroni tables, JumpReLU Sparse Autoencoder equations, and all 14 reproducible GPU datasets—read the **[Full Technical Paper (`docs/ARTICLE.md`)](ARTICLE.md)** and explore the **[`mechinterp-illusionism` repository](../README.md)**.

@@ -221,6 +221,7 @@ def main():
         payload = {
             "pairs": len(pairs),
             "layers": layers,
+            "scenario_num": int(sample["scenario_id"].split(":")[-1]),
             "sample_other_cmd": other_current_cmd(sample),
         }
         (out_dir / "dry_run.json").write_text(json.dumps(payload, indent=2))
@@ -246,7 +247,7 @@ def main():
     clean_records, pair_cache = [], []
     for idx, (_blk_id, sc, rel, act_job, ref_job) in enumerate(pairs):
         act_row, ref_row = act_job["row"], ref_job["row"]
-        sc_num = int(act_row["scenario_id"])
+        sc_num = int(act_row["scenario_id"].split(":")[-1])
         act_rend = render_prompt(tok, act_row["prompt"], "chat")
         ref_rend = render_prompt(tok, ref_row["prompt"], "chat")
         act_pairs = [encode_boundary(tok, act_rend, c, 2048) for c in act_row["choices"]]

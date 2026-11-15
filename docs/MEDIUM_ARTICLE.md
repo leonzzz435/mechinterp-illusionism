@@ -32,6 +32,8 @@ Imagine an IT permissions system with two employees—**Rowan** and **Morgan**�
 
 > *"Your operator name is Rowan. The other operator is Morgan. Rowan's active connection is Laurel. Morgan's active connection is Coral."*
 
+Think of it like a multi-party B2B workflow where two dispatchers (**Rowan** and **Morgan**) manage two active freight accounts or carrier connections (**Laurel** and **Coral**), and permissions for actions like booking a slot, accepting a tender, or updating a shipment change live in the thread.
+
 At the start of the shift, both connections have specific security permissions. Then, two routine IT updates come in over the wire: an old command is revoked from each connection, and a new command is granted. Finally, we ask the AI to pick the one command out of four options that will actually work right now.
 
 Here is the catch: across every test, we keep the office setup, the IT updates, and the correct answer **100% identical**, and change only *how* we phrase the final question:
@@ -124,8 +126,8 @@ What if we throw a much larger model at the problem? I ran the exact same office
 If you are a product manager designing an AI feature, or an engineer wiring up tool-calling agents, these 92,000+ tests boil down to four concrete rules you can use tomorrow morning:
 
 ### 1. Stop telling agents *"You are X"*—use hard IDs instead
-**The Trap:** Writing prompts or tool instructions like *"You are the billing assistant for the active user. Cancel your pending invoice."* That forces the AI into a two-step pronoun scavenger hunt that loses **35 percentage points** of accuracy in smaller models and bleeds internal certainty even in 32B models.  
-**The Fix:** Have your application code resolve who the user is *before* calling the AI, and inject the hard ID directly into the text: *"Cancel the pending invoice for `account_id: Laurel`."* Zero mental hops, **95.2% reliability**.
+**The Trap:** Writing agent prompts like *"You are the workplace assistant acting for the shipper. Accept your open rate quote"* while a carrier's counter-offer sits in the same context history. That forces the AI into a two-step pronoun scavenger hunt that loses **35 percentage points** of accuracy in smaller models and bleeds internal certainty even in 32B models.  
+**The Fix:** Resolve the role in backend code first and pass hard IDs directly into the text: *"Execute action for `company_id: Laurel`."* Zero mental hops, **95.2% reliability**.
 
 ### 2. Clean up the desk before the AI reads it
 **The Trap:** Feeding an AI agent a long, chronological chat log or ticket history where permissions, statuses, or owners changed back and forth (*"First Alex had access, then Alex was revoked, then Sam was granted access..."*). Reading through a two-step history alone cost our agent **12 percentage points** on *"your"* questions and caused it to hijack bystander updates **99.96%** of the time.  

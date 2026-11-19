@@ -630,7 +630,6 @@ def main():
         EVIDENCE,
         ROOT / "review/evidence",
         ROOT / "review/query-reference-sensitivity",
-        ROOT / "docs/archive/article",
         ROOT / "src",
         ROOT / "designs",
     ):
